@@ -26,7 +26,7 @@ image::images/Bitcoin_Overview.png["Bitcoin Overview"]
 
 ==== Vegyünk egy csésze kávét
 
-Az előző fejezetben bemutatott új felhasználó, Alice, épp most tett szert az első bitcoinjára. Az [első_bitcoin_beszerzése] részben Alice találkozott barátjával, Joe-val, hogy némi készpénzért bitcoint vásároljon tőle. A Joe által létrehozott tranzakció révén Alice pénztárcájába 0.10 BTC került. Alice első kiskereskedelmi tranzakciója az lesz, hogy vesz egy csésze kávét Bob Palo Alto-i kávézójában. Bob nemrég kezdte meg a bitcoin elfogadást, és kávézójának az értékesítési rendszerét a bitcoinnal bővítette (lásd a [bitcoin_kereskedőknek] részben, hogy hogyan használható a bitcoin a kiskereskedelemben). Bob kávézójában az árak a helyi pénznemben (US dollárban) vannak feltüntetve, de a kasszánál az ügyfeleknek lehetőségük van dollárban vagy bitcoinban fizetni. Alice rendel egy csésze kávét, Bob pedig a kasszánál rögzíti a tranzakciót. Az értékesítési rendszer a végösszeget az aktuális árfolyam szerint US dollárról bitcoinra konvertálja, és mindkét pénznemben kijelzi az árat, továbbá megjelenít egy QR kódot, amely a tranzakcióhoz tartozó _fizetési kérést_ tartalmaz:
+Az előző fejezetben bemutatott új felhasználó, Alice, épp most tett szert az első bitcoinjára. Az [első bitcoin beszerzése] részben Alice találkozott barátjával, Joe-val, hogy némi készpénzért bitcoint vásároljon tőle. A Joe által létrehozott tranzakció révén Alice pénztárcájába 0.10 BTC került. Alice első kiskereskedelmi tranzakciója az lesz, hogy vesz egy csésze kávét Bob Palo Alto-i kávézójában. Bob nemrég kezdte meg a bitcoin elfogadást, és kávézójának az értékesítési rendszerét a bitcoinnal bővítette (lásd a [bitcoin kereskedőknek] részben, hogy hogyan használható a bitcoin a kiskereskedelemben). Bob kávézójában az árak a helyi pénznemben (US dollárban) vannak feltüntetve, de a kasszánál az ügyfeleknek lehetőségük van dollárban vagy bitcoinban fizetni. Alice rendel egy csésze kávét, Bob pedig a kasszánál rögzíti a tranzakciót. Az értékesítési rendszer a végösszeget az aktuális árfolyam szerint US dollárról bitcoinra konvertálja, és mindkét pénznemben kijelzi az árat, továbbá megjelenít egy QR kódot, amely a tranzakcióhoz tartozó _fizetési kérést_ tartalmaz:
 
 .Bob pénztárgépén a következő jelenik meg
 ----
@@ -55,7 +55,7 @@ A bitcoin címhez tartozó címke: "Bob's Cafe" (Bob kávézója)
 A fizetség leírása: "Purchase at Bob's Cafe" (Vásárlás Bob kávézójában)
 ----
 
-[Tipp]
+[Tip]
 ====
  A „fizetési kérés” nem csupán egy bitcoin címet tartalmazó QR kód, hanem egy QR kóddal kódolt URL, amely a cél címet, a fizetendő összeget és egy általános leírást tartalmaz, pl. „Bob kávézója”. A bitcoin pénztárca ennek segítségével tudja összeállítani a fizetség elküldéséhez szükséges adatokat, és egyidejűleg a felhasználó számára olvasható formában megjeleníteni azokat. Részletesebben lásd a [fizetési kérés URL-ek] résznél. Ha bepásztázzuk a fenti QR kódot egy bitcoin pénztárca alkalmazással, akkor láthatjuk, hogy mit lát Alice.
 ====
@@ -83,7 +83,7 @@ image::images/Transaction_Double_Entry.png["Transaction Double-Entry"]
 
 A tranzakciók minen egyes átutalásra kerülő (bemeneti) bitcoin összegre vonatkozóan bizonyítékot tartalmaznak arra vonatkozóan, hogy a tulajdonos valóban birtokolja őket. Ez a bizonyíték a tulajdonos digitális aláírása, amelyet bárki ellenőrizni tud. A bitcoin szóhasználatával élve, „elkölteni” valamit azt jelenti, hogy aláírjuk az előző tranzakció értékeit, amelyhez rendelkezünk a kulcsokkal, egy olyan új tulajdonos számára, akit a bitcoin címe azonosít. 
 
-[Tipp]
+[Tip]
 ====
 A _tranzakciók_ az értéket a tranzakció *bemeneteiből* a tranzakció *kimeneteibe* továbbítják. A bemenet azt adja meg, hogy honnan származik az érme értéke, általában egy előző tranzakció kimenetéből. Egy tranzakció kimenete egy új tulajdonost rendel az értékhez oly módon, hogy az értéket egy kulccsal rendeli össze. A cél kulcs neve: _akadály_. Aláírási kötezettséget jelent annak a számára, aki az összeget jövőbeli tranzakciókban szeretné használni. Egy tranzakció kimenetei egy új tranzakció bemeneteiként használhatók. Ily módon egy tulajdonosi lánc jön létre, amin az érték címről címre mozog.
 ====
