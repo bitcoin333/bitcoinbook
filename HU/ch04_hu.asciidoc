@@ -23,7 +23,7 @@ A nyilvános és titkos kulcs között van egy matematikai összefüggés, ami l
 
 Bitcoinok elköltésekor az aktuális bitcoin tulajdonos egy tranzakcióban bemutatja a nyilvános kulcsát és egy aláírást (ami minden egyes alkalommal különböző, de ugyanabból a titkos kulcsból áll elő; lásd az [aláírás] részt), ha el akarja költeni a bitcoinját. A nyilvános kulcs és az aláírás révén a bitcoin hálózat bármelyik tagja ellenőrizni tudja a tranzakciót, meg tudja állípítani, hogy érvényes-e, és meg tud bizonyosodni arról, hogy a bitcoinokat küldő személy valóban birtokolta-e őket a küldés idején. 
 
-[Tipp]
+[TIP]
 ====
 A legtöbb megvalósítás a titkos és nyilvános kulcsokat az egyszerűség kedvéért együtt, egy _kulcspárként_ tárolja. De a nyilvános kulcs előállítása a titkos kulcs ismeretében triviális feladat, ezért az is előfordulhat, hogy a pénztárcában csupán a titkos kulcs van tárolva.
 ====
@@ -40,7 +40,7 @@ image::images/privk_to_pubK_to_addressA.png["privk_to_pubK_to_addressA"]
 
 A +titkos kulcs+ egyszerűen egy véletlenszerűen választott szám. A titkos kulcs birtoklása és a titkos kulcs fölötti ellenőrzés az alapja annak, hogy a felhasználó ellenőrzést képes gyakorolni az összes pénz fölött, amely a titkos kulcsnak megfelelő bitcoin címhez tartozik. A titkos kulcs szolgál aláírások létrehozására, mely ahhoz szükséges, hogy egy tranzakcióban szereplő összegek tulajdonjogát bizonyítsuk, mielőtt elköltjük őket. A titkos kulcsnak egész idő alatt titokban kell maradnia, mert egy harmadik fél számára történő felfedése azzal lenne egyenértékű, mint ha hozzáférést adnánk neki azokhoz a bitcoinokhoz, melyeket ez a kulcs biztosít. A titkos kulcsról biztonsági másolatot is kell készíteni, és védeni kell, nehogy véletlenül elveszítsük, mert ha elvész, akkor nem tudjuk semmi másból visszaállítani, és az általa biztosított összegek is örökre elvesznek. 
 
-[Tipp]
+[TIP]
 ====
 Tipp: A bitcoin titkos kulcs csupán egy szám. A nyilvános kulcs a titkos kulcsból állítható elő, amely tetszőleges lehet. Emiatt a nyilvános kulcs bármilyen, max. 256 bit hosszúságú számból előállítható. A titkos kulcs véletlenszerűen, pl. egy kockával, egy darab papírral és ceruzával választható meg.
 ====
@@ -51,7 +51,7 @@ A kulcsok előállításának első és legfontosabb lépése, hogy egy biztons�
 
 Pontosabban, a titkos kulcs egy +1+ és +n - 1+ közötti tetszőleges szám lehet, ahol n konstans (n=1.158 * 10^77^ vagyis egy kicsit kevesebb, mint 2^256^), és a bitcoinnál használt elliptikus görbe rendszámával egyenlő (lásd az „Elliptikus Görbékkel történő titkosítás” részt). Egy ilyen kulcs előállításához véletlenszerűen választunk egy 256 bites számot, és ellenőrizzük, hogy kisebb-e +n+-nél. Programozási szempontból ezt általában úgy valósítjuk meg, hogy kriptográfiailag biztoságos véletlen forrásból származó bitek egy nagyobb halmazát egy SHA256 hash algoritmussal összetömörítjuk, és ezzel egyszerűen létrehozunk egy 256 bites számot. Ha az eredmény kisebb,  mint n, akkor a titkos kulcs megfelelő. Ha nem, akkor egy másik véletlen számmal próbálkozunk. 
 	
-[Tipp]
+[TIP]
 ====
 Ne próbálkozzanak azzal, hogy saját pszeudó-véletlenszám generátort (PRNG, pseudo random number generator) terveznek. Használjanak egy kritográfiailag biztonságos pszeudó-véletlenszám generátort (CSPRNG, cryptographically-secure pseudo-random number generator), melynek magja megfelelő entrópiaforrásból származik (hogy ez mi, az az operációs rendszertől függ). A CSPRNG helyes megvalósítása a kulcsok biztonsága szempontjábóll kritikus fontosságú. A „csináld magad” erősen ellenjavallott, ha nem vagyunk profi titkosítási szakemberek.
 ====
@@ -65,7 +65,7 @@ Alább egy véletlenszerűen előállított titkos kulcs látható hexadecimáli
 ----
 
 
-[Tipp]
+[TIP]
 ====
 A titkos kulcsok száma a bitcoin esetén, 2^256^, ami egy elképzelhetetlenül nagy szám. Decimálisan kb. 10^77^. A látható világegyetemben becslések szerint kb. 10^80^ atom van.
 ====
@@ -155,17 +155,17 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 Az elliptikus görbék matematikája tartalmaz egy "végtelenben lévő" pontot, amely durván a 0-nalk felel meg az összeadásban. A számítógépeken néha az x = y = 0 segítségével ábrázolják (amely nem elégíti ki az ellpitikus görbék egyenletét, de könnyen ellenőrizhető külön esetként kezelhető).
 
-Van továbbá egy "összeadásnak" nevezett "+" művelet, amelynek néhány sajátossága hasonlít az iskolában tabnult valós számok összeadásához. Ha az elliptikus görbén van két pont, P~1 és P~2, akkor létezik egy harmadik pont, P~3, amely szintén az elliptikus görbén van, és amelyre P~3 = P~1 + P~2 .
+Van továbbá egy "összeadásnak" nevezett "+" művelet, amelynek néhány sajátossága hasonlít az iskolában tabnult valós számok összeadásához. Ha az elliptikus görbén van két pont, P~1~ és P~2~, akkor létezik egy harmadik pont, P~3~, amely szintén az elliptikus görbén van, és amelyre P~3~ = P~1~ + P~2~ .
 
-Geometrialiga ez a harmidik pont, a P~3 úgy számítható ki, hogy húzunk egy egyeneset a P~1 és P~2 között. Ez az egyenes az elliptikus görbét pontosan egy további helyen fogja metszeni. Nevezzük ezt a pontot P~3'-nek: P~3' = (x, y). A P~3 pont ennek a pontnak az x tengelyre történő tükrözésével kapható meg: P~3 = (x, -y).
+Geometrialiga ez a harmadik pont, a P~3~ úgy számítható ki, hogy húzunk egy egyeneset a P~1~ és P~2~ között. Ez az egyenes az elliptikus görbét pontosan egy további helyen fogja metszeni. Nevezzük ezt a pontot P~3~'-nek: P~3~' = (x, y). A P~3~ pont ennek a pontnak az x tengelyre történő tükrözésével kapható meg: P~3~ = (x, -y).
 
 Van néhány különleges esedt, amely megvilágítja,miért van szükség a "végtelenben lévő pontra".
 
-Ha a P~1 és a P~2 ugyanaz a pont, akkor a P~1 és P~2 "közötti" egyenes a görbe P~1 pont beli érintőjévé válik. Ez az érintő pontosan egy pontban fogja metszeni a görbét. A differenciálszámítás segítségével meghatározható az érintő meredeksége. Ezek a módszerek érdekes módon még akkor is működnek, ha csak azok a görbén lévő pontok érdekelnek minket, melyeknek mindkét koordinátája egéstz szám!
+Ha a P~1~ és a P~2~ ugyanaz a pont, akkor a P~1~ és P~2~ "közötti" egyenes a görbe P~1~ pont beli érintőjévé válik. Ez az érintő pontosan egy pontban fogja metszeni a görbét. A differenciálszámítás segítségével meghatározható az érintő meredeksége. Ezek a módszerek érdekes módon még akkor is működnek, ha csak azok a görbén lévő pontok érdekelnek minket, melyeknek mindkét koordinátája egéstz szám!
 
-Bizonyos esetekben (pl. ha a P~1 és a P~2 x koordinátája azonos, de az y koordinátája különböző), akkor az érintő függőleges lesz, és ebben az esetben a P~3 = "a végtelenben lévő pont".
+Bizonyos esetekben (pl. ha a P~1~ és a P~2~ x koordinátája azonos, de az y koordinátája különböző), akkor az érintő függőleges lesz, és ebben az esetben a P~3~ = "a végtelenben lévő pont".
 
-Ha P~1 a "végtelenben lévő pont", akkor P~1 + P~2 = P~2. Hasonlóképpen, ha a P~2 a végtelenben lévő pont, akkor P~1 + P~2 = P~1. Ez mutatja, hogy a végtelenben lévő pont a 0 szerepét játssza.
+Ha P~1~ a "végtelenben lévő pont", akkor P~1~ + P~2~ = P~2~. Hasonlóképpen, ha a P~2~ a végtelenben lévő pont, akkor P~1~ + P~2~ = P~1~. Ez mutatja, hogy a végtelenben lévő pont a 0 szerepét játssza.
 
 A + asszociatív, vagyis (A+B)+C = A+(B+C). Ez azt jelenti, hogy A+B+C zárójelezés nélül is egyértelmű.
 
@@ -185,7 +185,7 @@ Egy véletlenszerűen előállított +k+ számból indulunk ki, a titkos kulcsb�
 
 ahol +k+ a titkos kulcs, +G+ egy generátor pontnak nevezett fix pont a görbén, és +K+ az eredményként kapott nyilvános kulcs, azaz a görbe egy másik pontja. Mivel a generátor pont az összes bitcoin felhasználó esetében mindig ugyanaz, egy k titkos kulcs G-vel vett szorzata mindig ugyanazt a K nyilvános kulcsot eredményezi. A k és K közötti kapcsolat rögzített, de csak az egyik irányban lehet könnyen kiszámítani, k-tól K irányában. A bitcoin címeket (melyek K-ból vannak leszármaztatva) emiatt lehet bárkivel megosztani, és emiatt ezért nem fedi fel a felhazsnálót titkos kulcsát (k).
 
-[Tipp]
+[TIP]
 ====
 Egy titkos kulcs átalakítható egy nyilvános kulccsá, de egy nyilvános kulcsot nem lehet titkos kulccsá visszaalakítani, mert a számítás csak egy irányban működik.
 ====
@@ -199,6 +199,7 @@ K = 1E99423A4ED27608A15A2616A2B0E9E52CED330AC530EDCC32C8FFC6A526AEDD * G
 
 
 .A K nyilvános kulcs, egy pontként definiálva: +K  = (x,y)+
+----
 K = (x, y) 
 ahol
 x = F028892BAD...DC341A
@@ -215,7 +216,7 @@ A lenti ábra a G, 2G, 4G előállításának folyamatát mutatja, a görbén v�
 .Elliptikus görbével történő titkosítás: a G pont és egy egész szorzatának megjelenítése egy elliptikus görbén
 image::images/ecc_illustrated.png["ecc_illustrated"]
 
-[Tipp]
+[TIP]
 ====
 A legtöbb bitcoin implementáció az OpenSSL könyvtárat használja az elliptikus görbékkel történő titkosításra. Például a nyilvános kulcs előállítására az +EC_PONT_mul()+ függvény használható. Lásd http://wiki.openssl.org/index.php/Elliptic_Curve_Cryptography
 ====
@@ -242,7 +243,7 @@ A K nyilvános kulcsból kiindulva kiszámítjuk a kulcs SHA256 zanzáját, majd
 ++++
 ahol K a nyilvános kulcs és A az eredményként kapott bitcoin cím.
 
-[Tipp]
+[TIP]
 ====
 Egy bitcoin *nem* azonos a nyilvános kulccsal. A bitcoin címek egy a nyilvános kulcsból származnak, egy egyirányú függvény alkalmazásával.
 ====
@@ -424,7 +425,7 @@ Lássuk ugyanazt a kulcsot, WIF és WIF-tömörített formátumban.
 |=======
 
 
-[Tipp]
+[TIP]
 ====
 A „tömörített titkos kulcs” teljesen helytelen elenevezés! A titkos kulcs nincs tömörítve. A WIF-tömörített formátum azt jelzi, hogy a titkos kulcsból csak tömörített nyilvános kulcsot, és az ehhez tartozó bitcoin címet szabad előállítani. A „WIF-tömörített” titkos kulcs egy byte-tal hosszab, mert a 01 utótaggal rendelkezik, amely megkülönbözteti a „tömörítetlen” titkos kulcstól.
 ====
@@ -461,7 +462,7 @@ A pénztárcák a titkos kulcsok tárolására szolgálnak. Általában struktú
 
 A kulcs előállítás egy másik módszere a _determinisztikus kulcs előállítás_. Ennél mindegyik új titkos kulcs egy egyirányú hash függvény használatával, az előző titkos kulcsból áll elő, és egy sorozatot képez. A sorozat újbóli létrehozásához csak az első kulcsra van szükség (ennek _mag_ vagy _mesterkulcs_ a neve).  Ebben a részben megvizsgáljuk a kulcsgenerálás különféle módszereit, és a köréjük épített pénztárca szerkezeteket. 
 
-[Tipp]
+[TIP]
 ====
 A pénztárcában kulcsok vannak, nem pedig érmék. Az érméket a blokklánc tárolja, tranzakciós kimenetek formájában (ezeket gyakran _vout_-nak vagy _txout_-nak hívják). Mindegyik felhasználónak van egy kulcsokat tartalmazó pénztárcája. A pénztárcák valójában kulcskarikák, melyeken nyilvános/titkos kulcspárok vannak (lásd a <<nyilvános kulcs>> részt). A felhasználók a kulcsokkal írják alá a tranzakciókat, így bizonyítva, hogy a birtokukban vannak az aláírt tranzakció kimenetek (az érmék).
 ====
@@ -576,7 +577,7 @@ script hash = RIPEMD160(SHA256(script))
     
 Az eredményként kapott „script hash”-t „5” verzió előtaggal kódolják a Base58Check segítségével, ami egy „+3+”-mal kezdődő címet eredményez. Egy példa a P2SH címre: +32M8ednmuyZ2zVbes4puqe44NZumgG92sM+
 
-[Tipp]
+[TIP]
 ====
 A P2SH nem feltétlenül egyezik meg egy több aláírást megkövetelő szabványos tranzakcióval. A P2SH címek a _leggyakrabban_ egy több aláírást megkövetelő script-nek felelnek meg, de más tranzakciótípusokat kódoló scripteknek is megfelelhetnek. 
 ====
