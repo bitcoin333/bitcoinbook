@@ -125,9 +125,9 @@ Ennek a képernyőnek a legfontosabb része Alice _bitcoin címe_. A bitcoin cí
 
 Alice a QR kód kinyomtatásával könnyen meg tudja adni másoknak a címét, vagyis nincs szükség a betűk és számok hosszú sorozatának a begépelésére.
 
-[Tip]
+[TIP]
 ====
-A bitcoin címek az ’1’ vagy a ’3’ számjeggyel kezdődnek. Egy email címhez hasonlóan, bármelyik másik bitcoin felhasználónak megadhatók. A bitcoin cím ismeretében tud a többi felhasználó bitcoinokat küldeni erre címre. Az email címektől eltérően új címek olyan gyakran hozhatók létre, amilyen gyakran csak akarjuk, és mindegyik közvetlenül a pénztárcához fog tartozni. A pénztárca egyszerűen címek és kulcsok gyűjteménye. A kulcsokkal lehet a pénztárcában lévő pénzt felszabadítani/pénz zárolását megszüntetni. A felhasználó által létrehozható bitcoin címek száma gyakorlatilag nincs korlátozva.
+Tipp: A bitcoin címek az ’1’ vagy a ’3’ számjeggyel kezdődnek. Egy email címhez hasonlóan, bármelyik másik bitcoin felhasználónak megadhatók. A bitcoin cím ismeretében tud a többi felhasználó bitcoinokat küldeni erre címre. Az email címektől eltérően új címek olyan gyakran hozhatók létre, amilyen gyakran csak akarjuk, és mindegyik közvetlenül a pénztárcához fog tartozni. A pénztárca egyszerűen címek és kulcsok gyűjteménye. A kulcsokkal lehet a pénztárcában lévő pénzt felszabadítani/pénz zárolását megszüntetni. A felhasználó által létrehozható bitcoin címek száma gyakorlatilag nincs korlátozva.
 ====
 
 Alice most már megkezdheti az bitcoin pénztárcájának a használatát.

@@ -57,7 +57,7 @@ A fizetség leírása: "Purchase at Bob's Cafe" (Vásárlás Bob kávézójában
 
 [TIP]
 ====
- A „fizetési kérés” nem csupán egy bitcoin címet tartalmazó QR kód, hanem egy QR kóddal kódolt URL, amely a cél címet, a fizetendő összeget és egy általános leírást tartalmaz, pl. „Bob kávézója”. A bitcoin pénztárca ennek segítségével tudja összeállítani a fizetség elküldéséhez szükséges adatokat, és egyidejűleg a felhasználó számára olvasható formában megjeleníteni azokat. Részletesebben lásd a [fizetési kérés URL-ek] résznél. Ha bepásztázzuk a fenti QR kódot egy bitcoin pénztárca alkalmazással, akkor láthatjuk, hogy mit lát Alice.
+Tipp: A „fizetési kérés” nem csupán egy bitcoin címet tartalmazó QR kód, hanem egy QR kóddal kódolt URL, amely a cél címet, a fizetendő összeget és egy általános leírást tartalmaz, pl. „Bob kávézója”. A bitcoin pénztárca ennek segítségével tudja összeállítani a fizetség elküldéséhez szükséges adatokat, és egyidejűleg a felhasználó számára olvasható formában megjeleníteni azokat. Részletesebben lásd a [fizetési kérés URL-ek] résznél. Ha bepásztázzuk a fenti QR kódot egy bitcoin pénztárca alkalmazással, akkor láthatjuk, hogy mit lát Alice.
 ====
 
 Bob azt mondja: „Ez egy dollár ötven, azaz tizenöt milliBit lesz”.
@@ -83,9 +83,9 @@ image::images/Transaction_Double_Entry.png["Transaction Double-Entry"]
 
 A tranzakciók minen egyes átutalásra kerülő (bemeneti) bitcoin összegre vonatkozóan bizonyítékot tartalmaznak arra vonatkozóan, hogy a tulajdonos valóban birtokolja őket. Ez a bizonyíték a tulajdonos digitális aláírása, amelyet bárki ellenőrizni tud. A bitcoin szóhasználatával élve, „elkölteni” valamit azt jelenti, hogy aláírjuk az előző tranzakció értékeit, amelyhez rendelkezünk a kulcsokkal, egy olyan új tulajdonos számára, akit a bitcoin címe azonosít. 
 
-[Tip]
+[TIP]
 ====
-A _tranzakciók_ az értéket a tranzakció *bemeneteiből* a tranzakció *kimeneteibe* továbbítják. A bemenet azt adja meg, hogy honnan származik az érme értéke, általában egy előző tranzakció kimenetéből. Egy tranzakció kimenete egy új tulajdonost rendel az értékhez oly módon, hogy az értéket egy kulccsal rendeli össze. A cél kulcs neve: _akadály_. Aláírási kötezettséget jelent annak a számára, aki az összeget jövőbeli tranzakciókban szeretné használni. Egy tranzakció kimenetei egy új tranzakció bemeneteiként használhatók. Ily módon egy tulajdonosi lánc jön létre, amin az érték címről címre mozog.
+Tipp: A _tranzakciók_ az értéket a tranzakció *bemeneteiből* a tranzakció *kimeneteibe* továbbítják. A bemenet azt adja meg, hogy honnan származik az érme értéke, általában egy előző tranzakció kimenetéből. Egy tranzakció kimenete egy új tulajdonost rendel az értékhez oly módon, hogy az értéket egy kulccsal rendeli össze. A cél kulcs neve: _akadály_. Aláírási kötezettséget jelent annak a számára, aki az összeget jövőbeli tranzakciókban szeretné használni. Egy tranzakció kimenetei egy új tranzakció bemeneteiként használhatók. Ily módon egy tulajdonosi lánc jön létre, amin az érték címről címre mozog.
 ====
 
 [[blockchain-mnemonic]]
@@ -150,7 +150,7 @@ A fenti válasz szerint a bitcoin hálózat egyetlen egy el nem költött kimene
 
 [TIP]
 ====
-A Joe és Alice közötti tranzakció a következő hivatkozással tekinthető meg:
+Tipp: A Joe és Alice közötti tranzakció a következő hivatkozással tekinthető meg:
 
 https://blockchain.info/tx/7957a35fe64f80d234d76d83a2a8f1a0d8149a41d81de548f0a65a8a999f6f18
 ====
@@ -175,7 +175,7 @@ image::images/AliceCoffeeTransaction.png["Alice Coffee Transaction"]
 [[transaction-alice-url]]
 [TIP]
 ====
-Alice Bob kávézójával kapcsolatos tranzakiója a következő hivatkozás segítségével érhető el:
+Tipp: Alice Bob kávézójával kapcsolatos tranzakiója a következő hivatkozás segítségével érhető el:
 
 https://blockchain.info/tx/0627052b6f28912f2703066a912ea577f2ce4da4caa5a5fbd8a57286c345c2f2
 ====
@@ -198,7 +198,7 @@ Ha Bob bitcoin pénztárca alkalmazása közvetlenül kapcsolódik Alice pénzt�
 
 [TIP]
 ====
-A bitcoin tranzakciókkal kapcsolatos gyakori félreértés, hogy 10 percet kell várni a tranzakció „megerősítéséhez”, vagyis amíg bele nem kerül egy új blokkba, vagy 60 percet 6 teljes megerősítéshez. Noha a megerősítés biztosítja, hogy a tranzakciót az egész hálózat ugyanolyannak lássa, az olyan kis értékű tételek esetén, mint egy pohár kávé, felesleges a várakozás. Egy érvényes, kis értékű tranzakció megerősítés nélküli elfogadása nem jelent nagyobb kockázatot, mint ha egy hitelkártyával történő fizetést azonosító okmány vagy aláírás nélkül fogad el valaki, márpedig ez gyakori manapság.
+Tipp: A bitcoin tranzakciókkal kapcsolatos gyakori félreértés, hogy 10 percet kell várni a tranzakció „megerősítéséhez”, vagyis amíg bele nem kerül egy új blokkba, vagy 60 percet 6 teljes megerősítéshez. Noha a megerősítés biztosítja, hogy a tranzakciót az egész hálózat ugyanolyannak lássa, az olyan kis értékű tételek esetén, mint egy pohár kávé, felesleges a várakozás. Egy érvényes, kis értékű tranzakció megerősítés nélküli elfogadása nem jelent nagyobb kockázatot, mint ha egy hitelkártyával történő fizetést azonosító okmány vagy aláírás nélkül fogad el valaki, márpedig ez gyakori manapság.
 ====
 
 === Bitcoin bányászat

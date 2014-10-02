@@ -65,9 +65,9 @@ Megjegyzés: A Locktime (Zárolási idő) definiálja, hogy a tranzakció legkor
 
 Egy bitcoin tranzakció alap építő eleme az _elköltetlen tranzakció kimenet_ vagy UTXO (unspent transaction output). Az UTXO a bitcoin oszthatatlan darabja, amely egy adott tulajdonoshoz van kötve, szerepel a blokkláncban, és az egész hálózat által  elismert pénzegység. A bitcoin hálózat nyomon követi az összes rendelkezésre álló (el nem kültött) UTXO-t. Ezek száma jelenleg a milliós tartományban van. Ha a felhasználó bitcoint kap, az összeg nagysága a blokkláncban UTXO-ként van rögzítve. Így aztán egy felhasználó bitcoinjai tranzakciók százai és blokkok százai között lehetnek UTXO-k formájában szétszórva. Igazából nincs is olyan, hogy egy bitcoin cím vagy számla egyenleg, csak szétszórt UTXO-k vannak, melyek adott felhasználókhoz vannak kötve. A felhasználó bitcoin egyenlege egy olyan fogalom, amely a pénztárca alkalmazás szintjén jelenik meg. A felhasználó egyenlegét a pénztárca számítja ki oly módon, hogy végigpásztázza a blokkláncot és összegzi az adott felhasználóhoz tartozó összes UTXO-t.
 
-[Tipp]
+[TIP]
 ====
-A bitcoinban nincsenek számlák ill. egyenlegek, csak _el nem költött tranzakció kimenetek_ (UTXO-k) vannak, melyek szét vannak szórva a blokkláncban.
+Tipp: A bitcoinban nincsenek számlák ill. egyenlegek, csak _el nem költött tranzakció kimenetek_ (UTXO-k) vannak, melyek szét vannak szórva a blokkláncban.
 ====
 
 Az UTXO-kat satoshiban mérjük, és tetszőleges értékük lehet. A dollárnál a legkisebb egység, a cent 2 tizedesjeggyel ábrázolható. Hasonló módon a bitcoinnál a legkisebb egység, a staoshi 8 tizedesjeggyel ábrázolható. Noha az UTXO értéke teteszőleges lehet, a létrejötte után már épp úgy oszthatatlan, mint egy érme, amely nem vágható ketté. Ha az UTXO nagyobb, mint a tranzakció kívánt értéke, akkor is teljes mértékben el kell költeni, és a tranzakcióban visszajáró pénzt kell generálni. Más szóval, ha van egy 20 bitcoinos UTXO-nk, és 1 bitcoint szeretnénk kifizetni, akkor a tranzakciónknak az egész 20 bitcoinos UTXO-t  el kell költenie, és két kimenetet kell létrehoznia: az első kimenet 1 bitcoint fizet a kívánt címzettnek, a második a visszajárü 19 bitcoint utalja a saját pénztárcánkba. Emiatt a bitcoin tranzakcióknak eseti módon a visszajáró pénzt is kezelniük kell.
@@ -78,9 +78,9 @@ A tranzakció által elfogyasztott UTXO-kat  tranzakció bemeneteknek nevezzük,
 
 A bemeneti és kimeneti láncból kilóg egy speciális tranzakciótípus, a _coinbase_ tranzakció, amely mindegyik blokkban az első tranzakció. Ezt a tranzakciót a „nyertes” bányász helyezi el a blokkban, és vadonat új bitcoinok jönnek ily módon létre, melyek az adott bányásznak fizetendők ki, jutalmul a bányászatért. A bitcoinban a bányászat során így jön létre új pénz, amint azt a <<bányászat>> című részben látni fogjuk.
 
-[Tipp]
+[TIP]
 ====
-Mi volt előbb? A bemenetek vagy a kimenetek, a tyúk vagy a tojás? Tulajdonképpen a kimenetek voltak előbb, mert a coinbase tranzakcióknak, melyek új bitcoinokat állítanak elő, nincsenek bemenetei és kimeneteket hoznak létre a semmiből.
+Tipp: Mi volt előbb? A bemenetek vagy a kimenetek, a tyúk vagy a tojás? Tulajdonképpen a kimenetek voltak előbb, mert a coinbase tranzakcióknak, melyek új bitcoinokat állítanak elő, nincsenek bemenetei és kimeneteket hoznak létre a semmiből.
 ====
 
 [[tx_outs]]
@@ -239,9 +239,9 @@ Manapság a bitcoin hálózatban feldolgozott legtöbb tranzakció „Alice fize
 
 A fenti fenti példa csak a a jéghegy csúcsát jelenti a script nyelvvel kifejezhető lehetőségek között. Ebben a részben a bitcoin tranzakciós nyelvének elemeit szemléltetjük, és bemutatjuk, hogyan lehet őket bonyolult feltételek kifejezésére használni, és hogyan lehet ezeket a feltételeket a zárolást feloldó scriptekben kielégíteni. 
 
-[Tipp]
+[TIP]
 ====
-A bitcoin tranzakció ellenőrzés nem egy statikus módszeren alapul, hanem egy script nyelv végrehajtásán. Ez a nyelv szinte végtelen számú feltétel kifejezését teszi lehetővé. A bitcoin ezáltal lesz „programozható pénz”.
+Tipp: A bitcoin tranzakció ellenőrzés nem egy statikus módszeren alapul, hanem egy script nyelv végrehajtásán. Ez a nyelv szinte végtelen számú feltétel kifejezését teszi lehetővé. A bitcoin ezáltal lesz „programozható pénz”.
 ====
 
 ==== Script készítés (zárolás + zárolás feloldás)
@@ -308,9 +308,9 @@ Az ellenőző szoftver összekapcsolja a zárolást feloldó és zároló script
 
 Amint azt a fenti, lépésről lépésre történő végrehajtás során láttuk, ennek a scriptnek a végrehajtásakor az eredmény IGAZ, vagyis a tranzakció érvényes. Érvényes zároló scriptet hoztunk ugyan létre, de az így létrehjött UTXO elköltésére bárki képes, aki ismeri a számtant, és tudja, hogy a 2 kielégíti a scriptet. 
 
-[Tipp]
+[TIP]
 ====
-Egy tranzakció akkor érvényes, ha verem tetején lévő eredmény IGAZ (+{0x01}+), vagy bármilyen nem nulla érték, vagy a verem üres a script végrehajtása után. A tranzakció érvénytelen, ha a verem tetején lévő érték HAMIS (egy nulla hosszúságú üres érték, melyet úgy jelölünk, hogy +{}+), vagy a script végrehajtását valamelyik művelet, pl. OP_VERIFY, OP_RETURN vagy egy feltételes művelet, pl. OP_ENDIF leállította. Részletesen lásd a <<Tranzakciós script nyelv operátorai, konstansai és szimbólumai>> című résznél.
+Tipp: Egy tranzakció akkor érvényes, ha verem tetején lévő eredmény IGAZ (+{0x01}+), vagy bármilyen nem nulla érték, vagy a verem üres a script végrehajtása után. A tranzakció érvénytelen, ha a verem tetején lévő érték HAMIS (egy nulla hosszúságú üres érték, melyet úgy jelölünk, hogy +{}+), vagy a script végrehajtását valamelyik művelet, pl. OP_VERIFY, OP_RETURN vagy egy feltételes művelet, pl. OP_ENDIF leállította. Részletesen lásd a <<Tranzakciós script nyelv operátorai, konstansai és szimbólumai>> című résznél.
 ====
 
 ==== Turing nem teljesség

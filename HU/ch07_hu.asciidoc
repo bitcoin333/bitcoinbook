@@ -62,9 +62,9 @@ Egy blokk azonosításának a másik módja az, hogy megadjuk a blokkláncon bel
 
 A blokk hash-sel ellentétben, a blokk magasság nem egy egyedi azonosító. Míg egy blokknak mindig van egy adott és állandó blokk magassága, addig ennek a fordítottja nem igaz - a blokk magasság nem mindig egyetlen egy blokkot azonosít. Két vagy akár több blokknak is azonos lehet a blokk magassága. Ezek a blokkok a blokklánc ugyanazon pozíciójáért versenyeznek. Ennek a menetéről az elágazások részben írunk részletesebben. A blokk magasság szintén nem része a blokk adatstruktúrájának; tehát nem kerül blokkon belüli tárolásra. Minden csomópont dinamikusan azonosítja az adott blokk blokkláncon belüli helyzetét (magasságát), amikor azt a bitcoin hálózattól megkapja. A gyorsabb visszakeresés érdekében a blokk magasság is tárolható meta-adatként egy indexelt adatbázis táblázatban.
 
-[Tipp]
+[TIP]
 ====
-Egy blokk _blokk hash_-e minden esetben egyedi módon, egyetlen blokkot azonosít. A blokknak mindig van egy adott _blokk magassága_ is. De egy adott blokk magasság nem minden esetben azonosít egyetlen egy blokkot. Gyakran előfordul, hogy két vagy akár több blokk is ugyanazért az blokkláncbeli pozícióért versenyez. 
+Tipp: Egy blokk _blokk hash_-e minden esetben egyedi módon, egyetlen blokkot azonosít. A blokknak mindig van egy adott _blokk magassága_ is. De egy adott blokk magasság nem minden esetben azonosít egyetlen egy blokkot. Gyakran előfordul, hogy két vagy akár több blokk is ugyanazért az blokkláncbeli pozícióért versenyez. 
 ====
 
 === A „Genezis” Blokk

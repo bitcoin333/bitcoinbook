@@ -25,7 +25,7 @@ Bitcoinok elköltésekor az aktuális bitcoin tulajdonos egy tranzakcióban bemu
 
 [TIP]
 ====
-A legtöbb megvalósítás a titkos és nyilvános kulcsokat az egyszerűség kedvéért együtt, egy _kulcspárként_ tárolja. De a nyilvános kulcs előállítása a titkos kulcs ismeretében triviális feladat, ezért az is előfordulhat, hogy a pénztárcában csupán a titkos kulcs van tárolva.
+Tipp: A legtöbb megvalósítás a titkos és nyilvános kulcsokat az egyszerűség kedvéért együtt, egy _kulcspárként_ tárolja. De a nyilvános kulcs előállítása a titkos kulcs ismeretében triviális feladat, ezért az is előfordulhat, hogy a pénztárcában csupán a titkos kulcs van tárolva.
 ====
 
 ==== Titkos és nyilvános kulcsok
@@ -53,7 +53,7 @@ Pontosabban, a titkos kulcs egy +1+ és +n - 1+ közötti tetszőleges szám leh
 	
 [TIP]
 ====
-Ne próbálkozzanak azzal, hogy saját pszeudó-véletlenszám generátort (PRNG, pseudo random number generator) terveznek. Használjanak egy kritográfiailag biztonságos pszeudó-véletlenszám generátort (CSPRNG, cryptographically-secure pseudo-random number generator), melynek magja megfelelő entrópiaforrásból származik (hogy ez mi, az az operációs rendszertől függ). A CSPRNG helyes megvalósítása a kulcsok biztonsága szempontjábóll kritikus fontosságú. A „csináld magad” erősen ellenjavallott, ha nem vagyunk profi titkosítási szakemberek.
+Tipp: Ne próbálkozzanak azzal, hogy saját pszeudó-véletlenszám generátort (PRNG, pseudo random number generator) terveznek. Használjanak egy kritográfiailag biztonságos pszeudó-véletlenszám generátort (CSPRNG, cryptographically-secure pseudo-random number generator), melynek magja megfelelő entrópiaforrásból származik (hogy ez mi, az az operációs rendszertől függ). A CSPRNG helyes megvalósítása a kulcsok biztonsága szempontjábóll kritikus fontosságú. A „csináld magad” erősen ellenjavallott, ha nem vagyunk profi titkosítási szakemberek.
 ====
 
 
@@ -67,7 +67,7 @@ Alább egy véletlenszerűen előállított titkos kulcs látható hexadecimáli
 
 [TIP]
 ====
-A titkos kulcsok száma a bitcoin esetén, 2^256^, ami egy elképzelhetetlenül nagy szám. Decimálisan kb. 10^77^. A látható világegyetemben becslések szerint kb. 10^80^ atom van.
+Tipp: A titkos kulcsok száma a bitcoin esetén, 2^256^, ami egy elképzelhetetlenül nagy szám. Decimálisan kb. 10^77^. A látható világegyetemben becslések szerint kb. 10^80^ atom van.
 ====
 
 A Bitcoin Core kliensben egy új kulcs a +getnewaddress+ paranccsal állítható elő. Biztonsági okokból a kliens csak a nyilvános kulcsot jelzi ki, a titkos kulcsot nem. Ha azt szeretnénk, hogy  bitcoind írja ki a titkos kulcsot, használjuk a +dumpprivkey+ parancsot. A +dumpprivkey+ a titkos kulcsot ellenőrző összeggel kiegészített 58-as számrendszeri formátumban jelzi ki, melyet tárca import formátumnak (WIF, wallett import format) hívunk. A WIF formátumot a titkos kulcs formátumok részben fogjuk részletesebben megvizsgálni. Az előző két paranccsal a következőképpen lehet egy titkos kulcsot előállítani és kijelezni:
@@ -187,7 +187,7 @@ ahol +k+ a titkos kulcs, +G+ egy generátor pontnak nevezett fix pont a görbén
 
 [TIP]
 ====
-Egy titkos kulcs átalakítható egy nyilvános kulccsá, de egy nyilvános kulcsot nem lehet titkos kulccsá visszaalakítani, mert a számítás csak egy irányban működik.
+Tipp: Egy titkos kulcs átalakítható egy nyilvános kulccsá, de egy nyilvános kulcsot nem lehet titkos kulccsá visszaalakítani, mert a számítás csak egy irányban működik.
 ====
 
 A fent definiált szorzás felhasználásával az előzőleg előállított titkos kulcsot szorozzuk meg G-vel:
@@ -218,7 +218,7 @@ image::images/ecc_illustrated.png["ecc_illustrated"]
 
 [TIP]
 ====
-A legtöbb bitcoin implementáció az OpenSSL könyvtárat használja az elliptikus görbékkel történő titkosításra. Például a nyilvános kulcs előállítására az +EC_PONT_mul()+ függvény használható. Lásd http://wiki.openssl.org/index.php/Elliptic_Curve_Cryptography
+Tipp: A legtöbb bitcoin implementáció az OpenSSL könyvtárat használja az elliptikus görbékkel történő titkosításra. Például a nyilvános kulcs előállítására az +EC_PONT_mul()+ függvény használható. Lásd http://wiki.openssl.org/index.php/Elliptic_Curve_Cryptography
 ====
 
 === Bitcoin címek
@@ -245,7 +245,7 @@ ahol K a nyilvános kulcs és A az eredményként kapott bitcoin cím.
 
 [TIP]
 ====
-Egy bitcoin *nem* azonos a nyilvános kulccsal. A bitcoin címek egy a nyilvános kulcsból származnak, egy egyirányú függvény alkalmazásával.
+Tipp: Egy bitcoin *nem* azonos a nyilvános kulccsal. A bitcoin címek egy a nyilvános kulcsból származnak, egy egyirányú függvény alkalmazásával.
 ====
 
 A bitcoin címeket a felhasználók majdnem mindig „Base58Check” kódolásban látják (lásd a <<Base58Check>> kódolást lejjebb). Ez a kódolás 58 karaktert (58-as számrendszert) használ, és egy ellenőrző összeggel van kiegészítve, ami segíti az olvashatóságot, és véd a cím beviteli és továbbítási hibák ellen. A Base58Check sok más módon is szerephez jut a bitcoinban, ha egy szám, pl. egy bitcoin cím, egy titkos kulcs, egy titkosított kulcs vagy egy script zanza pontos beírására van szükség. A következő részben megvizsgáljuk a Base58Check kódolás és dekódolás működését, és az így előálló alakokat.
@@ -429,7 +429,7 @@ Lássuk ugyanazt a kulcsot, WIF és WIF-tömörített formátumban.
 
 [TIP]
 ====
-A „tömörített titkos kulcs” teljesen helytelen elenevezés! A titkos kulcs nincs tömörítve. A WIF-tömörített formátum azt jelzi, hogy a titkos kulcsból csak tömörített nyilvános kulcsot, és az ehhez tartozó bitcoin címet szabad előállítani. A „WIF-tömörített” titkos kulcs egy byte-tal hosszab, mert a 01 utótaggal rendelkezik, amely megkülönbözteti a „tömörítetlen” titkos kulcstól.
+Tipp: A „tömörített titkos kulcs” teljesen helytelen elenevezés! A titkos kulcs nincs tömörítve. A WIF-tömörített formátum azt jelzi, hogy a titkos kulcsból csak tömörített nyilvános kulcsot, és az ehhez tartozó bitcoin címet szabad előállítani. A „WIF-tömörített” titkos kulcs egy byte-tal hosszab, mert a 01 utótaggal rendelkezik, amely megkülönbözteti a „tömörítetlen” titkos kulcstól.
 ====
 
 === Kulcsok és címek kezelése Pythonban
@@ -466,7 +466,7 @@ A kulcs előállítás egy másik módszere a _determinisztikus kulcs előállí
 
 [TIP]
 ====
-A pénztárcában kulcsok vannak, nem pedig érmék. Az érméket a blokklánc tárolja, tranzakciós kimenetek formájában (ezeket gyakran _vout_-nak vagy _txout_-nak hívják). Mindegyik felhasználónak van egy kulcsokat tartalmazó pénztárcája. A pénztárcák valójában kulcskarikák, melyeken nyilvános/titkos kulcspárok vannak (lásd a <<nyilvános kulcs>> részt). A felhasználók a kulcsokkal írják alá a tranzakciókat, így bizonyítva, hogy a birtokukban vannak az aláírt tranzakció kimenetek (az érmék).
+Tipp: A pénztárcában kulcsok vannak, nem pedig érmék. Az érméket a blokklánc tárolja, tranzakciós kimenetek formájában (ezeket gyakran _vout_-nak vagy _txout_-nak hívják). Mindegyik felhasználónak van egy kulcsokat tartalmazó pénztárcája. A pénztárcák valójában kulcskarikák, melyeken nyilvános/titkos kulcspárok vannak (lásd a <<nyilvános kulcs>> részt). A felhasználók a kulcsokkal írják alá a tranzakciókat, így bizonyítva, hogy a birtokukban vannak az aláírt tranzakció kimenetek (az érmék).
 ====
 
 ==== Nem-determinisztikus (véletlen) pénztárcák
@@ -581,7 +581,7 @@ Az eredményként kapott „script hash”-t „5” verzió előtaggal kódolj�
 
 [TIP]
 ====
-A P2SH nem feltétlenül egyezik meg egy több aláírást megkövetelő szabványos tranzakcióval. A P2SH címek a _leggyakrabban_ egy több aláírást megkövetelő script-nek felelnek meg, de más tranzakciótípusokat kódoló scripteknek is megfelelhetnek. 
+Tipp: A P2SH nem feltétlenül egyezik meg egy több aláírást megkövetelő szabványos tranzakcióval. A P2SH címek a _leggyakrabban_ egy több aláírást megkövetelő script-nek felelnek meg, de más tranzakciótípusokat kódoló scripteknek is megfelelhetnek. 
 ====
 
 ===== A több aláírást megkövetelő címek és a P2SH

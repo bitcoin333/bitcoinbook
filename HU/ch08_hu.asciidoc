@@ -622,7 +622,7 @@ Az Interval paramétert (2016 blokk) és a TargetTimespan paramétert (két hét
 
 A nehézségi szint nagy ingadozásainak elkerülése érdekében a módosító tényezőnek ciklusonként (2016 blokkonként) 4-nél kisebbnek kell lennie. Ha a kívánt nehézségi szint módosítás több mint négyszeres, akkor a maximumra lesz állítva, és ennyi. A továbi állítások a következő körben fognak megvalósulni, és a következő 2016 blokkban fennmarad az egyensúlyhiány. Emiatt a hash kapacitás és a nehézségi szint közötti nagy eltérések kiegyenlítődéséhez több 2016 blokkos ciklusra van szükség.
 
-[Tipp]
+[TIP]
 ====
 Tipp: A teljes bitcoin hálózatban kb. 10 perc feldolgozási idő szükséges egy blokk előállításához, ami az előző 2016 blokk előállításához szükséges idő alapján, 2016 blokkonként újraszabályozásra kerül.
 ====

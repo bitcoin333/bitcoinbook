@@ -17,9 +17,9 @@ Ha egy végrehajtható csomagot, például egy EXE, DMG,vagy PPA csomagot tölt�
 
 A Bitcoin Core első futtatásakor megkezdődik a blokklánc letöltése. A letöltési folyamat több napig tarthat. Hagyjuk, hadd fusson a háttérben, amíg meg nem jelenik rajta az egyenleg mellett, hogy „Szinkronban” („Synchronized”), és már nem azt jelzi ki, hogy „Nincs szinkronban” („Out of sync”).
 
-[Tipp]
+[TIP]
 ====
-A Bitcoin Core 2009, vagyis a bitcoin hálózat kezdete óta történt összes tranzakció másolatát letölti. Ez egy jó pár gigabyte méretű adathalmaz (2013 végén 16 GB volt a mérete), és pár nap alatt, fokozatosan töltődik le. A kliens a tranzakciók feldolgozására vagy a számla egyenlegek módosítására csak a blokklánc összes adatának letöltése után képes. A letöltés ideje alatt a kliens az egyenleg mellett az jelzi ki, hogy „Nincs szinkronban”, az ablak alján pedig azt, hogy „Szinkronizálás a hálózattal (hh óra lemaradás)”. Ellenőrizze, hogy van-e elég szabad hely a diszken, valamint elég-e a sávszélesség és az idő a kezdeti szinkronizáláshoz.
+Tipp: A Bitcoin Core 2009, vagyis a bitcoin hálózat kezdete óta történt összes tranzakció másolatát letölti. Ez egy jó pár gigabyte méretű adathalmaz (2013 végén 16 GB volt a mérete), és pár nap alatt, fokozatosan töltődik le. A kliens a tranzakciók feldolgozására vagy a számla egyenlegek módosítására csak a blokklánc összes adatának letöltése után képes. A letöltés ideje alatt a kliens az egyenleg mellett az jelzi ki, hogy „Nincs szinkronban”, az ablak alján pedig azt, hogy „Szinkronizálás a hálózattal (hh óra lemaradás)”. Ellenőrizze, hogy van-e elég szabad hely a diszken, valamint elég-e a sávszélesség és az idő a kezdeti szinkronizáláshoz.
 ====
  
 [[bitcoin-qt-firstload]]
@@ -41,9 +41,9 @@ Resolving deltas: 100% (24480/24480), done.
 $
 ----
 
-[Tipp]
+[TIP]
 ====
-Az utasítások és azok kimenete verzióról verzióra változhat. Kövesse a forráskóddal kapott dokumentációt, még akkor is, ha az különbözik attól, amit itt lát, és ne lepődjön meg akkor sem, ha a képernyőjén megjelenő kimenet kicsit különbözik attól, mint amit az itteni példák tartalmaznak.
+Tipp: Az utasítások és azok kimenete verzióról verzióra változhat. Kövesse a forráskóddal kapott dokumentációt, még akkor is, ha az különbözik attól, amit itt lát, és ne lepődjön meg akkor sem, ha a képernyőjén megjelenő kimenet kicsit különbözik attól, mint amit az itteni példák tartalmaznak.
 ====
 
 A klónozási művelet befejeződése után a forráskód halmazról egy teljes helyi másolat lesz a _bitcoin_ könyvtárban. Menjen ebbe a könyvtárba. Gépelje be a +cd bitcoin+ parancsot:
@@ -87,9 +87,9 @@ A forráskód tartalmazza a dokumentációt is. Nézze át a bitcoin könyvtár 
 
 Gondosan nézze át az újraépítés előfeltételeit, melyek a dokumentáció első részében vannak. Ezeknek a könyvtáraknak kell a rendszeren jelen lenni, mielőtt megkezdené a fordítást. Ha az előfeltételek nem teljesülnek, akkor az újraépítési folyamat hibával ér véget. Ha azért van hibA, mert valamelyik előfeltétel nem teljesült, akkor a megfelelő könyvtár installálása után onnan folyatathatÓ a build folyamatot, ahol abbamaradt. Feltéve, hogy az előfeltételek installálva vannak, a az újraépítési folyamat úgy kezdhető el, hogy az +autogen.sh+ scripttel létrehozza az újraépítésre szolgáló scripteket.
 
-[Tipp]
+[TIP]
 ====
-A bitcoind build folyamata a 0.9 változat óta az autogen/configure/make rendszert használja. A réggebbi változatok egyszerű Makefile-t használnak, és a lenti példától kissé különböző módon működnek. Kövesse annak a változatnak az utasításait, amelyet szeretne lefordítani. Valószínűleg a 0.9-ben bevezetett autogen/configure/make lesz az összes jövőbeli kódváltozatnál használt rendszer, és a lenti példa ezt a rendszert mutatja be.
+Tipp: A bitcoind build folyamata a 0.9 változat óta az autogen/configure/make rendszert használja. A réggebbi változatok egyszerű Makefile-t használnak, és a lenti példától kissé különböző módon működnek. Kövesse annak a változatnak az utasításait, amelyet szeretne lefordítani. Valószínűleg a 0.9-ben bevezetett autogen/configure/make lesz az összes jövőbeli kódváltozatnál használt rendszer, és a lenti példa ezt a rendszert mutatja be.
 ====
 
 ----
@@ -391,9 +391,9 @@ $ *bitcoind getinf*
 
 Az adatokat JavaScript Object Notation (JSON) formátumban kapjuk vissza. Ezt a formátumot az összes programozási nyelv könnyen „megérti”, ugyanakkor emberek számra is egész olvasható. Az adatok között látjuk a bitcoin kliens szoftver verzióját (90000), a protokol verzióját (70002), és a pénztárca verzióját (60000). Látjuk a pénztárcában lévő aktuális egyenleget, amely nulla. Látjuk a blokk magasságot (286216), amely azt mutatja, hogy a hány blokkot ismert a kliens. Láthatunk még a bitcoin hálózatra és a kliens belállítására vonatkozó különféle statisztikákat. A beállításokat a fejezet hátrelévő részében részletesebben megvizsgáljuk. 
 
-[Tipp]
+[TIP]
 ====
-Eltarthat némi ideig, akár több napig is, amíg a bitcoind kliens „beéri” az aktuális blokklánc magasságot, miközben blokkokat tölt le a többi bitcoin klienstől. A folyamat menete úgy ellenőrizhető, hogy a getinfo-val kiiratjuk az ismert blokkok számát.
+Tipp: Eltarthat némi ideig, akár több napig is, amíg a bitcoind kliens „beéri” az aktuális blokklánc magasságot, miközben blokkokat tölt le a többi bitcoin klienstől. A folyamat menete úgy ellenőrizhető, hogy a getinfo-val kiiratjuk az ismert blokkok számát.
 ====
 
 ==== A pénztárca beállítása és titkosítása 
@@ -556,9 +556,9 @@ $ *bitcoind getbalance*
 0.05000000
 ----
 
-[Tipp]
+[TIP]
 ====
-Ha a tranzakció még nem lett megerősítve, akkor a getbalance nulla egyenleget fog mutatni. A „minconf” konfigurációs opció határozza meg, hogy hány darab megerősítésre van szükség ahhoz, hogy a trazakció megjelenjen az egyenlegben.
+Tipp: Ha a tranzakció még nem lett megerősítve, akkor a getbalance nulla egyenleget fog mutatni. A „minconf” konfigurációs opció határozza meg, hogy hány darab megerősítésre van szükség ahhoz, hogy a trazakció megjelenjen az egyenlegben.
 ====
 
 
@@ -588,9 +588,9 @@ $ *bitcoind gettransaction 9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309a
 }
 ----
 
-[Tipp]
+[TIP]
 ====
-A tranzakció azonosítók mindaddig nem hitelesek, amíg a tranzakció megerősítésre nem került. Ha a blokkláncban hiányzik a tranzakció azonosító, az nem jelenti azt, hogy a tranzakció nem lett feldolgozva. Ez az ú.n. „tranzakció képlékenység”, mivel a tranzakció hashek azt megelőzően, hogy megerősítésre kerülnének egy blokkban, még módosíthatók. A megerősítés után a txid megváltoztathatatlan és hiteles.
+Tipp: A tranzakció azonosítók mindaddig nem hitelesek, amíg a tranzakció megerősítésre nem került. Ha a blokkláncban hiányzik a tranzakció azonosító, az nem jelenti azt, hogy a tranzakció nem lett feldolgozva. Ez az ú.n. „tranzakció képlékenység”, mivel a tranzakció hashek azt megelőzően, hogy megerősítésre kerülnének egy blokkban, még módosíthatók. A megerősítés után a txid megváltoztathatatlan és hiteles.
 ====
 
 A +gettransaction+ által fent kijelzett tranzakció egy egyszerűsített alak. A teljes tranzakció kód visszanyeréséhez és dekódolásához két parancsot fogunk használni, a +getrawtransaction+ és a +decoderawtransaction+ parancsot. Először, a +getrawtransaction+ parancsnak paraméterként megadjuk a _tranzakció hash-t (txid-t)_, a parancs pedig „nyers” hexa stringként a teljes tranzakciót visszaadja, pontosan úgy, ahogyan az a bitcoin hálózatban megtalálható:
@@ -888,9 +888,9 @@ A tranzakció helyesnek látszik! Az új tranzakció „elfogyasztja” a meger�
 
 Mint azt észrevehették, a tranzakció egy üres +scriptSig+-et tartalmaz, mivel még nincs aláírva. Aláírás nélkül a tranzakció értelmetlen, még nem bizonyítottuk, hogy a miénk az a cím, amelyből az elköltetlen kimenet származik. Az aláírás révén eltávolítjuk a kimeneten lévő akadályt, és bizonyítjuk, hogy a kimenet a mi birtokunkban van és el tudjuk költeni. A +signrawtransaction+ parancsot használjuk a tranzakció aláírására. Paraméterként a nyers tranzakció hexadecimális stringjét adjuk meg neki.
 
-[Tipp]
+[TIP]
 ====
-A titkosított pénztárcákat az aláírás előtt ki kell nyitni, mivel az aláíráshoz szükség van a pénztárcában lévő titkos kulcsokra.
+Tipp: A titkosított pénztárcákat az aláírás előtt ki kell nyitni, mivel az aláíráshoz szükség van a pénztárcában lévő titkos kulcsokra.
 ====
 
 ----
@@ -1209,9 +1209,9 @@ $ *sx genpriv 1 < seed | sx addr*
 
 A determinisztikus kulcsok segítségével kulcsok ezrei állítható elő és állítható elő ismét, és az összes kulcs egy determinisztikus láncban, egyetlen egy magból származik. Sok pénztárca alkalmazás használja ezt a módszert kulcsok előállítására, mert a kucsok így egy egyszerű, több szóból álló mnemonic-kal elmenthetők és visszaállíthatók. 
 
-[Tipp]
+[TIP]
 ====
-Az sx eszközkészletben sok hasznos parancsot tartalmaz  címek kódolására és dekódolására, és különféle formátumok és ábrázolások közötti konverzióra. Segítségükkel a különféle formátumok, pl. base58, base58check, hex, stb. vizsgálható.
+Tipp: Az sx eszközkészletben sok hasznos parancsot tartalmaz  címek kódolására és dekódolására, és különféle formátumok és ábrázolások közötti konverzióra. Segítségükkel a különféle formátumok, pl. base58, base58check, hex, stb. vizsgálható.
 ====
 
 ==== btcd

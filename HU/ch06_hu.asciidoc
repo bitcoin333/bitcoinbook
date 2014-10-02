@@ -162,9 +162,9 @@ Egy SPV csomóponttal nem hitethető el, hogy egy blokkban létezik egy tranzakc
 
 Gyakorlati szempontból a hálózattal szoros kapcsolatban lévő SPV csomópontok elég biztonságosak, és jó kompromisszumot jelentenek az erőforrás felhasználás, a kényelem és a biztonság között. Azoknak, akik számára valóban fontos a biztonság, semmi sem pótólhatja egy teljes blokkláncból álló csomópont üzemeltetését.
 
-[Tipp]
+[TIP]
 ====
-A teljes blokkláncból álló csomópont úgy ellenőriz egy tranzakciót, hogy az alatta lévő blokkok ezreiből álló lánc vizsgálatával ellenőrzi, hogy az UTXO valóban elköltetlen, míg az SPV csomópont a blokk fölött lévő néhány blokk segítségével azt ellenőrzi, hogy milyen mélyen van eltemetve a blokk.
+Tipp: A teljes blokkláncból álló csomópont úgy ellenőriz egy tranzakciót, hogy az alatta lévő blokkok ezreiből álló lánc vizsgálatával ellenőrzi, hogy az UTXO valóban elköltetlen, míg az SPV csomópont a blokk fölött lévő néhány blokk segítségével azt ellenőrzi, hogy milyen mélyen van eltemetve a blokk.
 ====
 
 A blokk fejeket az SPV csomópontok a +getblocks+ üzenetek helyett a +getheaders+ üzenetekkel kérdezik le. Az a peer, amelyik válaszol, max. 2000 blokk fejet küld el egyetlen +headers+ üzenetben. A folyamat egyébként ugyanolyan, mint amit a teljes csomópontok használnak a teljes blokkok lekérésére. Az SPV csomópontok  egy szűrőt is beállítanak a peer-ekkel létesített kapcsolatokra vonatkozóan, melyek kiszűrik a jövőbeli blokkokat és a peer-ek által küldött tranzakciókat. Az SPV csomópontok a számukra érdekes tranzakciókat a +getdata+ kéréssel kérdezik le. A peer válaszként egy +tx+ üzenetet hoz létre, amely a tranzakciót tartalmazza.
