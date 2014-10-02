@@ -31,7 +31,7 @@ image::images/bitcoin-qt-firstload.png["bitcoin-qt first run"]
 A fejlesztők számára az is egy lehetőség, hogy ZIP archívumkélnt letöltik a teljes forrást, vagy a Github-ról klónozzák a hiteles forráshalmazt. Menjen a https://github.com/bitcoin/bitcoin web helyre, és válassza a „Download ZIP” gombot a jobb oldalról. Vagy eljárhatna úgy is, hogy egy git parancssorral a forráskód egy helyi példányát hozza létre a rendszerén. A lenti példában egy Linux vagy Mac OS alatt kiadott unix-szerű paranccsal klónozzuk a forrás kódot:
 
 ----
-$ git clone https://github.com/bitcoin/bitcoin.git
+$ *git clone https://github.com/bitcoin/bitcoin.git*
 Cloning into 'bitcoin'...
 remote: Counting objects: 31864, done.
 remote: Compressing objects: 100% (12007/12007), done.
@@ -49,13 +49,13 @@ Az utasítások és azok kimenete verzióról verzióra változhat. Kövesse a f
 A klónozási művelet befejeződése után a forráskód halmazról egy teljes helyi másolat lesz a _bitcoin_ könyvtárban. Menjen ebbe a könyvtárba. Gépelje be a +cd bitcoin+ parancsot:
 
 ----
-$ cd bitcoin
+$ *cd bitcoin*
 ----
  
 Alapértelmezés szerint a helyi példány a legfrisebb kóddal lesz szinkronban, ami akár a bitcoin kliens egy nem stabil vagy „béta” verziója is lehet. A kód lefordítása előtt egy release _tag_ (_cimke_) megadásával egy adott verziót szeretnénk kiválasztani. A tag (cimke) kulcsszó a helyi másolatot a kód gyűjtemény egy adott pillanatképével szinkronizálja. A cimkéket a fejlesztők használják azért, hogy a kód adott verzióját egy verziószámmal megjelelöljék. Először is, a rendelkezésre álló cimkék kiirásához a +git tag+ parancsot használjuk:
 
 ----
-$ git tag
+$ *git tag*
 v0.1.5
 v0.1.6test1
 v0.2.0
@@ -75,7 +75,7 @@ v0.9.0rc1
 A cimkék listája a bitcoin összes kibocsájtott változatát tartalmazza. Megállapodás szerint azoknak a  jelölteknek, melyek tesztelésre szolgálnak,  „rc” az utótagja (ami a _release cadidate_ kezdőbebűiből áll). A stabil változatoknak, melyek éles rendszereken futtathatók, nincs utótagjuk. A fenti listából a legmagasabb verziójú változatot választjuk, ami az adott időpontban a v0.9.0rc1. Ahhoz, hogy a helyi kód ezzel a változattal legyen szinkronban, a +git checkout+ parancsot használjuk: 
 
 ----
-$ git checkout v0.9.0rc1
+$ *git checkout v0.9.0rc1*
 Note: checking out 'v0.9.0rc1'.
 
 HEAD is now at 15ec451... Merge pull request #3605
@@ -93,7 +93,7 @@ A bitcoind build folyamata a 0.9 változat óta az autogen/configure/make rendsz
 ====
 
 ----
-$ ./autogen.sh 
+$ *./autogen.sh*
 configure.ac:12: installing `src/build-aux/config.guess'
 configure.ac:12: installing `src/build-aux/config.sub'
 configure.ac:37: installing `src/build-aux/install-sh'
@@ -105,7 +105,7 @@ $
 Az +autogen.sh+ script automatikus konfiguráló scripteket hoz létre, melyek a rendszerből lekérdezik a helyes beállításokat, és biztosítják, hogy a fordításhoz szükséges összes könyvtár rendelkezésre álljon. Ezek közül a legfontosabb a configure script, amely számos különféle lehetőséget ajánl a build folyamat egyedivé tételére. A különféle lehetőségek megjelenítésére gépelje be: +./configure --help+
 
 ----
-$ ./configure --help
+$ *./configure --help*
 
 `configure' configures Bitcoin Core 0.9.0 to adapt to many kinds of systems.
 
@@ -143,7 +143,7 @@ A +configure+ script lehetővé teszi bizonyos jellemzők engedélyezését vagy
 
 
 ----
-$ ./configure 
+$ *./configure*
 checking build system type... x86_64-unknown-linux-gnu
 checking host system type... x86_64-unknown-linux-gnu
 checking for a BSD-compatible install... /usr/bin/install -c
@@ -173,7 +173,7 @@ $
 Ha minden jól megy, akkor a +configure+ parancs úgy ér véget, hogy egy testre szabott build scriptet hoz létre, amellyel lefordítható a bitcoind. Ha hiányzó könyvtárak vagy hibák vannak, akkor a +configure+ parancs hibával ér véget, és nem hozza létre a fenti példában láátható build scripteket. Ha hiba történik, annak a legvalószínübb oka egy hiányzó vagy nem kompatibilis könyvtár. Nézze át ismét az újraépítésre vonatkozó dokumentációt, és installálja a hiányzó előfeltételeket. Azután futtassa le ismét az +configure+ –t, és nézze meg, hogy elmúlt-e a hiba. Ezután fordítsa le a forráskódot – ez a folyamat akár egy óráig is tarthat. A fordítás során néhány másodpercenként vagy néhány percenként megjelenik valami – vagy hibaüzenetet kap, ha valami baj van. A fordítási folyamat bármikor folytatható, ha félbeszakadt. A fordítás megkezdéséhez gépelje be, hogy +make+ :
 
 ----
-$ make
+$ *make*
 Making all in src
 make[1]: Entering directory `/home/ubuntu/bitcoin/src'
 make  all-recursive
@@ -203,11 +203,11 @@ $
 
 {
 Ubuntu 12.04 LTS alatt a bitcoind fordításához szükséges parancsok:
-$ sudo apt-get install autoconf
-$ ./autogen.sh
-$ sudo apt-get install git-core build-essential libssl-dev libboost-all-dev libdb-dev libdb++-dev libgtk2.0-dev
-$ ./configure --with-incompatible-bdb
-$ make
+$ *sudo apt-get install autoconf*
+$ *./autogen.sh*
+$ *sudo apt-get install git-core build-essential libssl-dev libboost-all-dev libdb-dev libdb++-dev libgtk2.0-dev*
+$ *./configure --with-incompatible-bdb*
+$ *make*
 (A fordító megjegyzése)
 }
 
@@ -215,7 +215,7 @@ $ make
 Ha minden jól megy, akkor a bitcoind lefordul. Az utolsó lépés az, hogy a bitcoind végrehajtható programot a +make+ paranccsal a rendszer path-ba installáljuk:
 
 ----
-$ sudo make install
+$ *sudo make install*
 Making install in src
 Making install in .
  /bin/mkdir -p '/usr/local/bin'
@@ -230,14 +230,14 @@ $
 A következőképpen bizonyosodhatunk meg arról, hogy a bitcoind helyesen van installálva:
 
 ----
-$ which bitcoind
+$ *which bitcoind*
 /usr/local/bin/bitcoind
 ----
 
 Az alapértelemzés szerinti installálás a bitcoind-t a +/usr/local/bin+ könyvtárba teszi. Amikor a bitcoind-t először futtatjuk, akkor emlékeztet minket arra, hogy egy konfigurációs állományt kell létrehoznunk, melyben a JSON-RPC interface számára egy erős jelszó van megadva. Futtassunk a bitcoind-t a +bitcoind+ terminálon történő begépelésével:
 
 ----
-$ bitcoind
+$ *bitcoind*
 Error: To use the "-server" option, you must set a rpcpassword in the configuration file:
 /home/ubuntu/.bitcoin/bitcoin.conf
 It is recommended you use the following random password:
@@ -346,7 +346,7 @@ Most indítsuk el a bitcoin klienst. Az első futtatáskor újra fog épülni a 
 Futtassuk a bitcoind-t a háttérben, a +-daemon+ opció megadásával:
 
 ----
-$ bitcoind -daemon
+$ *bitcoind -daemon*
 $
 Bitcoin version v0.9.0rc1-beta (2014-01-31 09:30:15 +0100)
 Using OpenSSL version OpenSSL 1.0.1c 10 May 2012
@@ -370,7 +370,7 @@ Opened LevelDB successfully
 A bitcoin +getinfo+ parancsával a bitcoin hálózati csomópontról, a pénztárcáról és a blokklánc adatbázisról irathatók ki a legfontosabb adatok:
 
 ----
-$ bitcoind getinfo
+$ *bitcoind getinf*
 {
     "version" : 90000,
     "protocolversion" : 70002,
@@ -404,7 +404,7 @@ Parancsok: bitcoind encryptwallet, walletpassphrase
 Mielőtt tovább folytatnánk a kulcsok létrehozásával és más parancsokkal, először egy jelszóval fogjuk titkosítani a pénztárcát. Ennél a példánál az +encryptwallet+ parancsot és a „foo” jelszót használjuk. Természetesen a „foo” jelszavat az önök pénztárcájánál egy erős és összetett jelszóval kell helyettesíteni!
 
 ----
-$ bitcoind encryptwallet foo
+$ *bitcoind encryptwallet foo*
 wallet encrypted; Bitcoin server stopping, restart to run with encrypted wallet. The keypool has been flushed, you need to make a new backup.
 $
 ----
@@ -412,7 +412,7 @@ $
 Úgy tudjuk ellőrizni, hogy titkosított lett-e a pénztárca, hogy ismét lefuttatjuk a +getinfo+ parancsot. Ezúttal egy új sort is láthatunk, az +unlocked_until+ sort, amely azt mutatja, hogy mennyi ideig lesz a pénztárca kikódoló jelszó a memóriában, és mennyi ideig fogja a pénztárcát nyitva tartani. Először  nulla lesz az értéke, ami azt jelenti, hogy a pénztárca zárolva van:
 
 ----
-$ bitcoind getinfo
+$ *bitcoind getinfo*
 {
     "version" : 90000,
 
@@ -427,14 +427,14 @@ $
 A pénztárca zárolásának feloldásához adjuk ki a +walletpassphrase+ parancsot, melynek két paramétere van: a jelszó, és egy szám, amely azt mutatja, hogy hány másodperc múlva záródik be automatikusan a pénztárca (idő számláló):
 
 ----
-$ bitcoind walletpassphrase foo 360
+$ *bitcoind walletpassphrase foo 360*
 $
 ----
 
 A +getinfo+ ismételt futtatásával nézzük meg, hogy kinyílt-e a pénztárca, és mennyi a lejárati idő:
 
 ----
-$ bitcoind getinfo
+$ *bitcoind getinfo*
 {
     "version" : 90000,
 
@@ -453,14 +453,14 @@ Parancsok: backupwallet, importwallet, dumpwallet
 Ezután gyakorolni fogjuk, hogy lehet a pénztárcáról biztonsági mentést készíteni, és hogyan lehet a biztonsági mentésből visszaállítani a pénztárcát. A mentéshez a +backupwallet+ parancs használható, melynek paramétere egy állománynév. Például mentsük el a pénztárcát a +wallet.backup+ állományba:
 
 ----
-$ bitcoind backupwallet wallet.backup
+$ *bitcoind backupwallet wallet.backup*
 $
 ----
 
 A pénztárca visszaállításához használjuk az +importwallet+ parancsot. Ha a pénztárca zárolva van, akkor a biztonsági mentés visszaimportálása előtt először meg kell szüntetni a zárolását (lásd a fenti +walletpassphrase+ parancsot).
 
 ----
-$ bitcoind importwallet wallet.backup
+$ *bitcoind importwallet wallet.backup*
 $
 ----
 
@@ -512,7 +512,7 @@ $ *bitcoind getreceivedbyaddress 1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL*
 A +listtransactions+ paranccsal a pénztárca által fogadott összes tranzakció is kijelezhető:
 
 ----
-$  *bitcoind listtransactions*
+$ *bitcoind listtransactions*
 [
     {
         "account" : "",
@@ -552,7 +552,7 @@ $ *bitcoind getaddressesbyaccount ""*
 Végül a +getbalance+ parancs a pénztárca egészének egyenlegét mutatja, vagyis összeadja az összes olyan tranzakciót, amely legalább +minconf+ megerősítéssel rendelkezik:
 
 ----
-$ bitcoind getbalance
+$ *bitcoind getbalance*
 0.05000000
 ----
 
@@ -895,7 +895,7 @@ A titkosított pénztárcákat az aláírás előtt ki kell nyitni, mivel az al�
 
 ----
 $ *bitcoind walletpassphrase foo 360*
-$ *bitcoind signrawtransaction* 0100000001e34ac1e2baac09c366fce1c2245536bda8f7db0f6685862aecf53ebd69f9a89c0000000000ffffffff02a0252600000000001976a914d90d36e98f62968d2bc9bbd68107564a156a9bcf88ac50622500000000001976a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac00000000
+$ *bitcoind signrawtransaction 0100000001e34ac1e2baac09c366fce1c2245536bda8f7db0f6685862aecf53ebd69f9a89c0000000000ffffffff02a0252600000000001976a914d90d36e98f62968d2bc9bbd68107564a156a9bcf88ac50622500000000001976a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac00000000*
 {
     "hex" : "0100000001e34ac1e2baac09c366fce1c2245536bda8f7db0f6685862aecf53ebd69f9a89c000000006a47304402203e8a16522da80cef66bacfbc0c800c6d52c4a26d1d86a54e0a1b76d661f020c9022010397f00149f2a8fb2bc5bca52f2d7a7f87e3897a273ef54b277e4af52051a06012103c9700559f690c4a9182faa8bed88ad8a0c563777ac1d3f00fd44ea6c71dc5127ffffffff02a0252600000000001976a914d90d36e98f62968d2bc9bbd68107564a156a9bcf88ac50622500000000001976a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac00000000",
     "complete" : true
@@ -1011,13 +1011,13 @@ Mint korábban, most is részletesebben vizsgálhatjuk ezt a tranzakciót a +get
 
 A bitcoind referencia kliensen kívül vannak más kliensek és könyvtárak is, melyek használatával kapcsolatba léphetünk a bitcoin hálózattal és az adatstruktúrákkal. Ezek különféle programozási nyelveken lettek megvalósítva, így a programozóknak az általuk használt programozási nyelven kínálnak natív interfészeket. 
 
-Alternativ megvalósítás többek közt a:
+Alternativ megvalósítás többek között:
 
-* libbitcoin és az sx eszközkészlet, amely egy több szálú, teljes csomóponthoz tartozó C++ kliens és könyvtár, a hozzá tartozó parancssori eszközökkel (https://libbitcoin.dyne.org/)
-* bitcoinj, egy Jávában megírt, teljes csomóponthoz tartozó kliens könyvtár (https://code.google.com/p/bitcoinj)
-* btcd, egy Go nyelven megírt, teljes csomóponthoz tartozó bitcoin kliens (https://opensource.conformal.com/wiki/btcd)
-* Bits of Proof (BOP), amely a bitcoin egy Java Enterprise-ban történt megvalósítása  (https://bitsofproof.com)
-* picocoin, amely egy pehelysúlyú bitcoin kliens könyvtár C-ben megvalósítva (https://github.com/jgarzik/picocoin)
+* a libbitcoin és az sx eszközkészlet, amely egy több szálú, teljes csomóponthoz tartozó C++ kliens és könyvtár, a hozzá tartozó parancssori eszközökkel (https://libbitcoin.dyne.org/)
+* a bitcoinj, amely egy Jávában megírt, teljes csomóponthoz tartozó kliens könyvtár (https://code.google.com/p/bitcoinj)
+* a btcd, amely egy Go nyelven megírt, teljes csomóponthoz tartozó bitcoin kliens (https://opensource.conformal.com/wiki/btcd)
+* a Bits of Proof (BOP), amely a bitcoin egy Java Enterprise-ban történt megvalósítása  (https://bitsofproof.com)
+* a picocoin, amely egy pehelysúlyú bitcoin kliens könyvtár C-ben megvalósítva (https://github.com/jgarzik/picocoin)
 
 Sok egyéb könyvtár létezik sok más programozási nyelven, és állandóan újabbak születnek. 
 
@@ -1264,3 +1264,4 @@ A rendelkezésre álló lehetőségek kilistázásához futtassa a következőt:
 ----
 $ *btcctl --help*
 ----
+
