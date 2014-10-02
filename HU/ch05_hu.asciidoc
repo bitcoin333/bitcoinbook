@@ -482,13 +482,13 @@ Amint az a fenti táblázatokból látható, a P2SH használatakor a nem jelenik
 Tekintsük Mohanmmed cégét, a bonyolult multi-sig scriptet és az eredményként kapott P2SH scriptet. 
 
 Nézzük először azt a multi-sig scriptet, melyet Mohammed cége az összes bejövő fizetésnél használ:
-----
 
 ----
 2 <Mohammed nyilvános kulcsa> <Az 1. partner nyilvános kulcsa> <A 2. partner nyilvános kulcsa> <A 3. partner nyilvános kulcsa> <Az ügyvéd nyilvános kulcsa> 5 OP_CHECKMULTISIG
 ----
 
 Ha a fenti üres helyekre behelyettesítjük a tényleges nyilvános kulcsokat, (melyek 04-gyel kezdődő, 520 bites számok), akkor a script nagyon hosszú lesz:
+
 ----
 2 
 04C16B8698A9ABF84250A7C3EA7EEDEF9897D1C8C6ADF47F06CF73370D74DCCA01CDCA79DCC5C395D7EEC6984D83F1F50C900A24DD47F569FD4193AF5DE762C587 
