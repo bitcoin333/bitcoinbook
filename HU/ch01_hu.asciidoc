@@ -125,7 +125,7 @@ Ennek a képernyőnek a legfontosabb része Alice _bitcoin címe_. A bitcoin cí
 
 Alice a QR kód kinyomtatásával könnyen meg tudja adni másoknak a címét, vagyis nincs szükség a betűk és számok hosszú sorozatának a begépelésére.
 
-[Tipp]
+[Tip]
 ====
 A bitcoin címek az ’1’ vagy a ’3’ számjeggyel kezdődnek. Egy email címhez hasonlóan, bármelyik másik bitcoin felhasználónak megadhatók. A bitcoin cím ismeretében tud a többi felhasználó bitcoinokat küldeni erre címre. Az email címektől eltérően új címek olyan gyakran hozhatók létre, amilyen gyakran csak akarjuk, és mindegyik közvetlenül a pénztárcához fog tartozni. A pénztárca egyszerűen címek és kulcsok gyűjteménye. A kulcsokkal lehet a pénztárcában lévő pénzt felszabadítani/pénz zárolását megszüntetni. A felhasználó által létrehozható bitcoin címek száma gyakorlatilag nincs korlátozva.
 ====
@@ -133,7 +133,7 @@ A bitcoin címek az ’1’ vagy a ’3’ számjeggyel kezdődnek. Egy email c�
 Alice most már megkezdheti az bitcoin pénztárcájának a használatát.
 
 [[getting_first_bitcoin]]
-====Az első bitcoinok beszerzése
+==== Az első bitcoinok beszerzése
 
 Bankokban vagy pénzváltó helyeken jelenleg nem lehet bitcoint venni. Hitelkártyával sem.  2014-ben a legtöbb országban még mindig nehéz bitcoinhoz jutni. Számos speciális pénzváltó van, ahol a helyi valutáért bitcoin adásvétel végezhető. Ezek a pénzváltók web-es pénzváltók. Ilyen többek között:
 
