@@ -55,7 +55,7 @@ A bitcoin címhez tartozó címke: "Bob's Cafe" (Bob kávézója)
 A fizetség leírása: "Purchase at Bob's Cafe" (Vásárlás Bob kávézójában)
 ----
 
-[Tip]
+[TIP]
 ====
  A „fizetési kérés” nem csupán egy bitcoin címet tartalmazó QR kód, hanem egy QR kóddal kódolt URL, amely a cél címet, a fizetendő összeget és egy általános leírást tartalmaz, pl. „Bob kávézója”. A bitcoin pénztárca ennek segítségével tudja összeállítani a fizetség elküldéséhez szükséges adatokat, és egyidejűleg a felhasználó számára olvasható formában megjeleníteni azokat. Részletesebben lásd a [fizetési kérés URL-ek] résznél. Ha bepásztázzuk a fenti QR kódot egy bitcoin pénztárca alkalmazással, akkor láthatjuk, hogy mit lát Alice.
 ====
@@ -148,7 +148,7 @@ $ curl https://blockchain.info/unspent?active=1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK
 
 A fenti válasz szerint a bitcoin hálózat egyetlen egy el nem költött kimenetről tud (amely még nem lett felhasználva), amely Alice +1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK+ címéhez tartozik. A válasz egy hivatkozást tartalmaz arra a tranzakcióra, amelyben ez az el nem költött kimenet (a Joe-tól érkező pénz) van. A kimenet értéke Satoshiban van megadva, a 10 millió Satoshi 0.1 bitcoinnak felel meg. Ezen információ birtokában Alice pénztárca alkalmazása létre tud hozni egy tranzakciót, amely ezt az értéket az új tulajdonosok címeire továbbítja.
 
-[Tipp]
+[TIP]
 ====
 A Joe és Alice közötti tranzakció a következő hivatkozással tekinthető meg:
 
@@ -173,7 +173,7 @@ A tranzakció a bitcoin blokkláncon a következő URL-lel iratható ki:
 image::images/AliceCoffeeTransaction.png["Alice Coffee Transaction"]
 
 [[transaction-alice-url]]
-[Tipp]
+[TIP]
 ====
 Alice Bob kávézójával kapcsolatos tranzakiója a következő hivatkozás segítségével érhető el:
 
@@ -196,7 +196,7 @@ Alice pénztárca alkalmazása az új tranzakciót bármely más bitcoin kliensn
 
 Ha Bob bitcoin pénztárca alkalmazása közvetlenül kapcsolódik Alice pénztárca alkalmazásáshoz, akkor Bob kliense lesz az első, amelyik a megkapja a tranzakciót. De ha Alice pénztárcája más csomópontokon keresztül küldi el a tranzakciót, a tranzakció akkor is néhány másodpercen belül eljut Bob pénztárcájához. Bob pénztárcája Alice tranzakcióját azonnal bejövő fizetésként fogja azonosítani, mivel olyan kimenetet tartalmaz, amely Bob kulcsaival elkölthető. Bob pénztárca alkalmazása azt is ellenőrizni képes, hogy a tranzakció jól formált-e, előzőleg el nem költött bemeneteket használ-e és kellő tranzakciós díjat tartalmaz-e ahhoz, hogy a befoglalják a következő blokkba. Ezek után Bob viszonylag kis kockázattal feltételezheti, hogy a tranzakció blokkba foglalása és megerősítése hamarosan megtörténik. 
 
-[Tipp]
+[TIP]
 ====
 A bitcoin tranzakciókkal kapcsolatos gyakori félreértés, hogy 10 percet kell várni a tranzakció „megerősítéséhez”, vagyis amíg bele nem kerül egy új blokkba, vagy 60 percet 6 teljes megerősítéshez. Noha a megerősítés biztosítja, hogy a tranzakciót az egész hálózat ugyanolyannak lássa, az olyan kis értékű tételek esetén, mint egy pohár kávé, felesleges a várakozás. Egy érvényes, kis értékű tranzakció megerősítés nélküli elfogadása nem jelent nagyobb kockázatot, mint ha egy hitelkártyával történő fizetést azonosító okmány vagy aláírás nélkül fogad el valaki, márpedig ez gyakori manapság.
 ====
