@@ -1,0 +1,690 @@
+[[ch04_keys_addresses_wallets]]
+== Kulcsok, címek, pénztárcák
+
+=== Bevezetés
+
+A bitcoinban a tulajdonjogot a _digitális kulcsok_, a _bitcoin címek_ és a _digitális aláírások_ teremtik meg. A digitális kulcsokat nem a hálózat tárolja, hanem a végfelhasználók hozzák létre és tárolják őket – vagy egy állományban vagy egy egyszerű adatbázisban, melynek _pénztárca_ a neve. A felhasználó pénztárcájában lévő digitális kulcsok teljesen függetlenek a bitcoin protokolltól, a kulcsok a felhasználó pénztárca szoftverével a blokkláncra történő hivatkozás vagy Internet hozzáférés nélkül állíthatók elő és kezelhetők. A kulcsok valósítják meg a bitcoin sok érdekes tulajdonságát, többek között a decentralizált bizalmat és felügyeletet, a tulajdonjog igazolását és a kriptográfiailag helyes biztonsági modellt. 
+
+A pénztárcákban lévő digitális kulcsok teszik lehetővé, hogy a felhasználó aláírja a tranzakciókat, ezáltal kriptográfiai bizonyítékot adjon a tranzakció bemenetében szereplő bitcoinok tulajdonjogáról. A kulcsok párokból állnak, az egyik a titkos (privát) kulcs, a másik a nyilvános kulcs. A nyilvános kulcsra gondoljanak úgy, mint egy bankszámlaszámra, a titkos kulcsra pedig úgy, mint ami egy titkos PIN kódra, vagy egy csekken lévő álaírásra, amely megteremti a számla feletti felügyeletet. Ezeket a digitális kulcsokat a bitcoin felhasználók ritkán látják. A legtöbbször a pénztárca állományon belül vannak tárolva, és a pénztárca szoftver kezeli őket.
+
+Egy bitcoin tranzakció fizetési részében a címzett nyilvános kulcsát egy _bitcoin címnek_ nevezett digitális ujjlenyomat képviseli, amelyet ugyanúgy használunk, mint egy csekken a kedvezményezett nevét. A legtöbb esetben a bitcoin cím egy nyilvános kulcsból áll elő, és megfelel a nyilvános kulcsnak. De nem minden bitcoin cím felel meg egy nyilvános kulcsnak, a címek más kedvezményezetteket, pl. scripteket is képviselhetnek, mint azt a fejezet későbbi részében látni fogjuk. Ily módon a bitcoin címek a pénzösszeg címzettjeit személyesítik meg, és a papír alapú csekkekhez hasonlóan a tranzakciókat rugalmassá teszik: ugyanaz a fizetési eszköz használható magánszemélyek vagy cégek számláinál, be- vagy kifizetésre. A bitcoin cím a kulcsok egyetlen megjelenési formája, amivel a felhasználók rendszeresen találkoznak, mivel ezt kell megosztaniuk a nagyvilággal.
+
+Ebben a fejezetben a titkosítási kulcsokat tartalmazó pénztárcákkal ismerkedünk meg. Megvizsgáljuk, hogyan történik a kulcsok létrehozása, tárolása és kezelése. Áttekintjük a különféle kódolási formátumokat, melyek a titkos és nyilvános kulcsok, címke és script címek ábrázolására szolgálnak. Végül a kulcsok különleges felhasználásait tekintjük át, melyek a következők: üzenetek aláírása, a tulajdonjog bizonyítása, kérkedő címek (vanity address) és papír pénztárcák létrehozása. 
+
+==== A nyilvános kulcsú titkosítás és a digitális pénz
+((("public key")))
+A nyilvános kulcsú titkosítást az 1970-es években fedezték fel.  és a számítógépek és információk biztonságának matematikai alapját jelentik.
+
+A nyilvános kulcsú titkosítás felfedezése óta számos alkalmas matematikai függvényt fedeztek föl, pl. a prímszámok hatványozását vagy az elliptikus görbéken történő szorzást. Ezek a matematikai fügvények gyakorlatilag megfordíthatatlanok, ami azt jelenti, hogy könnyű őket az egyik irányban kiszámítani, de gyakorlatilag nem lehet őket a másik irányban kiszámítani. A titkosítás ezekre a matematikai függvényekre építve lehetővé teszi a digitális titkok és a nem hamisítható digitális aláírások létrehozását. A bitcoin elliptikus görbén történő szorzást használ a nyilvános kulcsú titkosításra.
+ 
+A bitcoinnál nyilvános kulcsú titkosítást használunk a bitcoinokhoz történő hozzzáférést szabályzó kulcspár létrehozásához. A kulcspár egy titkos kulcsból és a belőle származó egyedi nyilvános kulcsból áll. A nyilvános kulcs szolgál a bitcoinok fogadására, a titkos kulcs szolgál a tranzakciók aláírására és a bitcoinok elköltésére.
+
+A nyilvános és titkos kulcs között van egy matematikai összefüggés, ami lehetővé teszi, hogy a titkos kulcsokkal üzenetek aláírását állítsuk elő. Ez az aláírás a nyilvános kulccsal úgy ellenőrizhető, hogy közben nincs szükség a titkos kulcs felfedésére. 
+
+Bitcoinok elköltésekor az aktuális bitcoin tulajdonos egy tranzakcióban bemutatja a nyilvános kulcsát és egy aláírást (ami minden egyes alkalommal különböző, de ugyanabból a titkos kulcsból áll elő; lásd az [aláírás] részt), ha el akarja költeni a bitcoinját. A nyilvános kulcs és az aláírás révén a bitcoin hálózat bármelyik tagja ellenőrizni tudja a tranzakciót, meg tudja állípítani, hogy érvényes-e, és meg tud bizonyosodni arról, hogy a bitcoinokat küldő személy valóban birtokolta-e őket a küldés idején. 
+
+[Tipp]
+====
+A legtöbb megvalósítás a titkos és nyilvános kulcsokat az egyszerűség kedvéért együtt, egy _kulcspárként_ tárolja. De a nyilvános kulcs előállítása a titkos kulcs ismeretében triviális feladat, ezért az is előfordulhat, hogy a pénztárcában csupán a titkos kulcs van tárolva.
+====
+
+==== Titkos és nyilvános kulcsok
+
+A bitcoin pénztárca kulcspárok halmazát tartalmazza. Mindegyik kulcspár egy titkos és egy nyilvános kulcsból áll. A (k) titkos kulcs egy szám, melyet általában véletlenszerűen választanak. A titkos kulcsból elliptikus görbén történő szorzással, ami egy egyirányú titkosító függgvény, egy (K) nyilvános kulcsot állítunk elő. A (K) nyilvános kulcsból egy egyirányú titkosító hash függvénnyel egy (A) bitcoin címet állítunk elő. Ebben a részben először titkos kulcsot fogunk előállítani, megnézzük, hogy az elliptikus görbén milyen matematikai műveletekkel lehet a titkos kulcsot nyilvános kulccsá átalakítani, és végül a nyilvános kulcsból egy bitcoin címet állítunk elő. A titkos kulcs, nyilvános kulcs és bitcoin cím közötti összefüggést az alábbi ábra mutatja:
+
+[[k_to_K_to_A]]
+.Titkos kulcs, nyilvános kulcs és bitcoin cím
+image::images/privk_to_pubK_to_addressA.png["privk_to_pubK_to_addressA"]
+
+==== Titkos kulcsok
+
+A +titkos kulcs+ egyszerűen egy véletlenszerűen választott szám. A titkos kulcs birtoklása és a titkos kulcs fölötti ellenőrzés az alapja annak, hogy a felhasználó ellenőrzést képes gyakorolni az összes pénz fölött, amely a titkos kulcsnak megfelelő bitcoin címhez tartozik. A titkos kulcs szolgál aláírások létrehozására, mely ahhoz szükséges, hogy egy tranzakcióban szereplő összegek tulajdonjogát bizonyítsuk, mielőtt elköltjük őket. A titkos kulcsnak egész idő alatt titokban kell maradnia, mert egy harmadik fél számára történő felfedése azzal lenne egyenértékű, mint ha hozzáférést adnánk neki azokhoz a bitcoinokhoz, melyeket ez a kulcs biztosít. A titkos kulcsról biztonsági másolatot is kell készíteni, és védeni kell, nehogy véletlenül elveszítsük, mert ha elvész, akkor nem tudjuk semmi másból visszaállítani, és az általa biztosított összegek is örökre elvesznek. 
+
+[Tipp]
+====
+Tipp: A bitcoin titkos kulcs csupán egy szám. A nyilvános kulcs a titkos kulcsból állítható elő, amely tetszőleges lehet. Emiatt a nyilvános kulcs bármilyen, max. 256 bit hosszúságú számból előállítható. A titkos kulcs véletlenszerűen, pl. egy kockával, egy darab papírral és ceruzával választható meg.
+====
+
+===== A titkos kulcs előállítása egy véletlen számból
+
+A kulcsok előállításának első és legfontosabb lépése, hogy egy biztonságos entrópiaforrást, másképpen véletlenszerű forrást találjunk. Egy bitcoin kulcs előállítása lényegében egyenértékű azzal, hogy „Válasszunk egy számot 1 és 2^256^ között”. Hogy pontosan hogyan választjuk ezt a számot, az nem számít, ha a választás nem megjósolható vagy nem megismételhető. A bitcoin szoftver a mögöttes operációs rendszer véletlenszám generátorát használja 256 bit entrópia (véletlenszerűség) előállítására. Az OS véletlenszám generátorát általában egy emberi entrópiaforrással inicializálják, ezért van szükség pl. arra, hogy mozgassuk az egeret néhány másodpercig. Az igazán paranoiások számára a dobókockánál, a papírnál és a ceruzánál nincs jobb módszer.
+
+Pontosabban, a titkos kulcs egy +1+ és +n - 1+ közötti tetszőleges szám lehet, ahol n konstans (n=1.158 * 10^77^ vagyis egy kicsit kevesebb, mint 2^256^), és a bitcoinnál használt elliptikus görbe rendszámával egyenlő (lásd az „Elliptikus Görbékkel történő titkosítás” részt). Egy ilyen kulcs előállításához véletlenszerűen választunk egy 256 bites számot, és ellenőrizzük, hogy kisebb-e +n+-nél. Programozási szempontból ezt általában úgy valósítjuk meg, hogy kriptográfiailag biztoságos véletlen forrásból származó bitek egy nagyobb halmazát egy SHA256 hash algoritmussal összetömörítjuk, és ezzel egyszerűen létrehozunk egy 256 bites számot. Ha az eredmény kisebb,  mint n, akkor a titkos kulcs megfelelő. Ha nem, akkor egy másik véletlen számmal próbálkozunk. 
+	
+[Tipp]
+====
+Ne próbálkozzanak azzal, hogy saját pszeudó-véletlenszám generátort (PRNG, pseudo random number generator) terveznek. Használjanak egy kritográfiailag biztonságos pszeudó-véletlenszám generátort (CSPRNG, cryptographically-secure pseudo-random number generator), melynek magja megfelelő entrópiaforrásból származik (hogy ez mi, az az operációs rendszertől függ). A CSPRNG helyes megvalósítása a kulcsok biztonsága szempontjábóll kritikus fontosságú. A „csináld magad” erősen ellenjavallott, ha nem vagyunk profi titkosítási szakemberek.
+====
+
+
+Alább egy véletlenszerűen előállított titkos kulcs látható hexadecimális formátumban (256 bináris számjegy, 64 hexadecimális számjeggyel ábrázolva, ahol mindegyik hexadecimális számjegy 4 bitnek felel meg):
+
+.Egy véletlenszerűen előállított (k) titkos kulcs
+----
+1E99423A4ED27608A15A2616A2B0E9E52CED330AC530EDCC32C8FFC6A526AEDD
+----
+
+
+[Tipp]
+====
+A titkos kulcsok száma a bitcoin esetén, 2^256^, ami egy elképzelhetetlenül nagy szám. Decimálisan kb. 10^77^. A látható világegyetemben becslések szerint kb. 10^80^ atom van.
+====
+
+A Bitcoin Core kliensben egy új kulcs a +getnewaddress+ paranccsal állítható elő. Biztonsági okokból a kliens csak a nyilvános kulcsot jelzi ki, a titkos kulcsot nem. Ha azt szeretnénk, hogy  bitcoind írja ki a titkos kulcsot, használjuk a +dumpprivkey+ parancsot. A +dumpprivkey+ a titkos kulcsot ellenőrző összeggel kiegészített 58-as számrendszeri formátumban jelzi ki, melyet tárca import formátumnak (WIF, wallett import format) hívunk. A WIF formátumot a titkos kulcs formátumok részben fogjuk részletesebben megvizsgálni. Az előző két paranccsal a következőképpen lehet egy titkos kulcsot előállítani és kijelezni:
+
+----
+$ *bitcoind getnewaddress*
+1J7mdg5rbQyUHENYdx39WVWK7fsLpEoXZy
+$ *bitcoind dumpprivkey 1J7mdg5rbQyUHENYdx39WVWK7fsLpEoXZy*
+KxFC1jmwwCoACiCAWZ3eXa96mBM6tb3TYzGmf6YwgdGWZgawvrtJ
+----
+
+A +dumpprivkey+ kinyitja a pénztárcát és kiveszi belőle a +getnewaddress+ parancs által előállított titkos kulcsot. A bitcoind csak akkor képes a nyilvános kulcsból a titkos kulcs meghatározására, ha a pénztárácában mindkettő tárolva van. 
+
+Titkos kulcsok előállítása és megjelenítése az +sx eszközkészlet+ parancsaival is lehetséges (lásd <<sx_eszközkészlet>>):
+
+===== Új kulcs az sx eszközkészlettel
+----
+$ *sx newkey*
+5J3mBbAH58CpQ3Y5RNJpUKPE62SQ5tfcvU2JpbnkeyhfsYB1Jcn
+----
+
+[[pubkey]]
+==== Nyilvános kulcsok
+
+A nyilvános kulcs a titkos kulcsból, az elliptikus görbén történő szorzással számítható ki:  latexmath:[\(K = k * G\)], ahol +k+ a titkos kulcs, +G+ az ún. _generátor pont_, és +K+ az eredményként kapott nyilvános kulcs. Az ellentétes művelet, az osztás – vagyis a +k+ kiszámítása, ha a +K+ ismert – egyenértékű azzal, mint ha a +k+ összes lehetséges értékét végigpróbálgatnánk, vagyis olyan, mint egy nyers erőn alapuló keresés. Mielőtt szemléltetnénk, hogyan lehet a titkos kulcsból a nyilvános kulcsot előállítani, vizsgáljuk meg kicsit részletesebben az elliptikus görbékkel történő titkosítást.
+
+
+[[elliptic_curve]]
+==== Elliptikus görbékkel történő titkosítás
+((("elliptic curve cryptography", "ECC")))
+Az elliptikus görbékkel történő titkosítás egyfajta aszimmetrikus azaz nyilvános kulcsú titkosítás, amely egy elliptikus görbe pontjain végzettt összeadás és szorzás diszkrét logaritmus problémáján alapul.
+
+Alább egy elliptikus görbe láthatzó, hasonló ahhoz, mint amit a bitcoin használ:
+
+[[ecc-curve]]
+.Egy elliptikus görbe
+image::images/ecc-curve.png["ecc-curve"]
+
+A bitcoin az Amerikai Szabványügyi Hivatal (NIST, National Institute of Standards and Technology) által, a +secp256k1+ szabványban definiált elliptikus görbét és matematikai konstansokat használja. A +secp256k1+ görbét a következő függvény definiálja:
+
+((("secp256k1")))
+[latexmath]
+++++
+\begin{equation}
+{y^2 = (x^3 \+ 7)} \text{over} \mathbb{F}_p
+\end{equation}
+++++
+
+vagy 
+
+[latexmath]
+++++
+\begin{equation}
+{y^2 \mod p = (x^3 + 7) \mod p}
+\end{equation}
+++++
+
+A +mod p+ (p prímszám szerinti modulus) azt jelzi, hogy egy +p+ rendszámú véges mező fölött definiált görbéről van szó, ahol p = 2^256^ – 2^32^ - 2^9^ – 2^8^ -2^7^ -2^6^ – 2^4^ -1, egy nagyon nagy prímszám. 
+
+Mivel ez a görbe a valós számok halmaza helyett egy prím rendszámú véges mező fölött lett definiálva, úgy néz ki, mint két dimenzióban szétszórt pontok halmaza, ami nagyon nehézzé teszi a megjelenítését. A matematikája azonban megegyezik a fenti, valós számok fölött definiált elliptikus görbéével. Például lent ugyanez az elliptikus görbe látható egy sokkal kisebb, 17 rendszámú véges mező fölött, ahol a pont-minták egy rácson vannak megjelenítve. A bitcoin +secp256k1+ elliptikus görbéje úgy képzelhető el, mint egy sokkal összetettebb pontminta, egy mérhetetetlenül nagy rácson.  
+
+[[ecc-over-F17-math]]
+.Titkosítás elliptikus görbével: egy F(p) elliptikus görbe megjelenítése, p=17 esetén
+image::images/ecc-over-F17-math.png["ecc-over-F17-math"]
+
+Lent például egy P(x, y) pont látható, amely a secp256k1 görbén van. Ezt egy Python programmal önök is ellenőrizhetik:
+
+----
+P = (55066263022277343669578718895168534326250603453777594175500187360389116729240, 32670510020758816978083085130507043184471273380659243275938904335757337482424) 
+----
+
+====
+[source, pycon]
+----
+Python 3.4.0 (default, Mar 30 2014, 19:23:13)
+[GCC 4.2.1 Compatible Apple LLVM 5.1 (clang-503.0.38)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> p = 115792089237316195423570985008687907853269984665640564039457584007908834671663
+>>> x = 55066263022277343669578718895168534326250603453777594175500187360389116729240
+>>> y = 32670510020758816978083085130507043184471273380659243275938904335757337482424
+>>> (x ** 3 + 7 - y**2) % p
+0
+----
+====
+
+Az elliptikus görbék matematikája tartalmaz egy "végtelenben lévő" pontot, amely durván a 0-nalk felel meg az összeadásban. A számítógépeken néha az x = y = 0 segítségével ábrázolják (amely nem elégíti ki az ellpitikus görbék egyenletét, de könnyen ellenőrizhető külön esetként kezelhető).
+
+Van továbbá egy "összeadásnak" nevezett "+" művelet, amelynek néhány sajátossága hasonlít az iskolában tabnult valós számok összeadásához. Ha az elliptikus görbén van két pont, P~1 és P~2, akkor létezik egy harmadik pont, P~3, amely szintén az elliptikus görbén van, és amelyre P~3 = P~1 + P~2 .
+
+Geometrialiga ez a harmidik pont, a P~3 úgy számítható ki, hogy húzunk egy egyeneset a P~1 és P~2 között. Ez az egyenes az elliptikus görbét pontosan egy további helyen fogja metszeni. Nevezzük ezt a pontot P~3'-nek: P~3' = (x, y). A P~3 pont ennek a pontnak az x tengelyre történő tükrözésével kapható meg: P~3 = (x, -y).
+
+Van néhány különleges esedt, amely megvilágítja,miért van szükség a "végtelenben lévő pontra".
+
+Ha a P~1 és a P~2 ugyanaz a pont, akkor a P~1 és P~2 "közötti" egyenes a görbe P~1 pont beli érintőjévé válik. Ez az érintő pontosan egy pontban fogja metszeni a görbét. A differenciálszámítás segítségével meghatározható az érintő meredeksége. Ezek a módszerek érdekes módon még akkor is működnek, ha csak azok a görbén lévő pontok érdekelnek minket, melyeknek mindkét koordinátája egéstz szám!
+
+Bizonyos esetekben (pl. ha a P~1 és a P~2 x koordinátája azonos, de az y koordinátája különböző), akkor az érintő függőleges lesz, és ebben az esetben a P~3 = "a végtelenben lévő pont".
+
+Ha P~1 a "végtelenben lévő pont", akkor P~1 + P~2 = P~2. Hasonlóképpen, ha a P~2 a végtelenben lévő pont, akkor P~1 + P~2 = P~1. Ez mutatja, hogy a végtelenben lévő pont a 0 szerepét játssza.
+
+A + asszociatív, vagyis (A+B)+C = A+(B+C). Ez azt jelenti, hogy A+B+C zárójelezés nélül is egyértelmű.
+
+Az összeadás definiálása után az szorzást a szokásos módon, az összeadás kiterjesztésedként definiálhatjuk. Az elliptikus görbén lévő P pontra, ha k egész szám, akkor kP = P + P + ... + P (k-szor). Megjegyezük, hogy a k-t néha zavaró módon "kitevőnek" hívják.
+
+[[public_key_derivation]]
+==== Egy nyilvános kulcs előállítása 
+
+Egy véletlenszerűen előállított +k+ számból indulunk ki, a titkos kulcsból, és ezt megszorozzuk a görbe egy előre meghatározott +G+ pontjával, amelyet _generátor pontnak_ hívunk, ezzel egy másik pontot állítunk elő valahol a görbén, ami megfelel a +K+ nyilvános kulcsnak. A generátor pontot a +secp256k1+ szabvány határozza meg, és mindegyik bitcoin kulcs esetén ugyanaz. 
+
+[latexmath]
+++++
+\begin{equation}
+{K = k * G}
+\end{equation}
+++++
+
+ahol +k+ a titkos kulcs, +G+ egy generátor pontnak nevezett fix pont a görbén, és +K+ az eredményként kapott nyilvános kulcs, azaz a görbe egy másik pontja. Mivel a generátor pont az összes bitcoin felhasználó esetében mindig ugyanaz, egy k titkos kulcs G-vel vett szorzata mindig ugyanazt a K nyilvános kulcsot eredményezi. A k és K közötti kapcsolat rögzített, de csak az egyik irányban lehet könnyen kiszámítani, k-tól K irányában. A bitcoin címeket (melyek K-ból vannak leszármaztatva) emiatt lehet bárkivel megosztani, és emiatt ezért nem fedi fel a felhazsnálót titkos kulcsát (k).
+
+[Tipp]
+====
+Egy titkos kulcs átalakítható egy nyilvános kulccsá, de egy nyilvános kulcsot nem lehet titkos kulccsá visszaalakítani, mert a számítás csak egy irányban működik.
+====
+
+A fent definiált szorzás felhasználásával az előzőleg előállított titkos kulcsot szorozzuk meg G-vel:
+
+.A k titkos kulcsnak a G generátor ponttal való összeszorzásával a K nyilvános kulcs előállítása
+----
+K = 1E99423A4ED27608A15A2616A2B0E9E52CED330AC530EDCC32C8FFC6A526AEDD * G
+----
+
+
+.A K nyilvános kulcs, egy pontként definiálva: +K  = (x,y)+
+K = (x, y) 
+ahol
+x = F028892BAD...DC341A
+y = 07CF33DA18...505BDB
+----
+
+
+Egy pont és egy egész szorzatának megjelenítésére a valós számokon definiált elliptikus görbét fogjuk használni – a matematika ugyanaz. A célunk az, hogy előállítsuk a G generátor pont kG többszörösét. Ez ugyanaz, mint ha a G-t k-szor összeadnánk. Az elliptikus görbék esetén egy pont önmagával történő összeadása egyenértékű azzal, mint ha egy értintőt húznánk az adott pontban, és megkeresnénk, hogy hol metszi a görbét, majd ezt a pontot megtükröznénk az x-tengelyen. 
+
+A lenti ábra a G, 2G, 4G előállításának folyamatát mutatja, a görbén végzettt geometriai műveletek formájában.
+
+
+[[ecc_illustrated]]
+.Elliptikus görbével történő titkosítás: a G pont és egy egész szorzatának megjelenítése egy elliptikus görbén
+image::images/ecc_illustrated.png["ecc_illustrated"]
+
+[Tipp]
+====
+A legtöbb bitcoin implementáció az OpenSSL könyvtárat használja az elliptikus görbékkel történő titkosításra. Például a nyilvános kulcs előállítására az +EC_PONT_mul()+ függvény használható. Lásd http://wiki.openssl.org/index.php/Elliptic_Curve_Cryptography
+====
+
+=== Bitcoin címek
+
+A bitcoin cím egy számokból és betűkből álló string, amely bárkivel megosztható, aki pénz akar önöknek küldeni. A nyilvános kulcsból előállított címek betűket és számokat tartalmaznak, és az „1” számjeggyel kezdődnek. Példa egy bitcoin címre:
+
+----
+1thMirt546nngXqyPEz532S8fLwbozud8
+----
+
+
+A tranzakciókban a bitcoin cím leggyakrabban a pénz „címzettjét” azonosítja. Ha összehasonlítunk egy bitcoin tranzakciót egy papír csekkel, akkor a bitcoin cím felel meg a kedvezményezettnek, vagyis ezt írjuk a „Kinek fizetendő” sor után. Papír csekk esetén a kedvezményezett néha egy bankszámlaszám, de lehet cég, intézmény vagy akár pénz (???) is. Mivel a papír csekkeken nem kell számlaszámot megadni, csak egy absztrakt személyt, aki a pénz címzettje, ezért a papír csekkek nagyon rugalmas fizetési eszközt jelentenek. A bitcoin tranzakciók hasonló absztrakciót használnak, a bitcoin címet, ami nagyon rugalmassá teszi őket. A bitcoin cím képviselheti egy nyilvános/titkos kulcspár tulajdonosát, vagy valami mást, pl. egy scriptet, amint azt a „Fizetés script hashnek” és „Multisig címek” részekben látni fogjuk. Egyelőre vizsgáljuk meg az egyszerű esetet, amikor a bitcoin cím egy nyilvános kulcsból származik és azt képviseli. 
+
+A bitcoin cím a nyilvános kulcsból egy egyirányú kriptográfiai tömörítés (hashing) használatával áll elő. A „tömörítő algoritmus” vagy egyszerűen „hash algoritmus” egy egyirányú függvény, amely egy tetszőleges méretű bemenet esetén egy ujjlenyomatot vagy „zanzát” (hash-t) állít elő. A kriptográfiai hash függvényeket a bitcoin széleskörűen használja a bitcoin címekben, a script címekeben és a bányászat „munkabizonyíték” algoritmusában. A nyilvános kulcsból a bitcoin cím előállítása a következő algoritumusokkal történik: az SHA (Secure Hash Algorithm) és a RIPEMD (RACE Integrity Primitives Evaluation Message Digest), konkrétabban az SHA256 és a RIPEMD160 segítségével.
+
+A K nyilvános kulcsból kiindulva kiszámítjuk a kulcs SHA256 zanzáját, majd az eredmény RIPEMD160 zanzáját, és így egy 160 bites (20 byte-os) számot kapunk:
+[latexmath]
+++++
+\begin{equation}
+{A = RIPEMD160(SHA256(K))}
+\end{equation}
+++++
+ahol K a nyilvános kulcs és A az eredményként kapott bitcoin cím.
+
+[Tipp]
+====
+Egy bitcoin *nem* azonos a nyilvános kulccsal. A bitcoin címek egy a nyilvános kulcsból származnak, egy egyirányú függvény alkalmazásával.
+====
+
+A bitcoin címeket a felhasználók majdnem mindig „Base58Check” kódolásban látják (lásd a <<Base58Check>> kódolást lejjebb). Ez a kódolás 58 karaktert (58-as számrendszert) használ, és egy ellenőrző összeggel van kiegészítve, ami segíti az olvashatóságot, és véd a cím beviteli és továbbítási hibák ellen. A Base58Check sok más módon is szerephez jut a bitcoinban, ha egy szám, pl. egy bitcoin cím, egy titkos kulcs, egy titkosított kulcs vagy egy script zanza pontos beírására van szükség. A következő részben megvizsgáljuk a Base58Check kódolás és dekódolás működését, és az így előálló alakokat.
+
+[[pubkey_to_adddress]]
+.Nyilvános kulcsból bitcoin cím: egy nyilvános kulcs átalakítása bitcoin címmé
+image::images/PubKey_to_Bitcoin_Address.png["pubkey_to_address"]
+
+==== Base58 és Base58Check kódolás
+
+[[base58]]
+===== Base58 kódolás
+
+Sok számítógép rendszer annak érdekében, hogy a hosszú számokat tömören, kevesebb szimbólummal tudja ábrázolni, vegyes alfanumerikus ábrázolást használ, melynek alapja 10-nél nagyobb. Például míg a szokásos tízes alapú számrendszer 0-tól 9-ig 10 számjegyet használ, a hexadecimális számrendszer tizenhatot, ahol a további hat szimbólumot az A és F közötti betűk jelentik. Egy hexadecimális formátumban ábrázolt szám rövidebb, mint a neki megfelelő tízes számrendszerbeli szám. Még tömörebb a Base-64 ábrázolás, amely a 26 kisbetűt, a 26 nagybetűt, a 10 számjegyet és két további karaktert, a „\+” és a „/” karaktereket használja bináris adatok szövegként, pl. e-levélben történő továbbítására. A Base-64-et leggyakorabban e-levelek bináris csatolmányainál használják. A Base-58 formátum egy olyan szöveges formátum, melyet a bitcoin és sok más digitális pénz használ. Egyensúlyt teremt a tömör ábrázolás, az olvashatóság, a hiba ellenőrzés és a hiba megelőzés között. A Base-58 a Base-64 egy részhalmaza: a kis- és nagybetűkket valamint a számokat használja, de elhagy közülük néhányat, amelyet gyakran összecserélnek egymással, vagy amelyek némelyik betűtípus esetén egyformának látszanak. A Base-58 olyan Base-64, melyből hiányzik a 0 (a nulla szám), az O (a nagy o betű), az l (a kis L), az I (a nagy i), valamint a „\+” és „/”,. Vagy egyszerűbben, a Base-58 a kis- és nagybetűk valamint a számok halmaza, az előbb említett négy karakter (0, O, l, I) kivételével. 
+
+[[base58alphabet]]
+.A bitcoin Base-58 ábécéje
+----
+123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz
+----
+
+[[base58check]]
+===== Base58Check kódolás
+
+A Base58Check olyan Base-58 kódolási formátum, amely az elírások és továbbítási hibák elleni védelemként beépített hiba ellenőrző kóddal rendelkezik. Az ellenőrző összeg további négy byte, mely a kódolt adat végén áll. Az ellenőrző összeg a kódolt adat zanzájából származik, emiatt a gépelési hibák felfedésére és megelőzésére használható. A dekódoló szoftver egy Base58Check kód esetén kiszámítja az adat ellenőrző összegét, és összehasonlítja a kódban lévő ellenőrző összeggel. Ha a kettő nem egyezik meg, akkor ez azt jelzi, hogy hiba van, és a Base58Check adat érvénytelen. Pl. ezen a módon megelőzhető, hogy egy elgépelt bitcoin címet a pénztárca alkalmazás érvényes címként fogadjon el. Ha nem lenne ez az ellenőrzés, akkor a gépelési hiba a pénz elvesztéséhez vezetne.
+
+Egy tetszőleges adat (szám) Base58Check formátumba történő átalakítása úgy történik, hogy az adathoz egy előtagot adunk hozzá, az úgynevezett „verzió byte”-ot, ami a kódolt adat adattípusának egyszerű azonosítására szolgál. Például a bitcoin címek esetében ez az előtag nulla (0x00 hexadecimálisan), míg a titkos kulcsok esetében 128 (0x80 hexadecimálisan). A leggyakoribb előtagokat  a <<Base58Chek verzió előtagok és a kódolt eremények>> táblázat mutatja.
+
+Ezután kiszámítjuk a „kettős-SHA” ellenőrző összeget, vagyis az SHA-256 hash algoritmust kétszer alkalmazzuk az előző eredményen (az előtagon és adaton): +ellenőző_összeg = SHA256(SHA256(előtag+adat))+ Az eredményként kapott 32 byte-os hashből (a hash hashéből) csak az elő négy byte-ot használjuk. Ez a négy byte szolgál hibaellenőrző kódként vagy ellenőrző összegként. Az ellenőrző összeget hozzáadjuk a cím végéhez.
+
+A fentiek eredménye: egy előtag, az adat és az ellenőrző összeg, egymással (byte-onként) összefűzve. Ezt az eredményt a fenti részben leírt base-58 ábécével kódoljuk.
+
+[[base58check_encoding]]
+.Base58Check kódolás: bitcoin adatok egyértelmű kódolása 58-as számrendszerben, verziószámmal és ellenőrző összeggel
+image::images/Base58CheckEncoding.png["Base58CheckEncoding"]
+
+A bitcoinban a felhasználó számára megjelenített legtöbb adat Base58Check kódolású, mert így az adatok tömörek, könnyen olvashatók és a hibák szempontjából könnyen ellenőrizhetők. A Base58Check kódolásban használt verzió előtag lehetővé teszi, hogy egymástól könnyen megkülönböztethető formátumokat hozzunk létre. Az előtag Base-58-ban kódolva a Base58Check kódolt formátum egy adott karaktere lesz, ami az emberek számára is könnyűvé teszi az adattípusok felismerését és használatát. Ez különbözteti meg péládul az „1”-essel kezdődő Base58Check formátumban kódolt bitcoin címet a „5”-sel kezdődő WIF formátumú titkos kulcstól. Néhány minta előtag és az eredményként kapott Base-58 karakter lent látható:
+
+[[base58check_versions]]
+.Base58Check verzió előtagok és a kódolt eredmények
+[options="header"]
+|=======
+|Típus| Verzió előtag (hexa)| a Base-58 eredmény előtagja
+| Bitcoin cím | 0x00 | 1 
+| FIzetés-Script-Hash-nek cím | 0x05 | 3 
+| Bitcoin Testnet cím | 0x6F | m vagy n 
+| WIF titkos kulcs |  0x80 | 5, K vagy L 
+| BIP38 kódolt titkos kulcs | 0x0142 | 6P 
+| BIP32 kiterjesztett nyilvános kulcs | 0x0488B21E | xpub  
+|=======
+
+==== Kulcs formátumok
+
+[[priv_formats]]
+===== Titkos kulcs formátumok
+
+A titkos kulcs számos különböző formátumban ábrázolható, ezek mindegyike ugyanannak a 256-bites számnak felel meg. A formátumok  a következők:
+
+.A titkos kulcs ábrázolási módjai (kódolási formátumok)
+[options="header"]
+|=======
+|Típus|Előtag|Leírás
+| Hexa | Nincs | 64 hexadecimális számjegy
+| WIF |  5 | Base58Check kódolás: Base-58, verzió előtaggal (128) és egy 32 bites ellenőrző összeggel 
+| tömörített | K vagy L | Mint előbb, de a kódolás előtt a 0x01 utótag hozzáfűzése
+
+A korábban előállított titkos kulcs a következőképpen ábrázolható:
+
+.Example: Ugyanaz a kulcs, különböző formátumok
+[options="header"]
+|=======
+|Formátum | Titkos kulcs
+| Hexa | 1E99423A4ED27608A15A2616A2B0E9E52CED330AC530EDCC32C8FFC6A526AEDD 
+| WIF | 5J3mBbAH58CpQ3Y5RNJpUKPE62SQ5tfcvU2JpbnkeyhfsYB1Jcn
+| tömörített WIF | KxFC1jmwwCoACiCAWZ3eXa96mBM6tb3TYzGmf6YwgdGWZgawvrtJ
+|=======
+
+Az összes fenti alak ugyanazt a számot, ugyanazt a titkos kulcsot ábrázolja. Ezek különbözőnek látszanak, de bármelyik formátum könnyen átalakítható bármelyik másik formátumra. 
+
+===== Base58Check formátum dekódolása  hexadecimális formátumba
+
+Az sx eszközkészlettel (lásd <<sx-eszközkészlet>>) könnyen lehet bitcoin kulcsok, címek és tranzakciók kezelésére szolgáló shell scripoteket írni.Az sx eszközkészlettel a Base58Check formátum könnyen dekódolható a parancs sorban.
+
+A base58check-decode parancsot használjuk:
+
+----
+$ *sx base58check-decode 5J3mBbAH58CpQ3Y5RNJpUKPE62SQ5tfcvU2JpbnkeyhfsYB1Jcn*
+1e99423a4ed27608a15a2616a2b0e9e52ced330ac530edcc32c8ffc6a526aedd 128
+----
+
+Az eredmény a hexadecimális kulcs, melyet a WIF (Wallet Import Format, pénztárca import formátum) verzió előtagja, a 128 követ.
+
+===== Hexadecimális formátum kódolása Base58Check formátumba
+
+A Base58Check formátumba történő kódoláshoz megadjuk a titkos kulcsot, melyet a WIF verzió előtag (128) követ.
+----
+$ *sx base58check-encode 1e99423a4ed27608a15a2616a2b0e9e52ced330ac530edcc32c8ffc6a526aedd 128*
+5J3mBbAH58CpQ3Y5RNJpUKPE62SQ5tfcvU2JpbnkeyhfsYB1Jcn
+----
+
+===== Hexa (tömörített kulcs) kódolása Base58Check formátumba
+
+A titkos kulcs „tömörített” titkos kulcsként történő Base58Check kódolása úgy történik, hogy hozzáadjuk a +01+ utótagot a hexa kulcshoz, majd a fentiekhez hasonlóan elvégezzük a kódolást:
+----
+$ *sx base58check-encode 1e99423a4ed27608a15a2616a2b0e9e52ced330ac530edcc32c8ffc6a526aedd01 128*
+KxFC1jmwwCoACiCAWZ3eXa96mBM6tb3TYzGmf6YwgdGWZgawvrtJ
+----
+
+Az eredményként kapott WIF tömörített formátum „K”-val kezdődik, ami azt jelzi, hogy a titkos kulcsnak egy „01” utótagja van, és csak tömörített nyilvános kulcsok létrehozására lesz felhasználva (lásd lejjebb a <<Tömörített nyilvános kulcsok>> részt).
+
+===== Nyilvános kulcs formátumok
+
+A nyilvános kulcsok szintén több formátumban ábrázolhatók, a legfontosabbak a _tömörített_ és a _nem tömörített_ nyilvános kulcsok. 
+
+Mint azt előzőleg láttuk, a nyilvános kulcs az elliptikus görbe egy pontja, amely egy +(x,y)+ koordinátapárból áll. Általában a +04+ előtaggal ábrázolják, melyet két 256-bites szám követ, az egyik a pont x-koordinátája, a másik az y-koordinátája. A 04 előtag különbözteti meg a nem tömörített nyilvános kulcsokat a tömörített nyilvános kulcsoktól, melyek +02+-vel vagy +03+-mal kezdődnek.
+
+Alább a fenti titkos kulcsból előállított nyilvános kulcs +x+ és +y+ koordinátája látható.
+
+.A +K = (x,y)+ pontként definiált K nyilvános kulcs
+----
+x = F028892BAD...DC341A
+y = 07CF33DA18...505BDB
+----
+
+Ugyanez a nyilvános kulcs egy 520-bites számként (130 hexa számjegyként), a +04+ előtaggal, melyet az +x+ és az +y+ koordináta követ:
+
+.A K nem tömörített nyilvános kulcs hexadecimális alakban, +04xy+ formátumban (130 hexa számjegyként)
+----
+K = 04F028892BAD...505BDB
+----
+
+[[comp_pub]]
+===== Tömörített nyilvános kulcsok
+
+A tömörített nyilvános kulcsokat azért vezették be a bitcoinban, hogy csökkentsék a tranzakciók méretét és diszk helyet takarítsanak meg azokon a csomópontokon, melyek a teljes bitcoin blokklánc adatbázist tárolják. A legtöbb tranzakcióban szerepel a tulajdonos személyazonosságának ellenőrzésére és a bitcoin elköltésére szolgáló nyilvános kulcs. Mindegyik nyilvános kulcsnak 520 bitre van szüksége (előtag \+ x \+ y), amit ha összeszorzunk egy blokk több száz tranzakciójával, vagy a napi több tízezer tranzakcióval, akkor ez jelentős adatmennyiséget tesz ki a blokkláncon. 
+
+Amint azt a <<Nyilvános kulcsok>> részben feljebb láttuk, a nyilvános kulcs egy (x,y) pont az elliptikus görbén. Mivel a görbe egy matematikai függvénynek felel meg, a görbén lévő pont a görbe egyenletének egy megoldását jelenti, emiatt ha ismerjük az x-koordinátát, akkor az y-koordinátát az y^2^ = (x^3^+ 7) mod p egyenlet megoldásával számíthatjuk ki. Ez lehetővé teszi, hogy a nyilvános kulcsnak csak az x-koordinátáját tároljuk, és elhagyjuk az y-koordinátát, ily módon 256 bittel csökkentsük a tárolásához szükséges helyet. Ez minden tranzakciónak majdnem 50%-kal csökkenti a méretét, és idővel nagyon nagy helymegtakarításhoz vezet.
+
+Míg a nem tömörített nyilvános kulcsoknak +04+ az előtagja, a tömörített kulcsok +02+-vel vagy +03+-mal kezdődnek. Vizsgáljuk meg, miért van két lehetséges előtag! Mivel az egyenlet bal oldalán y^2^ áll, az y megoldás pozitív vagy negatív lehet. Képileg ez azt jelenti, hogy az y-koordináta az x-tengely felett vagy az x-tengely alatt lehet. Amint azt az elliptikus görbe ábrázolásán láthatjuk, a görbe szimmetrikus, ami azt jelenti, hogy az x-tengelyre tükrös. Emiatt, ha el is hagyhatjuk az y koordinátát, az y _előjelét_ (pozitív vagy negatív) tárolnunk kell, más szóval, tudnunk kell, hogy az x-tengely felett vagy alatt volt-e, mivel mindkét lehetőséghez egy különböző pont és különböző nyilvános kulcs tartozik.  Ha az elliptikus görbét a p-rendű véges mezőn számítjuk ki, az y koodináta páros vagy páratlan lehet, ami megfelel a fenti pozitív vagy negatív előjelnek. Ezért aztán ha szeretnénk megkülönböztetni az y lehetséges értékeit, akkor a +tömörített nyilvános kulcsot+ +02+ előtaggal tároljuk, ha az +y+ páros, és +03+-mal, ha páratlan, ami lehetővé teszi egy program számára, hogy az x-koordinátából helyesen állapítsa meg az y-koordinátát, és a tömörített nyilvános kulcsból előállítsa a pont mindkét koordinátáját. 
+
+[[pubkey_compression]]
+.A nyilvános kulcs tömörítése
+image::images/pubkey_compression.png["pubkey_compression"]
+
+Íme, ugyanaz a nyilvános kulcs, melyet előzőleg láttunk, +tömörített nyilvános kulcsként+, 264 biten (66 hexa számjeggyel) tárolva. A +03+ előtag azt jelzi, hogy az +y+ koodináta páratlan:
+
+.A K tömörített nyilvános kulcs, hexadecimális alakban (66 hexa számjegy), ahol +K = {02 vagy 03} x+
+----
+K = 03F028892BAD...DC341A
+----
+
+A fenti tömörített nyilvános kulcs ugyanannak a titkos kulcsnak felel meg, ami azt jelenti, hogy ugyanabból a titkos kulcsból lett előállítva. Mégis különbözőnek látszik a nem tömörített nyilvános kulcstól. Még fontosabb, hogy ha ezt a tömörített nyilvános címet bitcoin címmé alakítjuk a kétszeres hash függvénnyel (RIPEMD160(SHA256(K))), akkor egy másik bitcoin címet kapunk. Ez zavaró lehet, mert azt jelenti, hogy ugyanabból a titkos kulcsból két különböző nyilvános kulcs állítható elő, mely két különböző formátumban ábrázolható (tömörítve és nem tömörítve), ami két különböző bitcoin címet eredményez. Ugyanakkor a titkos kulcs mindkét bitcoin cím esetén azonos.
+
+A tömörített nyilvános kulcsok lassanként alapértelmezettek lesznek a különféle bitcoin klienseken belül, ami jelentős hatással van a tranzakciók méretének csökkentésére, és emiatt a blokkláncra. De még nem mindegyik kliens támogatja a tömörített nyilvános kulcsokat. Az újabb klienseknek, melyek támogatják a tömörített nyilvános kulcsokat, számolniuk kell a tömörített nyilvános kulcsokat nem támogató, régebbi kliensekből származó tranzakciókkal. Ez különösen fontos akkor, ha egy pénztárca alkalmazás titkos kulcsokat importál egy másik pénztárca alkalmazásból, mert az új pénztárcának végig kell pásztáznia a blokkláncot ahhoz, hogy megtalálja az importált kulcsokhoz tartozó tranzakciókat. Melyik bitcoin címet kell a bitcoin pénztárcának végigpásztáznia? A nem tömörített nyilvános kulcs által előállított bitcoin címet, vagy a tömörített nyilvános kulcshoz tartozó bitcoin címet? Mindkettő érvényes bitcoin cím, és mindkettő aláírható a titkos kulccsal, de mégis két külön címről van szó!
+
+A kérdés megoldása érdekében, hogy a titkos kulcsok pénztárcából történő kiexportálásakor a titkos kulcsokat ábrázoló  WIF formátum (Wallet Import Format, pénztárca import formátum) az újabb pénztárcák esetében eltérő módon lett megvalósítva, hogy azt is jelezze, ha a titkos kulcsok _tömörített_ nyilvános kulcsok előállítására szolgálnak, és ennek megfelelően _tömörített_ bitcoin címek tartoznak hozzájuk. Ez lehetővé teszi, hogy az importálást végző pénztárca különbséget tudjon tenni a régebbi vagy újabb pénztárcákból származó titkos kulcsok között, és a blokkláncon azokat a bitcoin cimekkel rendelkező tranzakciókat keresse meg, melyek a megfelelő nem tömörített vagy tömörített nyilvános kulcsoknak felelnek meg. Nézzük meg részletesebben, hogyan megy végbe mindez. 
+
+[[comp_priv]]
+===== Tömörített titkos kulcsok
+
+A „tömörített titkos kulcs” elnevezés eléggé félrevezető, mert a titkos kulcs kiexportálása WIF-tömörített titkos kulcsként történik, és valójában egy byte-tal _hosszabb_, mint a „tömörítetlen” titkos kulcs. Ennek az az oka, hogy 01 utótaggal végződik, ami azt jelzi, hogy egy újabb pénztárcából származik, és csak tömörített nyilvános kulcsok előállítására szabad használni. A titkos kulcsok nincsenek tömörítve és nem tömöríthetők. A „tömörített titkos kulcs” kifejezés valójában azt jelenti, hogy „olyan titkos kulcs, melyből tömörített nyilvános kulcsot kell előállítani”, míg a „nem tömörített titkos kulcs” azt jelenti, hogy „olyan titkos kulcs, melyből nem tömörített nyilvános kulcsot kell előállítani”. Az export formátumra „WIF-tömörített” vagy „WIF” formátumként érdemes hivatkozni, és a titkos kulcsnál a további félreértések elkerülése érdekében el kell felejteni a „tömörítés” szót.
+
+Megjegyezzük, hogy a kétféle formátum _nem_ felcseréhető. Egy újabb pénztárcában, amely képes a tömörített nyilvános kulcsok kezelésére, a titkos kulcsok mindig WIF-tömörített alakban lesznek kiexportálva (K/L előtag). Ha a pénztárca régebbi, és nem használja a tömörített nyilvános kulcsokat, a titkos kulcs mindig WIF formátumban lesz kiexportálva (5 előtag). A cél az, hogy jelezzük a titkos kulcsokat beimportáló pénztárca számára, hogy tömörített vagy tömörítetlen nyilvános kulcsokat és címeket kell-e keresnie a blokkláncban.
+
+Ha a bitcoin pénztárca képes a tömörített nyilvános kulcsok kezelésére, akkor az összes tranzakcióban ezeket fogja használni. A pénztárcában lévő titkos kulcsokból levezethetők a görbén lévő nyilvános pontok, majd megtörténik ezek tömörítése. A pénztárca a tömörített nyilvános kulcsokat fogja bitcoin címek előállítására használni, és ezek szerepelnek majd a tranzakciókban. Ha titkos kulcsokat exportálunk ki egy új pénztárcából, amely támogatja a tömörített nyilvános kulcsokat, akkor a WIF formátum úgy módosul, hogy a titkos kulcs egy 1 byte-os utótaggal (+01+) egészül ki. Ennek a base58check kódolásával kapott titkos kulcsot nevezzük „tömörített WIF”-nek, és ez a „K” vagy az „L” betűvel kezdődik, ellentétben a régebbi pénztárcákból származó, WIF kódolt (nem tömörített) kulcsokkal, melyek „5”-tel kezdődnek. 
+
+Lássuk ugyanazt a kulcsot, WIF és WIF-tömörített formátumban.
+
+.Example: Ugyanaz a kulcs, különböző formátumokban
+[options="header"]
+|=======
+|Formátum | Titkos kulcs
+| Hexa | 1E99423A4ED27608A15A2616A2B0E9E52CED330AC530EDCC32C8FFC6A526AEDD
+| WIF | 5J3mBbAH58CpQ3Y5RNJpUKPE62SQ5tfcvU2JpbnkeyhfsYB1Jcn
+| Tömörített hexa | 1E99423A4ED27608A15A2616A2B0E9E52CED330AC530EDCC32C8FFC6A526AEDD_01_
+| Tömörített WIF | KxFC1jmwwCoACiCAWZ3eXa96mBM6tb3TYzGmf6YwgdGWZgawvrtJ
+|=======
+
+
+[Tipp]
+====
+A „tömörített titkos kulcs” teljesen helytelen elenevezés! A titkos kulcs nincs tömörítve. A WIF-tömörített formátum azt jelzi, hogy a titkos kulcsból csak tömörített nyilvános kulcsot, és az ehhez tartozó bitcoin címet szabad előállítani. A „WIF-tömörített” titkos kulcs egy byte-tal hosszab, mert a 01 utótaggal rendelkezik, amely megkülönbözteti a „tömörítetlen” titkos kulcstól.
+====
+
+=== Kulcsok és címek kezelése Pythonban
+
+A legátfogóbb bitcoin könyvtár Pythonban Vitalik Buterin „pybitcointools” könyvtára (https://github.com/vbuterin/pybitcointools). A következő példában a „bitcoin”-ként beimportált pybitcointools könyvtárat használjuk kulcsok és címek különféle formátumban történő előállítására:
+
+.Kulcs és cím előállítás és formattálás a pybitcointools könyvtárral
+[source,python]
+----
+include::code/key-to-address-ecc-example.py[]
+----
+
+A kód futtatásakor kapott kimenet:
+----
+$ *python key-to-address-ecc-example.py*
+Private Key (hex) is:  3aba4162c7251c891207b747840551a71939b0de081f85c4e44cf7c13e41daa6
+Private Key (decimal) is:  26563230048437957592232553826663696440606756685920117476832299673293013768870
+Private Key (WIF) is:  5JG9hT3beGTJuUAmCQEmNaxAuMacCTfXuw1R3FCXig23RQHMr4K
+Private Key Compressed (hex) is:  3aba4162c7251c891207b747840551a71939b0de081f85c4e44cf7c13e41daa601
+Private Key (WIF-Compressed) is:  KyBsPXxTuVD82av65KZkrGrWi5qLMah5SdNq6uftawDbgKa2wv6S
+Public Key (x,y) coordinates is: (41637322786646325214887832269588396900663353932545912953362782457239403430124L, 16388935128781238405526710466724741593761085120864331449066658622400339362166L)
+Public Key (hex) is: 045c0de3b9c8ab18dd04e3511243ec2952002dbfadc864b9628910169d9b9b00ec243bcefdd4347074d44bd7356d6a53c495737dd96295e2a9374bf5f02ebfc176
+Compressed Public Key (hex) is: 025c0de3b9c8ab18dd04e3511243ec2952002dbfadc864b9628910169d9b9b00ec
+Bitcoin Address (b58check) is: 1thMirt546nngXqyPEz532S8fLwbozud8
+Compressed Bitcoin Address (b58check) is: 14cxpo3MBCYYWCgF74SWTdcmxipnGUsPw3
+----
+
+
+=== Pénztárcák
+
+A pénztárcák a titkos kulcsok tárolására szolgálnak. Általában struktúrált adatállományok vagy egyszerű adatbázisok formájában vannak megvalósítva. 
+
+A kulcs előállítás egy másik módszere a _determinisztikus kulcs előállítás_. Ennél mindegyik új titkos kulcs egy egyirányú hash függvény használatával, az előző titkos kulcsból áll elő, és egy sorozatot képez. A sorozat újbóli létrehozásához csak az első kulcsra van szükség (ennek _mag_ vagy _mesterkulcs_ a neve).  Ebben a részben megvizsgáljuk a kulcsgenerálás különféle módszereit, és a köréjük épített pénztárca szerkezeteket. 
+
+[Tipp]
+====
+A pénztárcában kulcsok vannak, nem pedig érmék. Az érméket a blokklánc tárolja, tranzakciós kimenetek formájában (ezeket gyakran _vout_-nak vagy _txout_-nak hívják). Mindegyik felhasználónak van egy kulcsokat tartalmazó pénztárcája. A pénztárcák valójában kulcskarikák, melyeken nyilvános/titkos kulcspárok vannak (lásd a <<nyilvános kulcs>> részt). A felhasználók a kulcsokkal írják alá a tranzakciókat, így bizonyítva, hogy a birtokukban vannak az aláírt tranzakció kimenetek (az érmék).
+====
+
+==== Nem-determinisztikus (véletlen) pénztárcák
+
+Az első bitcoin kliensekben a pénztárca egyszerűen egy halom véletlenszerűen generált titkos kulcs volt. Az ilyen pénztárcákat _0. típusú, nem determinisztikus pénztárcának_ hívjuk. Például a Bitcoin Core kliens az első indításakor előre generál 100 véletlenszerű titkos kulcsot, és szükség szerint további kulcsokat generál, hogy mindegyik kulcs csak egyszer legyen használva. Az ilyen pénztárcát úgy is hívják, hogy „csak egy halom kulcs” (CSEHAK). A determinisztikus pénztárcák váltják föl őket, mert annyira nehézkes a kezelésük, a kulcsok mentése és beimportálása. A véletlenszerűen generált kulcsoknak az a hátránya, hogy ha sok ilyet állítunk elő, akkor mindegyikről másolatot kell keszítenünk, ami azt jelenti, hogy a pénztárcát gyakran kell mentenünk. Mindegyik kulcsról biztonsági másolatot kell készítenünk, mert ha a pénztárca hozzáférhetetlenné válik, akkor a kulcs által felügyelt pénz örökre elvész. Ez közvetlenül ellentmond annak az alapelvnek, hogy a címeket ne használjuk föl újra, vagyis hogy mindegyik bitcoin címet csak egy tranzakcióra használjunk. A cím újbóli felhasználása csökkenti a titkosságot, mivel kapcsolatba hozza egymással a tranzakciókat és a címeket. A 0. típusú pénztárca emiatt gyenge választás, különösen akkor, ha szeretnénk elekerülni a címek újrafelhasználását, ami azt jelenti, hogy sok kulcs kezelésére és emiatt gyakori mentésre van szükség. A Bitcoin Core kliensben lévő pénztáca 0. típusú, de ennek a használatát a Bitcoin Core fejlesztők aktívan ellenjavallják.
+
+[[Type0_wallet]]
+.0. típusú, nem determinisztikus (véletlen) pénztárca: véletlenszerűen generált kulcsok gyűjteménye
+image::images/non-deterministic_wallet.png["non-deterministic wallet"]
+
+==== Determinisztikus (magot használó) pénztárcák
+
+A determinsiztikus, vagy másképpen „magot használó” pénztárcák olyan pénztárcák, melyekben a titkos kulcsokat egy egyirányú hash függvénnyel egy közös magból állítják elő. A mag egy véletlenszerűen generált szám, melyet más adatokkal, pl egy index számmal vagy „lánc kóddal” kombinálva állítják elő a titkos kulcsokat (lásd a „determinisztikus fák” című részt, (BIP0032)). Egy determinisztikus pénztárcában elég a kulcs ismerete az össze származtatott kulcs visszanyeréséhez, emiatt elégséges egyetlen biztonsági másolat készítése a mag létrejöttekor. A mag a pénztárca exportjához vagy importjához is elégséges, ezért a felhasználó összes kulcsa könnyen átköltöztethető egy tetszőleges másik pénztárcába.
+
+==== Emlékeztető kódszavak (Tervezet:BIP0039)
+
+Az emlékeztető kód egy véletlen sorozatból lett előállított angol szavak sorozata, amely a determinisztikus pénztárcák magjának előállítására használható. A szavak sorozata elégséges a mag újbóli előállítására, ezáltal a pénztárca és a származtatott kulcsok újbóli létrehozására. Az olyan tárca alkalmazás, amely emlékeztető kódokat használ, a pénztárca létrehozásakor 12 – 24 szót jelenít meg a felhasználónak. Ezek a szavak jelentik a pénztárca mentését, és segítségükkel az összes kulcs visszaállítható egy ugyanilyen vagy egy kompatibilis pénztárca alkalmazásban. 
+
+Az emlékeztető kódokat a Bitcoin Improvement Proposal 39 definiálja (lásd <<bip0039>>), aminek a jelenlegi állapota „tervezet”. A BIP0039 csak javaslat, nem szabvány. Az Electrum pénztárca egy másik szókészletet és egy szabványt használ, amely _megelőzte_ a BIP0039-et. A Trezor pénztárca és néhány másik pénztárca BIP0039-et használja, de ez nem kompatibilis az Electrum-mal.
+    
+A BIP0039 az emlékeztető kód és a mag létrehozását a következőképpen definiálja:
+
+1. Hozzunk létre egy 128 .. 256 bites véletlen sorozatot (entrópiát)
+2. Készítsük el a véletlen sorozat ellenőrző összegét oly módon, hogy vesszük az SHA256 hash-ének első néhány bitjét
+3. Adjuk hozzá az ellenőrző összeget a véletlen sorozat végéhez
+4. Osszuk a sorozatot 11 bites részekre, és ezeket egy 2048 szavas, előre definiált szótár indexelésére használjuk
+5. Állítsuk elő a 12 – 24 szóból álló emlékeztető kódot
+
+
+.Emlékeztető kódok: Entrópia és szóhossz
+[options="header"]
+|=======
+|Entrópia (bitek) | Ellenőrző összeg (bitek) | Entrópia+Ellenőrző összeg | Szóhossz
+| 128 | 4 | 132 | 12
+| 160 | 5 | 165 | 15
+| 192 | 6 | 198 | 18
+| 224 | 7 | 231 | 21
+| 256 | 8 | 264 | 24
+|=======
+
+Az emlékeztető kód felel meg annak a 128 .. 256 bitnek, melyből egy PBKDF2 kulcs-kiszélesítő függvénnyel egy hosszabb (512 bites) magot állítanak elő. Az így kapott eredményt használják a determinisztikus pénztárca és az összes származtatott kulcs létrehozására. 
+
+Íme, néhány példa az emlékeztető kódokra és az általuk létrehozott magokra:
+
+.128 bites entrópiájú emlékekzető kód és a belőle kapott mag
+|=======
+| entrópia (128 bit) | 0c1e24e5917779d297e14d45f14e1a1a
+| mnemonic (12 szó) | army van defense carry jealous true garbage claim echo media make crunch
+| mag  (512 bit) | 3338a6d2ee71c7f28eb5b882159634cd46a898463e9d2d0980f8e80dfbba5b0fa0291e5fb888a599b44b93187be6ee3ab5fd3ead7dd646341b2cdb8d08d13bf7
+|=======
+
+.256 bites entrópiájú emlékeztető kód és a belőle kapott mag
+|=======
+| entrópia (256 bit) | 2041546864449caff939d32d574753fe684d3c947c3346713dd8423e74abcf8c
+| mnemonic (24 szó) | cake apple borrow silk endorse fitness top denial coil riot stay wolf 
+luggage oxygen faint major edit measure invite love trap field dilemma oblige
+| mag  (512 bit) | 3972e432e99040f75ebe13a660110c3e29d131a2c808c7ee5f1631d0a977
+fcf473bee22fce540af281bf7cdeade0dd2c1c795bd02f1e4049e205a0158906c343 
+|=======
+
+==== Determinisztikus láncok (Elektrum kulcs láncok)
+
+[[Type1_wallet]]
+.1. típusú deteminisztikus pénztárca: magból előállított kulcssorozat
+image::images/chained_wallet.png["chained wallet"]
+
+
+[[hd_wallets]]
+==== Determinisztikus fák (BIP0032)
+
+[[Type2_wallet]]
+.2. típusú hierarchikus determinisztikus pénztárca: magból előállított kulcs fa
+image::images/HD_wallet.png["HD wallet"]
+
+
+=== További tudnivalók a kulcsokról és a címekről
+
+==== Kódolt titkos kulcsok (BIP0038)
+
+A titkos kulcsoknak titokban kell maradnia. A titkos kulcsok _bizalmas_ volta olyan igazság, amelyet a gyakorlatban egészen nehéz megvalósítni, mivel ellentétben van egy ugyanilyen fontos biztonsági céllal, a _rendelkezésre állással_. A titkos kulcsok titokban tartása sokkal nehezebb, ha a titkos kulcsokról biztonsági másolatokat kell tárolni, nehogy elveszítsük őket. A pénztárcákban lévő, jelszóval védett titkos kulcsok biztonságban vannak, de a pénztárcáról biztonsági másolatot kell készíteni. Néha a felhasználók az egyik pénztárcából a másikba mozgatnak kulcsokat – például a pénztárca program újabb változatának installálásakor vagy egy másik programmal való lecserélésekor. A titkos kulcsokról készített biztonsági mentések papíron (lásd a „papír pénztárcák” részt) vagy külső tároló eszközön, pl. USB kulcson is tárolhatók. De mi történik, ha a másolatot ellopják vagy elveszítjük? Ezek az egymással ellentmondó biztonsági követelmények vezettek egy hordozható és kényelmes szabvány, a BIP0038 létrejöttéhez, mellyel a titkos kulcsok úgy kódolhatók, hogy sok különféle pénztárca és bitcoin kliens megértse őket. (lásd <<BIP0038>>)
+    
+A BIP0038 szabvány a titkos kulcsok jelmondattal történő Base58Check kódolásáról szól, emiatt a titkos kulcsok biztonságosan tárolhatók a mentő eszközön, vihetők át pénztárcák között, vagy kezelhetők olyan körülmények között, ahol a kulcs nyilvánosságra kerülhet. A titkosítási szabvány az AES-t (Advanced Encryption Standard) használja, melyet az Amerikai Szabványügyi Hivatal (NIST, National Institute of Standards and Technology) fogadott el, és széles körben használják kereskedelmi és katonai alkalmazásokban.
+
+A BIP0038 titkosítás a titkos kulcsból indul ki, amely általában Base58Check string formájában, „5” előtaggal, WIF formátumban (Wallet Import Format, pénztárca inport formátum) van kódolva. Ezen kívül a BIP0038 titkosításnak egy jelmondatra – egy hosszú jelszóra – van szüksége, amely általában jó náhány szóból vagy egy bonyolult alfanumerikus karakterláncból áll. A BIP0038 titkosítás eredménye egy olyan Bas58Check kódolású titkos kulcs, amely a +6P+ előtaggal kezdődik. Ha egy olyan kulccsal találkoznak, amely +6P+-vel kezdődik, ez azt jelenti, hogy a kulcs kódolt, és egy jelmondatra van szükség ahhoz, hogy WIF-formátumú titkos kulccsá tudjuk visszaalakítani (visszakódolni), amely „+5+”-tel kezdődik, és bármelyik pénztárcában használható. Sok pénztárca alkalmazás felismeri a BIP0038 titikosított titkos kulcsokat, és a kulcs dekódolása és importálás céljából megkérdezi a felhasználótól, hogy mi a jelmondat. Vannak egyéb alkalmazások, pl. a hihetetlenül hasznos web böngésző alapú bitaddress.org, amellyel (a „pénztárca részletei” fülön) szintén elvégezhető a BIP0038 kulcsok dekódolása. 
+
+A BIP0038 titkosított kulcsokat leggyakrabban a papír pénztárcák esetén alkalmazzák. A papír pénztárcákkal a titkos kulcsok egy darab papíron tárolhatók. Ha a felhasználó egy erős jelmondatot választ, a BIP0038 kódolt papír pénztárcák nagyon biztonságosak, és kiválóak ahhoz, hogy egy offline bitcoin tárolót hozzunk létre (ezeket „hideg tárolónak” (cold storage) is hívják).
+
+A következő titkosított kulcsok a bitaddress.org-gal lettek előállítva, és az szemléltetik, hogyan lehet a kulcsot a jelmondat beadásával dekódolni:
+
+.Példa egy BIP0038 kódolt titkos kulcsra
+|=======
+| Titkos kulcs (WIF) | 5J3mBbAH58CpQ3Y5RNJpUKPE62SQ5tfcvU2JpbnkeyhfsYB1Jcn
+| Jelmondat | MyTestPassphrase
+| A titkosított kulcs  (BIP0038) | 6PRTHL6mWa48xSopbU1cKrVjpKbBZxcLRRCdctLJ3z5yxE87MobKoXdTsJ
+|=======
+
+
+[[p2sh]]
+==== Fizetés script hashnek  (P2SH, pay to script hash) címek és több aláírással rendelkező (multi-sig) címek 
+
+Mint tudjuk, a hagyományos bitcoin címek az „1”-essel kezdődnek, és a nyilvános kulcsból származnak, a nyilvános kulcs pedig a titkos kulcsból. Az „1”-gyel kezdődő címekre bárki küldhet bitcoint, de csak az tudja elkölteni, aki be tudja mutatni a titkos kulccsal létrehozott megfelelő aláírást és a nyilvános kulcs zanzáját.  
+
+A „3”-mal kezdődő bitcoin címek fizetés-script-hashnek (P2SH) bitcoin címek, melyeket néha hibásan több aláírást megkövetelő, vagy multi-sig címeknek hívnak. A bitcoin tranzakció kedvezményezettjét a script hash-ével, nem pedig a nyilvános kulcs tulajdonosával adják meg. Ezt az újítást 2012. januárjában, a BIP0016 keretében vezették be (lásd BIP0016), és széles körben elterjedt, mert lehetővé teszi, hogy magához a címhez legyen hozzárendelve valamilyen funkcionalitás. A hagyományos, „1” kezdetű bitcoin címeket használó tranzakciók neve  fizetés-nyilvános-kulcs-hashnek (P2PKH, pay-to-public-key-hash). Ezekkel a hagyományos tranzakciókkal szemben, a „3” kezdetű címekre küldött pénzek esetében többre van szükség, mint egy nyilvános kulcs hashének bemutatása és a tulajdonjogot bizonyító, titkos kulccsal történő aláírás. A követelmények meghatározása akkor történik, amikor létrehozzák a címet, és a címhez tartozó összes bemenet ugyanolyan módon lesz korlátozva.
+    
+A fizetés-script-hashnek címet egy tranzakció scriptből hozzák létre: Ez a tranzakció határozza meg, hogy ki költheti el a tranzakció kimenetét (részletesebben lásd a [tranzakciók] részt). Egy fizetés-scrip-hashnek cím kódolásához ugyanúgy a kettős hash függvényt kell használni, mint a hagyományos bitcoin címeknél, de a nyilvános kulcs helyett a scripten kell a műveletet elvégezni:
+    
+----
+script hash = RIPEMD160(SHA256(script))
+----
+    
+Az eredményként kapott „script hash”-t „5” verzió előtaggal kódolják a Base58Check segítségével, ami egy „+3+”-mal kezdődő címet eredményez. Egy példa a P2SH címre: +32M8ednmuyZ2zVbes4puqe44NZumgG92sM+
+
+[Tipp]
+====
+A P2SH nem feltétlenül egyezik meg egy több aláírást megkövetelő szabványos tranzakcióval. A P2SH címek a _leggyakrabban_ egy több aláírást megkövetelő script-nek felelnek meg, de más tranzakciótípusokat kódoló scripteknek is megfelelhetnek. 
+====
+
+===== A több aláírást megkövetelő címek és a P2SH
+
+Jelenleg a P2SH funkciót a leggyakrabban több aláírást megkövetelő script címként használják. Amint azt a neve is mutatja, a mögöttes scipt egynél több aláírás bemutatását követeli meg a tulajdonjog bizonyításához és az összeg elköltéséhez. A bitcoin multi-sig azt követeli meg, hogy N kulcsból M aláírás szerepeljen. Ennek neve N-ből-M multi-sig, ahol M kisebb vagy egyenlő, mint N.  Például Bob, az 1. fejezetben szereplő kávéház tulajdonosa multi-sig címeket is használhat, és egy 2-ből-1 címnél a saját kulcsa vagy a feleségének a  kulcsa egyaránt használható, vagyis kettejük közül bárki el tudja költeni az ehhez a címhez tartozó tranzakció kimenetét. Ez hasonlít a bankok  hagyományos „közös számlájához”, ahol bármelyik házastárs teljeskörűen rendelkezhet a számla felett. Egy másik példa: Gopesh, a web tervező, akinek Bob azért fizetett, hogy létrehozzon a számára egy web helyet, egy 3-ből-2 multi-sig címmel megoldhatja, hogy a cég címére befizetett összeg csak akkor költhető el, ha a 3 üzleti partner közül legalább kettő aláírja a tranzakciót. 
+
+A <<tranzakciók>> részben fogjuk megvizsgálni, hogyan lehet olyan tranzakciókat létrehozni, melyek P2SH (és multi-sig) címekről költik el a pénzt.
+
+==== Kérkedő címek
+
+A kérkedő címek olyan bitcoin címek, melyek olvasható üzeneteket tartalmaznak, péládul az 1LoveBPzzD72PUXLzCkYAtGFYmK5vYNR33 egy érvényes cím, amely a „Love” (szerelem) szót tartalmazza az „1” utáni négy betűn. A kérkedő címekhez titkos kulcsok milliárdjait kell generálni és tesztelni, amíg a származtatott bitcoin címben létre nem jön a kívánt minta. Noha a kérkedő címet előállító algoritmusban vannak optimalizálások, a folyamat alapjában véve azzal egyenértékű, hogy véletlenszerűen választunk egy titkos kulcsot, előállítjuk belőle a nyilvános kulcsot, majd a bitcoin címet, és leellenőrizzük, hogy megfelel-e a kívánt mintázatnak – mindezt milliárdnyiszor megismételve, amíg sikerrel nem járunk. 
+
+Ha találtunk egy kérkedő címet, amely megfelel a kívánt mintának, akkor a titkos kulcsot épp úgy használható, mint bármely más cím esetén. A kérkedő címek épp olyan biztonságosak, mint a többi bitcoin cím. Ugyanaz az elliptikus görbékkel történő titkosítás (ECC, Elliptic Curve Cryptography) és biztonságos tömörítő algoritmus (SHA. Secure Hash Algorithm) van mögöttük, mint bármely más cím mögött. Egy adott mintával rendelkező kérkedő cím esetén sem lehet könnyebben megtalálni a titkos kulcsot, mint bármely más cím esetén.
+
+Az első fejezetben találkoztunk Eugéniával, aki egy gyermek-védelmi alap vezetője a Fülöp-szigeteken. Tegyük fel, hogy Eugénia egy bitcoin gyűjtést szervez, és a nagyobb reklám érdekében szeretne a gyűjtéshez egy kérkedő bitcoin címet használni. Eugénia egy olyan kérkedő címet fog létrehozni, amely úgy kezdődik, hogy „1Kids”, ezzel is elősegítve a gyűjtést a gyerekek számára. Vizsgáljuk meg, hogyan hozható létre ez a kérkedő cím, és mit jelent jelent Eugénia gyűjtésének a biztonsága szempontjából. 
+
+===== Kérkedő címek létrehozása
+
+Fontos megértenünk, hogy a bitcoin cím egyszerűen egy szám, melyet az Base-58 ábécé szimbólumai ábrázolnak. Az „1Kids” mintázat keresése az "1Kids11111111111111111111111111111" és az "1Kidszzzzzzzzzzzzzzzzzzzzzzzzzzzzz" között történhet. Kb. 58^29^ (kb. 1.4 * 10^51^) cím van ebben a tartományban, és ezek mindegyike úgy kezdődik, hogy „1Kids”.
+
+.Az „1Kids” kezdetű kérkedő címek tartománya
+|=======
+| Mettől | 1Kids11111111111111111111111111111
+| Meddig | 1Kidszzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+|=======
+
+Tekintsük úgy az „1Kids” mintát, mint egy számot, és nézzük meg, milyen gyakran található meg ez a minta egy bitcoin címben. Egy átlagos asztali számítógéppel, melyben nincs semmilyen cél hardver, másodpercenként kb. 100 000 kulcs megvizsgálható meg.
+
+.Egy kérkedő cím mintázat (1KidsCharity) és a megtalálásához szükséges idő egy asztali számítógépen
+[options="header"]
+|=======
+| Hossz | Minta | Gyakoriság | Átlagos keresési idő
+| 1 | 1K | 58-ból 1 | < 1 millisec
+| 2 | 1Ki| 3364-ből 1 | 50 millisec 
+| 3 | 1Kid | 195,000-ből 1 | < 2 sec
+| 4 | 1Kids | 11 millióból 1 | 1 perc
+| 5 | 1KidsC | 656 millióból 1 | 1 óra
+| 6 | 1KidsCh | 38 milliárdból 1 | 2 nap
+| 7 | 1KidsCha | 2.2 billióból 1 | 3-4 hónap
+| 8 | 1KidsChar | 128 billióból 1 | 13-18 év
+| 9 | 1KidsChari | 7000 billióból 1 | 800 év
+| 10 | 1KidsCharit | 1 in 400 quadrillion | 46,000 years
+| 11 | 1KidsCharity | 23,000 trillióból 1 | 2.5 millió év
+|=======
+
+
+Mint látható, Eugénia nem fogja tudni az „1KidsCharity” címet gyorsan létrehozni, még akkor sem, ha sok ezer számítógépet használ. Minden egyes karakter 58-szorosára növeli a nehézséget. A hét karakternél hosszabb mintákat általában specializált hardverrel, pl. erre a célre összeépített asztali számítógépekkel keresik, melyben több grafikus feldolgozó egység (GPU, Graphical Processing Unit) található. Ezek általában erre a célre újrahasznosított bitcoin bányász „platformok”, mert bitcoin bányászatra már gazdaságtalanok, de a kérkedő címek keresésére még hatékonyan használhatók. A GPU-val rendelkező rendszereken a kérkedő címek keresése sok nagyságrenddel gyorsabb lehet, mint egy általános célú CPU-n. 
+
+Kérkedő címek úgy is előállíthatók, ha megbízást adunk egy bányász közösségnek, amely ilyen címek keresésére szakosodott, lásd pl. a vanitypool.appspot.com web címet. Ez a bányatársaság a GPU hardverrel rendelkező tagok számára lehetővé teszi, hogy a kérkedő címek keresése révén bitcoinokhoz jussanak. Egy kis fizetség fejében (0.01 bitcoin , vagyis írásunk idején kb. 5$ ellenében), Eugénia külső megbízást adhat a 7-karakterből álló minta megkeresésére, és ahelyett, hogy CPU-n hónapokig keresné a mintát, már néhány órán belül megkapja az eredményt. 
+
+===== A kérkedő címek biztonsága
+
+A kérkedő címek valódi kétélű kardot jelentenek, mert a biztonság fokozható is, _de_ csökkenthető is velük. Ha a kérkedő címeket a bitonság javítására használjuk, a jellegzetes címek megnehezítik, hogy az ellenfél a saját címét helyettesítse be, és az ügyfelek neki fizessenek. Sajnos, a kérkedő címek azt is lehetővé teszik, hogy bárki létrehozzon egy olyan címet, ami _hasonlít_ egy másik véletlen címhez, vagy akár egy másik kérkedő címhez, és így be tudja csapni az ügyfeleket. 
+
+Eugénia közzétehet egy véletlenszerűen generált címet (pl. 1J7mdg5rbQyUHENYdx39WVWK7fsLpEoXZy), amelyre bárki elküldheti az adományát. Vagy generálhat egy kérkedő címet is, amelynek 1Kids a kezdete, ezáltal jellegzetesebb lesz a cím. 
+
+Mindkét esetben az egyetlen fix cím használatának (az egyes adományozóknak külön, dinamikusan generált dinamikus címekkel szemben) az a veszélye, hogy egy tolvaj behatolhat a web helyre, és a saját címével helyettesítheti a címet, ezzel az adományokat magához irányíthatja át. Ha az adományokat fogadó címet számos különböző helyen reklámozva lettek, akkor a felhasználók vizuálisan ellenőrizni tudják a címet, mielőtt fizetnének rá, hogy valóban ugyanaz-e a cím, mint amit a web helyen, a nekik küldött levélben vagy szórólapon láttak. Egy olyan véletlen cím esetében, mint amilyen pl. a "1J7mdg5rbQyUHENYdx39WVWK7fsLpEoXZy", az átlagos felhasználó az első néhány karaktert ellenőrzi, például a "1J7mdg"-t, és ha ez egyezik, akkor úgy tekinti, hogy a cím helyes. Ha valaki lopási céllal egy hasonlónak látszó címet állít elő egy kérkedő címet generáló programmal, akkor egy olyan cím, melynek első néhány karaktere megegyezik az adománygyűtés címével, gyorsan generálható:
+
+.Egy véletlen címmel egyező kérkedő cím generálása
+|=======
+| Eredeti véletlen cím | 1J7mdg5rbQyUHENYdx39WVWK7fsLpEoXZy
+| Kérkedő cím (4 kar. egyezés) | 1J7md1QqU4LpctBetHS2ZoyLV5d6dShhEy
+| Kérkedő cím (5 kar. egyezés) | 1J7mdgYqyNd4ya3UEcq31Q7sqRMXw2XZ6n
+| Kérkedő cím (6 kar. egyezés) | 1J7mdg5WxGENmwyJP9xuGhG5KRzu99BBCX
+|=======
+
+
+Növeli egy kérkedő cím a biztonságot? Ha Eugénia azt a kérkedő címet állítja elő, hogy "1Kids33q44erFfpeXrmDSz7zEqG2FesZEN", a felhasználók a kérkedő karaktereket, valamint _az ezek mögött álló néhány karaktert_ fogják megvizsgálni, pl. a cím "1Kids33" részét. Ez arra kényszeríti a támadót, hogy egy olyan kérkedő címet állítson elő, amely legalább 6 karakter hosszú, de ehhez 3364-szer (58 * 58) több munkára van szükség, mint Eugénia a 4 karakteres kérkedő címéhez. Lényegében az Eugénia (vagy az általa megfizetett bányászközösség) által elvégzett munka arra „kényszeríti” a támadót, hogy hosszabb kérkedő címet állítson elő. Ha Eugénia egy bányászközösséget fogad föl egy 8 karakter hosszú kérkedő cím előállítására, akkor ezáltal a támadó a 10 karakteres tartományba kényszerül, amit személyi számítópen lehetetlen előállítani, és még egy cél-hardverrel vagy bányászközösséggel is nagyon költséges. Ami Eugéniának még megfizethető, a támadónak megfizethetetlen, különösen akkor, ha a csalás által szerezhető pénz arra sem elég, hogy fedezze a kérkedő cím előállításának a költségét. 
+
+==== Papír pénztárcák
+
+A papír pénztárcák papírra kinyomtatott privát kulcsok. A papír pénztárca a kényelemi okokból gyakran a titkos kulcshoz tartozó bitcoin címet is tartalmazza, de ez nem feltétlenül szükséges, mivel a bitcoin cím előállítható a titkos kulcsból. A papír pénztárcák nagyon hatékony módszert jelentenek biztonsági mentések, vagy offline bitcoin tárolók létrehozására. Az offline bitcoin tárolók neve: „hideg tároló”. Mentési mechanizmusként a papír pénztárca védelmet nyújthat egy számítógép meghibásodásakor a kulcs elvesztése ellen, pl. ha a számítógépnek tönkremegy a diszkje, vagy ellopják, vagy ha a kulcs véletlenül törlésre kerül. A papír pénztárcák „hideg tárolóként”  nagyon biztonságosak a hackerekkel, key-loggerekkel és más számítógépes fenyegetésekkel szemben, ha offline állították elő őket, és soha nem voltak online rendszeren tárolva. 
+
+A papír pénztárcák sokféle alakban és méretben léteznek, de lényegében csupán egy papírra kinyomtatott kulcsból és címből állnak. A papír pénztárcáknak ez a legegyszerűbb alakja.
+
+.Egy nagyon egyszerű papír pénztárca: a bitcoin cím és a titkos kulcs kinyomtatva
+|=======
+| Bitcoin cím | 1424C2F4bC9JidNjjTUZCbUxv6Sa1Mt62x
+| Titkos kulcs (WIF) | 5J3mBbAH58CpQ3Y5RNJpUKPE62SQ5tfcvU2JpbnkeyhfsYB1Jcn
+|=======
+
+A papír pénztárcák könnyen előállíthatók olyan eszközökkel, mint pl. a bitaddress.org címen található kliens-oldali Javascript generátor. Ez a web lap a kulcsok és a papír pénztárcák előállításához szükséges összes kódot tartalmazza, és a működéséhez nincs szükség Internet kapcsolatra. Használatához mentsük el a HTML oldalt a lokális meghajtónkra vagy egy külső USB meghajtóra. Kapcsolódjuk le az Internetról, és nyissuk meg az állományt egy Web böngészőben. Még jobb, ha egy friss operációs rendszert töltünk be, pléldául egy CDROM-ról bootolható Linuxot. Míg offline vagyunk, az eszköz által generált kulcsok a helyi nyomtatón egy USB kábellel (nem Wifi-vel) kinyomtathatók, ezáltal olyan papír tárcák állíthatók elő, melyek kulcsai csak a papíron léteznek, és soha nem voltak online rendszerben tárolva. Ha ezeket a papír pénztárcákat egy tűz-biztos széfbe tesszük, és bitcoint „küldünk” a bitcoin címeikre, akkor ezzel egy egyszerű, de nagyon hatékony „hideg tárolót” valósítunk meg.
+
+.Egy egyszerű papír tárcára a bitaddress.org-ról
+image::images/paper_wallet_simple.png["paper_wallet_simple"]
+
+Az egyszerű papír pénztárca hátránya az, hogy a kinyomtatott kulcsok sebezhetők a lopással szemben. Ha egy tolvaj hozzáfér a papír tárcához, akkor ellophatja vagy lefényképezheti a kulcsokat, és a birtokába juthat a kulcsok által őrzött bitcoinoknak. Egy fejlettebb papír pénztárca megoldás BIP0038 kódolt privát kulcsokat használ. A papír tárcára kinyomtatott kulcsokat jelmondat védi, melyet a tulajdonos kívülről tud. A jelmondat nélkül a kódolt kulcsok haszontalanok. Ugyanakkor jobbak, mint egy jelszóval védett pénztárca, mert a kulcsok soha sem voltak online, és fizikailag kell őket elővenni egy széfből vagy más, fizikailag biztonságos tárolóból. 
+
+.Példa egy kódolt papír tárcára a bitaddres.org-ról. A jelmondat: „test”
+image::images/paper_wallet_encrypted.png["paper_wallet_encrypted"]
+
+[FIGYELMEZTETÉS]
+====
+Egy papír tárcába akárhányszor lehet pénzt küldeni, de a pénzt csak egyszer lehet belőle felvenni. Ekkor a benne lévő összes pénzt el kell költeni. Ez azért van így, mert a pénz elköltése során felfedjük a privát kulcsot, másfelől azért, mert némelyik pénztárca a visszajáró pénznek egy további, újabb címet állít elő, ha nem az egész összeget költjük el. Mindent úgy költhetünk el, ha papír tárcában lévő összes pénzt felvesszük, és a maradék pénzt egy új papír tárcába küldjük. 
+====
+
+Sokféle méretű és kivitelű papír tárca van, melyeknek különféle tulajdonságaik vannak. Némelyik ajándékul szolgál, és az alkalomhoz illő témáik vannak, pl. Karácsonyi vagy Újévi jelenetek. Mások arra a célra szolgálnak, hogy egy banki páncélteremben vagy széfben őrizzük őket. Ezeknél a privát kulcs valamilyen módszerrel el van takarva, pl. nem átlátszó, lekaparható matricával, vagy össze van hajtogatva és egy biztonságos öntapadó fóliával van leragasztva.
+
+.Példa egy papír tárcára a bitcoinpaperwallet.com-ról, ahol a titkos kulcs egy összehajtható fülön van.
+image::images/paper_wallet_bpw.png["paper_wallet_bpw"]
+
+.A bitcoinpaperwallet.com-ról származó papír tárca, ahol a titkos kulcs rejtve van.
+image::images/paper_wallet_bpw_folded.jpg["paper_wallet_bpw_folded"]
+
+Más típusok leválasztható ellenőrző szelvények formájában a kulcsból és a címből több példányt tartalmaznak, hasonlóan a jegyek ellenőrző szelvényeihez, ezáltal több példányban tárolhatók, ami megvédi őket a tűzesetek, árvizek és más természeti katasztrófák ellen. 
+
+.Példa egy papír tárcára, amely egy tartalék „fülön” a kulcsok további másolatait tartalmazza.
+image::images/paper_wallet_spw.png["paper_wallet_spw"]
+

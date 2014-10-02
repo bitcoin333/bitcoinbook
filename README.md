@@ -11,3 +11,7 @@ To contribute to this book, please fork and make changes to your forked copy, th
 "Mastering Bitcoin" will be available in print and e-book format in Fall 2014. To pre-order your copy, please visit:
 
 http://bitcoinbook.info
+
+# Translations
+
+The Hungarian translation of the book can be found in the HU subdirectory.

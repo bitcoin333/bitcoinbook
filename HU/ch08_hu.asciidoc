@@ -1,0 +1,814 @@
+[[ch8]]
+== Bányászat és konszenzus
+
+[[mining]]
+=== Bevezetés – bányszat és konszenzus
+
+A bányászat az a folyamat, melynek során új bitcoinokkal bővül. A bányászat védi a bitcoin rendszert a csalásoktól vagy ugyanannak a bitcoin összegnek a többszöri  elköltésétől, azaz az ún. kettős költéstől is. A bányászok felfolgozó kapacitást biztosítanak a bitcoin hálózatnak, ezért cserébe bitcoinokat kaphatnak jutalomul. A bányászok végzik az új tranzakciók ellenőrzését és rögzítését a globális főkönyvbe. Minden 10 percben egy új blokk kerül „kibányászásra”, amely az utolsó blokk óta előforduló tranzakciókat tartalmazza. Ennek révén a blokklánc ezekkel a tranzakciókkal bővül. Azokat a tranzakciókat, melyek a blokk részévé váltak, és hozzá lettek adva a blokklánchoz, „megerősítettnek” tekintjük. A megerősítés teszi lehetővé az új bitcoin tulajdonosok számára, hogy elköltsék az ilyen tranzakciókban kapott bitcoinjaikat. A bányászok kétféle jutalmat kapnak a bányászatért: az új blokkokkal létrejövő új érméket, és a blokkban lévő tranzakciók tranzakciós díjait. Ahhoz, hogy megkaphassák ezt a jutalmat, a bányászoknak egy kriptográfiai hash algoritmussal kapcsolatos bonyolult matematikai problémát kell megoldaniuk. A probléma megoldása, az ún. munkabizonyíték (Proof-of-Work) beépül az új blokkba, és bizonyítékul szolgál arra nézve, hogy a bányász jelentős számítási munkát végzett. A bitcoin biztonságát az egymással versenyző bányászok alapozzák meg, akik a munkabizonyíték algoritmusának megoldása révén jutalomhoz és a tranzakciók blokkláncban történő rögzítésének a jogához jutnak.
+
+Az új érmék előállításának folyamatát azért hívjuk bányászatnak, mert a jutalom úgy lett megalkotva, hogy a nemesfémek bányászatához hasonlóan a hozadék egyre kisebb legyen. A bitcoin pénz-kibocsátása bányászattal történik , hasonlóan ahhoz, ahogy egy központi bank bankjegyek nyomtatásával új pénzt hoz létre. A bányászok által a blokkhoz hozzáadott új bitcoinok mennyisége kb. négy évenként (pontosabban 210 ezer blokkonként) a felére csökken. 2009 januárjában 50 bitcoin / blokk értékkel indult a folyamat, ez 2012 novemberében 25 bitcoin/ blokkra csökkent. A jutalom valamikor 2016-ban fog újra feleződni, és 12.5 bitcoin lesz. Ennek a képletnek az alapján a bitcoin bányászat jutalma exponenciálisan csökken, egészen 2140-ig, amikorra az összes bitcoin (20 999 999.98 BTC) kibocsátásra kerül. 2140 után több új bitcoin nem kerül forgalomba.
+
+A bitcoin bányászok a tranzakciós díjakat is megkapják. Mindegyik tranzakció tartalmazhat tranzakciós díjakat, a tranzakció bemenetei és kimenetei közötti többlet formájában. A győztes bitcoin bányász jut hozzá a nyertes blokkban lévő tranzakciókból származó „visszajáró” pénzhez. Manapság a díjak a bitcoin bányászok bevételeinek 0.5 %-át vagy még kisebb hányadát alkotják, a bevétel túlnyomó többsége az újonnan „vert” bitcoinokból származik. Ahogyan a jutalom idővel csökken majd, a blokkonkénti tranzakciók száma pedig nő, a bitcoin bányászok bevételének nagyobb hányada fog a díjakból származni. 2140 után a bitcoin bányászok összes bevételét a tranzakciós díjak fogják jelenteni. 
+
+A „bányászat” szó kicsit félrevezető. Azáltal, hogy a nemesfémek bányászatának a képét idézi föl, a figyelmet a bányászatért kapott jutalomra, a blokkonként létrejövő új bitcoinokra irányítja. Noha a bányászatot ez a jutalom hajtja, a bányászat elsődleges célja nem a jutalom vagy az új érmék előállítása. Ha a bányászatot csak az érmék előállítására szolgáló folyamatnak tekintjük, akkor a folyamat eszközét (ösztönzőjét) a folyamat céljával keverjük össze. A bányászat jelenti a decentralizált elszámolóház fő folyamatát. A bányszat során kerülnek ellenőrzésre és elszámolásra  a tranzakciók. A bányászat teremti meg a bitcoin rendszer biztonságát és lehetővé teszi, hogy az egész hálózatban központi szervezet nélkül jöjjön létre a konszenzus. A bányászat az az újítás, ami a bitcoint különlegessé teszi: a bányászat az a decentralizált biztonsági mechanizmus, ami a peer-to-peer digitális pénz alapja. Az újonnan kibocsájtott érmék révén kapott jutalom és a tranzakciós díjak olyan ösztönzést jelentenek, amely a bányászok tetteit a hálózat biztonságával hozza összhangba, és egyúttal a pénzkibocsátást is megoldja.
+
+Ebben a fejezetben először a bányászatot mint pénz kibocsátó mechanizmust fogjuk vizsgálni, majd megnézzük a bányászat legfontosabb funkcióját, a decentralizált konszenzus létrejöttének mechanizmusát, amely  megteremti a bitcoin biztonságát. 
+
+==== A bitcoin gazdaság és a pénz kibocsájtás
+
+A bitcoinokat az új blokkok létrehozása során „verik”, fix és egyre csökkenő ütemben. Az átalgosan 10 percenként létrejövő új blokkok mindegyikében teljesen új bitcoinok vannak, melyek a semmiből jönnek létre. Minden 210 ezer blokk, azaz kb. minden négy év után a pénz kibocsátás mértéke 50 %-kal csökken. A hálózat működésének első négy éve során mindegyik új blokk 50 új bitcoint tartalmazott. 2012 novemberében az új bitcoinok kibocsájtási üteme 25 bitcoin/blokkra csökkent, és valamikor 2016-ban, a 420000-ik blokknál fog csökkenni ismét, és 12.5 bitcoin lesz. Az új érmék kibocsájtási üteme 64 „felezés” révén, exponenciálisan csökken, egészen a 13,230,000-ik blokkig (melyet valamikor 2137-ben fognak kibányászni), amikor is a jutalom eléri a legkisebb pénzegységet, az 1 satoshit. Végül a 13.44 milliomodik blokk után, kb. 2140-re a kibocsájtott bitcoinok mennyisége 2,099,999,997,690,000 satoshi, azaz kb. 21 millió bitcoin lesz. Ezt követően a blokkok már nem fognak új bitcoinokat tartalmazni, és a bányászok jutalma kizárólag a tranzakciós díjakból fog származni.
+
+A lenti példában a kibocsájtott bitcoinok összmennyiségét számítjuk ki:
+
+[[max_money]]
+.A kibocsájott bitcoinok mennyiségét kiszámító script
+====
+[source, python]
+----
+include::code/max_money.py[]
+----
+====
+
+A script futtatása:
+
+[[max_money_run]]
+.A max_money.py script futttatása
+====
+[source,bash]
+----
+$ python max_money.py 
+Total BTC to ever be created: 2099999997690000 Satoshis
+----
+====
+
+[[bitcoin_money_supply]]
+.A bitcoin mennyiségét az idő függvényében egy mértanilag csökkenő pénzkibocsájtási ütem határozza meg
+image::images/BitcoinMoneySupply.png["BitcoinMoneySupply"]
+
+A véges és egyre csökkenő kibocsájtás egy véges pénzkészletet hoz létre, amely ellenálló az inflációval szemben. A hagyományos papírpénzekkel szemben, melyek korlátlanul nyomtathatók, a bitcoin nyomtatással soha sem lesz inflálható.
+
+===== Deflációs pénz
+
+A fix és egyre csökkenő pénzkibocsájtás egyik legfontosabb és legvitatottabb következménye az, hogy a pénz óhatatlanul deflációs tendenciát rejt magában. A defláció az a jelenség, melynek során nő a pénz értéke,  mivel a kereslet és a kínálat közötti egyensúly hiánya felhajtja a a pénz értékét (és váltási árfolyamát). Az árak deflációja, vagyis az infláció ellentéte azt jelenti, hogy a pénznek idővel egyre nagyobb lesz a vásárlóértéke.
+
+Sok közgazdász érvelése szerint egy deflációs gazdaság katasztrófát jelent, és mindenáron el kell kerülni. Ennek az az oka, hogy a gyors defláció időszakában az emberek inkább felhalmozzák a pénzt, ahelyett hogy elköltenék, mert azt remélik, hogy az árak csökkenni fognak. Ilyen jelenség bontakozott ki Japán „Elveszett Évtizede” során, mikor a kereslet teljes összeomlása egy deflációs spirálba taszította a japán pénzt. 
+
+A bitcoin szakértők érvelése szerint a defláció önmagában nem rossz. Szerintük a deflációt eddig azért a kereslet összeomlásával hozták kapcsolatba, mert az általunk tanulmányozható deflációra ez az egyetlen példa. A papírpénz korlátlan nyomtathatósága mellett nagyon nehéz deflációs spirálba kerülni, kivéve, ha teljesen összeomlik a kereslet és nincs pénznyomtatási hajlandóság. A bitcoin deflációját nem a kereslet összeomlása okozza, hanem az előre megjósolható kibocsájtás.  
+
+A gyakorlatban bebizonyosodott, hogy a deflációs pénz által okozott felhalmozási ösztön árleszállításokkal legyőzhető, ha az árleszállítás mértéke nagyobb, mint a vevő felhalmozási ösztöne. Mivel az eladó szintén érdekelt a pénz felhalmozásban, a leszállított ár jelenti azt az egyensúlyi árat, amely mellett a két felhalmozási ösztön kiegyenlíti egymást. A legtöbb eladó 30%-os árleszállítással különösebb nehézségek nélkül le tudja győzni a felhalmozási ösztönt, és bevételt tud generálni. A jövő zenéje, hogy a pénz deflációs jellege valóban próblémát jelent-e, ha a deflációt nem a gyors gazdaságcsökkenés váltja ki.
+
+=== Decentralizált közmegegyezés/konszenzus
+
+Az előző fejezetben a blokkláncot, vagyis az összes tranzakciót tartalmazó globális publikus főkönyvet vizsgáltuk, amelyet a bitcoin rendszer valamennyi résztvevője a tulajdon hiteles okmányaként fogad el. 
+
+De hogyan lehet a hálózaton belül kölcsönös bizalom nélkül egyetlen univerzális „igazságban” megállapodni arra vonatkozóan, hogy kinek mije van? Az összes hagyományos fizetési rendszer egy bizalmi modellen alapul, melyben egy központi szervezet nyújtja a elszámolási szolgáltatást, amely alapjában véve ellenőrzi és elszámolja a tranzakciókat. A bitcoinban nincs ilyen központi szervezet, és mégis minden csomópontnak egy teljes másolata van a főkönyvről, melyben hiteles okmányként megbízhat. A blokkláncot nem egy központi szervezet hozza létre, hanem egymástól függetlenül a hálózat csomópontjai állítják össze. Valamilyen módon a hálózat csomópontjai képesek a nem biztonságos hálózati összeköttetéseken továbbított információk alapján ugyanarra a következtetésre jutni és ugyanazt a főkönyönvi példányt összeállítani, mint a többiek. Ebben a fejezetben azt a folyamatot vizsgájuk meg, amellyel a a bitcoin hálózat központi szervezet nélkül globális közmegegyezést/konszenzust ér el.
+
+Satoshi Nakamoto fő felfedezését a konszenzus _kialakulásának_ decentralizált mechanizmusa jelenti. A kialakuló konszenzus nem explicit módon jön létre – nincsenek választások vagy rögzített időpillanatok, amikor közmegegyezés van. A közmegegyezés inább a sok ezer, egyszerű szabályokat követő, független csomópontok aszinkron kölcsönhatásai révén kialakuló jellemző. A bitcoin összes jellemzője , köztük a pénz, a tranzakciók, a pénz küldés és a biztonság egyike sem függ egy központi szervezettől és nem a bizalomra épül, hanem ebből a felfedezésből adódik. 
+
+A bitcoin decentralizált közmegyezése négy folyamat kölcsönhatásának az ereményeképpen jön létre. A négy folyamat egymástól függetlenül megy végbe a hálózat csomópontjain: 
+
+* a teljes csomópontok az egyes tranzakciókat számos kritérium alapján, egymástól függetlenül ellenőrzik
+* a bányász csomópontok ezeket a tranzakciókat egymástól függetlenül új blokkokban egyesítik, emellett a munkabizonyíték algoritmus segítségével igazolják, hogy elvégeztek bizonyos számításokat
+* az új blokkokat minden egyes csomópont egymástól függetlenül ellenőrzi és egy láncba állítja össze
+* minden egyes csomópont egymástól függetlenül választja ki, hogy melyik az a lánc, amelyben összesítve, a munkabizonyítékok alapján a legtöbb számítás történt
+
+A következő néhány részben megvizsgáljuk, hogy ezek a folyamatok és kölcsönhatásaik hogyan teremtik meg a hálózat egészében megjelenő közmegegyezést, amellyel  bármely bitcoin csomópont képes a saját hiteles, megbizható, publikus és globális főkönyvének az összeállítására.
+
+[[tx_verification]]
+=== A tranzakciók egymástól független ellenőrzése
+
+Az előző fejezetben láttuk, hogy egy pénztárca programja az UTXO-k összegyűjtésével állítja elő a tranzakciókat. Ennek során először megadja a megfelelő zárolást feloldó scripteket, majd új kimeneteket hoz létre, melyek egy új tulajdonoshoz vannak hozzárendelve. Az így előálló tranzakciót ezután elküldi a bitcoin hálózat szomszédos csompontjainak, hogy a tranzakció az egész bitcoin hálózatban szétterjedhessen.
+
+De mielőtt egy bitcoin csomópont továbbítaná a tranzakciókat a szomszédainak, először ellenőrzi őket. Ez biztosítja, hogy csak érvényes tranzakciók továbbítása történhessen meg a hálózatban, és az érvénytelen tranzakciókat már az első csomópont elvesse.
+
+Mindegyik csomópont minden egyes tranzakciót kritériumok hosszú listája alapján ellenőriz:
+
+* helyes-e a tranzakció szintaxisa és adatstruktúrája
+* sem a bemenetek, sem a kimenetek listája nem lehet üres
+* a tranzakció mérete byte-okban kisebb-e a MAX_BLOCK_SIZE-nál
+* az egyes kimenetek, valamint a összegüknek a megengedett tartományon belül vannak-e (kevesebb-e, mint 21 M érme, és több-e, mint 0)
+* semelyik bemenet hash-e sem lehet 0, N=-1 (a coinbase tranzakciókat nem kell továbbküldeni)
+* nLockTime kisebb vagy egyenlő-e INT_MAX-nál
+* a tranzakció mérete byte-okban nagyobb vagy egyenlő-e 100-nál
+* a tranzakcióban lévő aláírási műveletek száma kevesebb-e, mint az aláírások max. számára vonatkozó határ
+* a zárolást feloldó script (scriptSig) csak számokat helyezett-e a veremre, a zároló script (scriptPubkey) pedig illeszkedik-e az isStandard formátumokhoz (itt lesznek a „nem szabványos” tranzakciók elvetve)
+* a memória készletben vagy a fő ágban lévő blokkban létezik-e egy ennek megfelelő tranzakció
+* minden egyes bemenetre, ha a hivatkozott kimenetek léteznek a memória készletben lévő bármelyik másik tranzakcióban, akkor a tranzakció elvetése
+* minden egyes bemenetre, a fő ágban és a tranzakció készletben ellenőrzi, hogy létezik-e a hivatkozott kimenő tranzakció. Ha a kimenő tranzakció bármelyik bemenetnél hiányzik, akkor egy elárvult tranzakcióról van szó. A tranzakciót hozzáadja az elárvult tranzakciók listájához, ha a listában még nincs egy ennek megfelelő tranzakció
+* minden egyes bemenetre, ha a hivatkozott kimeneti tranzakció egy coinbase kimenet, akkor van-e legalább COINBASE_MATURITY (100) megerősítés
+* minden egyes bemenetre, a hivatkozott kimenet létezik-e és elköltetlen-e
+* a hivatkozott kimeneti tranzakciók alapján a bemeneti értékek megállapítása, és annak az ellenőrzése, hogy mindegyik bemeneti érték, valamint az összegük is a megengedett értéktartományban van-e (21 M érménél kevesebb, 0-nál több)
+* a tranzakció elvetése, ha a bemeneti értéke összege < a kimeneti értékek összege
+* a tranzakció elvetése, ha a tranzakciós díj túl kicsi ahhoz, hogy a tranzakció bekerülhessen egy üres blokkba
+*minden egyes bemenetre a zárolást feloldó script és a neki megfelelő kimeneti zároló script megefelel-e egymásnak
+
+Ezek a feltételek a bitcoin referencia kliens következő függvényeiben szerepelnek:  +AcceptToMemoryPool+, +CheckTransaction+, és +CheckInputs+. A feltételek idővel változhatnak, pl. ha újfajta szolgáltatás megtagadási támadás kezelésére van szükség, vagy arra, hogy a szabályok lazításával többféle tranzakció típus legyen kezelhető. 
+
+Egy tranzakció beérkezésekor minden egyes csomópont  a többi csomóponttól függetlenül ellenőrzi a tranzakciót, és a tranzakció továbbítása előtt mindegyik csomópont felépíti az érvényes új tranzakciók készletét, közel ugyanabban a sorrendben.
+
+=== Bányász csomópontok
+
+A bitcoin hálózat bizonyos csomópontjai speciális csomópontok, az ún. _bányászok_. Az 1. fejezetben bemutattuk Jinget, a bitcoin bányászt, aki a kínai Sanghajban tanul számítástechnikát. Jing úgy jut bitcoinokhoz, hogy egy „bányász platformot” futtat, amely egy bitcoin bányászatra tervezett speciális számítógép hardver. Jing speciális bányász hardvere összeköttetésben áll egy teljes bitcoin csomópontot futtató szerverrel. Jingtől eltérően némelyik bányász teljes csomópont nélkül bányászik, amint azt a <<bányatársaságok>> részben látni fogjuk. Jing csomópontja a megkapja és továbbítja a bitcoin hálózat megerősítetlen tranzakcióit. Jing csomópontja azonban új blokkokba is egyesíti ezeket a tranzakciókat.
+
+Jing csomópontja is észleli a bitcoin hálózatot belül továbbított új blokkokat, épp úgy, mint bármely másik csomópont. De egy új blokk érkezése a bányász csomópont számára speciális jelentőségű. A bányászok közötti versengést lényegében az új blokk szétterjedése állítja le, ami a győztes kihirdetésének felel meg. Egy bányász számára egy új blokk azt jelenti, hogy valaki más nyerte meg a versenyt, ő pedig veszített. De egy versenyforduló vége egyúttal a következő forduló kezdete. Az új blokk nem csak egy kockás zászló, amely a verseny végét jelzi, hanem egy startpisztoly is, mely a következő blokkért folyó versenyt indítja.
+
+=== A tranzakciók blokkokba gyűjtése
+
+A bitcoin csomópontokban a tranzakciók az ellenőrzés után bekerülnek a _memória pool_-okba, másképpen _tranzakció készletekbe_. A tranzakciók itt várakoznak arra, hogy bekerüljenek egy blokkba (kibányásszák őket). Jing csomópontja az új tranzakciókat összegyűjti, ellenőrzi, és továbbítja, épp úgy, mint bármelyik másik csomópont. De a többi csomóponttól eltérően  Jing csomópontja ezekből a tranzakciókból egy _blokk jelöltet_ hoz létre.
+
+Kövessük a annak a blokknak az útját, amely akkor keletkezett, amikor Alice egy csésze kávét vett Bob kávézójában (lásd az <<egy csésze kávé>> részt). Alice tranzakciója a 277,316-ik blokkba lett befoglalva. A fejezetben szereplő fogalmak szemléltetése érdekében tegyük fel, hogy a blokkot Jing bányász rendszere bányászta ki, és kövessük Alice tranzakcióját, amint részévé válik ennek az új blokknak.
+
+Jing bányász csomópontja egy helyi példányt tart fönn a blokkláncból, vagyis a bitcoin rendszer kezdete, 2009 óta képződött összes blokkból. Mikor Alice megvette a csésze kávét, Jing csomópontja már egészen a 277,314-ik blokkig összeállította a láncot. Jing csomópontja figyelte a tranzakciókat, megpróbált előállítani egy új blokkot, és egyúttal figyelte a többi csomópont által előállított blokkokat is. Miközben Jing csomópontja bányászott, megjött a 277,315-ik blokk a bitcoin hálózattól. Az új blokk érkezése jelzi a 277,315-ik blokkért történő versengés végét, és a 277,316-ik blokk létrehozásáért folytatott verseny kezdetét. 
+
+Az előző 10 percben, míg Jing csomópontja a 277,315-ik blokk megoldását kereste, az új blokk előállításának előkészületeként tranzakciókat is gyűjtött. Mostanra már pár száz tranzakció gyűlt össze a memóriában. Amikor Jing csomópontjamegkapta a 277,315-ik blokkot és ellenőrizte azt, a memóriában lévő tranzakciókat is ellenőrizte, és eltávolította azokat, melyek szerepeltek a 277,315- blokkban. A memóriában maradó tranzakciók megerősítetlenek, és arra várnak, hogy egy új blokkba foglalják őket. 
+
+Jing csomópontja egy új üres blokkot állít elő, a 277,316-ik blokkot. Ez a blokk csak egy létrehozandó blokk jelölt, mert még nem érvényes, mivel nincs benne érvényes munkabizonyíték. A blokk csak akkor válik érvényessé, ha a bányásznak sikerül egy megoldást találnia a munkabizonyíték algoritmusával.
+
+==== Tranzakció életkor, díjak és prioritás
+
+Jing bitcoin csomópontja kiszámítja az összes, memóriában lévő tranzakció prioritását, és a létrehozandó blokk jelölthöz először a legmagasabb prioritású tranzakciókat adja hozzá. A tranzakciók prioritása a bemeneteikben szereplő UTXO-k  „korától”  függ. Ez lehetővé teszi, hogy a régi és nagy értékű bemenetek elsőbbséget élvezzenek az újabb és kisebb bemenetekkel szemben. Az elsőbbséget élvező/priorizált tranzakciók díj nélkül küldhetők, ha elég hely van a blokkban. 
+
+A tranzakció prioritása úgy számítható ki, hogy összeadjuk az egyes bemenetek értékének és életkorának szorzatait, és az összeget elosztjuk a tranzakció teljes méretével:
+
+----
+Prioritás = Összeg(Bemenet_értéke * Bemenet_életkora) / Tranzakció_méret 
+----
+
+A fenti egyenletben a bemenet értéke alap egységekben, satoshi-ban (1/100M bitcoinban) van megadva. Az UTXO életkora az UTXO blokkláncban történő rögzítése óta képződött blokkok számával egyenlő. Az életkor azt méri, hogy milyen „mélyen” van a blokk a blokkláncban. A tranzakció mérete byte-okban van megadva.
+
+Egy tranzakció akkor számít „magas prioritásúnak”, ha a prioritása nagyobb, mint 57,600,000, ami annak felel meg meg, mint ha 1 bitcoin (100M satoshi), melynek életkora 1 nap (144 blokk) egy 250 byte méretű tranzakcióban szerepelne.
+
+----
+Magas_prioritás > 100,000,000 satoshi * 144 blokk / 250 byte = 57,600,000
+----
+
+A tranzakciós tér első 50 kilobyte-ja a magas prioritású tranzakciók számára van fenntartva. Jing csomópontja kitölti az első 50 kilobyte-ot, és ebben a díjtól függetlenül a legmagasabb prioritású tranzakciókat helyezi el először. Ez lehetővé teszi a magas prioritású tranzakciók feldolgozását akkor is, ha a bennük szereplő tranzakciós díj nulla.
+
+Jing bányász csomópontja ezután a blokk maradék részét azokkal a tranzakciókkal tölti fel, melyek legalább a minimális tranzakciós díjat tartalmazzák, elsőbbségben részesítve azokat, melyeknél egy kilobyte-ra vonatkoztatva a legmagasabb a tranzakciós díj. A feltöltés egészen a max. blokkméretig (a kódban MAX_BLOCK_SIZE) tart. 
+
+Ha marad még hely a blokkban, akkor Jing bányász csomópontja {a maradék helyet} tranzakciós díj nélküli tranzakciókkal tölti fel. Némelyik bányász a tranzakciós díj nélküli tranzakciókat „ahogy esik, úgy puffan” módon kezeli. Más bányászok viszont akár teljesen ki is hagyhatják a létrehozandó blokk jelöltből ezeket a tranzakciókat. 
+
+A blokk felöltése után a memóriában maradó tranzakciók a következő blokkba kerülhetnek be. Ha a tranzakciók a memóriában maradnak, a bemeneteik „öregebbekké” válnak, mivel az általuk elköltött UTXO az új blokk miatt mélyebbre kerül a blokkláncban. Mivel a tranzakció prioritása függ a bemeneteinek az életkorától, a memóriában maradó tranzakciók egyre régebbiek lesznek, és emiatt nő a prioritásuk. Végül a tranzakciós díjat nem tartalmazó tranzakciók is elég magas prioritásúvá válhatnak ahhoz, hogy díjtalanul befoglalásra kerülhessenek egy blokkba. 
+
+A bitcoin tranzakcióknak nincs lejárati idejük. Egy most érvényes tranzakció az idők végezetéig érvényes marad. Mivel azonban a tranzakciót a hálózat csak egyszer továbbítja, csak addig marad fenn, amíg bent van egy bányász csomópont memóriájában. Ha a bányász csomópontot újraindítják, a memóriájában lévő tartalom törlődik, mivel ez csak egy átmeneti, nem tartós tárolási forma. Noha a hálózat lehet, hogy egy érvényes tranzakciót küldött szét, ha a tranzakció nem hajtódik végre, akkor ennek az lehet az oka, hogy nem került be egyetlen bányász memóriájába sem. A pénztárca szoftverek ilyen esetben újraküldik a tranzakciót, vagy magasabb tranzakciós díjjal ismét előállítják és feladják őket, amíg végül ésszerű idő alatt meg nem történik a végrehajtásuk.
+
+Mikor Jing csomópontja összeszedte a memóriában lévő tranzakciókat, a jövendő blokk 418 tranzakciót tartalmazott, és a tranzakciós díj összesen 0.09094928 bitcoin volt. A blokkláncban ez a blokk a Bitcoin Core kliens parancssori felületével a következőképpen nézhető meg:
+====
+[source,bash]
+----
+$ *bitcoin-cli getblockhash 277316*
+0000000000000001b6b9a13b095e96db41c4a928b97ef2d944a9b31b2cc7bdc4
+
+$ *bitcoin-cli getblock 0000000000000001b6b9a13b095e96db41c4a928b97ef2d944a9b31b2cc7bdc4*
+----
+====
+[[block277316]]
+.Block 277,316
+====
+[source,json]
+----
+{
+    "hash" : "0000000000000001b6b9a13b095e96db41c4a928b97ef2d944a9b31b2cc7bdc4",
+    "confirmations" : 35561,
+    "size" : 218629,
+    "height" : 277316,
+    "version" : 2,
+    "merkleroot" : "c91c008c26e50763e9f548bb8b2fc323735f73577effbc55502c51eb4cc7cf2e",
+    "tx" : [
+        "d5ada064c6417ca25c4308bd158c34b77e1c0eca2a73cda16c737e7424afba2f",
+        "b268b45c59b39d759614757718b9918caf0ba9d97c56f3b91956ff877c503fbe",
+
+        ... 417 további tranzakció ...
+
+       ],
+    "time" : 1388185914,
+    "nonce" : 924591752,
+    "bits" : "1903a30c",
+    "difficulty" : 1180923195.25802612,
+    "chainwork" : "000000000000000000000000000000000000000000000934695e92aaf53afa1a",
+    "previousblockhash" : "0000000000000002a7bbd25a417c0374cc55261021e8a9ca74442b01284f0569",
+    "nextblockhash" : "000000000000000010236c269dd6ed714dd5db39d36b33959079d78dfd431ba7"
+}
+----
+====
+
+==== A generáló tranzakció
+
+A blokk első tranzakciója egy különleges tranzakció, melyet _generáló tranzakciónak_ vagy _coinbase tranzakciónak_ hívnak. Ezt a tranzakciót Jing csomópontja hozza létre, és a bányászatért járó jutalmat tartalmazza. Jing csomópontja a generáló tranzakciót a saját pénztárcájába történő kifizetésként hozza létre: „Kifizetés Jing címére 25.09094928 bitcoin értékben”.  A blokk kibányászásáért kapott összes jutalom a coinbase jutalom (25 új bitcoin) és a blokkba befoglalt tranzakciók tranzakciós díjainak az (0.09094928) összege. 
+
+
+====
+[source, bash]
+----
+$ *bitcoin-cli getrawtransaction d5ada064c6417ca25c4308bd158c34b77e1c0eca2a73cda16c737e7424afba2f 1*
+----
+====
+
+[[generation_tx_example]]
+.Generáló tranzakció
+====
+[source,json]
+----
+{
+    "hex" : "01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0f03443b0403858402062f503253482fffffffff0110c08d9500000000232102aa970c592640d19de03ff6f329d6fd2eecb023263b9ba5d1b81c29b523da8b21ac00000000",
+    "txid" : "d5ada064c6417ca25c4308bd158c34b77e1c0eca2a73cda16c737e7424afba2f",
+    "version" : 1,
+    "locktime" : 0,
+    "vin" : [
+        {
+            "coinbase" : "03443b0403858402062f503253482f",
+            "sequence" : 4294967295
+        }
+    ],
+    "vout" : [
+        {
+            "value" : 25.09094928,
+            "n" : 0,
+            "scriptPubKey" : {
+                "asm" : "02aa970c592640d19de03ff6f329d6fd2eecb023263b9ba5d1b81c29b523da8b21 OP_CHECKSIG",
+                "hex" : "2102aa970c592640d19de03ff6f329d6fd2eecb023263b9ba5d1b81c29b523da8b21ac",
+                "reqSigs" : 1,
+                "type" : "pubkey",
+                "addresses" : [
+                    "1MxTkeEP2PmHSMze5tUZ1hAV3YTKu2Gh1N"
+                ]
+            }
+        }
+    ],
+    "blockhash" : "0000000000000001b6b9a13b095e96db41c4a928b97ef2d944a9b31b2cc7bdc4",
+    "confirmations" : 35566,
+    "time" : 1388185914,
+    "blocktime" : 1388185914
+}
+----
+====
+
+A szabályos tranzakciókkal ellentétben a generáló tranzakciók a bemenetükön nem fogyasztanak (nem költenek el) UTXO-kat. Csak egy bemenetük van, a _coinbase_, amely a semmiből állít elő új bitcoinokat. A generáló tranzakciónak egy kimenete van, melyben a bányász saját bitcoin címére történő kifizetés áll. A generáló tranzakció kimenete 25.09094928 bitcoint küld a bányász bitcoin címére, ebben az esetben az +1MxTkeEP2PmHSMze5tUZ1hAV3YTKu2Gh1N+ címre.  
+
+==== A coinbase jutalom és tranzakciós díjak
+
+A generáló tranzakció előállításához Jing csomópontjának először ki kell számítania a teljes tranzakciós díjat úgy, hogy a blokkban szereplő 418 tranzakció összes bemenetének összegéből levonja a 418 tranzakció kimeneteinek összegét:
+
+----
+Teljes_díj = Összeg(Bemenetek) – Összeg(Kimenetek)
+----
+
+A 277,316-ik blokkban a tranzakciós díj 0.09094928 bitcoin volt. 
+
+Ezután Jing csomópontja kiszámítja a blokkért járó jutalmat. A jutalom a blokk magasságától függ, kezdetben 50 bitcoin, és minden 210,000 blokk után feleződik. Mivel ennek a blokknak a magassága 277,316, a pontos jutalom 25 bitcoin. 
+
+A számítás a Bitcoin Core kliens +GetBlockValue+ függvényében látható:
+
+[[getblockvalue_source]]
+.A blokk jutalom kiszámítása – +GetBlockValue+ függvény, Bitcoin Core kliens, main.cpp, 1305. sor
+====
+[source, cpp]
+----
+int64_t GetBlockValue(int nHeight, int64_t nFees)
+{
+    int64_t nSubsidy = 50 * COIN;
+    int halvings = nHeight / Params().SubsidyHalvingInterval();
+
+    // Force block reward to zero when right shift is undefined.
+    if (halvings >= 64)
+        return nFees;
+
+    // Subsidy is cut in half every 210,000 blocks which will occur approximately every 4 years.
+    nSubsidy >>= halvings;
+
+    return nSubsidy + nFees;
+}
+----
+====
+
+A kezdeti támogatás satoshiban az 50 és a +COIN+ konstans (100,000,000 satoshi) szorzata. A kezdeti jutalmat (+nSubsidy+) ez állítja be 5 milliárd satoshira.
+
+Ezt követően a függvény kiszámítja, hogy hány darab +feleződés+ történt, mégpedig úgy, hogy az aktuális blokk magasságot elosztja a felezési intervallummal (+SubsidyHalvingInterval+). A 277,316-ik blokk esetében az eredmény 1. 
+
+A megengedhető felezések értéke max. 64, ezért 64-nél több felezés esetén a kód nulla jutalmat ad (csak a tranzakciós díjat adja vissza).
+
+Ezután a függvény minden egyes felezésnek megfelelően a jobbra léptetéssel 2-vel osztja a jutalmat (+nSubsidy+) . A 277,316-ik blokk  esetében ez azt jelenti, hogy az 5 milliárd satoshis jutalmat egyszer lépteti jobbra (egy felezés van), az eredmény pedig 2.5 milliárd satoshi, vagyis 25 bitcoin. A 2-vel való osztás azért a bináris jobbra léptetéssel történik, mert ez hatékonyabb, mint egy egésszel vagy valós számmal történő osztás.
+
+Végül a coinbase jutalmat (+nSubsidy+) összeadja a tranzakciós díjjal (+nFees+), és ezt az összeget adja vissza eredményként. 
+
+==== A generáló tranzakció felépítése
+
+Ezen számítások után Jing csomópontja előállítja a generáló tranzakciót, amellyel kifizet magának 25.09094928 bitcoint. A generáló tranzakció a blokk első tranzakciója. A Bitcoin Core parancssori felületének használatával a generáló ranzakciót a következőképpen vizsgálhatjuk meg: {Lásd 4. ábra}
+
+Amint látható, ennek a tranzakciónak különleges formátuma van. A tranzakció bemenetén nem az elkölthető, előző UTXO-k vannak megadva, hanem egy „coinbase” bemenetet. A tranzakciós bemeneteket a <<tx_in_szerkezet>> részben vizsgáltuk meg. Hasonlítsuk össze egy szokásos  tranzakció bemenetet a generáló tranzakció bemenetével. Egy szokásos tranzakció a következőképpen néz ki:
+
+.Egy „szokásos” tranzakció egyik bemenetének szerkezete
+[options="header"]
+|=======
+|Méret| Mező | Leírás
+| 32 byte | Tranzakció hash | Mutató arra a tranzakcióra, amely az elköltendő UTXO-t tartalmazza
+| 4 byte | Output Index | Az elköltendő UTXO indexe, az első 0
+| 1-9 byte (VarInt) | A zárolást megszüntető script mérete | A zárolást megszüntető script mérete byte-okban
+| Változó | A zárolást megszüntető script | Az UTXO-t zároló script feltételeit kielégítő script
+| 4 byte | Sorszám | Tx-helyettesítő lehetőség, Jelenleg letiltva, 0xFFFFFFFF
+|=======
+
+A generáló tranzakció bemenete azonban így néz ki:
+
+.The structure of a generation transaction input
+
+.A generáló tranzakció bemenetének a szerkezete
+[options="header"]
+|=======
+|Méret| Mező | Leírás
+| 32 byte | Tranzakció hash | Az összes bit nulla: nem hivatkozik tranzakció hash-re
+| 4 byte | Output Index | Az összes bit egy: 0xFFFFFFFF
+| 1-9 byte (VarInt) | Coinbase adat méret | Coinbase adat hossza, 2 és 100 byte között
+| Változó | Coinbase adat | Tetszőleges adat, a V2 blokkokban az extra nonce-t és a bányász cimkéket tartalmazza, a blokk magassággal kell kezdődnie
+| 4 byte | Sorszám | 0xFFFFFFFF
+|=======
+
+A generáló tranzakcióban az első két mező olyan értékeket tartalmaz, amelyek nem UTXO hivatkozásnak felelnek meg. A „Tranzakció hash” helyett az első mező mind a 32 byte-ja nullával van feltöltve. Az „Output index” 4 byte-ja 0xFF (255). Az „Zárolást megszűntető script” helyén a coinbase adat található, amely a bányászok által használt adatmező. 
+
+==== Coinbase adatok
+
+A generáló tranzakcióknak nincs zárolást feloldó script (ún. scriptSig)  mezőjük. Ehelyett ez a mező coinbase adatokat tartalmaz, melyek hossza 2 és 100 byte között van. Az első néhány byte kivételével (lásd lejjebb) a coinbase adatok a bányász által tetszőlegesen használhatók.
+
+A genezis blokkban például Satoshi Nakamoto ezt a szöveget helyezte el a coinbase adatmezőbe: „The Times 03/Jan/2009 Chancellor on brink of second bailout for banks” („The Times, 2009. jan. 3., A pénzügyminiszter hajlik a bankok második kimentésére”). Ily módon a mezőt a dátum bizonyítására és egyúttal egy üzenet továbbítására használta. Jelenleg a bányászok a coinbase adatokat használják az extra nonce értékek elhelyezésére (lásd Bevezetés – Bányászat és közmegegyezés), valamint ide kerül a bányatársaságot azonosító szöveg, amint azt a következő részekben látni fogjuk.
+
+A coinbase első néhány byte-ja korábban tetszőleges lehetett, de ez most már nem így van. A BIP0034 (Bitcioin Improvement Proposal 34) szerint a 2. verziójú blokkoknak (amelyeknél a verzió mező 2-re van állítva) a blokk magasságot kell egy „push” script utasítással a coinbase mező elejére tenni.
+
+A 277,316. blokkban azt látjuk, hogy a generáló tranzakció coinbase mezőjében (amely a tranzakciós bemenet „Zárolást megszüntető scriptje” vagy scriptSig-je) a +03443b0403858402062f503253482f+ hexadecimális szám áll. Dekódoljuk ezt az értéket!
+
+Az első byte, a +03+ arra utasítja a script végrehajtó mechanizmust, hogy a következő 3 byte-ot helyezze a script vermére (lásd a tx_script_műveletek_pushdata részt). A következő 3 byte, a +0x443b04+ a blokk magasság, ahol a legkisebb helyiértékű byte áll legelől. A byte-ok sorrendjének megcserélése után +0x043b44+ lesz az eredmény, ami decimálisan 277,316.
+
+A következő néhány hexadecimális számjegy (+03858402062+) az extra _nonce_-t kódolja, amely a megfelelő munkabizonyíték előállításához használt véletlen érték. Ezt a következő részben fogjuk részletesebben tárgyalni.
+
+A coinbase adat utolsó része (+2f503253482f+) a „/P2SH/” string ASCII kódja, ami azt jelzi, hogy a blokkot kibányászó csomópont támogatja a BIP0016-ban definiált Fizetés-a-script-hashnek (P2SH) bővítést. A P2SH opció bevezetése megkövetelte, hogy a bányászok „szavazzanak”, hogy a BIP0016-ot vagy a BIP0017-et támogatják. Azok, akik a BIP0016-ot támogatták, a „/P2SH/”-t tették a coinbase adatmezőbe. Azok, akik a P2SH BIP0017 szerinti megvalósítását támogatták, a  „p2sh/CHV”-t tették a coinbase adatmezőbe. A BIP0016 lett győztes, de sok bányász továbbra is beteszi a „/P2SH/” stringet a coinbase mezőbe, így jelezve, hogy támogatja ezt az opciót.
+
+=== A blokk fej előállítása
+
+A blokk fej előállításához a bányász csomópontnak a következő hat mezőt kell kitöltenie:
+
+[[block_header_structure]]
+.A blokk fej szerkezete
+[options="header"]
+|=======
+|Méret| Mező | Leírás
+| 4 byte | Verzió | A szoftver/protokoll változásokat nyomon követő verziószám
+| 32 byte | Előző blokk hash-e | Hivatkozás a blokklánc előző (szülő) blokkjának a hash-ére
+| 32 byte | Merkle Root | A blokk tranzakcióihoz tartozó Merkle-fa gyökerének a hash-e
+| 4 byte | Időbélyeg | hozzávetőleg mikor jött létre a blokk (a Unix kezdőidő óta eltelt másodpercek)
+| 4 byte | Nehézségi szint | A munkabizonyíték algoritmus által megkövetelt nehézségi szint
+| 4 byte | Nonce | A munkabizonyíték algoritmus által használt számláló
+|=======
+
+A  277,316-ik blokk kibányászásakor a blokk szerkezetére jellemző verziószám „2” volt, amelyet a legkisebb helyiértékű byte első helyre írásával, 4 byte-on a +0x02000000+ kódol.
+
+Ezután a bányász csomópontnak az „Előző blokk hash-ét” kell betennie a fejbe. Ez a hálózattól előzőleg kapott 277,315-ik blokk blokkfejének a hash-e, melyet Jing csomópontja ellenőrzött, érvényesként elfogadott, és a 277,316-ikként létrehozandó blokk szülőjének jelölt ki. A 277,315-ik blokk blokkfejének a hash-e +0000000000000002a7bbd25a417c0374cc55261021e8a9ca74442b01284f0569+.
+
+A következő lépés a tranzakció összesítése egy Merkle-fa formájában, mely ahhoz szükséges, hogy a Merke-fa gyökere bekerülhessen a blokkfejbe. A generáló tranzakció a blokk első tranzakciója. Ezután még 418 további tranzakció szerepel, vagyis összesen 419 tranzakció van a blokkban. Amint azt a [merke_fák] részben láttuk, a fában páros számú „levél” csomópontnak kell lennie, ezért az utolsó tranzakciót meg kell duplázni, hogy a blokkban 420 csomópont legyen. Mindegyik csomópont egy tranzakció hash-ét tartalmazza. A tranzakció hash-eket a bányász csomópont eztután párokba rendezi, és létrehozza a fa minden egyes szintjét, míg végül az összes tranzakcióból eljut a fa „gyökerét” alkotó csomóponthoz. A Merkle fa gyökere az összes tranzakciót egyetlen egy 32 byte-os értékkel, a +c91c008c26e50763e9f548bb8b2fc323735f73577effbc55502c51eb4cc7cf2e+ értékkel ábrázolja, és ez az érték látható a 277,316-ik blokk „Merkle gyökerében”.
+
+A bányász csomópont ezután egy 4 byte-os időbélyeget  tesz a blokkfejbe. Az időbélyeg Unix „Epoch” időbélyegként van kódolva, ami az 1970. január 1. éjfél (UTC/GMT) óta eltelt másodpercek száma. A +1388185914+ érték 2013. december 27. 23:11:54 UTC/GMT időnek felel meg.
+
+A csomópont ezután kitölti a megkívánt nehézségi szintet – ettől függ, hogy milyen bonyolult munkabizonyítéknál lesz érvényes a blokk. A bonyolultságot a blokk a „nehézség mértéke”  bitekben tárolja, amely a cél nehézsáégi szintet kódolja mantissza és kitevő formájában. A kódolásban a kitevő 1 byte-os , melyet egy 3 byte-os mantissza követ. A 277,316-ik blokk esetében a nehézségi szinthez tartozó bitek érteéke +0x1903a30c+. Az első rész, +0x19+, egy hexadecimális kitevő, míg a következő rész, a +0x03a30c+ a mantissza. A cél nehézségi szint magyarázata a [cél nehézségi szint] részben, míg a „nehézségi szintet megadó bitek” magyarázata a [nehézségi szinthez tartozó bitek] részben szerepel.
+
+Az utolsó mező a nonce, amelybe 0 kezdőérték kerül.
+
+A mezők kitöltésével a blokk fej teljessé vált, és kezdődhet a bányászat folyamata. A cél az, hogy egy olyan nonce értéket találjunk, amelynél a blokk fej hash-e kisebb, mint a cél nehézségi szint. A bányász csomópont nonce értékek billióit és trillióit ellenőrzi annak érdekében, hogy egy olyan nonce értéket találjon, amely megfelel ennek a feltételnek.
+
+=== A blokk kibányászása
+
+Most, hogy Jung csomópontja megkonstruálta az előállítandó blokk jelöltet, Jing hardver "platformján" a sor, hogy "kibányássza" a blokkot, vagyis megoldást találjon a blokkot érvényesé tevő  munkabizonyíték algoritmusra. Könyvünkben sokat tanulmányoztuk, hogy a criptográfiai hash függvényeket hogyan használja a bitcoin rendszer különféle célokra. A bitcoin bányszati folyamata az SHA-256 függvényt használja.
+
+Legegyszerűbben a bányászat úgy fogalmazható meg, hogy az a folyamat, melynek során a blokk fej hash-e egy paraméter megváltoztatása után ismételten kiszámításra kerül, mindaddig, amíg a hash meg nem felel egy adott cél értéknek. A hash függváőny eredményét nem lehet előre tudni, és olyan minta sem adható meg, amely egy adott hash értéket hoz létre. A hash függvény ezen jellemzői az jelentik, hogy egy adott célnak megfelelő hash érték csak úgy állítható elő, ha újra és újra próbálkozunk, és a bement érétkét mindaddig változtatjuk, amíg a kívánt hash eredmény véletlenül elő nem áll.
+
+==== Munkabizonyíték algoritmus
+
+Egy hash algoritmus egy tetszőleges hosszúságú bemenő adatból egy fix hosszúságú, determinisztikus kimenetet állít elő: a bemenet digitális ujjlenyomatát. Egy adott bemenet esetén az eredményként kapott hash mindig ugyanaz lesz. Az eredményt bárki könnyen kiszámíthatja és ellenőrizheti, ha lefuttatja ugyanazt a hash algoritmust. A kriptográfiai hash algoritmusok alapvető jellemvonása, hogy lényegében lehetetlen két olyan bemenetet találni, amely ugyanazt az ujjlenyomatot állítja elő. Ennek folyományaképpen az is lehetetlen, hogy egy adott ujjlenyomathoz találjunk egy bemenetet, amely épp ezt az ujjlenyomatot állítja elő. Csak próbálgatni tudunk: egy véletlenszerű bemenetnek kiszámítjuk az ujjlenyomatát, és ellenőrizzük, hogy ez az ujjlenyomat egyezik-e a megadott ujjlenyomattal.
+
+Az SHA-256 esetén a bemenet méretétől függetlenül a kimenet mindig 256 bit hosszú.A lenti példában egy Python interpreterrel számítjuk ki az „I am Satoshi Nakamoto” kifejezés SHA-256 hash értékét.
+
+[[sha256_example1]]
+.SHA256 példa
+====
+[source,bash]
+----
+$ python
+----
+[source,pycon]
+----
+Python 2.7.1
+>>> import hashlib
+>>> print hashlib.sha256("I am Satoshi Nakamoto").hexdigest()
+5d7c7ba21cbbcd75d14800b100252d5b428e5b1213d27c385bc141ca6b47989e
+----
+====
+
+A példa szerint az +"I am Satoshi Nakamoto"+ kifejezés hash-e +5d7c7ba21cbbcd75d14800b100252d5b428e5b1213d27c385bc141ca6b47989e+. Ez a 256 bites szám a kifejezés _hash_-e vagy _zanzája_, és a kifejezés minden egyes karaktere befolyásolja. Egyetlen betű megváltoztatása teljesen különböző hash értéket eredményez.
+
+Ha megváltoztatjuk ezt a kifejezést, akkor azt várjuk, hogy teljesen különböző hash értékeket kapunk. Próbáljuk ezt ki. Egy egyszerű Python scripttel tegyünk a kifejezés végére egy számot:
+
+[[sha256_example_generator]]
+.Nonce növeléssel SHA256 hasheket előállító script
+====
+[source, python]
+----
+include::code/hash_example.py[]
+----
+====
+
+Ennek futtatásával azoknak a kifejezéseknek a hash-ei állíthatók elő, melyek a fenti szöveg és egy szám összefűzésével álltak elő. A szám növelésekor különböző hasheket kapunk.
+
+((("nonce")))
+[[sha256_example_generator_output]]
+.A nonce növeléssel SHA256 hasheket előállító script kimenete
+====
+[source,bash]
+----
+$ python hash_example.py
+----
+
+----
+I am Satoshi Nakamoto0 => a80a81401765c8eddee25df36728d732...
+I am Satoshi Nakamoto1 => f7bc9a6304a4647bb41241a677b5345f...
+I am Satoshi Nakamoto2 => ea758a8134b115298a1583ffb80ae629...
+I am Satoshi Nakamoto3 => bfa9779618ff072c903d773de30c99bd...
+I am Satoshi Nakamoto4 => bce8564de9a83c18c31944a66bde992f...
+I am Satoshi Nakamoto5 => eb362c3cf3479be0a97a20163589038e...
+I am Satoshi Nakamoto6 => 4a2fd48e3be420d0d28e202360cfbaba...
+I am Satoshi Nakamoto7 => 790b5a1349a5f2b909bf74d0d166b17a...
+I am Satoshi Nakamoto8 => 702c45e5b15aa54b625d68dd947f1597...
+I am Satoshi Nakamoto9 => 7007cf7dd40f5e933cd89fff5b791ff0...
+I am Satoshi Nakamoto10 => c2f38c81992f4614206a21537bd634a...
+I am Satoshi Nakamoto11 => 7045da6ed8a914690f087690e1e8d66...
+I am Satoshi Nakamoto12 => 60f01db30c1a0d4cbce2b4b22e88b9b...
+I am Satoshi Nakamoto13 => 0ebc56d59a34f5082aaef3d66b37a66...
+I am Satoshi Nakamoto14 => 27ead1ca85da66981fd9da01a8c6816...
+I am Satoshi Nakamoto15 => 394809fb809c5f83ce97ab554a2812c...
+I am Satoshi Nakamoto16 => 8fa4992219df33f50834465d3047429...
+I am Satoshi Nakamoto17 => dca9b8b4f8d8e1521fa4eaa46f4f0cd...
+I am Satoshi Nakamoto18 => 9989a401b2a3a318b01e9ca9a22b0f3...
+I am Satoshi Nakamoto19 => cda56022ecb5b67b2bc93a2d764e75f...
+----
+====
+
+Minden egyes kifejezésnek teljesen más a hash értéke. A hash értékek teljesen véletlenszerűnek látszanak, ugyanakkor az eredmények egy másik számítógépen futó Python-nal pontosan reprodukálhatók, és pontosan ugyanezeket a hash értékeket eredményezik.
+
+Az ilyen célra használt változó neve: _nonce_. A nonce segítségével változtatjuk a kriptográfiai függvény kimenetét, ebben az esetben a kifejezés SHA-256 ujjlenyomatát.
+
+Egy cél nehézségi szint megadásával állítsuk kihívás  elé ezt az algoritmust: próbáljuk egy olyan kifejezést találni, amelynek hash-e 0-val kezdődik. Szerencsére, ez nem olyan nehéz! A fenti hash-ek között az „I am Satoshi Nakamoto13” által előállított hash értéke 0ebc56d59a34f5082aaef3d66b37a661696c2b618e62432727216ba9531041a5, amely megfelel ennek a követelménynek.  13 kísérlet kellett hozzá, hogy megtaláljuk ezt a stringet. A valószínűségszámítás nyelvén, ha a hash függvény kimenete egyenletes eloszlású, akkor várhatóan minden 16 darab hash között lesz egy olyan, amely a 0 hexadecimális számjeggyel kezdődik (mivel a 16 hexadecimális számjegy, 0 .. F között ez az egyik számjegy). Számszerűsítve mindezt, egy olyan hash értéket keresünk, amely kisebb mint +0x1000000000000000000000000000000000000000000000000000000000000000+. Ezt a küszöbértéket _célnak_ nevezzük, mivel egy olyan hash értéket szeretnénk találni, amely _kisebb mint a cél_. Ha csökkentjük a cél értékét, egyre nehezebb és nehezebb lesz ennél a célnál kisebb hash értéket találnunk.
+
+Egy egyszerű hasonlattal élve, képzeljünk el egy olyan játékot, amelyben két kocka ismételt feldobásával szeretnénk egy olyat dobni, ahol a dobott értékek összege kisebb a megadott célnál. Első körben legyen a cél 12. Ekkor mindegyik dobás megfelelő, kivéve, ha mindkét kockával 6-ost dobunk. A következő körben legyen a nehézség 11. Ekkor 10-et vagy kevesebbet kell dobniuk a játékosoknak, ami ismét csak könnyű feladat. Néhány körrel később legyen a cél 6. Ekkor a kockadobások több mint felénél az összeg több lesz mint 5, vagyis a dobás sikertelen lesz. Minél kisebb a cél, annál több kockadobásra van szükség a győzelemhez, és a kockadobások száma exponenciálisan nő. Végül, ha a cél 3 (a lehetséges minimum), akkor minden 36 dobásból 1 (2%) fog győzelemhez vezetni.
+
+A fenti hash példában a „nyerő” nonce 13, amit bárki ellenőrizhet, ha hozzáteszi az „I am Satoshi Nakamoto” string végéhez a 13-as számot, és kiszámíthatja az „I am Satoshi Nakamoto13” kifejezés hash értéket. Látni fogja, hogy a hash értéke kisebb, mint a cél. A sikeres eredmény egyúttal egy munkabizonyítékot (Proof-of-Work) jelent, mivel bizonyítja, hogy elvégeztük a fenti nonce megkereséséhez szükséges munkát. Az ellenőrzéhez csak 1 darab hash kiszámítására van szükség, ugyanakkor {feltételnek megfelelő} a nonce érték előállításához 13 darab hash kiszámításra volt szükség. Ha alacsonyabb a cél (magasabb a bonyolultság), akkor a cél feltételt kielégítő nonce előállításához sokkal több hash számításra lett volna szükség, de az ellenőrzéséhez továbbra is csak egy hash kiszámítása szükséges. Ha tudjuk a célt, akkor ki tudjuk számítani a bonyolultságot, és ennek megfelelően tudjuk, hogy mennyi munka szükséges ahhoz, hogy egy ilyen nonce értéket találjunk.
+
+A Bitcoin munkabizonyítéka nagyon hasonló a fenti problémában szereplő munkabizonyítékoz. A bányász előéllít egy jelölt blokkot, amelyet tranzakciókkal tölt föl. Ezt követően a bányász kiszámítja a blokk fej hash-ét, és megvizsgálja, hogy az kisebb-e, mint az aktuális _cél_. Ha a hash értéke nem kisebb a célnál, akkor a bányász módosítja a nonce-t (általában úgy, hogy megnöveli eggyel), és újra próbálkozik. A bitcoin hálózat jelenlegi bonyolultsági szintje mellett a bányászoknak sok billiószor kell próbálkozniuk, ha egy olyan nonce értéket szeretnének találni, amely elég kicsiny blokk fej hash értéket eredményez. 
+
+Az alábbi Python kód egy nagyon leegyszerűsített munkabizonyíték algoritmust (Proof-of-Work algorithm) valósít meg:
+
+((("proof of work")))
+[[pow_example1]]
+.Leegyszerűsített munkabizonyíték algoritmus
+====
+[source, python]
+----
+include::code/proof-of-work-example.py[]
+----
+====
+
+A fenti kód futtatásakor beállítható a kívánt nehézség (bitekben, vagyis hogy hány bit legyen a hash elején nulla), és megvizsgálható, hogy mennyi ideig tart egy megoldást találni. A lenti példákban egy átlagos laptop-on látható az algoritmus működése:
+
+[[pow_example_outputs]]
+.A munkabizonyíték példa futtatása különféle nehézségi {szintekre}
+====
+[source, bash]
+----
+$ python proof-of-work-example.py*
+----
+
+----
+Difficulty: 1 (0 bits)
+
+[...]
+
+Difficulty: 8 (3 bits)
+Starting search...
+Success with nonce 9
+Hash is 1c1c105e65b47142f028a8f93ddf3dabb9260491bc64474738133ce5256cb3c1
+Elapsed Time: 0.0004 seconds
+Hashing Power: 25065 hashes per second
+Difficulty: 16 (4 bits)
+Starting search...
+Success with nonce 25
+Hash is 0f7becfd3bcd1a82e06663c97176add89e7cae0268de46f94e7e11bc3863e148
+Elapsed Time: 0.0005 seconds
+Hashing Power: 52507 hashes per second
+Difficulty: 32 (5 bits)
+Starting search...
+Success with nonce 36
+Hash is 029ae6e5004302a120630adcbb808452346ab1cf0b94c5189ba8bac1d47e7903
+Elapsed Time: 0.0006 seconds
+Hashing Power: 58164 hashes per second
+
+[...]
+
+Difficulty: 4194304 (22 bits)
+Starting search...
+Success with nonce 1759164
+Hash is 0000008bb8f0e731f0496b8e530da984e85fb3cd2bd81882fe8ba3610b6cefc3
+Elapsed Time: 13.3201 seconds
+Hashing Power: 132068 hashes per second
+Difficulty: 8388608 (23 bits)
+Starting search...
+Success with nonce 14214729
+Hash is 000001408cf12dbd20fcba6372a223e098d58786c6ff93488a9f74f5df4df0a3
+Elapsed Time: 110.1507 seconds
+Hashing Power: 129048 hashes per second
+Difficulty: 16777216 (24 bits)
+Starting search...
+Success with nonce 24586379
+Hash is 0000002c3d6b370fccd699708d1b7cb4a94388595171366b944d68b2acce8b95
+Elapsed Time: 195.2991 seconds
+Hashing Power: 125890 hashes per second
+
+[...]
+
+Difficulty: 67108864 (26 bits)
+Starting search...
+Success with nonce 84561291
+Hash is 0000001f0ea21e676b6dde5ad429b9d131a9f2b000802ab2f169cbca22b1e21a
+Elapsed Time: 665.0949 seconds
+Hashing Power: 127141 hashes per second
+----
+====
+
+Mint látható, a nehézségi szint 1 bittel történő megnövelése exponenciálisan növeli a megoldás megkereséséhez szükséges időt. Ha az egész 256-bites számteret tekintjük, akkor minden egyes alkalommal, amikor egy további bittől megköveteljük, hogy nulla legyen, megfelezzük a keresési tért. A fenti példában 84 millió próbálkozás kell ahhoz, hogy egy olyan nonce értéket találjunk, amelynél a hash első 26 bitje nulla. Még 120 ezer hash /másodperc sebességnél is több mint 10 percbe került, hogy egy közönséges laptop-on megtaláljuk ezt a megoldást.
+
+Amikor e sorokat írom, a hálózat olyan blokkot próbál találni, amelynél a blokkfej hash értéke kevesebb, mint +000000000000004c296e6376db3a241271f43fd3f5de7ba18986e517a243baa7+. Mint látják, sok-sok nulla van a hash elején, ami azt jelenti, hogy a megengedhető hash tartomány sokkal kisebb, emiatt sokkal nehezebb egy ennek megfelelő hash értéket találni. Átlagosan több mint 150 ezer billió hash számításra van szükség másodpercenként, hogy a halózat a megtalálja a következő blokkot. Ez szinte megoldhatatlan feladatnak látszik, de szerencsére a hálózat 100 Petahash/sec számítási teljesítménnyel rendelkezik, ami lehetővé teszi, hogy átlagosan 10 perc alatt találjon egy blokkot. 
+
+==== A nehézségi szint ábrázolása
+
+A 277,316-ik blokknál láttuk, hogy a blokk fej tartalmazza a nehézségi célt, olyan jelölésmódban, amit „nehézségi szint biteknek” vagy csak „biteknek” hívunk. A 277,316-ik blokk esetén ez az érték +0x1903a30c+. Ez a jelölésmód mantissza/kitevő formátumban fejezi ki a kívánt nehézségi szintet, ahol az első két hexa számjegy a kitevő, a következő hat hexa számjegy  pedig a mantissza. Ennek megfelelően ebben a blokkban a kitevő  +0x19+, a mantissza pedig +0x03a30c+.
+
+A kívánt nehézségi szint ebből az ábrázolásból a követjező képlettel számítható ki:
+
+cél = mantissza * 2 ^ (8*(kitevő - 3))
+
+Ennek a képletnek a használatával a 0x1903a30c  nehézségi bitekre vonatkozóan azt kapjuk, hogy:
+
+cél = 0x03a30c * 2^ (0x08 * (0x19 - 0x03))^
+
+⇒ cél = 0x03a30c * 2^(0x08 * 0x16)^
+
+⇒ cél = 0x03a30c * 2^0xB0^
+
+ami decimálisan 
+
+⇒ cél = 238,348 * 2^176^
+
+⇒ cél = 22,829,202,948,393,929,850,749,706,076,701,368,331,072,452,018,388,575,715,328
+
+Ezt hexadecimális alakra visszaírva:
+
+⇒ cél = 0x0000000000000003A30C00000000000000000000000000000000000000000000
+
+Ez azt jelenti, hogy a 277,316 magasságban az a blokk érvényes, melynél a blokk fej hash értéke kisebb, mint a cél. Binárisan ez a szám több, mint 60 db nullával kezdődő bitet tartalmaz. Ennél a nehézségi szintnél egy olyan bányász, aki másodpercenként 1 billió hash értéket képes kiszámítani (ami másképpen 1 terahash másodpercenként, azaz 1 TH/sec), átlagosan csak minden 8496 blokkonként (vagyis 59 naponta ) fog egy megoldást találni. 
+
+==== A nehézségi cél és a nehézségi cél újraszámítása
+
+Mint azt fent láttuk, a cél határozza meg a nehézégi szintet, és emiatt közvetlenül befolyásolja, hogy mennyi idő szükséges a munkabizonyítés (Proof-of-Work) algoritmus megoldásához. Ez viszont felveti a következő nyilvánvaló kérdést: ha a nehézségi szint állítható, akkor ki állítja és hogyan?
+
+A bitcoin blokkjai átlagosan 10 percenként állnak elő. Ez a bitcoin szívverése, ami a pénzkibocsátás gyakoriságát és a tranzakciók elszámolását határozza meg. Nem csak rövid távon, hanem hosszú évtizedek során is állandónak kell maradnia. Azt várjuk, hogy idővel gyors ütemben nő majd  a számítási kapacitás. Ezen kívül a bányászatban részt vevők száma és az általuk használt berendezések szintén állandóan változnak. Ahhoz, hogy a blokk előállítás ideje 10 perc maradjon, a bányászat nehézségét úgy kell megváltoztatni, hogy figyelembe vegye ezeket a körülményeket. És valóban, a nehézségi szint dinamikus paraméter, amelyet időről időre úgy változtatnak, hogy teljesüljön a 10 perces blokk előállítási idő. Leegyszerűsítve, olyan nehézségi célt kell választani, hogy tetszőleges bányász teljesítmény esetén is fennmaradjon a 10 perces blokkidő.
+
+Hogyan lehet egy teljesen decentralizált hálózatban egy ilyen beállítást elvégezni? A nehézségi cél újraszámítása minden teljes csomóponton automatikusan és a többi csomóponttól teljesen függetlenül történik. Minden 2016 darab blokk után mindegyik csomópont újraszámítja a nehézségi célt. A nehézségi cél újraszámítsára szolgáló képletben a 2016 darab blokk tényleges előállításához szükséges időt hasonlítják össze a várt 20160 perces értékkel (ami a kívánt 10 perces blokk időesetén két hét). A ténylegesen eltelt idő és a kívánt idő hányadosának kiszámítása után megtörténik a nehézségi szint szükséges korrekciója (fölfelé vagy lefelé). Leegyszerűsítve: Ha a hálózat átlagosan 10 percnél hamarabb találja meg a blokkokat, akkor a nehézség nő. Ha a blokkok előéllítása lassabb a vártnál, akkor a nehézség csökken.
+
+Az egyenlet a következőképpen foglalható össze:
+
+Új_nehézség = Régi_nehézség * (Az_utolsó_2016_blokk_előállításának_ideje / 20160 perc)
+
+A Bitcoin Core kliensben a következő függvény végzi ezt a feladatot:
+
+[[retarget_difficulty_code]]
+.A munkabizonyíték nehézségének újraszámítása – +GetNextWorkRequired()+, +pow.cpp+, 43-ik sor
+====
+[source,cpp]
+----
+
+    // Go back by what we want to be 14 days worth of blocks
+    const CBlockIndex* pindexFirst = pindexLast;
+    for (int i = 0; pindexFirst && i < Params().Interval()-1; i++)
+        pindexFirst = pindexFirst->pprev;
+    assert(pindexFirst);
+
+    // Limit adjustment step
+    int64_t nActualTimespan = pindexLast->GetBlockTime() - pindexFirst->GetBlockTime();
+    LogPrintf("  nActualTimespan = %d  before bounds\n", nActualTimespan);
+    if (nActualTimespan < Params().TargetTimespan()/4)
+        nActualTimespan = Params().TargetTimespan()/4;
+    if (nActualTimespan > Params().TargetTimespan()*4)
+        nActualTimespan = Params().TargetTimespan()*4;
+
+    // Retarget
+    uint256 bnNew;
+    uint256 bnOld;
+    bnNew.SetCompact(pindexLast->nBits);
+    bnOld = bnNew;
+    bnNew *= nActualTimespan;
+    bnNew /= Params().TargetTimespan();
+
+    if (bnNew > Params().ProofOfWorkLimit())
+        bnNew = Params().ProofOfWorkLimit();
+
+----
+====
+
+Az Interval paramétert (2016 blokk) és a TargetTimespan paramétert (két hét, azaz 1,209,600 másodperc) a +chainparams.cpp+ definiálja.
+
+A nehézségi szint nagy ingadozásainak elkerülése érdekében a módosító tényezőnek ciklusonként (2016 blokkonként) 4-nél kisebbnek kell lennie. Ha a kívánt nehézségi szint módosítás több mint négyszeres, akkor a maximumra lesz állítva, és ennyi. A továbi állítások a következő körben fognak megvalósulni, és a következő 2016 blokkban fennmarad az egyensúlyhiány. Emiatt a hash kapacitás és a nehézségi szint közötti nagy eltérések kiegyenlítődéséhez több 2016 blokkos ciklusra van szükség.
+
+[Tipp]
+====
+Tipp: A teljes bitcoin hálózatban kb. 10 perc feldolgozási idő szükséges egy blokk előállításához, ami az előző 2016 blokk előállításához szükséges idő alapján, 2016 blokkonként újraszabályozásra kerül.
+====
+
+Figyeljék meg, hogy a cél nehézségi szint független a tranzakciók számától vagy értékétől. Ez azt jelenti, hogy a bitcoin hálózat biztonságának megteremtésre fordított hash kapacitás, vagyis villamos energia szintén teljesen független a tranzakciók számától. A bitcoin skálázható, és ha elterjedtebbé válik, akkor sem szükséges a bizonságához, hogy a hash kapacitás a mai szinthez képest tovább növekedjen. A hash kapacitás növekedése olyan piaci erőknek felel meg, melyek a jutalomért versengő újabb bányászok megjelenésének felelnek meg. Amíg elég sok becsületes bányász van a jutalomért versenyző bányászok között, addig nem lehetséges a hálózat „kisajátítása”, és emiatt a bitcoin biztonságos marad.
+
+A cél nehézségi szint szoros kapcsolatban a villamos energia árával és a bitcoin hagyományos papírpénzre történő átváltásának az árfolyamával, amellyel a bányászok a villanyszámlát fizetik. A nagy kapacitású bányász rendszerek a lehető leggazdaságosabb működésűek, a legmodernebb integrált áramköröket (ASIC) használják, és a villamos energiát a lehető legnagyobb sebességű hash számításokká alakítják át. A bányászokra a legközvetlenebb hatást 1 kWh bitcoinban mért ára jelenti, mivel ez határozza meg a bányászat jövedelmezőségét, vagyis azt, hogy érdemes-e belépni erre a piacra, vagy beszüntetni a tevékenységet.
+
+=== A blokk sikeres kibányászása
+
+Mint azt korábban láttuk, Jing csomópontja előállított egy blokk jelöltet és előkészítette a bányászathoz. Jingnek számos ASIC (ASIC = Application Specific Integrated Circuit, BOÁK, Berendezés Orientált Árakör) alapú bányász berendezése van, amelyekben az integrált áramkörökön belül az SHA256 algoritmus ezrei futnak egyással párhuzamosan, hihetetlen sebességgel. Ezeket a specializált gépeket USB-vel kapcsolja hozzá a bányász csomópontjához.  A Jing asztali számítógépén futó bányász csomópont elküldi a blokkfejet a bányász hardvernek, ami elkezdi tesztelni a nonce-okat, több billió nonce / másodperc sebességgel.
+
+A 277,316-ik blokk bányászatának megkezdése után majdnem 11 perccel az egyik hardver talál egy megoldást, és visszaküldi a bányász csomópontnak. A nonce 4,215,469,401 , melyet a blokk fejbe beillesztve a blokk fej hash értéke +0000000000000002a7bbd25a417c0374cc55261021e8a9ca74442b01284f0569+ lesz, amely kisebb, mint a megkívánt cél, +0000000000000003A30C00000000000000000000000000000000000000000000+.
+
+Jing számítógépe azonnal elküldi a blokkot a szomszédos csomópontoknak. Ezek fogadják, ellenőrzik, majd továbbítják a blokkot. Amint a blokk szétterjed a hálózaton, mindegyik csomópont hozzáadja a blokkot a saját blokkláncához, és így a blokklánc új magassága 277,316-ra nő. Amikor a bányász csomópontok megkapják és ellenőrzik a blokkot, abbahagyják annak blokk keresését, melynek a 277,315-ik blokk a szülője, és ugyanakkor  azonnal megkezdik a lánc következő blokkjának a kiszámítását.
+
+A következő részben azt a folyamatot fogjuk megvizsgálni, amellyel az egyes csomópontok ellenőrzik a blokkot és kiválasztják a leghosszabb láncot, megteremtve ezáltal azt a közmegegyezést, amely a decentralizált blokklánc létrejöttének az alapja.
+
+=== Az új blokk ellenőrzése
+
+A bitcoin konszenzus mechanizmusának harmadik eleme a blokkok egymástól független ellenőrzése, amely a hálózat minden egyes csomópontján végbemegy. Az újonnan keletkezett blokkok hálózati szétterjedésekor mindegyik csomópont egy tesztsorozatot végez, mielőtt a blokkot továbbítaná a peer-jeinek. Ez biztosítja, hogy a hálózatban csak érvényes blokkok terjedhetnek szét. A blokkok minden egy csomópont által elvégzett független ellenőrzése azt is biztosítja, hogy a becsületes bányászok blokkjai beépülnek a blokkláncba, és a bányász ezáltal hozzájut a jutalmához. A csaló bányászok blokkjait viszont a többiek elvetik, és így a bányász nem csupán a jutalomtól esik el, hanem a munkabizonyíték előállításához elvégzettt munkája is pocsékba megy, vagyis a villamos energia költségét nem kompenzálja  semmi.
+
+Ha egy csomópontba új blokk érkezik, akkor a csomópont a blokkot hosszú feltétellista alapján ellenőrzi. A blokknak az össze feltételt teljesítenie kell, különben a blokkot elveti a csomópont. Ezek a feltételek a Bitcoin Core kliens +CheckBlock+ és +CheckBlockHeader+ függvényeiben találhatók meg. A feltételek a következők:
+
+* a blokk adatstruktúrája szintaktikusan érvényes
+* a blokkfej hash-e kisebb, mint a cél nehézségi szint (a munkabizonyíték betartatása)
+* a blokk időbélyege két óránál kevesebb idővel mutat a jövőbe (óra hibák engedélyezése)
+* a blokk mérete az elfogadható határok között van
+* az első (és csak az első) tranzakció egy coinbase tranzakció
+* tranzakciós ellenőrző lista alapján a blokkban lévő összes tranzakció érvényes (lásd <<A blokkok független ellenőrzése>> részt)
+
+A hálózat mindegyik csomópontján, a többi csomóponttól függetlenül elvégzett ellenőrzések biztosítják, hogy a bányászok ne csalhassanak. Az előző részben láttuk, hogyan egy bányász hogyan tud olyan tranzakciót léterhozni, amely a blokkban létrejött bitcoinokat és a tranzakciós díjakat a bányász saját címére utalja. Miért nem írnak a bányászok ebbe a tranzakcióba több ezer bitcoint a jutalom helyes összege helyett? Mert mindegyik csomópont ugyanazon szabályok szerint ellenőrzi a blokkokat. Egy érvénytelen coinbase tranzakció az egész blokkot érvénytelenné tenné, ami miatt a többi csomópont elvetné a blokkot és a blokk soha nem válna a főkönyv részévé. Egy bányásznak tökéletesen helyes blokkot kell előállítania, amely megfelel a többi csomópont által követett közös szabályoknak, és a munkabizonyíték helyes megoldását tartalmazza. A bányászathoz sok villamos energia szükséges, ami a csalók esetén nem térül meg. A blokkok független ellenőrzése emiatt kulcsfontosságú része a decentralzált konszenzus megteremtésének.
+
+=== A blokklánc összeállítása és kiválasztása
+
+A bitcoin decentralizált konszenzus mechanizmusának utolsó lépése a blokkok láncokba történő szervezése, és annak a blokkláncnak a kiválasztása, amely a legtöbb munkabizonyítékkal rendelkezik. Ha egy csomópont elvégezte a blokkk ellenőrzését, akkor megkísérli a blokklánc bővítését, vagyis a blokk és a létező blokklánc összekapcsolását.
+
+A csomópontok háromféle blokkot tartanak nyilván: a fő blokklánchoz kapcsolódó blokkokat, a fő blokklánc elágazásain lévő blokkokat (másodlagos láncok) és végül azokat a blokkokat, amelyeknek az ismert blokkláncban nincsenek szülei (árva blokkok). Az érvénytelen blokkokat a csomópont azonnal elveti, ha valamelyik feltétel nem telhesül, és emiatt a blokk egyik blokkláncba sem kerül be. 
+
+A „fő lánc” egy adott időpillanatban az a blokklánc, amelyben a nehézségi szint kummulált értéke a legnagyobb. A legtöbb esetben ez azonos a legtöbb blokkot tartalmazó lánccal, kivéve, ha két lánc azonos hosszúságú, mert ekkor a több munkabizonyítékot tartalmazó lánc lesz a fő lánc. A fő láncról elágazó láncok blokkjai a fő láncon lévő blokkok „testvérei”. Ezek a blokkok érvényesek, de nem részei a fő láncnak. Azért tartják meg őket, mert előfordulhat, hogy valamelyik elágazó lánc bővülése miatt az elágazó lánc nehézségi szintje meghaladja a fő láncét. A következő részben (<<Blokklánc elágazások>>) látni fogjuk, hogy hogyan jönnek létre másodlagos láncok, ha két bányász majdnem egyidőben azonos magasságú blokkokat bányász ki.
+
+Egy új blokk beérkezése után a csomópont megpróbálja beilleszteni a blokkot a létező blokkláncba. A csomópont megvizsgálja a blokk „előző blokk hash-e” mezőjét, amely a blokk szülőjére hivatkozik. Ezután a csomópont a létező blokkláncban megpróbálja megkeresni ezt a szülőt. A legtöbbször a szülő a fő lánc „csúcsán” lesz, vagyis az új blokk a fő láncot fogja meghosszabbítani. Például a 277,316-ik blokk a 277,315-ik szülő blokk hash-ére hivatkozik. A legtöbb csomópont a 277,316-ik blokkk megérkezésekor már rendelkezik a 277,315-ik blokkal, és a 277,315-ik van a fő láncuk legtetején, vagyis az új blokk beláncolása ezt a láncot fogja kibővíteni.
+
+Néha, amint azt a <<Blokklánc elágazások>> részben látni fogjuk, az új blokk nem a fő láncot bővíti ki. Ebben az esetben a csomópont a másodlagos lánchoz kapcsolja hozzá az új blokkot, és azután összehasonlítja a másodlagos lánc és a fő lánc nehézségi szintjét. Ha a másodlagos lánc összegzett nehézsége nagyobb, mint a fő láncé, akkor a csomópont _átkonvergál_ a másodlagos láncra, ami azt jelenti, hogy a másodlagos láncából  fő lánc válik, a korábbi fő láncából pedig másodlagos lánc. Ha a csomópont bányász csomópont, akkor létrehoz egy jelölt blokkot, amely ezt az új „hosszabb” láncot bővíti ki.
+
+Ha érkezik egy érvényes blokk, melynek a létező láncban nincs szülője, akkor a blokkot a csomópont „árvának” tekinti. Az árva blokkokat az árva blokkok készletébe helyezi, és a blokk egészen addig itt fog maradni, amíg meg nem érkezik a szüleje. Ha megérkezett a szülő, és a szülőt a csomópont beillesztette a létező blokkláncba, akkor az árva blokkot eltávolítja az árva blokkok készletéből, és összekapcsolja a szülővel, vagyis a lánc részévé teszi. Árva blokkok általában akkor fordulnak elő, ha egymás után kis idővel két blokk kerül kibányászásra, és a blokkok fordított sorrendben érkeznek meg (a gyermek előbb, mint a szülő).
+
+A legnagyobb nehézségű lánc kiválasztása révén az összes csomópont előbb-utóbb egyezségre jut. A láncok közötti átmeneti eltéréseket végül feloldja a további mukabizonyíték hozzáadása, mert ezáltal valamelyik lehetséges lánc bővül. A bányász csomópontok a számítási kapacitásukkal „szavaznak”, amikor kiválasztják, hogy melyik láncot akarják bővíteni a következő blokk kibányászásával. Ha sikerül kibányászniuk egy új blokkot, és kibővíteni bele a láncot, akkor maga az új blokk jelenti a szavazatukat.
+
+A következő részben megnézzük, hogy az egymással versenyző káncok között létrejött eltéréseket  (elágazásokat) hogyan oldja föl az, ha az egyes csomópontok a leghosszabb /legnagyobb nehézségű láncot választják.
+
+[[forks]]
+==== Blokklánc elágazások
+
+Mivel a blokklánc egy decentralizált adatszerkezet, a példányai nem mindig konzisztensek. Az egyes csomópontokhoz a blokkok eltérő időben juthatnak el, emiatt az egyes csomópontok máshogy láthatják a blokkláncot. Ennek feloldása érdekében mindegyik csomópont mindig azt a láncot választja és bővíti, amely a legtöbb munkabizonyítéknak felel meg, vagyis a legnagyobb összegzett nehézségi szinttel rendelkező láncot. A lánc blokkjaiban lévő mehézségi szint összegzése révén a csomópont kiszámítja, hogy ennek a láncnak a létrehozásához összesen mennyi munkabizonyítékra volt szükség. Ha a hálózat mindegyik csomópontja a legnagyobb összegzett nehézségű láncot választja, a globális bitcoin hálózat előbb-utóbb konzisztens állapotba kerül. Az elágazások csupán átmeneti inkonzisztenciát jelentenek a blokklánc különféle változatai között, melyek az átkonvergálás révén oldódnak meg, vagyis azáltal, hogy valamelyik elágazás több blokkal bővül.
+
+A következő néhány ábrán egy „elágazási” eseményt követünk nyomon a hálózatban. Az ábra a globális bitcoin hálózat egy egyszerűsített ábrázolása. A valóságban a bitcoin hálózat nem földrajzi szerveződésű, hanem egymással kapcsolatban lévő csomópontok hálózata, melyek földzrajzilag nagyon távol is lehetnek egymástól. A földrajzi topólógia egy egyszerűsítés, amelyet az elágazás  szemléltetélse érdekében használunk. A valódi bitcoin hálózatban a csomópontok közötti „távolságot” a csomópontok közötti „ugrásokkal” („hops”) mérik, nem a földrajzi helyzet alapján. A szemléltetés kedvéért a különböző blokkokat különböző színek jelölik.
+
+Az lenti első ábrán a hálózat a blokkláncot egységesnek látja. A kék blokkok a fő lánc legtetején vannak.
+
+[[fork1]]
+.Egy blokklánc elágazás szemléltetése – az elágazás előtti állapot
+image::images/GlobalFork1.png["globalfork1"]
+
+„Elágazás” akkor forul elő, ha két blokk versenyez egymással, hogy melyik van a leghosszabb blokkláncon. Normális körülmények között ez akkor fordul elő, ha két bányász egymáshoz képest viszonylag kis időkülönbséggel egy-egy új blokkot állított elő. Mindkét bányász azonnal közvetíti a „nyerő” blokkot, amint sikerült megoldania a munkabizonyíték algoritmust, és a blokkok a közvetlen szomszédaikon keresztül kezdenek szétterjedni a hálózatban. Mindegyik csomópont, amelyik megkapja az érvényes blokkot, beépíti azt a blokkláncába, vagyis bővíti a saját blokkláncát egy blokkal. Ha a csomópont később egy másik blokkot lát, amely ugyanazt a szülőt bővíti, akkor a második blokkot egy másodlagos láncra helyezi. Ennek eredményeképpen bizonyos csomópontok az egyik blokkot fogják „látni” először, míg a többiek a másikat, és a blokklánc két egymással versengő változata jön létre.
+
+A lenti ábrán két bányászt látunk, akik majdnem egyidőben két különböző blokkot bányásztak ki. Mindkét kibányászott blokk a kék blokk gyermeke, vagyis a láncot a kék blokk tetején bővíti. Az események nyomon követése érdekében az egyik blokkot egy Kanadából származó piros blokként ábrázoltuk, míg a másikat egy Ausztráliából származó zöld blokként.
+
+[[fork2]]
+.Egy blokklánc elágazás szemléltetése – egyszerre két blokk jött létre ("találtam egy blokkot, ami kiegészíti a blokkláncot") 
+image::images/GlobalFork2.png["globalfork2"]
+
+Tegyük fel például, hogy a kanadai bányász a „piros” blokkhoz talált egy olyan munkabizonyítékot, amely a „kék” szülő blokkláncra épül. Majdnem ugyanekkor egy ausztrál bányász, aki szintén a „kék” blokkot szeretné bővíteni, talál egy megoldást a „zöld” blokkjához. Két lehetséges blokkunk van tehát, a „piros”, ami Kanadából indul, és a „zöld”, ami Ausztráliából. Mindkét blokk érvényes, mindkét blokk érvényes munkabizonyítékot tartalmaz, mindkettő ugyanazt a szülőt bővíti. Valószínűleg mindkét blokkban ugyanazok a tranzakciók vannak, de előfordulhatnak különbségek a tranzakciók sorrendjében.
+
+A két blokk szétterjedése során némelyik csomóponthoz a „piros” blokk jut el először, míg másokhoz a „zöld”. A hálózat két részre szakad, és mindkét rész másképpen látja a blokkláncot: az egyiknél a piros blokk van a blokklánc tetején, a másiknál a zöld.
+
+[[fork2]]
+.Egy blokklánc elágazás szemléltetése – két blokk szétterjedése, a hálózat két részre szakad
+image::images/GlobalFork3.png["globalfork3"]
+
+Ettől a pillanattól kezdve a bitcoin hálózat azon csomópontjai, melyek a kanadai csomóponthoz vannak topólógiailag a legközelebb, a „piros” blokkról fognak először tudomást szerezni, és a legnagyobb nehézségi összeggel rendelkező láncba a „piros” blokkot teszik be a lánc utolsó tagjaként (kék-piros), a „zöld” blokkot pedig, amely egy kicsit később érkezik, figyelmen kívül hagyják. Közben az ausztráliai csomóponthoz közelebb lévő csomópontok a „zöld” blokkot fogják nyertesenk tekinteni, és ezzel bővítik a blokkláncukat (kék-zöld), és elhanyagolják a „pirosat”, ami néhány másodperccel ezután érkezik meg. Azok a bányászok, melyek a „pirosat” látták meg először, olyan blokk jelölteket hoznak létre, melyekben a „piros” a szülő blokk, és ezekkel a blokkokal kezdik el a munkabizonyíték algoritmus megoldását. A „zöld” blokkot elfogadó bányászok viszont a „zöldre” épülő blokkal próbálják meg az új blokk létrehozását.
+
+[[fork4]]
+.Egy blokklánc elágazás szemléltetése – az elágazás egy újabb blokkal bővül
+image::images/GlobalFork4.png["globalfork4"]
+
+Az elágazások majdnem mindig megoldódnak egy új blokk létrejöttekor. A hálózat hash kapacitásának egyik része a „piros” blokkra épülő blokkot szeretne létrehozni, a másik része a „zöldre” épülőt. Még ha a hash kapacitás közel egyforma lenne is, akkor is valószínűtlen, hogy a két bányászcsoport ismét közel egyszerre talált egy-egy megoldást. Ha valamelyik csoport talál egy megoldást, az ezúttal zavartalanul szétterjed a hálózatban, mielőtt amásik csoport megoldást találna. Mondjuk, hogy azok a bányászok, akik a „zöld” blokkra építettek, találtak egy „rózsaszín” új blokkot, amely ezt a láncot bőviti ki (vagyis kék-zöld-rózsaszín). Azonnal továbbítják a blokkot a többi csomópontnak, és az egész hálózat látja ezt az érvényes megoldást.
+
+[[fork5]]
+.Egy blokklánc elágazás szemléltetése – a hálózat átkonvergál a leghosszabb láncra
+image::images/GlobalFork5.png["globalfork5"]
+
+Azok a csomópontok, melyek az előző körben a „zöldet” tekinettték győztesnek, egyszerűen kibővítik a blokkláncukat egy blokkal. Azok a csomópontok azonban, melyek a „pirosat” tekintették győztesnek, most két láncot látnak: egy kék-zöld-rózsszín láncot és egy kék-piros láncot. Ezek a csomópontok a kék-zöld-rózsaszín láncra váltanak át, és a továbbiakban ez lesz a fő lánc, a kék-piros láncot pedig másodlagos lánccá teszik.  Lánc átkonvergálás történt, mivel a csomópontok egy részének meg kellett változatni a blokkláncról alkotott képét, hogy a csomópont a hosszabb láncban lévő, új munkabizonyítékot tartalmazó blokkot be tudja építeni. Azok a bányászok, akik a kék-piros lánc bővítésén dolgoztak, most félbeszakítják ezt a munkát, mivel a blokkjuk, amelyen dolgoztak, „árvává” vált, hiszen a „piros” szülő blokk már nincs a leghosszabb láncban. A „piros” blokkban lévő tranzakciók ismét sorba állnak, hogy bekerülhessenek a következő blokkba,  mivel a blokk már nem a leghosszabb láncon van. Az egész hálózat átkonvergál a kék-zöld-rózsaszín blokkláncra, amelyben a „rószaszín” a lánc utolsó  eleme. Az összes bányász olyan blokk jelölteken kezd dolgozni, amelyekben a „rózsaszín” blokkk a szülő, és a blokk a kék-zöld-rózsaszín láncot kívánja bővíteni.
+
+Elméletileg lehetséges, hogy egy elágazás két blokkon keresztül tartson, ha a  hálózat ellentétes „végén” két bányász majdnem egyszerre két blokkot talál. Ennek az bekövetkezési valószínűsége nagyon alacsony. Míg egy blokkos elágazások hetente előfordulnak, a két blokkos elágazások nagyon ritkák.
+
+A bitcoin 10 perces blokk ideje egy tervezési kompromisszumot jelent a gyors megerősítési idő (tranzakciók elszámolása) és az elágazási valószínűség között. A kisebb blokk idő meggyorsítaná a tranzakciók feldolgozását, de gyakoribbak lennének a blokklánc elágazások, míg egy nagyobb blokkidő csökkentené az elágazások számát, de lassítaná az elszámolást. 
+
+=== Bányászat és a hash versenyfutás
+
+A bitcoin bányászatban nagy a verseny. Amióta a bitcoin létezik, a hash kapacitás minden évben exponenciálisan emelkedik. Néhány éve a növekedés a teljes technológiaváltást tükrözte, pl. 2010-ben és 2011-ben, amikor sok bányász CPU-ról GPU-ra (Graphical Processing Unit) és FPGA-ra (Field Programmable Gate Array) állt át. 2013-ban az ASIC-ok (Application Specific Integrated Circuits) bányászati alkalmazása újabb hatalmas ugrást jelentettt a bányász kapacitásban, mert az SHA256 függvény közvetlenül a bányászatra specializált szilicium integrált áramköri chip-eken lett megvalósítva. Az ilyen chip-ekből összeállított első eszközöknek több volt a bányászkapacitása, mint 2010-ben az egész bitcoin hálózatnak.  
+
+* 2009 - 0.5 MH/sec - 8 MH/sec (16-szoros növekedés)
+* 2010 - 8 MH/sec - 116 GH/sec (14,500-szoros növekedés)
+* 2011 - 16 GH/sec - 9 TH/sec (562-szeres növekedés)
+* 2012 - 9 TH/sec - 23 TH/sec (2.5-szeres növekedés)
+* 2013 - 23 TH/sec - 10 PH/sec (450-szeres növekedés)
+* 2014 - 10 PH/sec - 150 PH/sec augusztusban (015-szörös növekedés)
+
+A lenti ábrán a bitcoin hálózat hash kapacitásának a növekedése látható az elmúlt két évben. Látható, hogy a bányászok közötti versengés és a bitcoin elterjedése a hash kapacitás (a hálózatban végetzhető hash-ek száma másodpercenként) exponenciális növekedését eredményezte:
+
+[[network_hashing_power]]
+.A teljes hash kapacitás, gigahash/sec-ben, az elmúlt két évben
+image::images/NetworkHashingRate.png["NetworkHashingRate"]
+
+A bitcoin bányászat hash kapacitásának nővekedésével együtt nőtt a nehézségi szint is. A következő ábrán a nehézségi szintet egy arányszám ábrázolja, mint az aktuális nehézségi szint és a minimális nehézségi szint hányadosa (a minimális nehézségi szint az első blokk nehézségi szintjének felel meg):
+
+[[bitcoin_difficulty]]
+.A bitcoin bányászat nehézsége, két éves időszakban
+image::images/BitcoinDifficulty.png["BitcoinDifficulty"]
+
+Az  elmúlt két évben az ASIC bányász chip-ekben lévő tranzisztorok egyre kisebbek és kisebbek lettek, és ma már megközelítik a gyártható legkisebb méreteket, amely jelenleg a 22 nanométeres (nm) vonalvastagság. Az ASIC gyártók szeretnék a CPU gyártási technológiát alkalmazni, amely 16 nm-es vonalvastagságot használ, mert a bányászat jövedelmezősége az iparágat még jobban hajtja előre, mint a CPU-knál. A bitcoin bányászatban nem várhatók további óriási ugrások, mert az iparág eljutott a leghatékonyabb eszközökig. A hálózat bányászkapacitása ugyanakkor exponenciális ütemben tovább nő, mivel az egyre kisebb méretű tranzisztorok helyett most az egyre hatákonyabb adatközpontokra tevődött át a verseny, ahol ilyen berendezések ezrei helyezhetők el. Már nem arról van szó, hogy mennyit lehet bányászni egy chip-pel, hanem arról, hogy hány chip helyezhető el egy épületen belül úgy, hogy a hőleadás és a tápellátás megfelelő legyen.
+
+==== Az extra nonce megoldás
+
+2012 óta a bitcoin bányászat fejlődése megoldotta a blokk fej szerkezetének egy alapvető korlátját. A bitcoin korai napjaiban egy bányász úgy tudott egy blokkot kibányászni, hogy addig növelte a nonce értékét, amíg az eredményül kapott hash értéke kisebb nem lett a célnál. A nehézségi szint növekedésekor a bányászok gyakran anélkül lépkedtek végig mind a 4 milliárd értéken, hogy megoldást találtak volna. Ezt azonban könnyű volt orvosolni azzal, hogy az eltelt időnek megfelelően módosították a blokk fejben lévő időbélyeget. Mivel az időbélyeg a blokk része, ez a változtatás lehetővé tette, hogy a bányász ismét végigpróbálja a nonce értékeit, és más eredményeket kapjon. Amikor azonban a bányász hardverek sebessége meghaladta a 4 GH/sec-et, egyre nehezebb volt alkalmazni ezt a módszert, mert a nonce értékek végigvizsgálása 1 másodpercnél rövidebb idő alatt megtörtént. Amikor az ASIC bányász berendezések kezdték megközelíteni, ill. túllépéni az 1TH/sec hash sebességet, a bányász szoftverben további nonce értékeknek kellett helyet találni, melyek az érvényes blokk előállításához szükségesek. Az időbélyeg módosítható volt egy kicsit, de ha túlságosan előreállítják, akkor a blokk érvénytelen lesz. Egy új „módosíthatósági” forrásra volt szükség a blokkfejben. A megoldás az lett, hogy a coinbase tranzakció lett az extra nonce értékek forrása. Mivel a coinbase script 2 és 100 byte között képes adatok tárolására, a bányászok ezt a helyet kezdték használni extra nonce helyként, ami lehetővé tette a számukra, hogy sokkal nagyobb értéktartományt vizsgálhassanak át a blokkfejben az érvényes blokkok előállítása érdekében. A coinbase tranzakció benne van a Merkle-fában, ami azt jelenti, hogy acoinbase script bármilyen megváltoztatása esetpén a Merkle-gyökér is megváltozik. 8 byte extra nonce éls a „hagyományos” nonce 4 byte-ja 2^96^ lehetőség átvizsgálását teszi lehetővé másodpercenként, anélkül, hog módosítani kellene az időbélyeget. A jövőben először ezeket a lehetőségeket fogja kimeríteni a bányászt, és csak ez után nyúl az időbélyeg módosításának módszeréhez. A coinbase scriptben is van  még további hely, ha szükség lenne az extra nonce tér kibővítésére. 
+
+==== Bánytársaságok (Mining Pools)
+
+Ebben a rendkívül versengő környezetben a magányos bányászoknak (az ún. szingli bányászoknak) esélyük sincs a jutalomra. Annak a valószínűsége, hogy találnak egy blokkot, amellyel majd fedezni tudják az energia és hardver költségeiket, annyira csekély, hogy egy szerencsejátékhoz hasonlít, például olyan, mint ha lottóznának. Még a kereskedelmi formalomban lévő leggyorsabb ASIC bányász rendszerek sem tudják felvenni a versenyt azokkal a rendszerekkel, melyekben ilyen ASIC chip-ek tízezreit zsúfolják be hatalmas épületekbe, és vízerőművek olcsó energiáját használják. A bányászok ezért bányatársaságokat alkotnak, közösen bányásznak, és a jutalmat a sok ezer résztvevő között osztják el. Ha egy bányász bányatársaságban bányászik, akkor a teljes jutalomnak csak egy kis részét kapja meg, de minden nap, ami csökkenti a bizonytalanságot.
+
+Nézzünk egy konkrét példát. Tegyük fel, hogy egy bányász vett egy bányász hardvert (bányagépet), amelynek összkapacitása 6000 GH/sec, azaz 6 TH/sec. 2014 augusztusában egy ilyen berendezés kb. 10,000 USD-be került. A harver fogyasztása 3 kW * 24 óra, azaz 72 kWh naponta, ami kb. napi 8 USD kiadást jelent. A jelenlegi bitcoin nehézségi szintnél a bányász szingli-módban kb. 155 naponként (5 havonta) tud kibányászni egy blokkot. Ha a bányász az 5 hónap alatt talál egy blokkot, akkor a jutalma 25 bitcoin, ami 600 $-os árfolyammal számolva kb. 15,000 USD egyszeri kifizetésnek felel meg, ami fedezi a hardver és villamos energia költségeket, és kb. 3000 USD hasznot eredményez. De az, hogy talál-e a bányász 5 hónap alatt egy blokkot, a szerencsén múlik. Lehet, hog két blokkot is talál 5 hónap alatt, és nagyon nagy haszonra tesz szert. Az is lehet, hogy 10 hónap alatt sem talál egyetlen egy blokkot sem, és veszteséges lesz. Még súlyosabb az, hogy a munkabizonyíték algoritmus nehézségi szintje valószínűleg jelentősen nőni fog ezen időszak alatt, figyelembe véve a hash kapacitás jelenlegi növekedését, ami azt jelenti, hogy a bányásznak max. 6 hónapja van arra, hogy nullszaldót érjen el, mert ez alatt a hardvere gyakorlatilag elavul, és egy nagyobb  kapacitású, hatékonyabb hardvert kell beszereznie. Ha azonban a bányász egy bányatársaságban vesz részt, akkor nem kell az 5 havonkénti egyszeri, 15,000 dolláros alkalomra várnia, hanem heti 500 és 750 dollár közötti összeget fog keresni. A bányatársaság kifizetései révén idővel amortizálni tudja a hardverköltséget és ki tudja fizetni a villamos energiát anélkül, hogy hatalmas kockázatot vállalna. A hardver 6 – 9 hónap múlva még mindig elavul, és a kockázat még mindig magas, de a vizsgált időszak alatt a bevétel kiszámítható és biztos.
+
+A bányatársaságok speciális protokollok segítségével több száz ill. több ezer bányász munkáját hangolják össze. Az egyes bányászok egy számlaszámot nyitnak a bányatársaság szerverén, majd ezt követően úgy állítják be a berendezéseiket, hogy azok ehhez a szerverhez kapcsolódjanak. A bányászok a hardverükkel ehhez a szerverhez kapcsolódnak a bányászat során, és a szerver összehangolja a munkájukat a többi bányászéval. Vagyis a bányatársaság tagjai közösen bányásznak ki egy blokkot, és osztoznak a jutalomban.
+
+A sikeres blokk kibányászásakor a jutalom nem az egyes bányászokhoz, hanem a bányatársaság bitcoin címére kerül. A szerver bizonyos időközönként, ha a jutalmuk meghalad egy bizonyos határt, kifizeti a bányászokat. A bányatársaság általában egy pár százalákos díjat számít fel a szolgáltatásáért.
+
+A bányatársaságban részt vevő bányászok munkamegosztással végzik a következő blokk utáni kutatást, és „részvényeket” kapnak a munkájukért. A bányatársaság kisebb nehézségi szintet állít be, általában 1000-szer kisebbet, mint a bitcoin hálózat aktuális nehézségi szintje. Ha egy bányász talál egy blokkot, amely megfelel ennek a kisebb nehézségi szintnek, akkor kap egy részvényt. Ha  valamelyik bányász sikerrel jár, és kibányász egy blokkot, akkor a jutalom a bányatársasághoz került, és a bányászok között annak arányában kerül felosztásra, hogy ki hány részvénnyel járult hozzá a munkához.
+
+A bányatársaságok bárki előtt nyitva állnak, legyen profi vagy amatőr, vagy a berendezéseinak a teljesítménye legyen nagy vagy kicsi. A bányatársaságoknak ezért vannak olyan résztvevői, akiknek csak egy kis teljesítményű kütyüje van, míg mások egy teli garázs nagy teljesítményű készülékkel rendelkeznek. Némelyik bányász berendezéseinek pár kilowatt a fogyasztása, míg mások egy egész adatközponttal bányászkodnak, melynek pár megawatt a fogyasztása. Hogyan tudja a bányatársaság lemérni, hogy ki mennyivel járul hozzá a közös munkához, anélkül, hogy a bányászok csalni tudnának? A választ a bitcoin munkabizonyíték rendszere jelenti, amely alacsonyabb nehézségi szintre van beállítva. Ennél az alacsonyabb nehézségi szintnél még a legkisebb hash kapacitással rendelkező bányász is elég gyakran jut részvényekhez, és emiatt megérni neki, hogy részt vegyen a bányatársaság munkájában. Azzal, hogy a bányatársaság alacsonyabbra állítja be a részvényhez jutás nehézségi szintjét, a bányatársaság mérni tudja az egyes bányászok által elvégzett munka nagyságát. Ha valamelyik bányász talál egy olyan blokkfej hash értéket, amely kisebb a bányatársaság által megszabott nezézségi szintnél, akkor ezzel bizonyítani tudja, hogy elvégezte a munkát, ami ennek a hash-nek az előállításához kellett. De ami ennél is fontosabb, a részvények keresése statisztikailag is mérhető formában hozzájárul ahhoz a munkához, amely a hálózati küszöbértéknél kisebb hash-ű blokk előállítására irányul. A bányászok ezreinek, akik kis hash-eket próbálnak előállítani, végül sikerülni fog egy olyan találni, amely elég kicsiny ahhoz, hogy kielégítse a bitcoin hálózat által felállított célt.
+
+Térjünk vissza a kockajáték hasonlathoz. Ha egy játékosnak az a célja, hogy négynél kevesebbet dobjon (a teljes hálózatra vonatkozó cél), akkor a bányatársaság egy könnyebb célt ad meg, pl. hogy hányszor sikerült a társaságban részt vevő játékosoknak 8-nál kevesebbet dobni. Ha egy játékos 8-nál kevesebbet dob (a bányatársaság által felállított cél), akkor a játékos kap egy részvényt, de nem nyeri meg a játékot, mivel a játék még nem érte el a célját (hogy az összeg 4-nél kevesebb legyen). A társaságban lévő játékosok a könnyebb célt gyakrabban elérik, és szabályosabb időközönként jutnak részvényekhez, még ha nem is érik el a nehezebb célt, a játék megnyerését. Néha valamelyik játékosnak sikerül olyat dobni, hogy a kockák összege négynél kevesebb, vagyis megnyeri a játékot a társaságnak. Ekkor a bevétel a játékosok között annak az arányában osztható el, hogy ki hány részvénnyel rendelkezik. A 8-nál kisebb cél ugyan nem volt nyerő, de jól mérte a játékban résztvevő játékosok kockadobásainak a számát.
+
+Hasonlóléppen, egy bányatársaság úgy állítja be a nehézséget, hogy az egyes bányászok gyakran találjanak olyan blokkfejeket, amelynek hash értéke ennél a nehézségi szintnél kisebb, és így részvényekhez jussanak. Néha valamelyik kísérlet során olyan blokkfej áll elő amelynek hash-e kisebb a bitcoin hálózat  által megkövetelt célnál, vagyis a blokk érvényes lesz, és az egész társaság nyer.
+
+===== Felügyelt bányatársaságok (Managed pools)
+
+A legtöbb bányatársaság „felügyelt”, ami azt jelenti, hogy van egy egyén vagy szervezet, amelyik futtatja a bányatársaság szerverét, a pool szervert. A szerver tulajdonosát a pool operátornak hívják, és a bányászoktól a bevételből pár százalékos díjat szed.
+
+A pool szerver speciális szoftvert és pool bányászprotokolt futtat, amely összehangolja a bányászok tevékenységét. A pool szerver egy vagy több teljes csomóponthoz is kapcsolódik, és közvetlen hozzáférése van a teljes blokklánc adatbázishoz. Ez lehetővé teszi, hogy a pool szerver a bányászok nevében ellenőrizze a tranzakciókat és a blokkokat, és mentesítse őket a teljes csomópont futtatásának terhétől. A bányászok szempontjából ez nagyon fontos szempont, mivel egy teljes csomóponthoz egy külön számítógépre van szükség, melynek legalább 15 – 20 Gbyte mágnestárolója (diszk) és legalább 2 Gbyte memóriája (RAM) van. Ez kívül a teljes csomópontokon futó bitcoin szoftver monitorozást igényel, karban kell tartani és gyakran kell verzióváltást végezni. Bármilyen leállás, amit a karbantartás hiánya vagy erőforrás hiány okoz, hátrányosan érinti a bányászok profitját. Sok bányász amiatt csatlakozik  egy igazgatott bányatársasághoz, mert nagy előnyt jelent a számára, hogy egy teljes csomópont futtatása nélkül is bányászkodni tud.
+
+A bányatársaság bányászai egy bányász protokoll segítségével kapcsolódnak a pool szerverhez, pl. Stratum (STM) vagy GetBlockTemplate (GBT) segítségével. Egy régebbi szabvány, melynek GetWork a neve, 2012 vége óta elavultnak számít, mivel 4 GH/s felett nehézkesen támogatja a bányászatot. Mind az STM, mind a GBT protokoll blokk sablonokat hoz létre, amelyek a létrehozandó blokk blokkfejének sablonját tartalmazzák. A pool szerver a tranzakciók összesítésével előállítja a létrehozandó blokk jelöltet, beteszi a coinbase tranzakciót (az extra nonce hellyel), kiszámítja a Merkle gyökeret, és hozzákapcsolja az előző blokk hash-ét. Az előállítanó blokk jelölt fejét ezután sablonként elküldi a pool bányászainak. Mindegyik bányász ezt a sablont használja, persze kisebb nehézségi szinttel, mint a bitcoin hálózaté, és a sikeres eredményeket visszaküldi a pool szervernek, hogy részvényeket kaphasson.
+
+===== P2Pool
+
+A felügyelt pool-ok megteremtik a lehetőségét annak, hogy a pool operátor csaljon, hiszen az operátor a tagok által végzett munkát arra használhatja, hogy kettős költést kíséreljen meg, vagy hogy érvénytelenné tegyen egy blokkot (lásd <<51%>>). Ezen kívül a központosított pool szerverek egyetlen meghibásodási pontot jelentenek. Ha a pool szerver leáll, vagy DoS támadás éri, akkor a pool bányászai nem tudnak tovább bányászni. 2011-ben ezen kérdések megoldása céljából egy új bányászati módszert javasoltak és fejlesztettek ki: a P2Pool egy peer-to-peer bányász protokoll, melynek nincs operátora.
+
+A P2Pool decentralizálja a pool szerver feladatait oly módon, hogy egy párhuzamos, blokklánc-szerű rendszert  valósít  meg, az ún. _részvényláncot_ (_sharechain_-t) . A részvénylánc a bitcoin blokkláncnál alacsonyabb nehézségi szinttel rendelkező lánc. A részvénylánc lehetővé teszi a bányászok decentralizált poolban történő együttműködését, mert a részvényláncon 30 másodpercenként áll elő egy részvényeknek megfelelő blokk. A részvénylánc minden egyes blokkja rögzíti a munkában résztvevő bányászok arányos jutalmait, és az előző részvényblokkból tovább viszi az addigi eredményeket. Ha valamelyik részvényblokk eléri a bitcoin hálózat nehézségi szintjét, akkor továbbításra kerül a bitcoin hálózatba és bekerül a blokkláncba. A jutalmat azok a bányászok kapják, akik létrehozták a nyerő blokk előtti részvényeket. Lényegében ahelyett, hogy egy pool szerver tartaná nyilván a pool bányászainak részvényeit és jutalmát, a részvénylánc lehetővé teszi a bányászok számára, hogy a bitcoin blokklánc konszenzus mechanizmusához  hasonló, decentralizált konszenzus mechanizmus segítségével kövessék nyomon a részvényeket.
+
+A P2Pool bányászat bonyolultabb, mint a bányatársaságokban történő bányászat, mivel a P2Pool bányászathoz egy külön számítógépre van szükség, amely elég sok diszk hellyel, memóriával, és  internet sávszélességgel rendelkezik ahhoz, hogy támogatni tudjon egy teljes bitcoin csomópontot valamint a p2pool csomópont szoftverét. A P2Pool bányászok a bányász eszközeiket a helyi p2pool csomópontjukkal kötik össze, ami egy pool szerver funkcióit szimulálja, vagyis blokk sablonokat küld a bányász hardvernek. Egy P2Pool-ban mindegyik bányász maga állítja össze a blokk jelöltjét, és a tranzakciókat épp úgy teszi bele a blokkba, mint a szingli bányászok, de ezt követően közösen bányászik a többi bányásszal a részvény láncon. A P2Pool egy hibrid módszer, amelynek előnye, hogy tagjai gyakrabban jutnak jövedelemhez, mint a szingli bányászok, de mindezt anélkül valósul meg, hogy egy pool operátor túl sok felügyeleti joghoz jutna.
+
+Mostanában a P2Pool-okban jelentősen nőtt a részvétel, mivel a bányatársaságok koncentrációja megközelítette azt a szintet, ami már felveti az 51%-os támadással kapcsolatos aggodalmakat (lásd <<51%>>). A P2Pool protokoll továbbbfejlesztése várhatóan lehetővé teszi, hogy szükségtelen legyen a teljes csomópont futtatása, ami még könnyebbé teszi majd a decentralizált bányászatot. 
+
+[[51pct]]
+[[consensus_attacks]]
+=== A konszenzus elleni támadások
+
+A bitcoin konszenzus mechanizmusa elméletben támadható, ha a bányászok (vagy pool-ok) a hash kapacitásaikat tisztességtelen vagy ártalmas célra használják. Mint láttuk, a konszenzus mechanizmus azon alapul, hogy a bányászok többsége becsületesen, önzetlenül viselkedik. De ha egy bányásznak vagy egy bányász csoportnak sikerül megszereznie a bányász kapacitás jelentős részét, akkor a konszenzus mechanizmus ellen indított támadással szétzilálhatja a bitcoin hálózat biztonságát és rendelkezésre állását.
+
+Fontos megjegyeznünk, hogy konszenzus elleni támadásokkal csak a jövőbeli, vagy legfeljebb a közelmúlt eseményei befolyásolhatók (néhányszor tíz blokk).  A bitcoin főkönyve az idő múlásával egyre immunisabb / ellenállóbb. Bizonyos „mélységen” túl a blokkok teljesen immunisak, még egy olyan tartós, konszenzus elleni támadás esetén is, amely elágazást hoz létre. A konszenzus elleni támadások nem érintik a titkos kulcsok és az aláíró algoritmus (ECDSA) biztonságát. Egy konszenzus elleni támadással nem lehet bitcoinokat lopni, vagy aláírás nélkül bitcoinokat elkölteni, átirányítani őkat vagy más módon megváltoztatni a régebbi tranzakciókat vagy bejegyzéseket. A konszenzus elleni támadások csak a legutóbbi blokkokat képesek befolyásolni, és a további blokkok előállítása szempontjából DoS (denial-of-service, szolgáltatás megtagadási) támadást jelentenek.
+
+A konszenzus mechanizmus elleni egyik ilyen támadás forgatókönyve az ún. „51 %-os támadás”. Ennél a forgatókönyvnél a hálózat hash kapacitásának többségével (51%-vel) rendelkező bányászok összejátszanak egymással. Mivel a támadók képesek arra, hogy a blokkok többségét ők bányásszák ki, ezért tudatos „elágazásokat” képesek létrehozni a blokkláncban, és kétszer is el tudják költeni ugyanazt a bitcoint, vagy DoS támadást képesek indítani bizonyos tranzakciók vagy címek ellen. Egy elágazás/készeres költés úgy valósul meg, hogy a támadó az előzőleg már megerősített blokkokat érvénytelenné teszi, mégpedig úgy, hogy a blokkok előtt egy elágazást hoz létre, és egy alternatív láncra történő átkonvergálást kényszerít ki.  Megfelelő hash kapacitással a támadó egymás után akár 6 vagy még több blokkot érvénytelenné tud tenni, ezáltal azok a tranzakciók, amelyeket már változatlannak tekintettek (6 megerősítés), érvénytelenné válnak. Megjegyzem, hogy a kettős költés csak a támadó saját tranzakcióinál valósítható meg, mert a támadó ezeket tudja szabályosan aláírni. A saját tranzakciók újbóli elköltése akkor rentábilis, ha a támadó így egy visszafordíthatatlan kifizetéshez vagy áruhoz jut, anélkül, hogy fizetne érte.
+
+Nézzünk az 51 %-os támadásra egy gyakorlati példát. Az első fejezetben láttunk egy Alice és Bob közötti tranzakciót, melynél Alice vett egy csésze kávét. Bob, a kávéház tulajdonosa szívesen elfogadja a kávé árát anélkül is, hogy megvárná a megerősítését (egy blokk kibányászását), mert a kettős költés veszélye egy csésze kávé esetén viszonylag csekély, és fontosabb a gyors kiszolgálás. Ez hasonló ahhoz a gyakorlathoz, hogy a legtöbb kávéházban 25 $ alatti összegeknél a hitlekártyás fizetési módot aláírás nélkül is elfogadják, mivel az utólagos visszatérítés veszélye kicsi, míg az aláírás okozta késedelem költsége viszonylag nagy. Ezzel szemben ha egy költségesebb tételt adnak el bitcoinért, akkor a kettős költés veszélye nagyobb, mivel a vevő szétküldhet egy másik tranzakciót, amely ugyanazokat a bemeneteket (UTXO) költi el, és a kereskedő hoppon marad. Kettős költés kétféleképpen valósulhat meg: vagy úgy, hogy a tranzakció még nincs megerősítve, vagy úgy, hogy a támadó egy blokklánc elágazás segítségével képes számos blokkot „visszacsinálni”. Egy 51 %-os támadás esetén a támadó egy új láncon másodszor is elköltheti a saját tranzakcióiban lévő bitcoinokat, mivel az ezeknek megfelelő tranzakciók régi láncon már nem érvényesek.
+
+Példákban a rosszindulatú támadó, Mallory elmegy Carol galériájába, és vásárol egy gyönyörű szárnyas oltárt, amely Satoshi Nakamotót Prométeuszként ábrázolja. Carol a 250,000$ áru „A nagy tűz” című képet bitcoinért adja el Malllory-nak. Carol ahelyett, hogy várna hat vagy hét megerősítésre, becsomagolja a képet, és egy megerősítés után átadja Mallory-nak. Mallory bűntársa, Paul egy nagy bányatársaságot  üzemeltet. Amint Mallory tranzakciója bekerül a blokkláncba, Paul azonnal indít egy 51%-os támadást.  Paul úgy befolyásolja a bányatársaság munkáját, hogy ugyanazon a blokkmagasságon,  mint amelyen a Mallory tranzakcióját tartalmazó blokk van, újrabányásszanak egy blokkot. A régi blokkot az új blokk fogja helyettesíteni, és Mallory Carol-nak történő fizetsége helyett egy olyan tranzakciót tartalmaz, amely ugyanazokat a bemeneteket költi el, de ezúttal Mallory számára. A másodszori költéshez tartozó tranzakció ugyanazokat az UTXO-kat fogyasztja el, és Mallory pénztárcájába fizeti vissza őket, vagyis Mallory ahelyett hogy fizetne, lényegében megtartja a bitcoinokat. Paul ezután egy újabb blokkot állíttat elő a bányatársasággal, hogy a kettős költést tartalmazó lánc hosszabb legyen, mint az eredeti lánc  (vagyis egy elágazást okoz a Mallory tranzakcióját tartalmazó blokk alatt). Ha a blokklánc elágazás az új (hosszabb) lánc javára dől el, akkor a második tranzakció fog az eredeti, Carolnak történő fizetség helyébe lépni. Carol ott áll fizetség és szárnyas oltár nélkül. Azok a bányászok, akik Paul bányatársaságában dolgoznak, egyálatlán nem tudnak a kettős költési kísérletről, mivel automatikus bányászokkal bányásznak, és nem tudnak minden tranzakciót vagy blokkot nyomon követni.
+
+Ha egy kereskedő védekezni szeretne az efféle támadások ellen, akkor a nagy értékű tételek esetében várnia kell legalább hat megerősítésre, mielőtt a terméket odaadná a vevőnek. Egy másik lehetőség, ha az eladó egy több aláírást megkívánó (multisig) letéti számlát használ, és a pénz beérkezése után ismét csak jó néhány megerősítést megvár. Minél több a megerősítés, annál nehezebb a tranzakciót egy 51 %-os támadással érvénytelenné tenni. A nagy értékű tételeknél a bitcoinnal fizetni még mindig kényelmes és hatékony, még akkor is, ha a vevőnek 24 órát kell várnia a szállításra, ami 144 megerősítést jelent.
+
+A kettős költésen kívül van egy másik forgatókönyv, amelynél a konszenzus elleni támadással bizonyos bitcoin szereplők (adott bitcoin címek) működése hiusítható meg. A támadó, aki rendelkezik a többségi bányász kapacitással, egyszerűen figyelmen kívül hagy bizonyos tranzakciókat. Ha ezek a tranzakciók bekerültek egy másik bányász által előállított blokkba, akkor a támadó szándékosan elágazást hoz létre, és újrabányássza a blokkot, ezáltal ismét meghiusítja a tranzakciót. Ezzel a támadással tartós szolgáltatás megtagadás (DoS) érhető el egy adott címmel vagy címekkel szemben, ha a támadó rednelkezik a bányász kapacitás többségével.
+
+A neve ellenére az 51 %-os támadáshoz nem szükséges, hogy a támadó ténylegesen rendelkezzen a hash kapacitás 51%-ával. Egy ilyen támadás már kisebb kapacitással is megkísérelhető. Az 51%-os határ egyszerűen csak azt a szintet jelzi, amelynél egy ilyen támadás majdnem mindig sikeres lesz. A konszenzus elleni támadás lényegében a következő blokkért folytatott kötélhúzás, melyben valószínűleg  az „erősebb” csoport győz.  Kevesebb hash kapacitásnál a siker valószínűsége is kisebb, mivel a többi bányász némelyik blokkok előállítását „becsületes” módon végzi. Úgy is lehet nézni a dolgot, hogy minél több hash kapacitása van a támadónak, annál hosszabb elágazást tud szándékosan létrehozni, vagyis annál több, a közelmúltban létrejött blokkot tud érvényteleníteni, vagy annál több jöbvőbeli blokkot tud befolyásolni. Biztonsági kutatók statisztikai modellezéssel megállapították, hogy, különféle konszenzus elleni támadások már akár 30 %-os hash kapacitás esetén is lehetségesek.
+
+A teljes hash kapacitás nagy mértű növekedése a bitcoint vitathatatlanul támadhatatlanná tette az egyes bányászokkal szemben. Egy szingli ványász nem képes még a teljes hálózati kapacitás 1 %-a felett sem rendelkezni. Ugyanakkor a bányatársaságok miatti központosítás magával hozta  annak a veszélyét, hogy a pool operátora hasznonszerzési céllal indít támadást. A felügyelt pool-ok operátora képes az előállítandó blokkok befolyásolásásra, és azt is képes meghatározni, hogy mely tranzakciók kerüljenek be a blokkba. Ha a pool operátora korlátozott mértékben és ravaszul él vissza ezzel az erővel, akkor anélkül profitálhat egy konszenzus elleni támadásból, hogy észrevennék/lebukna.
+
+De vannak olyan támadók is, akiket nem a haszonszerzés vágya hajt. Az egyik ilyen lehetséges támadási forgatókönyvben a támadó célja a bitcoin hálózat szétzilálása, anélkül, hogy profitálna ebből a bomlasztásból. A bitcoin hálózat megbénításához hihetetlen nagy befektetésre és titkos tervekre van szükség, de mégis lehetséges egy nagy költségvetésű, véhetően  valamelyik kormány által finanszírozott támadó esetén. Az is elképzelhető, hogy egy pénzes támadó egyszerre többféle  módon ássa alá a konszenzus mechanizmust:  bányász hardvert halmoz fel, megvesztegeti a pool operátotokat, és DoS támadást indít a többi pool ellen. Elméletileg mindegyik forgatókönyv lehetséges, de a bitcoin hash kapacitásának exponenciális növekedése mellett egyre kevésbé jártható. A fejlesztések, pl. a P2Pool bányászat arra irányul, hogy további decentralizálás legyen a bányászatban, és a bitcoin konszenzus még nehezebben legyen megtámadható.
+
+Kétségtelen tény, hogy egy konszenzus elleni erős támadás megingatná a bitcoinba vetett rövid távú bizalmat, és jelentős árcsökkenéssel járna. A bitcoin hálózat és szoftver viszont állandóan fejlődik, emiatt a konszenzus elleni támadásokat a bitcoin közösség azonnali ellenintézkedésekkel tudja majd fogadni, és ezzel a bitcoin még ellenállóbbá, egészségesébbé és robusztusabbá fog válni.
+

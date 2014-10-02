@@ -1,0 +1,212 @@
+[preface]
+== Előszó
+
+=== A bitcoin könyv megírása
+
+Először 2011 közepén botlottam a bitcoinba. A reakcióm többé-kevésbé az volt, hogy "Hű! Micsoda hülyeség!" - és további 6 hónapig nem törődtem vele, nem értettem meg a fontosságát. Az általam ismert legokosabb embereknél is sokszor láttam ugyanezt a reakciót, ami egy kicsit vigasztaló. Másodszor egy levelező listán került szóba a bitcoin. Ekkor már elhatároztam, hogy elolvasom Satoshi Nakamoto dolgozatát, azaz áttanulmányozom a hiteles forrást és megnézem, miről van szó. Még mindig emlékszem arra a pillanatra, amikor befejeztem a 9 oldalas dolgozatot és megértettem, hogy a bitcoin nem egyszerűen csak egy digitális pénz, hanem egy decentralizált bizalmi hálózat, és a pénznél sokkal több mindennek az alapjául szolgálhat. Ez a felismerés indított arra, hogy 4 hónapon keresztül a bitcoinra vonatkozó minden információmorzsát összeszedjek és elolvassak. Lelkesedtem és megszállott lettem, naponta 12 órát vagy még többet töltöttem a képernyőre tapadva, olvastam, írtam, kódoltam, és tanultam, amennyit csak tudtam. 10 kilót fogytam ez alatt, mert nem ettem rendesen, hanem csal a bitcoinnal foglalkoztam.
+
+Két év múlva, miután számos kis céget alapítottam a bitcoinnal kapcsolatos szolgáltatások és termékek vizsgálatára, elhatároztam, hogy megírom az első könyvemet. A bitcoin volt az a tárgy, ami kreatívvá tett, lefoglalta a gondolataimat és a legizgalmasabb technológia volt, amióta találkoztam az Internettel. Ideje volt, hogy megosszam a tágabb olvasóközönséggel is azt az elragadtatásomat, amit ezzel az izgalmas techológiával kapcsolatban érzetem. Így született ez a bitcoin könyv.
+
+=== Olvasóközönség 
+
+A könyvet leginkább programozóknak szántam. Ha valaki ismer egy programozási nyelvet, akkor ez a könyv megtanítja neki, hogyan működnek a digitális kripto-pénzek, hogyan használhatók és hogyan lehet olyan szoftvert írni, amelyik ezeket használja. Az első néhány fejezet a nem programozók számára is jó bevezetés a bitcoin világába - vagyis azoknak, akik szeretnék megérteni a bitcoin és a digitális pénzek belső működését. A példákhoz Python és Linux parancssori környezet szükséges.
+
+=== Github forráskód
+
+A könyv fent van a Github-on. A Github repository tartalmazza a könyv szövegét, ábráit és a programozási mintapéldákat:
+
+https://github.com/aantonop/bitcoinbook
+
+"Fork"-olják a kódot, próbálják ki a mintapéldákat, vagy küdjenek hibajavításokat a Githubon keresztül.
+
+=== Miért vannak a borítón bogarak?
+
+A levélvágó hangya egy olyan faj, amely egy szuper-kolóniában nagyon bonyolult viselkedésre képes, ugyanakkor az egyes hangyák nagyon egyszerű szabályok szerint járnak el, amelyeket a szociális érintkezés és kémiai szaganyagok (feromonok) cseréje határoz meg. A Wikipédia szerint: "Az emberek mellett a levélvágó hangyák alkotják a legnagyobb és legbonyolultabb társadalmakat a Földön." A levélvágó hangyák ténylegesen nem eszik meg a leveleket, hanem gombatermelésre használják, ami a hangyaboly fő élelemforrása. Értik? Ezek a hangyák termelnek!
+
+Noha a hangyáknál kaszt-alapú a társadalom, és egy királynő hozza létre az udódokat, de a hangyabolyban nincs központi szervezet vagy vezető. A sok millió tagot számláló hangyaboly rendkívül intelligens és okos viselkedése az egyes egyedek kölcsönhatásai révén előálló sajátosság ("emergens tulajdonság").
+
+A természet azt szemlélteti, hogy a decentralizált rendszerek ellenállóak tudnak lennei és emergens bonyolultságot és okosságot tudnak létrehozni központi szervezet, hierarchia vagy bonyolult részek nélül. 
+
+A bitcoin egy nagyon ügyes decentralizált bizalmi hálózat, amely pénzügyi folyamatok milliárdjainak a támogatására képes. Ugyanakkor minden egyes csomópont néhány egyszerű matematikai szabályt követ. A csomópontok közötti kölcsönhatások vezetnek a bonyulult viselkedés megjelenésére, nem pedig valamilyen belső bonyolultság vagy az egyes csomópontokba vetett bizalom. Egy hangyabolyhoz hasonlóan a bitcoin hálózat is egyszerű szabályokat követő csomópontok hálózata, amely képes ellenállni a támadásoknak, és együttesen központi koodináció nélkül is csodálatos dolgokra képes.
+
+=== A könyvben használt szabályok
+
+A könyv a következő tipográfiai szabályokat használja:
+
+_Dőlt betűs szedés_:: egy új szó, URL, email cím, állománynév vagy kiterjesztés jelölésére szolgál.
+
++Fix szélességű szedés+:: Programlisták, valamint egy bekezdésen belül valamilyen program részlet, pl. változó vagy függvényvek, adatbázisok, adattípusok, környezeti változók, utasítások és kulcsszavak esetén használatos.
+
+**`Fix szélességű, vastag szedés`**:: Parancsok vagy más szövegek, melyeket a felhasználónak pontosan ilyen formában kell beadnia.
+
+_++Fix szélességű, dőlt betűs sezdés++_:: Olyan szöveg, melyet a felhasználó által megadott értékekkel a környezet alapján meghatározott értékekkel kell helyettesíteni.
+
+[Tipp]
+====
+Ez az ikon egy tippet, javaslatot vagy általános megjegyzést jelöl.
+====
+
+[Figyelmeztetés]
+====
+Ez az ikon egy figyelmeztetést jelöl.
+====
+
+=== A programozási példák használata
+=== Using Code Examples
+
+A könyv szeretne segíteni az önök munkáját. Ha a könyv valamilyen mintapéldát ad valamire, akkor ön ezt felhasználhatja a saját programjaiban vagy dokumentációiban. Nem kell tőlünk engedélyt kérnie, ha csak kisebb részleteket használ a példákból. Például ha ír egy programot, amely a könyv néhány kódrészletét használja, akkor ehhez nem kell engedélyt kérnie. Az O'Reilly könyvek CD-ROM-jain közölt példák árusítása vagy sokszorosítása azonban engedélyköteles. Ha a könyvből vett idézettel válaszol egy kérdésre, vagy idéz egy példa programot, az nem engedélyköteles. De ha jelentős mennyiségű példaprogramot vesz át a könyvből, az engedélyköteles. 
+
+Köszönettel vesszük, de nem kötelező a hivatkozás. A hivatkozás általában a címet, a szerzőt, a kiadót és az ISBN számot tartalmazza. Például: "_Könyv cím_", írta Valaki (O'Reilly). Copyright 2012 Jogtulajdonos, 978-0-596-xxxx-x.”
+
+Ha úgy érzi, hogy a példa programok felhasználásánál túllépte a fent engedélyezett mértékét, akkor lépjen kacsolatba velünk:
+[<email>permissions@oreilly.com</email>].
+
+=== Hogyan tud kapcsolatba lépni velünk
+
+A könyvvel kapcsolatos megjegyzéseit és kérdéseit kérjük, küldje el a kiadónak:
+
+++++
+<simplelist>
+<member>O’Reilly Media, Inc.</member>
+<member>1005 Gravenstein Highway North</member>
+<member>Sebastopol, CA 95472</member>
+<member>800-998-9938 (in the United States or Canada)</member>
+<member>707-829-0515 (international or local)</member>
+<member>707-829-0104 (fax)</member>
+</simplelist>
+++++
+
+A könyvnek van egy web lapja, melyen hibajegyzék, példák és további információk szerepelnek. A web lap a $$http://shop.oreilly.com/product/0636920032281.do$$[] címen érhető el.
+
+A könyvvel kapcsolatos megjegyzéset vagy műszaki kérdéseket az alábbi címre küldheti: [<email>bookquestions@oreilly.com</email>].
+
+Könyveinkről, tanfolyamainkról, konferenciáinkról, híreinkről további információkat találhat a webhelyünkön: $$http://www.oreilly.com$$[].
+
+Fent vagyunk a Facebook-on: link:$$http://facebook.com/oreilly$$[] 
+
+KÖvessen minket a Twitter-en: link:$$http://twitter.com/oreillymedia$$[]
+
+Nézzen minket a YouTube-on: link:$$http://www.youtube.com/oreillymedia$$[]
+
+++++
+<?hard-pagebreak?>
+++++
+
+=== Szómagyarázat
+
+A lenti szómagyarázat a bitcoinnal kapcsolatos szavakat, kifejezéseket tartalmaz. Ezek nagyon sokszor előfordulnak ebben a könyvben. Tegyen ide egy könyjelzőt, hogy gyorsan megtalálhassa és tisztázhassa a kérdéses kifejezéseket.
+
+
+bányász::
+((("miner")))
+    Egy olyan hálózati csomópont, amely új blokkok előállítása érdekében munkabizonyítékot (proof-of-work) keres, ismételten végrehajtott hash számítás segítségével.
+
+bip::
+((("bip"))) 
+    Bitcoin Improvement Proposal (a bitcoin tökletesítésére tett javaslat).  Olyan javaslatok, melyeket a bitcoin közösség tagjai tettek a bitcoin javítása, tökéletesítése érdekében. Például a BIP0021 a bitcoin URI sémájának tökletesítésére tett javaslat.
+
+bitcoin::
+((("bitcoin"))) 
+    A pénzegység (érme), a hálózat és a szoftver neve.
+
+blokk::
+((("block")))
+    Tranzakciók csoportja, melyben tartalmaz egy időbélyeget, valamint az előző blokk ujjlenyomatát. A blokk blokkfejlécének hash-elése révén áll elő munakbizonyíték (proof-of-work), és válnak érvényessé a tranzakciók. Az érvényes blokkok a hálózati konszenzus alapján bekerülnek a fő blokkláncba.
+
+blokklánc::
+((("blockchain")))
+    Érvényesített blokkok listája, melyben mindegyik blokk kapcsolódik az előzőhöz, egészen a genezis blokkig bezárólag.
+
+cél nehézsági szint::
+((("target difficulty")))
+    Az a nehézségi szint, amely mellett a hálózat kb. 10 percenént fog egy blokkot találni.
+
+cím (úgy is, mint nyilvános kulcs)::
+((("bitcoin address")))
+((("address", see="bitcoin address")))
+((("public key", see="bitcoin address")))
+    Egy bitcoin cím a következőképpen néz ki:  +1DSrfJdB2AnWaFNgSbv3MZC2m74996JafV+. A bitcoin cím betűkből és számokból áll, és egy "1"-gyel kezdődik. Pont úgy, ahogy a többiek email-t tudnak küldeni az ön email címére, megkérheti őket, hogy a bitcoin címére küldjenek pénzt.
+
+díjak::
+((("fees")))
+   A tranzakció feladója/küldője gyakran egy díjat ad meg a hálózatnak a tranzakció feldolgozása érdekében. A legtöbb tranzakcióhoz  min. 0.1 mBTC díjra van szükség.
+
+genezis blokk::
+((("genesis block")))
+    A blokklánc első blokkja, mely a digitális pénz inicializálására szolgál. 
+	
+hálózat::
+((("network")))
+    Egyenrangú csomópontokból álló, peer-to-peer hálózat, amely a hálózatban lévő összes többi bitcoin csomópontnak továbbítja a tranzakciókat és a blokkokat.
+
+hash::
+((("hash")))
+    Valamilyen tetszőleges bináris bemenet digitális ujjlenyomata.
+
+jutalom::
+((("reward")))
+    Az új blokkokban lévő pénzösszeg, melyet a hálózat annak a bányásznak ad, aki megtalálta a munkabizonyítékot a blokkhoz. A jutalom jelenleg 25 BTC/blokk.
+
+megerősítések::
+((("confirmations")))
+    Ha egy tranzakció bekerül egy blokkba, akkor "egy merősítése van". Ha már egy _másik blokk_ is előállt ugyanezen a blokkláncon, akkor a tranazkciónak két megerősítése van stb.  Hat vagy még több megerősítés már elégságes bizonyítéknak tekinthető arra nézve, hogy a tranzakciót nem lehet visszafordítani.
+
+munkabizonyíték, proof-of-work::
+((("proof-of-work")))
+    Egy olyan szmérték, melynek előállítása jelentős számítási kapacutást igényel. A bitcoin esetémben a bányászoknak az SHA256 algoritmus használatával kell egy olyan hash-t találniuk, amely megelel a hálózat egészében fennálló cél nehézségi szintnek.
+
+nehézségi szint::
+((("difficulty")))
+   Hálózati beállítás, amely azt határozza meg, hogy mennyi számítási munkára van szükség egy munkabizonyíték (proof-of-work) előállításához.
+
+nehézségi szint újraszámítás::
+((("difficulty re-targeting")))
+   A nehézségi szint egész hálózatban elvégzett újraszámítása, amely 2016 blokkonként történik meg, és az előző 2016 blokk előállításához használt hash kapacitást/teljesítményt veszi figyelembe.
+
+pénztárca::
+((("wallet"))) 
+    Egy szoftver, amely a felhasználó bitcoin címeit és titkos kulcsait kezeli. A pénztárca használható bitcoinok küldésére, fogadására és tárolására. 
+
+titkos kulcs (azaz  privát kulcs)::
+((("secret key")))
+((("private key", see="secret key")))
+    Egy titkos szám, amely megszünteti a hozzá tartozó címre küldött bitcoinok zárolását. Egy titkos kulcs így néz ki pl.: +5J76sF8L5jTtzE96r66Sf8cka9y44wdpJjMwCxR3tzLh3ibVPxh+
+
+tranzakció::
+((("transaction")))
+    Egyszerű szavakkal, bitcoin küldés az egyik címről a másikra. Pontosabban, a tranzakció egy aláírással rendelkező adatstruktúra, amely értéktovábbításnak felel meg. A tranzakciókat a bitcoin hálózat továbítja, a nányászok foglalják blokkokba őket, és ezáltal bekerülnek a blokkláncba.
+
+++++
+<?hard-pagebreak?>
+++++
+
+=== Köszönetnyilvánítás
+
+==== Korai kiadás vázlat (Github segítők)
+
+Sok segítőtől kaptam megjegyzéseket, javításokat és bővítéseket a Github-on lévő korai kiadáshoz. Köszönet az összes segítségéert! A legjelesebb segítők a következők voltak:
+
+===== (Név - Github azonosító)
+
+* *Minh T. Nguyen - enderminh: Github szerkesztő*
+* Ed Eykholt - edeykholt
+* Michalis Kargakis - kargakis
+* Erik Wahlström - erikwam
+* Richard Kiss - richardkiss
+* Eric Winchell - winchell
+* Sergej Kotliar - ziggamon
+* Nagaraj Hubli - nagarajhubli
+* ethers
+* Alex Waters - alexwaters
+* Mihail Russu - MihailRussu
+* Ish Ot Jr. - ishotjr
+* James Addison - jayaddison
+* Nekomata - nekomata-3
+* Simon de la Rouviere - simondlr
+* Chapman Shoop - belovachap
+* Holger Schinzel - schinzelh
+* effectsToCause - vericoin
+* Stephan Oeste - Emzy
+* Joe Bauers - joebauers
+* Jason Bisterfeldt - jbisterfeldt
+* Ed Leafe - EdLeafe
