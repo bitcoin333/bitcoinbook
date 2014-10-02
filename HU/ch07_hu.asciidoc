@@ -46,6 +46,7 @@ A blokkfejléc háromféle blokk meta-adatból áll. Először is, van egy hivat
 | 4 bájt | Időbélyeg | A blokk létrejöttének hozzávetőleges ideje (Unix kezdőidő óta eltelt másodpercekben)
 | 4 bájt | Nehézségi cél | A blokk munkabizonyíték (proof-of-work) algoritmusának a nehézségi célja
 | 4 bájt | Nonce | A proof-of-work algoritmushoz használt számláló
+|=======
 
 A Nonce, a nehézségi szint ás az időbélyeg a bányászat folyamatában használatos, ezekről részletesebben a <<bányászat>> részben írunk.
 
