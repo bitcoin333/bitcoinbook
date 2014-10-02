@@ -73,9 +73,9 @@ A titkos kulcsok száma a bitcoin esetén, 2^256^, ami egy elképzelhetetlenül 
 A Bitcoin Core kliensben egy új kulcs a +getnewaddress+ paranccsal állítható elő. Biztonsági okokból a kliens csak a nyilvános kulcsot jelzi ki, a titkos kulcsot nem. Ha azt szeretnénk, hogy  bitcoind írja ki a titkos kulcsot, használjuk a +dumpprivkey+ parancsot. A +dumpprivkey+ a titkos kulcsot ellenőrző összeggel kiegészített 58-as számrendszeri formátumban jelzi ki, melyet tárca import formátumnak (WIF, wallett import format) hívunk. A WIF formátumot a titkos kulcs formátumok részben fogjuk részletesebben megvizsgálni. Az előző két paranccsal a következőképpen lehet egy titkos kulcsot előállítani és kijelezni:
 
 ----
-$ *bitcoind getnewaddress*
+$ bitcoind getnewaddress
 1J7mdg5rbQyUHENYdx39WVWK7fsLpEoXZy
-$ *bitcoind dumpprivkey 1J7mdg5rbQyUHENYdx39WVWK7fsLpEoXZy*
+$ bitcoind dumpprivkey 1J7mdg5rbQyUHENYdx39WVWK7fsLpEoXZy
 KxFC1jmwwCoACiCAWZ3eXa96mBM6tb3TYzGmf6YwgdGWZgawvrtJ
 ----
 
@@ -85,7 +85,7 @@ Titkos kulcsok előállítása és megjelenítése az +sx eszközkészlet+ paran
 
 ===== Új kulcs az sx eszközkészlettel
 ----
-$ *sx newkey*
+$ sx newkey
 5J3mBbAH58CpQ3Y5RNJpUKPE62SQ5tfcvU2JpbnkeyhfsYB1Jcn
 ----
 
@@ -311,6 +311,7 @@ A titkos kulcs számos különböző formátumban ábrázolható, ezek mindegyik
 | Hexa | Nincs | 64 hexadecimális számjegy
 | WIF |  5 | Base58Check kódolás: Base-58, verzió előtaggal (128) és egy 32 bites ellenőrző összeggel 
 | tömörített | K vagy L | Mint előbb, de a kódolás előtt a 0x01 utótag hozzáfűzése
+|=======
 
 A korábban előállított titkos kulcs a következőképpen ábrázolható:
 
@@ -332,7 +333,8 @@ Az sx eszközkészlettel (lásd <<sx-eszközkészlet>>) könnyen lehet bitcoin k
 A base58check-decode parancsot használjuk:
 
 ----
-$ *sx base58check-decode 5J3mBbAH58CpQ3Y5RNJpUKPE62SQ5tfcvU2JpbnkeyhfsYB1Jcn*
+$ sx base58check-decode 5J3mBbAH58CpQ3Y5RNJpUKPE62SQ5tfcvU2JpbnkeyhfsYB1Jcn
+
 1e99423a4ed27608a15a2616a2b0e9e52ced330ac530edcc32c8ffc6a526aedd 128
 ----
 
@@ -342,7 +344,7 @@ Az eredmény a hexadecimális kulcs, melyet a WIF (Wallet Import Format, pénzt�
 
 A Base58Check formátumba történő kódoláshoz megadjuk a titkos kulcsot, melyet a WIF verzió előtag (128) követ.
 ----
-$ *sx base58check-encode 1e99423a4ed27608a15a2616a2b0e9e52ced330ac530edcc32c8ffc6a526aedd 128*
+$ sx base58check-encode 1e99423a4ed27608a15a2616a2b0e9e52ced330ac530edcc32c8ffc6a526aedd 128
 5J3mBbAH58CpQ3Y5RNJpUKPE62SQ5tfcvU2JpbnkeyhfsYB1Jcn
 ----
 
@@ -350,7 +352,7 @@ $ *sx base58check-encode 1e99423a4ed27608a15a2616a2b0e9e52ced330ac530edcc32c8ffc
 
 A titkos kulcs „tömörített” titkos kulcsként történő Base58Check kódolása úgy történik, hogy hozzáadjuk a +01+ utótagot a hexa kulcshoz, majd a fentiekhez hasonlóan elvégezzük a kódolást:
 ----
-$ *sx base58check-encode 1e99423a4ed27608a15a2616a2b0e9e52ced330ac530edcc32c8ffc6a526aedd01 128*
+$ sx base58check-encode 1e99423a4ed27608a15a2616a2b0e9e52ced330ac530edcc32c8ffc6a526aedd01 128
 KxFC1jmwwCoACiCAWZ3eXa96mBM6tb3TYzGmf6YwgdGWZgawvrtJ
 ----
 
@@ -442,7 +444,7 @@ include::code/key-to-address-ecc-example.py[]
 
 A kód futtatásakor kapott kimenet:
 ----
-$ *python key-to-address-ecc-example.py*
+$ python key-to-address-ecc-example.py
 Private Key (hex) is:  3aba4162c7251c891207b747840551a71939b0de081f85c4e44cf7c13e41daa6
 Private Key (decimal) is:  26563230048437957592232553826663696440606756685920117476832299673293013768870
 Private Key (WIF) is:  5JG9hT3beGTJuUAmCQEmNaxAuMacCTfXuw1R3FCXig23RQHMr4K
