@@ -53,7 +53,7 @@ https://github.com/aantonop/bitcoinbook
 
 === Példa programok
 
-A példák szemléltetése Pythonnal, C\+\+-szal és egy Unix-szerű operációs rendszer (Linux, Mac OSX) parancssoraival történt. Az összes kódrészlet megtalálható a Github repository-ban, és online módon is elérhető a https://github.com/aantonop/bitcoinbook URL címen, a főkönyvtár +code+ alkönyvtárában. 
+A példák szemléltetésére Python, C++ és egy Unix-szerű operációs rendszer (Linux, Mac OSX) parancssorai szolgáltak. Az összes kódrészlet megtalálható a Github repository-ban, és online módon is elérhető a https://github.com/aantonop/bitcoinbook URL címen, a főkönyvtár +code+ alkönyvtárában. 
 
 A kódrészletek a legtöbb operációs rendszer alatt a megfelelő nyelvek installálásával, minimális munkával működőképessé tehetők. Ha szükségesnek láttuk, akkor megadtuk az instaláláshoz szükséges utasításokat és az utasítások lépésről lépésre történő végrehajtása során keletkező kimeneteket. 
 
