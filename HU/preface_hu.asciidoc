@@ -3,21 +3,13 @@
 
 === A bitcoin könyv megírása
 
-Először 2011 közepén botlottam a bitcoinba. A reakcióm többé-kevésbé az volt, hogy "Hű! Micsoda hülyeség!" - és további 6 hónapig nem törődtem vele, nem értettem meg a fontosságát. Az általam ismert legokosabb embereknél is sokszor láttam ugyanezt a reakciót, ami egy kicsit vigasztaló. Másodszor egy levelező listán került szóba a bitcoin. Ekkor már elhatároztam, hogy elolvasom Satoshi Nakamoto dolgozatát, azaz áttanulmányozom a hiteles forrást és megnézem, miről van szó. Még mindig emlékszem arra a pillanatra, amikor befejeztem a 9 oldalas dolgozatot és megértettem, hogy a bitcoin nem egyszerűen csak egy digitális pénz, hanem egy decentralizált bizalmi hálózat, és a pénznél sokkal több mindennek az alapjául szolgálhat. Ez a felismerés indított arra, hogy 4 hónapon keresztül a bitcoinra vonatkozó minden információmorzsát összeszedjek és elolvassak. Lelkesedtem és megszállott lettem, naponta 12 órát vagy még többet töltöttem a képernyőre tapadva, olvastam, írtam, kódoltam, és tanultam, amennyit csak tudtam. 10 kilót fogytam ez alatt, mert nem ettem rendesen, hanem csal a bitcoinnal foglalkoztam.
+Először 2011 közepén botlottam a bitcoinba. A reakcióm többé-kevésbé az volt, hogy "Brr! Egy újabb pénz a hülyéknek!" - és további 6 hónapig nem törődtem vele, nem értettem meg a fontosságát. Az általam ismert legokosabb embereknél is sokszor láttam ugyanezt a reakciót, ami egy kicsit vigasztaló. Másodszor, amikor egy levelező listán került szóba a bitcoin, elhatároztam, hogy elolvasom Satoshi Nakamoto dolgozatát, azaz áttanulmányozom a hiteles forrást és megnézem, hogy miről van szó. Még mindig emlékszem arra a pillanatra, amikor befejeztem a 9 oldalas dolgozatot és megértettem, hogy a bitcoin nem egyszerűen csak egy digitális pénz, hanem egy decentralizált bizalmi hálózat, és a pénznél sokkal több mindennek az alapjául szolgálhat. Ez a felismerés indított arra, hogy 4 hónapon keresztül a bitcoinra vonatkozó minden információmorzsát összeszedjek és elolvassak. Lelkesedtem és megszállott lettem, naponta 12 órát vagy még többet töltöttem a képernyőre tapadva, olvastam, írtam, kódoltam, és tanultam, amennyit csak tudtam. 10 kilót fogytam ezalatt, mert nem ettem rendesen, hanem csal a bitcoinnal foglalkoztam.
 
-Két év múlva, miután számos kis céget alapítottam a bitcoinnal kapcsolatos szolgáltatások és termékek vizsgálatára, elhatároztam, hogy megírom az első könyvemet. A bitcoin volt az a tárgy, ami kreatívvá tett, lefoglalta a gondolataimat és a legizgalmasabb technológia volt, amióta találkoztam az Internettel. Ideje volt, hogy megosszam a tágabb olvasóközönséggel is azt az elragadtatásomat, amit ezzel az izgalmas techológiával kapcsolatban érzetem. Így született ez a bitcoin könyv.
+Két év múlva, miután számos kis céget alapítottam a bitcoinnal kapcsolatos szolgáltatások és termékek vizsgálatára, elhatároztam, hogy megírom az első könyvemet. A bitcoin volt az a tárgy, ami kreatívvá tett, lefoglalta a gondolataimat és a legizgalmasabb technológia volt, amióta találkoztam az Internettel. Ideje volt, hogy megosszam a tágabb olvasóközönséggel is azt az elragadtatásomat, amit ezzel az izgalmas techológiával kapcsolatban érzetem.
 
 === Olvasóközönség 
 
-A könyvet leginkább programozóknak szántam. Ha valaki ismer egy programozási nyelvet, akkor ez a könyv megtanítja neki, hogyan működnek a digitális kripto-pénzek, hogyan használhatók és hogyan lehet olyan szoftvert írni, amelyik ezeket használja. Az első néhány fejezet a nem programozók számára is jó bevezetés a bitcoin világába - vagyis azoknak, akik szeretnék megérteni a bitcoin és a digitális pénzek belső működését. A példákhoz Python és Linux parancssori környezet szükséges.
-
-=== Github forráskód
-
-A könyv fent van a Github-on. A Github repository tartalmazza a könyv szövegét, ábráit és a programozási mintapéldákat:
-
-https://github.com/aantonop/bitcoinbook
-
-"Fork"-olják a kódot, próbálják ki a mintapéldákat, vagy küdjenek hibajavításokat a Githubon keresztül.
+A könyvet leginkább programozóknak szántam. Ha valaki ismer egy programozási nyelvet, akkor ez a könyv megtanítja neki, hogyan működnek a digitális kripto-pénzek, hogyan lehet használni őket és hogyan írható olyan szoftver, amelyik ezeket használja. Az első néhány fejezet a nem programozók számára is jó bevezetés a bitcoin világába - vagyis azoknak, akik szeretnék megérteni a bitcoin és a digitális pénzek belső működését.
 
 === Miért vannak a borítón bogarak?
 
@@ -51,12 +43,32 @@ Ez az ikon egy tippet, javaslatot vagy általános megjegyzést jelöl.
 Ez az ikon egy figyelmeztetést jelöl.
 ====
 
+=== Github forráskód
+
+A könyv fent van a Github-on. A Github repository tartalmazza a könyv szövegét, ábráit és a programozási mintapéldákat:
+
+https://github.com/aantonop/bitcoinbook
+
+"Fork"-olják a kódot, próbálják ki a mintapéldákat, vagy küdjenek hibajavításokat a Githubon keresztül.
+
+=== Példa programok
+
+A példák szemléltetése Pythonnal, C++-szal és egy Unix-szerű operációs rendszer (Linux, Mac OSX) parancssoraival történt. Az összes kódrészlet megtalálható a Github repository-ban, és online módon is elérhető a https://github.com/aantonop/bitcoinbook URL címen, a főkönyvtár +code+ alkönyvtárában. 
+
+A kódrészletek a legtöbb operációs rendszer alatt a megfelelő nyelvek installálásával, minimális munkával működőképessé tehetők. Ha szükségesnek láttuk, akkor megadtuk az instaláláshoz szükséges utasításokat és az utasítások lépésről lépésre történő végrehajtása során keletkező kimeneteket. 
+
+Némelyik kódrészletet és kódrészlet kimenetet a nyomtatás érdekében újraformáztul. Az összes ilyen esetben a sorokat egy "\" karakterrel választottuk el, melyet egy új sor karakter követ. A példák újbóli futtatásakor távolítsák el ezt a két karaktert és egyesítsék újra a sorokat, ekkor a példában szereplő eredménnyel egyező kimenetet fognak látni.
+
+Az összes kódrészlet valós értékeket és számításokat használ, amikor csak lehetséges, emiatt példáról példára lehet haladni, és ugyanazok lesznek az eredményeket, mint amelyek a példa számítésokban szerepelnek. Például a titkos kulcsok és a hozzájuk tartozó nyilvános kulcsok valamint címek mind valódiak. A minta tranzakciók, blokk és blokklánc hivatkozások a tényleges bitcoin blokkláncba lettek bevive, és a nyilvános főkönyv részei, ezért bármelyik bitcoin rendszerben lekérdezhetők.
+
+
 === A programozási példák használata
-=== Using Code Examples
 
 A könyv szeretné segíteni az önök munkáját. Ha a könyv valamilyen mintapéldát ad valamire, akkor ön ezt felhasználhatja a saját programjaiban vagy dokumentációiban. Nem kell tőlünk engedélyt kérnie, ha csak kisebb részleteket használ a példákból. Például ha ír egy programot, amely a könyv néhány kódrészletét használja, akkor ehhez nem kell engedélyt kérnie. Az O'Reilly könyvek CD-ROM-jain közölt példák árusítása vagy sokszorosítása azonban engedélyköteles. Ha a könyvből vett idézettel válaszol egy kérdésre, vagy idéz egy példa programot, az nem engedélyköteles. De ha jelentős mennyiségű példaprogramot vesz át a könyvből, az engedélyköteles. 
 
-Köszönettel vesszük, de nem kötelező a hivatkozás. A hivatkozás általában a címet, a szerzőt, a kiadót és az ISBN számot tartalmazza. Például: "_Könyv cím_", írta Valaki (O'Reilly). Copyright 2014 Jogtulajdonos, 978-0-596-xxxx-x.”
+Köszönettel vesszük, de nem kötelező a hivatkozás. A hivatkozás általában a címet, a szerzőt, a kiadót és az ISBN számot tartalmazza. Például: “_Mastering Bitcoin_, írta Andreas M. Antonopoulos (O’Reilly). Copyright 2014 Andreas M. Antonopoulos, 978-1449374044.”
+
+A könyv egyes kiadásaihoz nyílt forráskódú engedély tartozik, mint pl. CC-BY-NC (creativecommons.org). Ebben az esetben a vonatkozó engedély a hatályos.
 
 Ha úgy érzi, hogy a példa programok felhasználásánál túllépte a fent engedélyezett mértékét, akkor lépjen kacsolatba velünk:
 [<email>permissions@oreilly.com</email>].
@@ -92,96 +104,31 @@ Nézzen minket a YouTube-on: link:$$http://www.youtube.com/oreillymedia$$[]
 <?hard-pagebreak?>
 ++++
 
-=== Szómagyarázat
-
-A lenti szómagyarázatban a bitcoinnal kapcsolatos szavak, kifejezések vannak, melyek nagyon sokszor előfordulnak ebben a könyvben. Tegyen ide egy könyjelzőt, hogy gyorsan megtalálhassa és tisztázhassa a kérdéses kifejezéseket.
-
-
-bányász::
-((("miner")))
-    Egy olyan hálózati csomópont, amely új blokkok előállítása érdekében, ismételten végrehajtott hash számítás segítségével munkabizonyítékot (proof-of-work) keres.
-
-bip::
-((("bip"))) 
-    Bitcoin Improvement Proposal (a bitcoin tökletesítésére tett javaslat).  Olyan javaslat, melyeket a bitcoin közösség tagjai tettek a bitcoin javítása, tökéletesítése érdekében. Például a BIP0021 a bitcoin URI sémájának tökletesítésére tett javaslat.
-
-bitcoin::
-((("bitcoin"))) 
-    A pénzegység (érme), a hálózat és a szoftver neve.
-
-blokk::
-((("block")))
-    Tranzakciók csoportja, mely tartalmaz egy időbélyeget, valamint az előző blokk ujjlenyomatát. A blokk blokkfejlécének hash-elése révén áll elő munakbizonyíték (proof-of-work), és válnak érvényessé a tranzakciók. Az érvényes blokkok a hálózati konszenzus alapján bekerülnek a fő blokkláncba.
-
-blokklánc::
-((("blockchain")))
-    Érvényesített blokkok listája, melyben mindegyik blokk kapcsolódik az előzőhöz, egészen a genezis blokkig bezárólag.
-
-cél nehézsági szint::
-((("target difficulty")))
-    Az a nehézségi szint, amely mellett a hálózat kb. 10 percenént fog egy blokkot találni.
-
-cím (úgy is, mint nyilvános kulcs)::
-((("bitcoin address")))
-((("address", see="bitcoin address")))
-((("public key", see="bitcoin address")))
-    Egy bitcoin cím a következőképpen néz ki:  +1DSrfJdB2AnWaFNgSbv3MZC2m74996JafV+. A bitcoin cím betűkből és számokból áll, és egy "1"-gyel kezdődik. Pont úgy, ahogy a többiek email-t tudnak küldeni az ön email címére, megkérheti őket, hogy a bitcoin címére küldjenek pénzt.
-
-díjak::
-((("fees")))
-   A tranzakció feladója/küldője gyakran egy díjat ad meg a hálózatnak a tranzakció feldolgozása érdekében. A legtöbb tranzakcióhoz  min. 0.1 mBTC díjra van szükség.
-
-genezis blokk::
-((("genesis block")))
-    A blokklánc első blokkja, mely a digitális pénz inicializálására szolgál. 
-	
-hálózat::
-((("network")))
-    Egyenrangú csomópontokból álló, peer-to-peer hálózat, amely a hálózatban lévő összes többi bitcoin csomópontnak továbbítja a tranzakciókat és a blokkokat.
-
-hash::
-((("hash")))
-    Valamilyen tetszőleges bináris bemenet digitális ujjlenyomata.
-
-jutalom::
-((("reward")))
-    Az új blokkokban lévő pénzösszeg, melyet a hálózat annak a bányásznak ad, aki megtalálta a blokkhoz a munkabizonyítékot. A jutalom jelenleg 25 BTC/blokk.
-
-megerősítések::
-((("confirmations")))
-    Ha egy tranzakció bekerül egy blokkba, akkor "egy merősítése van". Ha már egy _másik blokk_ is előállt ugyanezen a blokkláncon, akkor a tranazkciónak két megerősítése van stb.  Hat vagy még több megerősítés már elégséges bizonyítéknak tekinthető arra nézve, hogy a tranzakciót nem lehet visszafordítani.
-
-munkabizonyíték, proof-of-work::
-((("proof-of-work")))
-    Egy olyan számérték, melynek előállítása jelentős számítási kapacitást igényel. A bitcoin esetémben a bányászok az SHA256 algoritmust használják arra, hogy egy olyan hash-t találjanak, amely megelel a hálózat egészében fennálló cél nehézségi szintnek.
-
-nehézségi szint::
-((("difficulty")))
-   Hálózati beállítás, amely azt határozza meg, hogy mennyi számítási munkára van szükség egy munkabizonyíték (proof-of-work) előállításához.
-
-nehézségi szint újraszámítás::
-((("difficulty re-targeting")))
-   A nehézségi szint újraszámítása, amely 2016 blokkonként az egész hálózatban megtörténik, és az előző 2016 blokk előállításához használt hash kapacitást/teljesítményt veszi figyelembe.
-
-pénztárca::
-((("wallet"))) 
-    Egy szoftver, amely a felhasználó bitcoin címeit és titkos kulcsait kezeli. A pénztárca bitcoinok küldésére, fogadására és tárolására használható. 
-
-titkos kulcs (azaz  privát kulcs)::
-((("secret key")))
-((("private key", see="secret key")))
-    Egy titkos szám, amely megszünteti a hozzá tartozó címre küldött bitcoinok zárolását. Egy titkos kulcs így néz ki pl.: +5J76sF8L5jTtzE96r66Sf8cka9y44wdpJjMwCxR3tzLh3ibVPxh+
-
-tranzakció::
-((("transaction")))
-    Egyszerű szavakkal, bitcoin küldés az egyik címről a másikra. Pontosabban, a tranzakció egy aláírással rendelkező adatstruktúra, amely értéktovábbításnak felel meg. A tranzakciókat a bitcoin hálózat továbítja, a bányászok foglalják blokkokba őket, és ezáltal bekerülnek a blokkláncba.
-
-++++
-<?hard-pagebreak?>
-++++
-
 === Köszönetnyilvánítás
 
+Ez a könyv sok ember munkájának és közreműködésnek köszönhető. Hálás vagyok a segítségért, amelyet a barátaimtól, kollegáimtól és teljesen ismeretlen emberektől kaptam, akik velem együtt részt vettek a bitcoinról és a digitális pénzekről szóló definitív szakkönyv megírásában.
+
+Lehetetlen különbséget tenni a bitcoin technológia és a bitcoin közösség között, és ez a könyv épp annyira a közösség által létrehozott eredmény, mint amennyire a technológiáról szóló könyv. A könyvvel kapcsolatos munkámat a kezdetektől a legvégéig az egész bitcoin közösség bátorította, örömmel fogadta és támogatta. Ez a könyv mindenek előtt lehetővé tette, hogy két éven keresztül része lehettem ennek a csodálatos közösségnek, és nem tudom eléggé megköszönni, hogy befogadtak ebbe a közösségbe. Túl sok embert kellene megemlítenem név szerint - olyanokat, akikkel konferenciákon, különféle eseményeken, szemináriumokon, pizzázás során és személyes megbeszéléseken találkoztam, továbbá azokat, akik twitter-en, reddit-en, a bitcointalk.org-on és a github-on kommunikáltak velem, és akik hatással voltak erre a könyvre. Minden egyes ötletet, analógiát, kérdést, választ és magyarázatot, amely a könyvben megtalálható, bizonyos szempontból a közösségi kommunikáció inspirálta, tesztelte vagy tette jobbá. Mindenkinek köszönöm a támogatását. Enélkül ez a könyv nem születhetett volna meg. Örökre hálás vagyok ezért.
+
+A szerzővé válás folyamata természetesen már sokkal körábban elkezdődik, mielőtt az ember megírná az első könyvét. Az anyanyelvem görög, a tanulmányaimat is ezen a nyelven végeztem, ezért mikor első éves egyetemista voltam, egy angol tanfolyamon kellett részt vennem, hogy jobban tudjak írni angolul. Köszönettel tartozom Diana Kordas-nak, az angoltanáromnak, aki segített abban, hogy magabiztosabban és jobban írjak. Később, szakemberként és a Network World magazin egyik szerzőjeként az adatközpontok témakörében fejlesztettem írói képességeimet. Köszönettel tartozom John Dix-nek és John Gallant-nak, akik először bíztak meg azzal, hogy a Nwtwork World-be írjak, valamint szerkesztőmnek, Michael Cooney-nek és kollégámnak, Johna Till Johnson-nak, akiknek szerkesztő munkája révén cikkeim alkalmassá váltak a megjelentetésre. Négy éven keresztül 500 szót írtam hetenként, ennek során elég gyakorlatot szereztem ahhoz, hogy végül is szerzőnek tekintsem magam. Köszönöm Jean korai bátorítását, hitét, és meggyőződését, hogy egyszer még könyvet fogok írni. 
+
+Köszönet azoknak, akik hivatkozásaikkal és kritikáikkal támogattak, amikor benyújtottam az O'Reilly-nek a könyvre vonatkozó javaslatomat. Nevezetesen, köszönettel tartozom John Gallant-nak, Gregory Ness-nek, Richard Stiennon-nak, Joel Snyder-nek, Adam B. Levine-nak, Sandra Gittlen-nek, John Dix-nek, Johna Till Johnson-nak, Roger Ver-nek és Jon Matonis-nak. Külön köszönet Richard Kagan-nak és Tymon Mattoszko-nak akik a javaslatom korai változatait elbírálták, valamint Matthew Owain Taylor-nak, aki a javaslatot megszerkesztette.
+
+Köszönet Cricket Liu-nak, aki a "DNS és BIND" című O'Reilly könyv szerzője. Ő mutatott be engem a kiadónak. Köszönet Michael Loukides-nek és Allyson MacDonald-nek, akik az O'Reilly dolgozói, és hónapokon át együtt dolgoztak velem, hogy ez a könyv létrejöhessen. Allyson különösen türelmes volt, ha túlléptem egy határidőt, és késve nyújtottam be valamit, ha az élet felülírta a terveinket.
+ 
+Az első néhány vázlat és az első pár fejezet megírása volt a legnehezebb, mert a bitcoin témájának a kifejtése nehéz. Minden egyes alalommal, amikor megváltoztattam valamit a bitcoin technológia magyarázata során, az egész anyagot át kellett dolgoznom. Sokszor megakadtam, és kicsit kétségbe estem, mikor azzal küzdöttem, hogy az egész témát könnyen érthetővé tegyem, és leírjam ezt a bonyolult műszaki tárgyat. Végül úgy döntöttem, hogy a bitcoin történetét a bitcoin felhasználóinak a szemszögéből mondom el. Ez nagyban megkönnyítette a könyv megírását. Köszönettel tartozom barátomnak és mentoromnak, Richard Kagan-nak, aki segített kibontani a történetet, és segített legyőzni az írói leblokkolásokat, valamint Pamela Morgan-nek, aki a fejezetek korai vázlatait átnézte, és nehéz kérdéseket tett föl nekem - ezektől lettek jobbak a fejezetek. Köszönettel tartozom a San Francisco-i bitcoin fejlesztők társaságának, valamint Taariq Lewis-nak, aki a csoport egyik alapítója volt, mert segítették az anyag elbírálását a korai fázisban.
+
+A könyv megírása során a korai vázlatokat elérhetővé tettem a Github-on, és vártam a megjegyzéseket. Több, mint száz megjegyzést, javaslatot, javítást és hozzájárulást kaptam. Ezeket a hozzájárulásokat külön is kiemeltem és megköszöntem a <<github_hozzájárulsások>> részben.Külön köszönetet szeretnék mondani Minh T. Nguyen-nek, aki önként vállalta, hogy karban tartja a Github hozzájárulásokat, és saját maga is jelentős módon hozzájárult a könyvhöz. Köszönet továbbá Andrew Naugler-nek az infografika megtervezéséért.
+
+A könyv első változata számos műszaki szemlén ment keresztül. Köszönet Cricket Liu-nak és Lorne Lantz-nak az alapos műszaki kritikájukért, megjegyzéseikért és támogatásukért.
+
+Számos bitcoin fejlesztőtől kaptam programokat, kritikákat, megjegyzéseket és bátorítást. Köszönetet mondok Amir Taaki-nak a kódrészletekért és a sok nagyszerű megjegyzéséért, Vitalik Buterin-nek és Richard Kiss-nek az elliptikus görbékkel kapcsolatos matematikai megjegyzéseikért, Gavin Andresen-nek a javításaiért, megjegyzéseiért és bátorításáért, Michalis Karagis-nek a megjegyzéseiért, közreműködéséért és a btcd összefogalójáért.
+
+A szavak és könyvek szeretetét anyámnak, Theresának köszönhetem, aki egy olyan házban nevelt fel, amelyben minden falat könyvek borítottak. Anyám vette nekem az első számítógépemet is 1982-ben, bár ő maga technofóbiás, a saját állítása szerint. Apám, Menelaos, aki építőmérnök, és 80 éves korában jelentette meg az első könyvét, volt az, aki megtanított a logikus és analítikus gondolkodásra, valamint a műszaki tudományomk szeretetére.
+
+Köszönet mindenkinek, aki segített nekem megtenni ezt az utat.
+
+[[github_contrib]]
 ==== Korai kiadás vázlat (Github segítők)
 
 Sok segítőtől kaptam megjegyzéseket, javításokat és bővítéseket a Github-on lévő korai kiadáshoz. Köszönet az összes segítségéert! A legjelesebb segítők a következők voltak:
@@ -210,3 +157,92 @@ Sok segítőtől kaptam megjegyzéseket, javításokat és bővítéseket a Gith
 * Joe Bauers - joebauers
 * Jason Bisterfeldt - jbisterfeldt
 * Ed Leafe - EdLeafe
+
+++++
+<?hard-pagebreak?>
+++++
+
+=== Szómagyarázat
+
+A lenti szómagyarázatban a bitcoinnal kapcsolatos szavak, kifejezések vannak, melyek nagyon sokszor előfordulnak ebben a könyvben. Tegyen ide egy könyjelzőt, hogy gyorsan megtalálhassa és tisztázhassa a kérdéses kifejezéseket.
+
+
+bányász::
+((("miner")))
+    Egy olyan hálózati csomópont, amely új blokkok előállítása érdekében, ismételten végrehajtott hash számítás segítségével munkabizonyítékot (proof-of-work) keres.
+
+bip::
+((("bip"))) 
+    Bitcoin Improvement Proposals (a bitcoin tökletesítésére tett javaslatok).  Olyan javaslatok, melyeket a bitcoin közösség tagjai tettek a bitcoin javítása, tökéletesítése érdekében. Például a BIP0021 a bitcoin URI sémájának tökletesítésére tett javaslat.
+
+bitcoin::
+((("bitcoin"))) 
+    A pénzegység (érme), a hálózat és a szoftver neve.
+
+blokk::
+((("block")))
+    Tranzakciók csoportja, mely egy időbélyeget, valamint az előző blokk ujjlenyomatát tartalmazza. A blokk blokkfejlécének hash-elése révén áll elő munakbizonyíték (proof-of-work), és válnak érvényessé a tranzakciók. Az érvényes blokkok a hálózati konszenzus alapján bekerülnek a fő blokkláncba.
+
+blokklánc::
+((("blockchain")))
+    Érvényesített blokkok listája, melyben mindegyik blokk kapcsolódik az előzőhöz, egészen a genezis blokkig visszamenőleg.
+
+cél nehézsági szint::
+((("target difficulty")))
+    Az a nehézségi szint, amely mellett a hálózat kb. 10 percenént fog egy blokkot találni.
+
+cím (úgy is, mint nyilvános kulcs)::
+((("bitcoin address")))
+((("address", see="bitcoin address")))
+((("public key", see="bitcoin address")))
+    Egy bitcoin cím a következőképpen néz ki:  +1DSrfJdB2AnWaFNgSbv3MZC2m74996JafV+. A bitcoin cím betűkből és számokból áll, és egy "1"-gyel kezdődik. Pont úgy, ahogy az ön email címe elektronikus levelek fogadására képes, a bitcoin címe pénzt képes fogadni.
+
+díjak::
+((("fees")))
+   A tranzakció küldője által megadott díj, amelyet a hálózat kap a tranzakció feldolgozásáért. A legtöbb tranzakcióhoz  min. 0.1 mBTC díjra van szükség.
+
+genezis blokk::
+((("genesis block")))
+    A blokklánc első blokkja, mely a digitális pénz inicializálására szolgál. 
+	
+hálózat::
+((("network")))
+    Egyenrangú csomópontokból álló, peer-to-peer hálózat, amely a hálózatban lévő összes többi bitcoin csomópontnak továbbítja a tranzakciókat és a blokkokat.
+
+hash::
+((("hash")))
+    Valamilyen bináris bemenet digitális ujjlenyomata.
+
+jutalom::
+((("reward")))
+    Az új blokkokban szereplő pénzösszeg, melyet a hálózat annak a bányásznak ad, aki megtalálta a blokkhoz a munkabizonyítékot. A jutalom jelenleg 25 BTC/blokk.
+
+megerősítések::
+((("confirmations")))
+    Ha egy tranzakció bekerült egy blokkba, akkor "egy megerősítéssel rendelkezik". Ha már egy _másik blokk_ is előállt ugyanezen a blokkláncon, akkor a tranazkciónak két megerősítése van stb.  Hat vagy még több megerősítés már elégséges bizonyítéknak tekinthető arra nézve, hogy a tranzakciót nem lehet visszafordítani.
+
+munkabizonyíték, proof-of-work::
+((("proof-of-work")))
+    Egy olyan számérték, melynek előállítása jelentős számítási kapacitást igényel. A bitcoin esetémben a bányászok az SHA256 algoritmust használják arra, hogy egy olyan hash-t találjanak, amely megelel a hálózat egészében fennálló cél nehézségi szintnek.
+
+nehézségi szint::
+((("difficulty")))
+   Hálózati beállítás, amely azt határozza meg, hogy mennyi számítási munkára van szükség egy munkabizonyíték (proof-of-work) előállításához.
+
+nehézségi szint újraszámítás::
+((("difficulty re-targeting")))
+   A nehézségi szint újraszámítása, amely 2016 blokkonként az egész hálózatban megtörténik, és az előző 2016 blokk előállításához használt hash kapacitást/teljesítményt veszi figyelembe.
+
+pénztárca::
+((("wallet"))) 
+    Egy szoftver, amely a felhasználó bitcoin címeit és titkos kulcsait kezeli. A pénztárca bitcoinok küldésére, fogadására és tárolására használható. 
+
+titkos kulcs (azaz  privát kulcs)::
+((("secret key")))
+((("private key", see="secret key")))
+    Egy titkos szám, amely megszünteti a neki megfelelő címre küldött bitcoinok zárolását. Egy titkos kulcs így néz ki pl.: +5J76sF8L5jTtzE96r66Sf8cka9y44wdpJjMwCxR3tzLh3ibVPxh+
+
+tranzakció::
+((("transaction")))
+    Egyszerű szavakkal, bitcoin küldés az egyik címről a másikra. Pontosabban, a tranzakció egy aláírással rendelkező adatstruktúra, amely értéktovábbításnak felel meg. A tranzakciókat a bitcoin hálózat továbítja, a bányászok blokkokba foglalják őket, és ezáltal bekerülnek a blokkláncba.
+
