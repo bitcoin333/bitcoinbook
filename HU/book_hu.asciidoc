@@ -1,0 +1,23 @@
+:bookseries: animal
+
+= Bitcoin fejlesztőknek
+
+include::preface_hu.asciidoc[]
+
+include::ch01_hu.asciidoc[]
+
+include::ch02_hu.asciidoc[]
+
+include::ch03_hu.asciidoc[]
+
+include::ch04_hu.asciidoc[]
+
+include::ch05_hu.asciidoc[]
+
+include::ch06_hu.asciidoc[]
+
+include::ch07_hu.asciidoc[]
+
+include::ch08_hu.asciidoc[]
+
+include::ch09_hu.asciidoc[]
