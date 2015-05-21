@@ -41,25 +41,25 @@ A bitcoin továbbfejlesztési javaslatokat egy verziózott https://github.com/bi
  
 |[[bip0020]]20|https://github.com/bitcoin/bips/blob/master/bip-0020.mediawiki|URI Scheme |Luke Dashjr |Szabvány| Mással lett felváltva
  
-|[[bip0021]]21|https://github.com/bitcoin/bips/blob/master/bip-0021.mediawiki|URI Scheme |Nils Schneider, Matt Corallo
+|[[bip0021]]21|https://github.com/bitcoin/bips/blob/master/bip-0021.mediawiki|URI Scheme |Nils Schneider, Matt Corallo|Szabvány |Elfogadva
  
 |[[bip0022]]22|https://github.com/bitcoin/bips/blob/master/bip-0022.mediawiki|getblocktemplate - alapok |Luke Dashjr |Szabvány |Elfogadva
 
-|[[bip0023]]23|https://github.com/bitcoin/bips/blob/master/bip-0023.mediawiki|getblocktemplate - társult bányászat |Luke
+|[[bip0023]]23|https://github.com/bitcoin/bips/blob/master/bip-0023.mediawiki|getblocktemplate - társult bányászat |Luke Dashjr |Szabvány |Elfogadva
  
-|[[bip0030]]30|https://github.com/bitcoin/bips/blob/master/bip-0030.mediawiki|Dupla tranzakciók |Pieter Wuille
+|[[bip0030]]30|https://github.com/bitcoin/bips/blob/master/bip-0030.mediawiki|Dupla tranzakciók |Pieter Wuille | Szabvány | Elfogadva
  
 |[[bip0031]]31|https://github.com/bitcoin/bips/blob/master/bip-0031.mediawiki|Pong üzenet |Mike Hearn |Szabvány|Elfogadva
  
 |[[bip0032]]32|https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki|Hierarchikus determinisztikus pénztárcák|Pieter Wuille | Tájékoztató |Elfogadva
  
-|[[bip0033]]33|https://github.com/bitcoin/bips/blob/master/bip-0033.mediawiki|Stratum csomópontok |Amir Taaki |Szabvány
+|[[bip0033]]33|https://github.com/bitcoin/bips/blob/master/bip-0033.mediawiki|Stratum csomópontok |Amir Taaki |Szabvány | Tervezet
   
-|[[bip0034]]34|https://github.com/bitcoin/bips/blob/master/bip-0034.mediawiki|Block v2, magasság a coinbase-ben |Gavin
+|[[bip0034]]34|https://github.com/bitcoin/bips/blob/master/bip-0034.mediawiki|Block v2, magasság a coinbase-ben |Gavin Andresen |Szabvány |Elfogadva
  
-|[[bip0035]]35|https://github.com/bitcoin/bips/blob/master/bip-0035.mediawiki|mempool üzenet |Jeff Garzik |Szabvány
+|[[bip0035]]35|https://github.com/bitcoin/bips/blob/master/bip-0035.mediawiki|mempool üzenet |Jeff Garzik |Szabvány |Elfogadva
  
-|[[bip0036]]36|https://github.com/bitcoin/bips/blob/master/bip-0036.mediawiki|Egyedi szolgáltatások |Stefan Thomas |Szabvány
+|[[bip0036]]36|https://github.com/bitcoin/bips/blob/master/bip-0036.mediawiki|Egyedi szolgáltatások |Stefan Thomas |Szabvány| Tervezet
   
 |[[bip0037]]37|https://github.com/bitcoin/bips/blob/master/bip-0037.mediawiki|Bloom szűrők |Mike Hearn and Matt Corallo |Szabvány |Elfogadva
 
@@ -83,19 +83,19 @@ A bitcoin továbbfejlesztési javaslatokat egy verziózott https://github.com/bi
 
 |[[bip0061]]61|https://github.com/bitcoin/bips/blob/master/bip-0061.mediawiki|"reject" P2P üzenet |Gavin Andresen | Szabvány | Tervezet
 
-|[[bip0062]]62|https://github.com/bitcoin/bips/blob/master/bip-0062.mediawiki|A tranzakciók változékonyságának kezelése |Pieter Wuille
+|[[bip0062]]62|https://github.com/bitcoin/bips/blob/master/bip-0062.mediawiki|A tranzakciók változékonyságának kezelése |Pieter Wuille| Szabvány | Tervezet
 
 |[[bip0063]]63||Lopakodó címek |Peter Todd |Szabvány |BIP szám hozzárendelve
 
-|[[bip0064]]64|https://github.com/bitcoin/bips/blob/master/bip-0064.mediawiki|getutxos üzenet |Mike Hearn |Szabvány
+|[[bip0064]]64|https://github.com/bitcoin/bips/blob/master/bip-0064.mediawiki|getutxos üzenet |Mike Hearn |Szabvány|Tervezet
 
-|[[bip0070]]70|https://github.com/bitcoin/bips/blob/master/bip-0070.mediawiki|Payment protokoll |Gavin Andresen |Szabvány
+|[[bip0070]]70|https://github.com/bitcoin/bips/blob/master/bip-0070.mediawiki|Payment protokoll |Gavin Andresen |Szabvány|Tervezet
 
 |[[bip0071]]71|https://github.com/bitcoin/bips/blob/master/bip-0071.mediawiki|Payment protokoll MIME típusok |Gavin Andresen |Szabvány |Tervezet
 
-|[[bip0072]]72|https://github.com/bitcoin/bips/blob/master/bip-0072.mediawiki|Payment protokoll URI-k |Gavin Andresen
+|[[bip0072]]72|https://github.com/bitcoin/bips/blob/master/bip-0072.mediawiki|Payment protokoll URI-k |Gavin Andresen|Szabvány|Tervezet
 
-|[[bip0073]]73|https://github.com/bitcoin/bips/blob/master/bip-0073.mediawiki|Használjunk "Accept" fejet a Payment kérések URL-jeiben  |Stephen Pair |Standard |Draft
+|[[bip0073]]73|https://github.com/bitcoin/bips/blob/master/bip-0073.mediawiki|Használjunk "Accept" fejet a Payment kérések URL-jeiben  |Stephen Pair |Szabvány |Tervezet
 (((range="endofrange", startref="ix_appdx-bips-asciidoc0"))) 
 |=======================================================================
 
