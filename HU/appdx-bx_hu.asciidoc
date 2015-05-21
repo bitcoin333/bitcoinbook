@@ -1,0 +1,181 @@
+[[appdx_bx]]
+[appendix]
+
+== Bitcoin Explorer (bx) parancsok
+
+((("Bitcoin Explorer parancsok","parancsok a  Bitcoin Explorerben", id="ix_appdx-bx-asciidoc0", range="startofrange")))
+
+----
+Használata: bx COMMAND [--help]
+
+Info: A bx parancsok a követketzők:
+
+address-decode
+address-embed
+address-encode
+address-validate
+base16-decode
+base16-encode
+base58-decode
+base58-encode
+base58check-decode
+base58check-encode
+base64-decode
+base64-encode
+bitcoin160
+bitcoin256
+btc-to-satoshi
+ec-add
+ec-add-secrets
+ec-multiply
+ec-multiply-secrets
+ec-new
+ec-to-address
+ec-to-public
+ec-to-wif
+fetch-balance
+fetch-header
+fetch-height
+fetch-history
+fetch-stealth
+fetch-tx
+fetch-tx-index
+hd-new
+hd-private
+hd-public
+hd-to-address
+hd-to-ec
+hd-to-public
+hd-to-wif
+help
+input-set
+input-sign
+input-validate
+message-sign
+message-validate
+mnemonic-decode
+mnemonic-encode
+ripemd160
+satoshi-to-btc
+script-decode
+script-encode
+script-to-address
+seed
+send-tx
+send-tx-node
+send-tx-p2p
+settings
+sha160
+sha256
+sha512
+stealth-decode
+stealth-encode
+stealth-public
+stealth-secret
+stealth-shared
+tx-decode
+tx-encode
+uri-decode
+uri-encode
+validate-tx
+watch-address
+wif-to-ec
+wif-to-public
+wrap-decode
+wrap-encode
+----
+
+További információért menjen a https://github.com/libbitcoin/libbitcoin-explorer[Bitcoin Explorer honlapjára] és a  https://github.com/libbitcoin/libbitcoin-explorer/wiki[Bitcoin Explorer felhasználói dokumentációjához].
+
+=== Példa a bx parancsok használatára
+
+Nézzük néhány példát arra, hogyan lehet a Bitcoin Explorer parancsaival kulcsokat és címeket kezelni:
+
+Állítsunk elő egy véletlen "magot" a ((("Bitcoin Explorer","seed parancs")))((("seed parancs (bx)"))) +seed+ parancs segítségével, amely az operációs rendszer véletlenszám generátorára épül. A magot az ((("Bitcoin Explorer","ec-new parancs")))((("ec-new parancs (bx)"))) +ec-new+ parancsnak átadva hozzunk létre egy új titkos kulcsot. A szabványos kimenetet a _private_key_ file-ba irányítjuk át:
+
+----
+$ bx seed | bx ec-new > private_key
+$ cat private_key 
+73096ed11ab9f1db6135857958ece7d73ea7c30862145bcc4bbc7649075de474
+----
+
+És most állítsunk elő ebből a titkos kulcsból egy nyilvános kulcsot az ((("Bitcoin Explorer","ec-to-public parancs")))((("ec-to-public parancs (bx)"))) +ec-to-public+ paranccsal. A _private_key_ file-t a szabványos bemenetre irányítjuk át, és a parancs szabványos kimenetét a _public_key_ új file-ba mentjük el:
+
+----
+$ bx ec-to-public < private_key > public_key
+$ cat public_key 
+02fca46a6006a62dfdd2dbb2149359d0d97a04f430f12a7626dd409256c12be500
+----
+
+A +public_key+ nyilvános kulcsot címként tudjuk megjeleníteni az ((("Bitcoin Explorer","ec-to-address parancs")))((("ec-to-address parancs (bx)"))) +ec-to-address+ paranccsal. A _public_key_ file-t a szabványos bemenetre irányítjuk át:
+
+----
+$ bx ec-to-address < public_key 
+17re1S4Q8ZHyCP8Kw7xQad1Lr6XUzWUnkG
+----
+
+Az így előállított kulcsok 0-ik típusú, nem determinisztikus kulcsok. Ez azt jelenti, hogy a minden egyes kulcs egy saját, független magból származik. A Bitcoin Explorerrel a BIP0032-nek megfelelő, determinisztikus kulcsok is létrehozhatók. Ebben az esetben a magból egy "mesterkulcs" jön létre, majd ennek a kiterjesztése révén állnak elő a alkulcsok, és jön létre a 2-es típusú, determinisztikus pénztárca.
+
+Először a ((("Bitcoin Explorer","seed parancs")))((("seed parancs (bx)"))) +seed+ és a ((("Bitcoin Explorer","hd-new parancs")))((("hd-new parancs (bx)"))) +hd-new+ parancsokkal egy mester kulcsot állítunk elő, melyet a további kulcshierarchia levezetésére fogunk használni.
+
+----
+$ bx seed > seed
+$ cat seed
+eb68ee9f3df6bd4441a9feadec179ff1
+
+$ bx hd-new < seed > master
+$ cat master
+xprv9s21ZrQH143K2BEhMYpNQoUvAgiEjArAVaZaCTgsaGe6LsAnwubeiTcDzd23mAoyizm9cApe51gNfLMkBqkYoWWMCRwzfuJk8RwF1SVEpAQ
+----
+
+Most pedig a ((("Bitcoin Explorer","hd-private parancs")))((("hd-private parancs (bx)"))) +hd-private+ paranccsal előállítjuk a megerősített "számla" kulcsot és két, a számlán belüli titkos kulcsot.
+
+----
+$ bx hd-private --hard < master > account
+$ cat account
+xprv9vkDLt81dTKjwHB8fsVB5QK8cGnzveChzSrtCfvu3aMWvQaThp59ueufuyQ8Qi3qpjk4aKsbmbfxwcgS8PYbgoR2NWHeLyvg4DhoEE68A1n
+
+$ bx hd-private --index 0 < account
+xprv9xHfb6w1vX9xgZyPNXVgAhPxSsEkeRcPHEUV5iJcVEsuUEACvR3NRY3fpGhcnBiDbvG4LgndirDsia1e9F3DWPkX7Tp1V1u97HKG1FJwUpU
+
+$ bx hd-private --index 1 < account
+xprv9xHfb6w1vX9xjc8XbN4GN86jzNAZ6xHEqYxzbLB4fzHFd6VqCLPGRZFsdjsuMVERadbgDbziCRJru9n6tzEWrASVpEdrZrFidt1RDfn4yA3
+----
+
+Ezt követően a ((("Bitcoin Explorer","hd-public parancs")))((("hd-public parancs (bx)"))) +hd-public+ paranccsal előállítjuk a titkos kulcsoknak megfelelő két darab nyilvános kulcsot.
+
+----
+$ bx hd-public --index 0 < account
+xpub6BH1zcTuktiFu43rUZ2gXqLgzu5F3tLEeTQ5t6iE3aQtM2VMTxMcyLN9fYHiGhGpQe9QQYmqL2eYPFJ3vezHz5wzaSW4FiGrseNDR4LKqTy
+
+$ bx hd-public --index 1 < account
+xpub6BH1zcTuktiFx6CzhPbGjG3UYQ13WR16CmtbPiagEKpEVtpyjshWyMaMV1cn7nUPUkgQHPVXJVqsrA8xWbGQDhohEcDFTEYMvYzwRD7Juf8
+----
+
+A titkos kulcsokhoz tartozó nyilvános kulcsok a ((("Bitcoin Explorer","hd-to-public parancs")))((("hd-to-public parancs (bx)"))) +hd-to-public+ paranccsal is előállíthatók.
+
+----
+$ bx hd-private --index 0 < account | bx hd-to-public
+xpub6BH1zcTuktiFu43rUZ2gXqLgzu5F3tLEeTQ5t6iE3aQtM2VMTxMcyLN9fYHiGhGpQe9QQYmqL2eYPFJ3vezHz5wzaSW4FiGrseNDR4LKqTy
+
+$ bx hd-private --index 1 < account | bx hd-to-public
+xpub6BH1zcTuktiFx6CzhPbGjG3UYQ13WR16CmtbPiagEKpEVtpyjshWyMaMV1cn7nUPUkgQHPVXJVqsrA8xWbGQDhohEcDFTEYMvYzwRD7Juf8
+----
+
+Gyakorlatilag korlátlan számú kulcsot tudunk létrehozni a determinisztikus láncban, és ezek mindegyike ugyanabból a magból származik. Számos pénztárca használja ezt a módszert, mert az így előállítottt címek mentéséhez és visszaállításához csak egyetlen egy mag értékre van szükség. Ezt könnyebb menteni, mint a véletlenszerű kulcsokat tartalmazó pénztárcát, melyet minden egyes alkalommal menteni kell, amikor új kulcsok jöttek létre benne.
+
+A mag a ((("Bitcoin Explorer","mnemonic-encode parancs")))((("mnemonic-encode parancs (bx)"))) +mnemonic-encode+ paranccsal állítható elő.
+
+----
+$ bx hd-mnemonic < seed > words
+adore repeat vision worst especially veil inch woman cast recall dwell appreciate
+----
+
+Ezt követően a mag a ((("Bitcoin Explorer","mnemonic-decode parancs")))((("mnemonic-decode parancs (bx)"))) +mnemonic-decode+ parancsával dekódolható.
+
+----
+$ bx mnemonic-decode < words
+eb68ee9f3df6bd4441a9feadec179ff1
+----
+
+A mnemonikus kódolás megkönnyíti a mag leírását és támaszt jelent az emlékezet számára is.(((range="endofrange", startref="ix_appdx-bx-asciidoc0")))

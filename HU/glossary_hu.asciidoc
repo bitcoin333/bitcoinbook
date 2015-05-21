@@ -1,0 +1,61 @@
+[preface]
+== Szómagyarázat
+
+A lenti szómagyarázatban a bitcoinnal kapcsolatos szavak, kifejezések vannak, melyek nagyon sokszor előfordulnak ebben a könyvben. Tegyen ide egy könyjelzőt, hogy gyorsan megtalálhassa és tisztázhassa a kérdéses kifejezéseket.
+
+cím::
+    Egy bitcoin cím a következőképpen néz ki: +1DSrfJdB2AnWaFNgSbv3MZC2m74996JafV+. A bitcoin cím betűkből és számokból áll, és egy "1"-gyel kezdődik. Egy bitcoin címre bitcoinok küldhetők,  pont úgy, ahogy egy email címmel elektronikus leveleket lehet fogadni, .((("bitcoin cím")))((("cím", láad="bitcoin cím")))((("nyilvános kulcs", see="bitcoin cím")))
+
+bip::
+    Bitcoin Improvement Proposals (a bitcoin tökletesítésére tett javaslatok). Olyan javaslatok, melyeket a bitcoin közösség tagjai tettek a bitcoin javítása, tökéletesítése érdekében. Például a BIP0021 a bitcoin URI sémájának tökletesítésére tett javaslat.((("bip"))) 
+
+bitcoin::
+    A pénzegység (érme), a hálózat és a szoftver neve.((("bitcoin"))) 
+
+blokk::
+    Tranzakciók csoportja, mely egy időbélyeget, valamint az előző blokk ujjlenyomatát tartalmazza. A blokk blokkfejlécének hash-elése révén áll elő a munakbizonyíték (proof-of-work), és válnak érvényessé a tranzakciók. Az érvényes blokkok a hálózati konszenzus alapján bekerülnek a fő blokkláncba.((("blokk")))
+
+blokklánc::
+	Érvényesített blokkok listája, amelyben mindegyik blokk kapcsolódik az előzőhöz, egészen a genezis blokkig visszamenőleg.((("blokklánc")))
+	
+megerősítések::
+	Ha egy tranzakció bekerült egy blokkba, akkor "egy megerősítéssel rendelkezik". Ha már egy _újabb_ blokk is előállt ugyanezen a blokkláncon, akkor a tranazkciónak két megerősítése van stb. Hat vagy még több megerősítés már elégséges bizonyítéknak tekinthető arra nézve, hogy a tranzakciót nem lehet visszafordítani.((("megerősítések")))
+
+nehézségi szint::
+	Egy hálózati beállítás, amely azt határozza meg, hogy mennyi számítási munkára van szükség egy munkabizonyíték (proof-of-work) előállításához.((("nehézségi szint")))
+
+cél nehézségi szint::
+ 	Az a nehézségi szint, amely mellett a hálózat kb. 10 percenént fog egy blokkot találni.((("cél nehézségi szint")))
+
+nehézségi szint újraszámítás::
+	A nehézségi szint újraszámítása, amely 2016 blokkonként az egész hálózatban megtörténik, és az előző 2016 blokk előállításához használt hash kapacitást/teljesítményt veszi figyelembe.((("nehézségi szint újraszámítás")))
+	
+díjak::
+	A tranzakció küldője által megfizetett díj, amelyet a hálózat kap a tranzakció feldolgozásáért. A legtöbb tranzakcióhoz min. 0.1 mBTC díjra van szükség.((("díjak")))
+
+hash::
+	Valamilyen bináris bemenet digitális ujjlenyomata. Magyarul néha zanzának is nevezik, de ez nem terjedt el.((("hash")))
+
+genezis blokk::
+	A blokklánc első blokkja, mely a digitális pénz inicializálására szolgál.((("genezis blokk")))
+	
+bányász::
+Egy olyan hálózati csomópont, amely új blokkok előállítása érdekében, ismételten végrehajtott hash számítás segítségével munkabizonyítékot (proof-of-work) keres.((("bányász")))
+
+hálózat::
+Egyenrangú csomópontokból álló, peer-to-peer hálózat, amely a hálózatban lévő összes többi bitcoin csomópontnak továbbítja a tranzakciókat és a blokkokat.((("hálózat")))
+	
+munkabizonyíték, proof-of-work::
+	Egy olyan számérték, melynek előállítása jelentős számítási kapacitást igényel. A bitcoin esetében a bányászok az SHA256 algoritmust használják arra, hogy egy olyan hash-t találjanak, amely megfelel a hálózat egészében fennálló cél nehézségi szintnek.((("munkabizonyíték, proof-of-work")))
+
+jutalom::
+Az új blokkokban szereplő pénzösszeg, melyet a hálózat annak a bányásznak ad, aki megtalálta a blokkhoz a munkabizonyítékot. A jutalom jelenleg 25 BTC/blokk.((("jutalom")))
+
+titkos kulcs (azaz privát kulcs)::
+	Egy titkos szám, amely megszünteti a neki megfelelő címre küldött bitcoinok zárolását. Egy titkos kulcs így néz ki pl.: +5J76sF8L5jTtzE96r66Sf8cka9y44wdpJjMwCxR3tzLh3ibVPxh+.((("titkos kulcs")))((("privát kulcs", lásd="titkos kulcs")))
+	
+tranzakció::
+Egyszerűen bitcoin küldés az egyik címről a másikra. Pontosabban, a tranzakció egy aláírással rendelkező adatstruktúra, amely értéktovábbításnak felel meg. A tranzakciókat a bitcoin hálózat továbbítja, a bányászok blokkokba foglalják őket, és ezáltal bekerülnek a blokkláncba.((("tranzakció")))
+
+pénztárca::
+Egy szoftver, amely a felhasználó bitcoin címeit és titkos kulcsait kezeli. A pénztárca bitcoinok küldésére, fogadására és tárolására használható.((("pénztárca"))) 

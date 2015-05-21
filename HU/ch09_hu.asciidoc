@@ -1,0 +1,357 @@
+[[ch9]]
+== Alternatív blokkláncok, fizetőeszközök, alkalmazások
+
+A bitcoin létrejöttét közel 20 év kutatómunka előzte meg az elosztott rendszerek és fizetőeszközök világában. A bitcoinnal egy forradalmian új technológia jött létre: a munkabizonyítékon (Proof-of-Work) alapuló elosztott közmegegyezés. A bitcoinnak ez a központi jeletőségű vívmánya egy sereg egyéb újításnak is teret nyitott a fizetőeszközök, a pénzügyi szolgáltatások, a közgazdaság, az elosztott rendszerek, a választási rendszerek, a kormányzás, és a különféle szerződések terén. 
+
+Ebben a fejezetben azokkal az innovatív eljárásokkal (pl. alternatív láncok, fizetőeszközök, alkalmazások) foglalkozunk, amelyek a bitcoin, illetve a blokklánc 2009-es bevezetése óta születtek. Meg fogjuk vizsgálni az alternatív érméket, azaz az _altcoin_-okat, melyek ugyanolyan alapokon nyugvó digitális pénzek, mint a bitcoin, de teljesen különböző blokkláncot és p2p hálózatot használnak. 
+
+A fejezetben megemlített alt-coinoknál legalább 50-szer több marad majd említés nélkül (kiváltva ezek fejlesztőinek és felhasználóinak haragját). Célunk nem az alt-coinok értékelése vagy minősítése, sőt még csak nem is a „legjelentősebb” fejlesztések a valamilyen szubjektív értékítéleten alapuló kiemelése, hanem az, hogy szemléltessük az ökoszisztéma változatosságát és gazdagságát, kiemelve azon fejlesztéseket, amelyek valamilyen újdonságot, vagy jelentős eltérést hoztak az addigiakhoz képest. Az alt-coinok néhány igazán érdekes példája pénzügyi szemszögből tulajdonképpen abszolút bukásnak minősíthető. Sokszor mégis pont ettől válnak igazán érdekessé, tanulmányozásra méltóvá. Ugyanakkor hangsúlyozni kell, hogy az itt leírtak semmiféleképpen sem tekinthetők befektetői kisokosnak. 
+
+Szinte naponta jelennek meg új fejlesztések, így szinte biztos, hogy néhány fontos alt-coin kimarad a felsorolásunkból, és az sincs kizárva, hogy pont az, amelyik megváltoztatja majd a történelmet. Az innovációk gyorsasága teszi vibrálóvá és izgalmassá ezt a szférát, és egyben garantálja, hogy ez a fejezet már a nyomtatásba kerülésekor idejétmúlt lesz.
+
+=== Az alternatív fizetőeszközök és blokkláncok osztályozása
+
+((("blokkláncok, alternatív")))((("pénznemek, alternatív")))A bitcoin egy nyílt forráskódú projekt, amelynek kódja számos egyéb szoftver alapjául szolgált. A bitcoin forráskódjából származó leggyakoribb szoftverek az alternatív, decentralizált fizetőeszközök, vagyis az ú.n. _alt-coinok_, melyek a bitcoinnal megegyező építőelemeket használnak a különböző digitális fizetőeszközök megvalósítához. 
+
+A bitcoin blokkláncára egy egész sereg protokollt épül. Ezek a  ((("blokklánc alkalmazások")))((("meta láncok")))((("meta-coin platformok")))_meta-coinok_, _meta-chainek_, vagy _blokklánc alkalmazások_, melyek a blokkláncot egyfajta alkalmazási platformként használják, vagy a bitcoin protokollt további protokoll rétegekkel bővítik. Ilyen például a Colored Coins, a Mastercoin,az NXT és a Counterparty. 
+
+Az alábbiakban néhány jelentősebb alt-coint fogunk megvizsgálni, többek között a Litecoin-t, a Dogecoin-t, a Freicoin-t, a Primecoin-t, a Peercoin-t, a Darkcoin-t, és a Zerocoin-t. Felhozott példáinkat történelmi okokból, vagy egy-egy specifikus újítás miatt tartjuk jelentősnek, semmiképp sem azért, mert ezek az általunk „legjobbnak”, vagy legértékesebbnek vélt alt-coinok. 
+
+Az alt-coinokon kívül számos olyan alternatív blokklánc implementáció is van, amelyek nem igazán felelnek meg a „coin” kategóriának, így ezeket a fejlesztéseket ((("alt chain-ek")))_alt-chain_-eknek hívom a továbbiakban. Ezek az alt-chainek szerződéseket, név regisztrációkat, és egyéb alkalmazásokat valósítanak meg valamilyen közegyezést teremtő algoritmussal és egy osztott blokklánccal. Az alt-chainek ugyanazokat az építő elemeket használják, mint a bitcoin, és néha az is előfordul, hogy fizetőeszközként, vagy egyfajta fizetési rendszerként használják őket, de az elsődleges céljuk nem az, hogy fizetőeszközként funkcionáljanak. Az alt-chainek közül a Namecoin-t, az Ethereum-ot, és az NXT-t fogjuk részletesebben megvizsgálni. 
+
+Végül meg kell említeni azokat a bitcoin versenytársakat is, amelyek felkínálják ugyan a digitális fizetőeszköz, vagy digitális fizetési hálózat lehetőségét, de nem használnak semmilyen decentralizált főkönyvet vagy munkabizonyítékon (Proof-of-Work) alapuló közmegyezési mechanizmust. Ide tartozik például a Ripple, illetve társai. Ezek a nem-blokklánc alapú technológiák kívül esnek e könyv keretein, így jelen fejezetben sem foglalkozunk velük.
+
+=== Meta-coin platformok 
+
+((("meta-coin platformok", id="ix_ch09-asciidoc0", range="startofrange")))A meta-coinok és meta-chainek olyan szoftver rétegek, amelyek a bitcoinra lettek ráépítve, azaz esetükben vagy egyfajta „fizetőeszköz a fizetőeszközben” implementációról, vagy a bitcoin rendszerén belüli platformról/protokollról van szó. Ezek a funkcionális rétegek további tulajdonságokkal és képességekkel bővítik a bitcoin protokollt, oly módon, hogy a bitcoin tranzakciókba és címekbe egyéb kiegészítő adatokat kódolnak. Az első ilyen típusú meta-coin implementációk különféle „hack”-eket használtak a bitcoin blokklánc meta-adatokkal történő bővítésére, így például bitcoin címekbe kódoltak adatokat, vagy felhasználatlan tranzakciós mezőket (például a tranzakció szekvencia mezőjét) hasznosítottak a járulékos protokollal kapcsolatos meta-adatok kódolására. Mióta bevezetésre került az OP_RETURN műveleti kód, a meta-coinok közvetlenebb módon tudnak a blokkláncba meta-adatokat kódolni, és a legtöbb meta-coin ennek a használatára állt át. 
+
+==== Szinezett érmék (Colored Coins)
+
+((("színezett érmék")))((("meta-coin platformok","színezett érmék")))Az úgynevezett _Színezett Érmék_ (Colored Coins) egy olyan meta-protokoll, amely a bitcoin egy kis mennyiségéhez rendel hozzá további információkat. Ezeknek a színezett érméknek az a célja, hogy a megjelölt bitcoint egyéb értékkel is felruházzák. ((("részvény elismervények","színezett érmék mint")))Például képzeljünk el egy 1 dolláros bankjegyet, amelyre rápecsételjük azt a feliratot, hogy „Ez az Hiper-Szuper Kft. 1 egységnyi részvényesi elismervénye”. Ekképp az 1 dolláros bankjegy két funkciót is betölt: bankjegy és egyben részvényesi elismervény. Mivel elismervényi aspektusa értékesebb fizetőeszközi minőségénél, így valószínűsíthető, hogy nem fogunk cukorkát vásárolni vele. Fizetőeszközi minősége tehát már nem tűnik hasznosnak. A Szinezett Érmék hasonló elven működnek, azaz a bitcoin egy adott és parányi részét egy másik minőséggel is felruházzák. A terminusban a „color” (szín) kifejezés arra utal, hogy egy adott egységet egy speciális jelentéssel, attribútummal látunk el. Az attribútum jelzi a specifikus minőség jelenlétét az így megjelölt egységben. A „színmegjelölést”, mint attribútumot természetesen metaforikusan értjük, azaz a Colored Coinok nem tartalmaznak színeket. 
+
+((("pénztárcák","színezett érmékhez")))A Colored Coin-ok kezelésére speciális „pénztárca” programok szolgálnak, amelyek lajstromba veszik és értelmezik azokat a meta-adatokat, amelyeket a „colored” bitcoinokhoz csatoltak. Egy ilyen a pénztárca használatával a felhasználó egy adott mennyiségű „színtelen” (attribútum nélküli) bitcoint egy speciális jelentésű cimke hozzáadásával szinezett érmévé konvertálhat. Ez a cimke jelenthet részvényesi elismervényt, kuponokat, ingatlan tulajdont, árucikket, beváltható pénzt, és még sok minden mást. Csak a szinezett érme felhasználóin múlik, hogy milyen specifikus minőséggel ruházzák fel az adott „színnel” (attribútummal) ellátott coinokat. Ahhoz, hogy egy sima érme szinezett érmévé váljon, arra van szükség, hogy a felhasználó meghatározza a hozzá társított meta-adatokat, például kibocsájtás típusát, osztható, vagy osztathatatlan voltát, szimbólumát, leírását és egyéb adatokat. Miután egy sima coin szinezett érmévé vált, értékesíthetővé, oszthatóvá, illetve egyesíthetővé válik, és akár jutalékok kifizetésére is alkalmas. A szinezett érmék visszaállíthatóak sima coinokká is, úgy, hogy megfosztjuk őket speciális minőségüktől, és visszaállítjuk „sima” bitcoin névértéküket. 
+
+Mindennek szemléltetéseképpen létrehoztunk 20 db „MasterBTC” attribútummal ellátott szinezett érmét, kupont, amelyek a jelen könyv egy-egy ingyenes példányának felelnek meg, amint azt a <<example_9-1>> mutatja. Ezt követően a MasterBTC jelzéssel ellátott összes egység (vagyis az ilyen attribútummal ellátott colored coin-ok) értékesíthetőek vagy továbbadhatóak minden olyan bitcoin felhasználónak, aki rendelkezik a kezeléséhez szükséges pénztárca programmal. Egy adott felhasználó a megszerzett colored coin-t más felhasználónak továbbutalhatja, vagy a kibocsájtónál beválthatja a könyv egy ingyenes példányára. Az ismertetett példa https://cpr.sm/FoykwrH6UY[itt] érhető el.
+
+[[example_9-1]]
+.A jelen könyv egy ingyenes példányához kupont biztosító colored coin meta-adat profilja
+====
+[source,json]
+----
+{
+  "source_addresses": [
+    "3NpZmvSPLmN2cVFw1pY7gxEAVPCVfnWfVD"
+  ],
+  "contract_url": "https://www.coinprism.info/asset/3NpZmvSPLmN2cVFw1pY7gxEAVPCVfnWfVD",
+  "name_short": "MasterBTC",
+  "name": "Free copy of \"Mastering Bitcoin\"",
+  "issuer": "Andreas M. Antonopoulos",
+  "description": "This token is redeemable for a free copy of the book \"Mastering Bitcoin\"",
+  "description_mime": "text/x-markdown; charset=UTF-8",
+  "type": "Other",
+  "divisibility": 0,
+  "link_to_website": false,
+  "icon_url": null,
+  "image_url": null,
+  "version": "1.0"
+}
+----
+====
+
+==== Mastercoin
+
+((("meta-coin platformok","mastercoin protokoll")))A Mastercoin egy olyan bitcoinra illesztett protokoll, amely a bitcoin rendszerét kiterjesztve, különféle alkalmazásokhoz biztosít platformot. A Mastercoin elsősorban nem fizetési eszköz, jóllehet a Mastercoin tranzakciókhoz az MST megjelölésű fizetőeszközt használja. A Mastercoint legjobban talán úgy lehetne meghatározni, mint fizetőeszközök, vagyontárgyak, decentralizált eszközök cseréjét, vagy például szerződések és persze még számos más dolog létrehozását támogató platformot. A Mastercoin egy olyasféle alkalmazási protokoll, amely a bitcoin pénzügyi tranzakciós transzport-rétegéhez van hozzáillesztve, hasonlóképpen a TCP-n futó HTTP-hez. 
+
+A Mastercoin elsősorban azokon a tranzakciókon keresztül operál, amelyek egy speciális bitcoin címről, vagy címre érkeznek (ezt  ((("exodus címek")))„exodus” címnek hívjuk, +1EXoDusjGwvnjZUyKkxZ4UHEf77z6A5S4P+), hasonlóképpen ahhoz, ahogy a HTTP is egy speciális portot (80 port) használ arra, hogy megkülönböztesse az általa szállított forgalmat a TCP egyéb forgalmától. A Mastercoin protokoll a tranzakciók meta-adatait a speciális exodus címmel és többszörös aláírások használatával kódolja. A Mastercoin a jövőben fokozatosan az OP_RETURN bitcoin operátor használatára tér át.
+
+==== Counterparty
+
+((("meta coin platformok","counterparty protokoll")))A Counterparty szintén egy bitcoinra illesztett protokoll, amely fizetőeszközök, átruházható zsetonok, pénzügyi eszközök, és decentralizált vagyontárgyak cseréinek, illetve egyéb speciális alkalmazásoknak a gyűjtőtára. A Counterparty implementációja elsősorban a bitcoin script nyelv +OP_RETURN+ operátorát használja a meta-adatok rögzítésére. Ezek járulékos jelentéssel bővítik ki a bitcoin tranzakciókat. A Counterparty az XCP jelzést használja a Counterparty tranzakciók során.(((range="endofrange", startref="ix_ch09-asciidoc0"))) 
+
+=== Alt-coin-ok 
+
+((("alt-coin-ok", id="ix_ch09-asciidoc1", range="startofrange")))((("pénznemek, alternatív", id="ix_ch09-asciidoc2", range="startofrange")))Az alt-coin-ok túlnyomó többségének az alapját a bitcoin forráskódja jelentette. Ezek az ú.n. „elágazások” („forks”). Némelyikük a „semmiből” lett implementálva, azaz a blokklánc modellre támaszkodik, de anélkül, hogy bármit is felhasználna a bitcoin forráskódjából. Az alt-coinok és az alt-chainek (melyekre a következő részben térünk ki részletesebben) a blokklánc technológia teljesen különálló implementációi, tehát mindegyik változat a saját blokkláncát használja. A terminusok (alt-coin, alt-chain) közötti különbség arra utal, hogy míg az alt-coinok elsősorban fizetőeszközként funkcionálnak, addig az alt-chain-eket általában más céllal használják. 
+
+Szigorúan véve, a bitcoin kód első jelentős alt-coinja igazából nem is alt-coin volt, hanem egy _Namecoin_ nevű alt-chain, de erről a következő részben fogunk részletesebben írni. 
+
+A bejelentés időpontja alapján az első alt-coinnak az _IXCoin_ minősíthető, amelyet 2011 augusztusában indítottak útjára. Az IXCoin-ban csak néhány bitcoin paramétert változtattak meg, például felgyorsították a fizetőeszköz „előállítását”, 96 érmére növelve a blokkokért járó jutalmat.
+
+A _Tenebrix_ 2011 szeptemberében indult útjára. A Tenebrix volt az első olyan digitális pénz, amely egy alternatív munkabizonyíték (Proof-of-Work) rendszeren alapuló algoritmust, az úgynevezett ((("proof-of-work algoritmus","alternatív")))((("scrypt algoritmus")))_scrypt_-et implementálta. A scrypt algoritmus eredetileg jelszavak megerősítésére szolgált (hogy ellenáljanak a nyers erővel (brute-force) történő töréseknek). A hivatalos közlemény szerint a Tenebrix kifejlesztésénél az volt a vezérelv, hogy egy olyan coint hozzanak létre, amely ellenálló mind a GPU, mind az ASIC tipusú bányászattal szemben, mert memória-igényes algoritmust használ. A Tenebrix, mint fizetőeszköz ugyan nem könyvelt el különösebb sikereket, de megalapozta a Litecoin-t, amely óriási népszerűségre tett szert, egyben klónok százai előtt nyitotta meg az utat. 
+
+A _Litecoin_ azon kívül, hogy a scrypt-et használja munkabizonyíték (Proof-of-Work) algoritmusnak, egy gyorsabb blokk-generálási időt valósított meg, és 2,5 percre csökkentette a bitcoin 10 perces intervallumát. A Litecoin-t úgy is szokták emlegetni, hogy ez az „ezüst, ha a a bitcoin az arany”, és nem vitás, hogy alternatív fizetőeszközként a bitcoin egy könnyűsúlyú versenytársa. A gyorsabb megerősítési időnek, illetve a maximum 84 millió érme összmennyiségnek köszönhetően, számos Litecoin hívő gondolja úgy, hogy az „ezüst érme” a kereskedelmi tranzakciók területén a bitcoinnál jobb megoldást jelent. 
+
+A bitcoinra vagy Litecoin-ra támaszkodó különféle alt-coin sarjak száma 2011 és 2012 folyamán tovább nőtt, és 2013 elején már közel 20 alt-coin versenyzett a piaci pozíciószerzésért. 2013 végére a különféle alt-coinok száma megtízszereződött, elérve a 200-as határt, így 2013 vitathatatlanul az „alt-coinok éve” volt. Természetesen a növekedés folytatódott, 2014-ben már közel 500 alt-coin létezéséről tudunk. Napjainkban az alt-coinok több mint fele Litecoin klón. 
+
+Egy alt-coin létrehozása viszonylag egyszerű feladat, ezért is van már belőlük 500-nál is több. Legtöbbjük csak nagyon kis eltérést mutat a bitcoinhoz képest, és igazából semmi említésre méltót sem tartalmaz. Sok csak arra a célra szolgál, hogy a fejlesztőjét gazdagabbá tegye. A „pump-and-dump” sémák (manipulatív módon felvinni az altcoin árát, majd hirtelen elárasztani vele a piacot) és az utánzók között azért természetesen van néhány figyelemre méltó kivétel, és igazán fontos innováció is. Ezek az alt-coinok vagy egy egészen eltérő megközelítést alkalmaznak, vagy a bitcoin tervezési mintáját jelentős újítással bővítik. Alapvetően három olyan területet tudunk elkülöníteni, amelyekben az említett alt-coinok változást hoztak a bitcoinhoz képest:
+
+* Eltérő pénzügyi irányelvek
+* Eltérő munkabizonyíték (Proof-of-Work) rendszer, vagy eltérő konszenzus mechanizmus
+* Különleges jellemzők, például fokozottabb anonimitás
+
+Az alt-coinok és alt-chain-ek grafikus idővonala az alábbi linken tekinthető meg: http://mapofcoins.com. ((("alt-chain-ek","grafikus idővonal")))((("alt-coin-ok","grafikus idővonal")))
+
+==== Egy alt-coin kiértékelése
+
+((("alt-coin-ok","kiértékelése")))((("pénznemek, alternatív","kiértékelése")))Hogyan lehet eldönteni, hogy a rengeteg alt-coin közül melyek a valójában figyelemre méltó fejlesztések? Vannak alt-coinok, amelyek arra tesznek kísérletet, hogy széles körben, fizetőeszközként kerüljenek felhasználásra. Mások inkább laboratóriumi próbálkozások, melyek különböző jellegzetességekkel, vagy pénzügyi modellekkel kísérleteznek, számos fejlesztés pedig kizárólag a fejlesztőik gyors meggazdagodásának a céljából született. Az alt-coinok kiértékeléséhez azok sajátos jellegzetességeit és piaci paramétereit vettem figyelembe.
+
+Íme pár kérdés, amit érdemes feltenni egy alt-coinnal kapcsolatban, amikor azt a bitcoinnal összevetve vizsgáljuk:
+
+* Hozott-e valamilyen jelentős innovációt az adott alt-coin?
+* Eléggé különbözik-e az adott alt-coin a bitcointól ahhoz. hogy átcsábítsa a bitcoin felhasználókat?
+* Az adott alt-coin kapcsolódik-e egy érdekes piaci szektorhoz vagy alkalmazáshoz?
+* Képes-e elegendő bányász figyelmét felkelteni ahhoz, hogy védve legyen a támadásokkal szemben?
+
+Néhány megvizsgálandó piaci és pénzügyi tényező:
+
+* Mekkora az adott alt-coin teljes piaci kapitalizációja?
+* Mennyi alt-coin becsült felhasználóinak/pénztárcáinak a száma?
+* Mennyi az alt-coint elfogadó kereskedők száma?
+* Naponta hány darab alt-coin tranzakció megy végbe?
+* Mekkora a napi tranzakciók értéke?
+
+Könyvünk jelen fejezetében elsősorban az alt-coinok technikai jellegzetességeire és potenciális innovációira koncentrálunk, tehát az imént felsorolt kérdések első felére.
+
+==== Pénzügyi paraméterű alternatívák: Litecoin, Dogecoin, Freicoin
+
+((("alt-coin-ok","pénzügyi paraméterű alternatívák")))((("pénzeszközök, alternatív","pénzügyi paraméterű alternatívák")))((("pénzügyi paraméterű alternatívák")))Pénzügyi paraméterei alapján a bitcoin egy deflációs, fix kibocsátású pénz. Mennyisége 21 millió egységre (vagy 2100 billió kisebb egységre) korlátozódik, kibocsátásának sebessége szabályosan (mértani sorozat szerint) csökkenő, és „szívverésének” üteme - a tranzakciók visszaigazolásának és a blokkok legenerálásának az ideje - 10 perc. Számos alt-coin változtatta meg ezt a három paramétert abból a célból, hogy egy eltérő monetáris keretrendszert hozzon létre. A több száz ilyen típusú alt-coin közül a leginkább figyelemre méltó fejlesztések a következőek:
+
+===== Litecoin
+
+A Litecoin, amely az egyik legelső alt-coin volt 2011-ben, a bitcoin utáni a második legsikeresebb digitális fizetőeszköz. Elsődleges innovációi a scrypt, mint Proof-of-Work algoritmus alkalmazása (Tenebrix-től örökölt újítás), illetve a gyorsabb/könnyebb fizetőeszköz paraméterek.
+
+* Blokk-generálási idő: 2,5 perc
+* Maximális érme mennyiség: 84 millió egység, 2140-ig.
+* Az egyezményes algoritmus: scrypt Proof-of-Work
+* Piaci kapitalizáció: 160 millió amerikai dollár 2014 közepén
+
+===== Dogecoin
+
+A Dogecoin 2013 decemberében indult útjára, mint a Litecoin egyik „elágazása”. A Dogecoin azért érdekes, mert monetáris politikája gyors kibocsátást ír elő, továbbá a fizetőeszköz maximális érmemennyiségge elég magas ahhoz, hogy felhasználóit fizetésre, illetve költésre motiválja. Abból a szempontból is figyelemre méltó, hogy eredetileg csak viccnek szánták, azonban viszonylag gyorsan nagy népszerűségre tett szert, és egy relatív nagy és aktív felhasználói közösséggel is rendelkezett, 2014-es gyors hanyatlását megelőzően. 
+
+* Blokk-generálási idő: 60 másodperc
+* Maximális érme mennyiség: 100'000'000'000 (100 milliárd) Doge, 2015-ig.
+* Az egyezményes algoritmus: scrypt Proof-of-Work
+* Piaci kapitalizáció: 12 millió amerikai dollár 2014 közepén
+
+===== Freicoin
+
+A Freicoin 2012 júliusában kezdte meg pályafutását. Ez egy ((("inflálódó fizetőeszköz")))_inflálódó fizetőeszköz_, ami azt jelenti, hogy az érték tárolásához negatív kamatláb tartozik. A Freicoin-ban tárolt érték után évente 4,5 % díj kerül felszámításra, ami serkenti a fogyasztást, és visszatartja a pénz felhalmozását. A Freicoin azért érdekes, mert egy olyan monetáris politikát implementál, amely pontosan a bitcoin deflációs politikájának az ellentéte. A Freicoin mint fizetőeszköz nem igazán lett sikeres, jelentősége inkább abban van, hogy jól szemlélteti az alt-coinok képviselte monetáris politikák változatosságát.
+
+* Blokk-generálási idő: 10 perc
+* Maximális érme mennyiség: 100 millió érme, 2140-ig.
+* Konszenzus algoritmus: SHA256 Proof-of-Work
+* Piaci kapitalizáció: 130'000 amerikai dollár 2014 közepén
+
+==== A konszenzusrendszer újításai: Peercoin, Myriad, Blackcoin, Vericoin, NXT
+
+((("alt-coin-ok","konszenzusrendszer újításai")))((("konszenzus","újítás")))A bitcoin konszenzus mechanizmusa munkabizonyíték (Proof-of-Work) alapú, és az SHA256 algoritmust használja. Az első alt-coinok a scrypt-et használták alternatív Proof-of-Work algoritmusként, ekképp az egyébként ASIC centralizációra hajlamos bányászat CPU-barát folyamattá vált. A scrypt alkalmazása után a konszenzus mechanizmus lett az áttörő innovációk fő területe. Alt-coinok garmadáinál figyelhető meg a változatos algoritmus implementáció, például a scrypt, a ((("Blake algoritmus)))((("Groestl algoritmus")))((("scrypt-N algoritmus")))((("SHA3 algoritmus")))((("Skein algoritmus")))  scrypt-N, a Skein, a Groestl, az SHA3, az X11, a Blake, és mások adoptációja. Néhány alt-coin egyszerre több algoritmust is alkalmaz a Proof-of-Work rendszerhez. 2013 folyamán a Proof-of-Work rendszernek egy olyan alternatívájával is találkoztunk, amelyet ((("kockázati bizonyíték, proof of stake")))_kockázati bizonyítéknak_ (Proof-of-Stake) hívnak, és amely számos modern alt-coin alapját képzi. 
+
+A kockázati bizonyíték (Proof-of-Stake) egy olyan rendszer, amelynél a fizetőeszköz tulajdonosai leköthetik fizetőeszközüket, mint egyfajta kamatozó biztosítékot. A letéti bizonylathoz (Certificate of Deposit azaz CD) hasonlóan a résztvevők leköthetik megtakarításaik egy részét, ezáltal nyereségre tehetnek szert új fizetőeszközök formájában (kamatkifizetésként) és traznakciós díjak formájában. 
+
+===== Peercoin
+
+A Peercoin-t 2012 augusztusában indították útjára. Ez volt az első olyan alt-coin, amely az új fizetőeszköz kibocsátásához a munkabizonyíték (Proof-of-Work) és a kockázati bizonyíték (Proof-of-Stake) algoritmusának a keverékét használta. 
+
+* Blokk-generálási idő: 10 perc
+* Blokk-generálási idő: 10 perc
+* Konszenzus algoritmus: (Hibrid) Proof-of-Stake, kezdetben pedig Proof-of-Work rendszer
+* Piaci kapitalizáció: 14 millió amerikai dollár 2014 közepén
+
+===== Myriad
+
+A Myriad 2014 februárjában jelent meg, és azért említésre méltó, mert, öt különböző Proof-of-Work algoritmust alkalmaz (SHA256d, Scrypt, Qubit, Skein és Myriad-Groestl) egyszerre, és a nehézségi szint a bányászati részvétel függvényében minden algoritmusnál más és más lehet. A Myriad mögött meghúzódó szándék az, hogy az alt-coint éppúgy immúnissá tegye az ASIC specializációval és központosítással szemben, mint az egyesített támadásokkal szemben, mivel több bányász algoritmust egyidejűleg kellene támadni.
+
+* Blokk-generálási idő: átlagosan 30 másodperc (2,5perces iránycél bányászalgoritmus típusonként)
+* Maximális érme mennyiség: 2 milliárd, 2024-ig
+* Konszenzus algoritmus: több algoritmust alkalmazó Proof-of-Work
+* Piaci kapitalizáció: 120'000 amerikai dollár 2014 közepén
+
+===== Blackcoin
+
+A Blackcoin 2014 februárjában jelent meg, és a kockázati (Proof-of-Stake) algoritmust használ konszenzus algoritmusként. Azért érdemel figyelmet, mert bevezette a „multipools”-t, azaz a bányásztársulatoknak egy olyan típusát, amely automatikusan váltani tud a különböző alt-coinok között, attól függően, hogy melyiknél rentábilisabb a bányászat. 
+
+* Blokk-generálási idő: 1 perc
+* Blokk-generálási idő: 10 perc
+* Konszenzus algoritmus: Proof-of-Stake
+* Piaci kapitalizáció: 3,7 millió amerikai dollár 2014 közepén
+
+===== VeriCoin
+
+A VeriCoin 2014 májusában jelent meg. Kockázati (Proof-of-Stake) algoritmust használ a közmegegyezésre, de olyan változó kamatlábbal, amely a piaci kínálat és kereslet szerint, dinamikusan alakul. Ugyancsak ez volt az első olyan alt-coin, amely , a pénztárcából történő bitcoinos fizetéseknél automatikusan  bitcoinra váltódik át.
+
+* Blokk-generálási idő: 1 perc
+* Blokk-generálási idő: 10 perc
+* Konszenzus algoritmus: Proof-of-Stake
+* Piaci kapitalizáció: 1,1 millió amerikai dollár 2014 első felében
+
+===== NXT
+
+A NXT (ejtsd: „Next”) egy „színtiszta” Proof-of-Stake alt-coin, legalábbis abban az értelemben, hogy nem alkalmazza a Proof-of-Work bányászatot. Az NXT egy a „semmiből” implementált digitális fizetőeszköz, tehát sem nem a bitcoinnak, sem más alt-coinnak nem az elágazása. Az NXT-nek számos fejlett jellemzője van, pl. a név regisztráció (a ((("Namecoin")))Namecoinhoz hasonlóan), decentralizált eszközök cserelehetősége (a Colored Coin-okkal megegyezően), beépített decentralizált és biztonságos üzenetváltás (akárcsak a ((("Bitmessage"))) Bitmessage-nél), és kockázat delegálás (a Proof-of-Stake másokra történő átruházása). A NXT hívei a „következő-generációs”, vagy 2.0 kriptopénznek is hívják ezt az alt-coint. 
+
+* Blokk-generálási idő: 1 perc
+* Blokk-generálási idő: 10 perc
+* Konszenzus algoritmus: Proof-of-Stake
+* Piaci kapitalizáció: 30 millió amerikai dollár 2014 közepén
+
+
+==== Kettős-célú bányászati innovációk: Primecoin, Curecoin, Gridcoin
+
+((("kettős célú bányászat")))((("bányászat","kettős célú")))A bitcoin Proof-of-Work algoritmusának egy célja van: biztosítani a bitcoin hálózat biztonságát. A hagyományos kifizető rendszerek védelméhez hasonlítva a bányászat költségei nem is olyan jelentősek. Ennek ellenére sokak részéről érkezett olyan kritika, hogy a bányászat „költséges”. Az alt-coinok következő csoportja erre próbál megoldást találni. A kettős-célú Proof-of-Work algoritmus egyrészt valamilyen „hasznos” problémát old meg, másrészt a hálózat védelmére is használja a Proof-of-Work rendszert. Ha a fizetőeszköz védelmére szolgáló algoritmus egy külső felhasználással is rendelkezik, akkor ennek az a a kockázata, hogy ez a külső hatás is befolyásolni fogja a kereslet- kínálat görbéjét. 
+
+===== Primecoin
+
+A Primecoin 2013 júliusában látott napvilágot. Proof-of-Work algoritmusa prímszámok után kutat, nevezetesen ((("ikerprím láncok")))((("Cunningham láncok")))Cunningham- és ikerprím láncok után. A prímszámok a tudomány számos területén hasznosak. A Primecoin blokklánca a munkabizonyíték algoritmussal feltárt prímszámokat tartalmazza, eképp a tudományos felfedezéseknek egyfajta nyilvános tárhelye, emellett egyben a tranzakciók nyilvános jegyzéke is. 
+
+* Blokk-generálási idő: 1 perc
+* Blokk-generálási idő: 10 perc
+* Konszenzus  algoritmus: prímszám láncok előállítása révén megvalósított Proof-of-Work rendszer
+* Piaci kapitalizáció: 1,3 millió amerikai dollár 2014 közepén
+
+===== Curecoin
+
+((("fehérjék feltekeredésének algoritmusai")))A Curecoin 2013 májusában jelent meg. Az SHA256 Proof-of-Work algoritmust kombinálja a fehérjék feltekeredésének a tanulmányozásával a „Folding@Home” projekten keresztül. A fehérjék feltekeredésének modellezése a fehérjék közötti biokémiai kölcsönhatások számításigényes szimulációját igényli, és a segítségével betegségek új gyógymódjai fedezhetők fel. 
+
+* Blokk-generálási idő: 10 perc
+* Blokk-generálási idő: 10 perc
+* Konszenzus algoritmus: fehérjék feltekeredésének a kutatásával megvalósított Proof-of-Work rendszer
+* Piaci kapitalizáció: 58'000 amerikai dollár 2014 közepén
+
+===== Gridcoin
+
+A Gridcoin-t 2013 októberében mutatták be. A scrypt-alapú Proof-of-Work rendszert a ((("BOINC nyílt forrású grid computing")))nyílt forrású BOINC grid-computing-ban való részvételért cserébe adott jutalom egészíti ki. A BOINC egy nyílt forráskódú protokoll, amely tudományos kutatások számításainál használható, és amely lehetővé teszi a résztvevők számára, hogy saját számítási kapacitásukat megosszák egy széles körű, akadémiai kutatást szolgáló számítási kapacitással. A Gridcoin a BOINC-ot, mint általános számítási platformot használja, tehát nem olyan specifikus problémák megoldására, mint amilyen például a prímszámok keresése, vagy a fehérjék feltekeredésének a szimulációja. 
+
+* Blokk-generálási idő: 150 másodperc
+* Blokk-generálási idő: 10 perc
+* Konszenzus algoritmus: BOINC grid computing alapján megvalósított, jutalommal kiegészített Proof-of-Work rendszer
+* Piaci kapitalizáció: 122'000 amerikai dollár 2014 közepén
+
+==== Anonimitás-fokuszú alt-coinok: CryptoNote, Bytecoin, Monero, Zerocash/Zerocoin, Darkcoin
+
+((("alt-coin-ok","anonimitás fókuszú", id="ix_ch09-asciidoc3", range="startofrange")))((("pénzeszközök, alternatív","anonimitás fókuszú", id="ix_ch09-asciidoc4", range="startofrange")))A bitcoint, gyakran hibásan, anonim fizetőeszközként is jellemzik, holott adat elemzéssel viszonylag egyszerűen felderíthető egy bitcoin cím mögött megbújó személyazonosság, és a bitcoin címek összekapcsolása révén átfogó képet kaphatunk egy adott felhasználó bitcoin költekezési szokásairól. Számos olyan alt-coin született, amely kifejezetten ennek kérdésnek a megoldására szolgál, és amelyik kifejezetten a fokozott anonimitásra fókuszál. A legelső ilyen próbálkozás valószínűleg a _Zerocoin_ volt, amely a bitcoinra épülő, és az anonimitást megőrző meta-coin protokol. A Zerocoint 2013-ban az IEEE Biztonsági és Titkosítási (Security and Privacy) szimpoziumán mutatták be. A Zerocoin egy teljesen külön alt-coinként, Zerocash néven kerül majd megvalósításra, evvel kapcsolatban a könyv írásának az idején is folynak a fejlesztések. Szintén az anonimtásra fókuszáló alternatíva a 2013 októberében egy dolgozatban bemutatott _CryptoNote_. A CryptoNote egy olyan alapvető technológia, amelyet számos alt-coin elágazás használ, és amelyről részletesebben alább lesz szó. A Zerocash-en és a Cryptonote-on kívül még egy sereg független és anonim alt-coint ismerünk, például a Darkcoin-t, amely lopakódó (stealth) titkos címekkel, vagy tranzakciók összekeverésével valósítja meg az aninimitást.
+
+===== Zerocoin/Zerocash
+
+A Zerocoin a digitális fizetőeszköz anonimitásának elméleti megközelítése. A fejlesztést 2013-ban mutatták be a Johns Hopkins Egyetem kutatói. A Zerocash a Zerocoin alt-coin megvalósítása, és jelenleg is folyik a fejlesztése. 
+
+===== CryptoNote
+
+A CryptoNote egy olyan referencia alt-coin implementáció, amely egy 2013 októberében bemutatott digitális anonim pénz alapjait biztosítja. Úgy lett kifejlesztve, hogy változatos implementációkhoz szolgálhasson elágazásként, illetve rendelkezik egy beépített periodikus „reset” mechanizmussal is, amely meggátolja, hogy a CryptoNote, mint fizetőeszköz kerüljön felhasználásra. A CryptoNote-ból rengeteg alt-coin született. Ide tartozik például a Bytecoin (BCN), az Aeon (AEON), a Boolberry (BBR), a duckNote (DUCK), a Fantomcoin (FCN), a Monero (XMR), a MonetaVerde (MCN) és a Quazarcoin (QCN). A CryptoNote azért is figyelemre méltó, mert nem a bitcoin egy elágazása, hanem teljes egészében egy újszerű kriptopénz implementáció 
+
+===== Bytecoin
+
+((("Application Specific Integrated Circuit (ASIC)")))((("Graphical Processing Units (GPUs)")))A Bytecoin volt az első CryptoNote-on alapuló implementáció, azaz a CryptoNote technológiáján alapuló első életképes anonim fizetőeszköz. A Bytecoin 2012 júliusában jelent meg. Itt kell megemlítenünk, hogy volt egy korábbi Bytecoin nevű alt-coin is BTE rövidítéssel, míg a CryptoNote derivatíva fizetőeszközének BCN a rövidítése. A Bytecoin a Cryptonight Proof-of-Work algoritmust használja, amely legalább 2 MB RAM-ot igényel bányász példányonként, ezáltal lehetetlenné teszi a GPU vagy az ASIC típusú bányászatot. A Bytecoin örökölte a CryptoNote-ból a ring-signatures-t, a belinkelhetetlen tranzakciókat és a blokklánc-elemzőkkel szembeni ellenállóképességét az anonimitás megőrzése érdekében.
+
+* Blokk-generálási idő: 2 perc
+* Maximális érme mennyiség: 184 milliárd BCN
+* Konszenzus algoritmus: Cryptonight Proof-of-Work
+* Piaci kapitalizáció: 3 millió amerikai dollár 2014 közepén
+
+===== Monero
+
+A Monero is egy CryptoNote implementáció. A kibocsátási görbéje a Bytecoin-nál egy árnyalatnyival előnyösebb, mivel az érmék 80% az első négy év során kerül kibocsátásra. Anonimitásra vonatkozó tulajdonságait a CryptoNote-tól örökölte, így azzal megegyeznek.
+
+* Blokk-generálási idő: 1 perc
+* Maximális érme mennyiség: 18.4 millió XMR
+* Konszenzus algoritmus: Cryptonight Proof-of-Work
+* Piaci kapitalizáció: 5 millió amerikai dollár 2014 közepén
+
+===== Darkcoin
+
+A Darkcoin 2014 januárjában indult útjára. Anonim fizetőeszközt implementál egy DarkSend-nek nevezett  újra-keverő (re-mixing) protokollt használatával . A Darkcoin azért is érdekes, mert 11 különböző hash funkciót (blake, bmw, groestl, jh, keccak, skein, luffa, cubehash, shavite, simd, echo) használ a Proof-of-Work algoritmushoz.
+
+* Blokk-generálási idő: 2.5 perc
+* Maximális érme mennyiség: 22 millió DRK
+* Konszenzus algoritmus: több menetes, több algoritmust használó Proof-of-work
+* Piaci kapitalizáció: 19 millió amerikai dollár 2014 közepén(((range="endofrange", startref="ix_ch09-asciidoc4")))(((range="endofrange", startref="ix_ch09-asciidoc3")))(((range="endofrange", startref="ix_ch09-asciidoc2")))(((range="endofrange", startref="ix_ch09-asciidoc1")))
+
+=== Nem fizetőeszközként használt alt-chainek
+
+((("láncok, alternatív","nem fizetőeszközként használt", id="ix_ch09-asciidoc5", range="startofrange")))((("nem fizetőeszközként használt alt-chain-ek", id="ix_ch09-asciidoc6", range="startofrange")))Az alt-chainek a blokklánc, mint ötlet alternatív implementációi, és elsősorban nem fizetőeszközként kerülnek alkalmazásra. Számos közülük fizetőeszközt is tartalmaz, de ez a fizetőeszköz inkább mint szimbólum/zseton kerül alkalmazásra, egyéb javak, vagy például egy szerződés szétosztásánál. Más szóval: a fizetőeszköz nem a platform lényegi kérdése, csak egy amolyan másodlagos adottsága.  
+
+==== Namecoin
+
+A Namecoin volt a bitcoin kód első elágazása. A Namecoin egy olyan decentralizált kulcsnyilvántartási és transzfer platform, amely blokkláncot használ. Az Internet domain-név regisztrációs rendszeréhez hasonló, globális domain-név nyilvántartást támogat. A Namecoin-t jelenleg a +.bit+ gyökérdomain esetében alternatív Domain Név Szolgáltatóként (DNS) alkalmazzák. A Namecoin más névtérben lévő nevek és értékpárok nyilvántartására is alkalmas, például email címek, titkosítási kódok, SSL tanúsítványok,file aláírások, szavazói regiszterek, és számtalan egyéb dolog tárolására. 
+
+A Namecoin rendszer a namecoin fizetőeszközt is tartalmazza (szimbóluma NMC), amely a név-regisztrációk és név-cserék tranzakciós dijainak a megfizetésére használható. Jelenleg egy névregisztráció díja 0,01 NMC, azaz körülbelül 1 cent. A bitcoinhoz hasonlóan, a díjakat a Namecoin bányászok kapják.
+
+A Namecoin alap paraméterei megegyeznek a bitcoinéval:  
+
+* Blokk-generálási idő: 10 perc
+* Maximális érme mennyiség: 21 millió NMC, 2140-ig.
+* Konszenzus algoritmus: SHA256 Proof-of-Work
+* Piaci kapitalizáció: 10 millió amerikai dollár 2014 közepén
+
+A Namecoin névtere nem korlátozott, bárki, bárhogyan és bármilyen névteret használhat. Mindamellett, néhány bizonyos névtér rendelkezik egy jóváhagyott specifikációval, így amikor a blokkláncból kerül beolvasásra, a szoftver tudja, hogyan olvassa ki és hajtsa végre. Ha a név nem jólt formált, akkor a használt szoftvertől függetlenül hibát fogunk kapni. Íme, néhány példa a kedvelt névterekből:
+
+* a +d/+ a +.bit+  domain névtér domain-neve
+* az +id/+  a személyes adatok, mint például email cím, PGP kulcsok, stb. jegyzékének a névtere
+* az +u/+  egy további, jobban strukturált specifikáció személyazonosságok tárolására (openspecs alapú)
+
+((("blokkláncok","Namecoin")))A Namecoin kliens nagyon hasonlít a Bitcoin Core kliensre, lévén, hogy ugyanabból a forráskódból származik. Az installálásnál a kliens a Namecoin blokkláncnak egy teljes másolatát letölti, majd ezek után készen áll a nevek lekérdezésére és regisztrációjára. Három fő parancsa van:((("Namecoin","parancsok"))) 
+
++name_new+:: egy név lekérdezése vagy pre-regisztrálása
++name_firstupdate+:: egy név regisztrálása és a regisztráció publikálása
++name_update+:: a részletek módosítása, vagy egy névregisztráció frissítése
+
+Például, a +mastering-bitcoin.bit+ domain-név regisztrálására a +name_new+ paranccsal a következőképpen lehetséges:
+
+[source,bash]
+----
+$ namecoind name_new d/mastering-bitcoin
+----
+[source,json]
+----
+[
+    "21cbab5b1241c6d1a6ad70a2416b3124eb883ac38e423e5ff591d1968eb6664a",
+    "a05555e0fc56c023"
+]
+----
+
+A +name_new+ parancs egy név-igényt regisztrál, azáltal, hogy létrehozza a névnek egy random kulccsal ellátott hash-ét. A +name_new+ által visszaküldött két string: a hash és a random kulcs (+a05555e0fc56c023+ a fenti példában), amelynek a felhasználásával a név regisztráció nyilvánossá tehető. Miután az adott igény regisztrálva lett a Namecoin blokkláncában, nyilvános regisztrációvá is konvertálható a +name_firstupdate+ paranccsal, és a random kulcs megadásával:
+
+----
+$ namecoind name_firstupdate d/mastering-bitcoin a05555e0fc56c023 "{"map": {"www": {"ip":"1.2.3.4"}}}}"
+b7a2e59c0a26e5e2664948946ebeca1260985c2f616ba579e6bc7f35ec234b01
+----
+
+A fenti példa +www.mastering-bitcoin.bit+ domain-nevet az 1.2.3.4. IP címhez rendeli hozzá. A visszaküldött hash a a tranzakció id-je, amellyel a regisztráció nyomon követhető. A regisztrált nevek a +name_list+ parancs futtatásával nézhetők meg:
+
+----
+$ namecoind name_list
+----
+====
+[source,json]
+----
+[
+    {
+        "name" : "d/mastering-bitcoin",
+        "value" : "{map: {www: {ip:1.2.3.4}}}}",
+        "address" : "NCccBXrRUahAGrisBA1BLPWQfSrups8Geh",
+        "expires_in" : 35929
+    }
+]
+----
+====
+
+A Namecoin regisztrációkat minden 36'000 blokk után (kb. 200-250 naponként) frissíteni kell. A +name_update+ parancsnak nincs díja, így a Namecoin domainok megújítása ingyenes. Szerény díj ellenében egy webes interfészen keresztül egy harmadik fél is kezelheti a regisztrációt, valamint az automatikus frissítést és megújítást. Ha egy harmadik fél végzi a műveleteket, akkor szükségtelen, hogy a Namecoin klienst mindenki saját maga futtassa, de ezzel elvész a Namecoin által kínált, decentralizált névnyilvántartás feletti független felügyelet. 
+
+==== Ethereum
+
+((("szerződések, Ethereum-ban megvalósított")))Az Ethereum egy blokklánc-nyilvántartáson alapuló, Turing-teljes szerződés feldolgozó és végrehajtó platform. Az Ethereum nem egy bitcoin klón, hanem egy teljesen független elvi alapokon álló implementáció. Az Ethereumnak van saját fizetőeszköze, az úgynevezett _éter_ (ether), amely a _szerződések_ végrehajtásához szükséges. A szerződéseket az Ethereum blokklánca rögzíti. A szerződések alacsony színtű, bájtkód-szerű, Turing-teljes nyelven vannak ábrázolva. A szerződések lényegében olyan programok, amelyek az egyes csomóponton az Ethereum rendszerén belül futnak. Az Ethereum szerződések adatokat tárolhatnak, ether kifizetéseket küldhetnek és fogadhatnak, ether-eket tárolhatnak, illetve végtelen számú (innen a Turing-teljesség) kiszámítható műveleteket végezhetnek, és decentralizált autonóm ügynökként funkcionálhatnak.
+
+Az Ethereum-mal viszonylag bonyolult rendszerek valósíthatók meg, akár olyanok is, amelyek önmaguk is alt-chain implementációk. Például, alább egy Namecoinhoz hasonló név-regisztrációs szerződést láthatunk Ethereum-ban megírva (pontosabban, egy olyan magas szintű nyelven, amely lefordítható Ethereum kódra): (((range="endofrange", startref="ix_ch09-asciidoc6")))(((range="endofrange", startref="ix_ch09-asciidoc5")))
+
+[source,python]
+----
+if !contract.storage[msg.data[0]]: # Már foglalt a kulcs?
+    # Nem: akkor foglald le!
+    contract.storage[msg.data[0]] = msg.data[1]
+    return(1)
+else:
+
+    return(0) // Különben ne csinálj semmit
+----
+
+=== A fizetőeszközök jövője
+
+Összességében, a digitális fizetőeszközök jövője még a bitcoinénál is fényesebb. A bitcoin egy teljesen új formájú decentralizált szervezetet és közmegegyezést vezetett be, ami egyben hihetetlen innovációk százainak is teret nyitott. Ezek az innovációk minden bizonnyal hatással lesznek a gazdaság számos szektorára, az elosztott rendszerektől a pénzügyön, a közgazdaságtanon, a fizetőeszközökön, és a központi bankokon keresztül egészen az államháztartásig és a cégek szabályozásáig. Mostantól számos olyan emberi tevékenység válhat decentralizálttá, amelyhez korábban a hiteles és megbízható működés érdekében egy központosított intézményre vagy szervezetre volt szükség. A blokklánc és a közmegegyezés innovációja jelentősen csökkenteni fogja a nagy rendszerek létrehozásának és koordinációjának a költségét, egyben elkerülhető vele a hatalomkoncentráció, a korrupció és a túlszabályozás csapdája.

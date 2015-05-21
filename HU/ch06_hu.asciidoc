@@ -1,0 +1,299 @@
+[[bitcoin_network_ch06]]
+== A bitcoin hálózat
+
+=== Peer-to-peer hálózati felépítés
+
+((("bitcoin hálózat", id="ix_ch06-asciidoc0", range="startofrange")))((("bitcoin hálózat","felépítése")))((("peer-to-peer networks")))A bitcoin az Internetre épülő peer-to-peer hálózati felépítéssel rendelkezik. A peer-to-peer kifejezés azt jelenti, hogy a hálózatban részt vevő csomópontok egyenrangúak, vagyis nincsenek „különleges” csomópontok, és mindegyik csomópont kiveszi a részét abból a teherből, amit a hálózati szolgáltatások nyújtása jelent. A hálózat csomópontjai „egyforma” topológiájú hálózatban kapcsolódnak egymáshoz, nincsenek „szerverek”, központosított szolgáltatások, és a hálózaton belül nincs alá- és fölérendeltség. A peer-to-peer hálózatok csomópontjai egyszerre szolgáltatók és fogyasztók, ahol a kölcsönösség a részvétel egyik ösztönzője. A peer-to-peer hálózatok nagyon ellenállóak, decentralizáltak és nyitottak. A P2P hálózati architektúrára kiváló példát jelentett maga a korai Internet, ahol az IP hálózat csomópontjai egyenlőek voltak. Manapság az Internet felépítése hierarchikusabb, de az Internet Protokoll még mindig őrzi az egynemű topológia lényegét. A bitcoinon kívül a P2P technológia legnagyobb és legsikeresebb alkalmazása a file megosztás: itt a Napster volt az architektúra úttörője, és a bittorrent a legutóbbi fejleménye.
+
+A Bitcoin P2P hálózati felépítése sokkal több, mint topológia kérdése. A bitcoin egy peer-to-peer digitális pénzügyi rendszerként lett megtervezve, és a hálózat felépítése ennek az alapjellemzőnek a tükröződése és a megtestesülése. Az irányítás decentralizálása tervezési alapelv. Ez az alapelv csak egy hierarchia nélküli, decentralizált P2P konszenzus révén valósítható meg és tartható fönn. 
+
+((("bitcoin hálózat","definíciója")))A „bitcoin hálózat” kifejezés a bitcoin P2P protokollt futtató csomópontok halmazát jelenti. A bitcoinban a P2P protokollon túlmenően egyéb protokollok is vannak, pl. a Stratum, melyet a bányászatnál vagy pehelysúlyú mobil pénztárcáknál alkalmaznak. Ezeket a további protokollokat a bitcoin hálózathoz kapcsolódó gateway router szolgáltatások biztosítják, melyek a P2P protokollon keresztül kapcsolódnak a bitcoin hálózathoz, és a hálózatot az egyéb protokollokat futtató csomópontok irányában terjesztik ki. Például a Stratum szerverek a bányászatot végző Stratum csomópontokat kapcsolják össze a Stratum protokoll segítségével a fő bitcoin hálózattal, vagyis a Stratum protokollt a bitcoin P2P protokolljával kötik össze. A bitcoin P2P protokolljára, a bányatársaságok protokolljaira, a Stratum protokollra és a bitcoin rendszer részeit összekötő egyéb protokollokra együtt a „kiterjesztett bitcoin hálózat” kifejezéssel hivatkozunk. 
+
+=== Csomópont típusok és szerepek
+
+((("bitcoin hálózat","csomópontok")))((("csomópontok","szerepei")))((("csomópontok","típusai")))Noha a bitcoin P2P hálózatában lévő csomópontok egyenértékűek, de attól függően, hogy milyen működési módokat támogatnak, különböző „szerepeket” játszhatnak. Egy bitcoin csomópont a következő funkciókat valósíthatja meg: routing, blokklánc adatbázis, bányászat, pénztárca szolgáltatások. Lent a <<full_node_reference>> ábrán egy teljes csomópont látható, mely mind a négy funkciót támogatja:
+
+[[full_node_reference]]
+. Egy bitcoin hálózati csomópont, amely mind a négy funkcióval rendelkezik: hálózati router, blokklánc adatbázis, bányászat és pénztárca (pénztárca, bányász, teljes blokklánc, hálózati router csomópont)
+image::images/msbt_0601.png["FullNodeReferenceClient_Small"]
+
+A hálózat összes csomópontja tartalmazza a router funkciót, hogy a csomópont részt vehessen a hálózatban. A csomópontok egyéb funkciókat is tartalmazhatnak. Valamennyi csomópont ellenőrzi és továbbítja a tranzakciókat és blokkokat, valamint összeköttetéseket hoz létre és tart fönn a többi hálózati csomóponttal. A fenti <<full_node_reference>> teljes csomópont esetében a router funkciót egy „Hálózati router csomópont” feliratú sárga kör jelzi. 
+
+Vannak olyan csomópontok – ezeket teljes csomópontoknak hívjuk – melyek teljes és naprakész másolatot tartanak fönn a blokkláncról. A teljes csomópontok külső hivatkozás nélkül, önállóan és hitelesen képesek bármely tranzakció ellenőrzésére. Némelyik csomópont csak a blokklánc egy részhalmazát kezeli, és a tranzakciókat az ún. Egyszerűsített Fizetési Ellenőrzés módszerével ellenőrzi (SPV, Simplified Payment Verification). Ezek a csomópontok a SPV vagy másképpen pehelysúlyú csomópontok. A fenti teljes csomópont esetében a blokklánc adatbázis funkciót egy „Teljes blokklánc” feliratú kék kör jelzi. 
+
+A bányász csomópontok új blokkokat hoznak létre oly módon, hogy célhardvert használnak a munkabizonyíték (proof-of –work) algoritmus megoldására. Némelyik bányász csomópont egyúttal teljes csomópont is, míg a többiek pehelysúlyú csomópontok, melyek társult bányászatban (pooled mining) vesznek részt, és egy szerverre bízzák a teljes csomópont kezelését. A bányász funkciót a fenti teljes csomópont esetén a „Bányász” feliratú fekete kör jelzi.
+
+A teljes csomópontok pénztárcát is tartalmazhatnak. Az asztali bitcoin kliensek esetében általában ez a helyzet. Egyre több pénztárca, különösen azok, melyek erőforrásokban korlátozott eszközökön, pl. okostelefonokon futnak, SPV csomópontok. A pénztárca funkciót fent egy „Pénztárca” feliratű zöld kör mutatja.
+
+A bitcoin P2P protokollhoz tartozó leggyakoribb csomópont típusokon kívül vannak olyan szerverek és csomópontok, melyek egyéb protokollokat futtatnak, pl. specializált bányász-protokollokat és pehelysúlyú kliens elérési protokollokat. 
+
+A <<node_type_ledgend>> kitejesztett bitcoin hálózat különféle csomópont-típusai (Referencia kliens (Bitcoin Core): pénztárcát, bányászt, teljes blokklánc adatbázist és hálózati router csomópontot tartalmaz a bitcoin P2P hálózatban. | Teljes blokklánc csomópont: teljes blokklánc adatbázist és hálózati router csomópontot tartalmaz a a bitcoin P2P hálózatban. | Magányos bányász: bányász fuknciókat valamint a teljes blokklánc adatbázist és egy a bitcoin P2P hálózati csomópontot tartalmaz. | Pehelysúlyú (SPV) pénztárca: egy pénztárcát és a bitcoin P2P protokollon alapúló hálózati csomópontot tartalmaz, blokklánc nélkül. | Bányatársasági szerverek: gateway routerek, melyek a bitcoin P2P hálózatot más protokollokat futtató csomópontokkal kapcsolják össze, pl. bányatársaságot alkotó csomópontokkal vagy Stratum csomópontokkal | Bányász csomópontok: bányászati funkciókat tartalmaznak, blokklánc nélkül, a Stratum (S) protokoll csomóponttal vagy más bányatársasági (pool, P) protokollal együtt. | Pehelysúlyú (SPV) Stratum pénztárca: egy pénztárcát és egy hálózati csomópontot tartalmaz, amely a Stratum protokollra épül. Blokkláncot nem tartalmaz.)
+
+=== A kiterjesztett bitcoin hálózat
+
+((("bitcoin hálózat","kiterjesztett")))((("kiterjesztett bitcoin hálózat")))A P2P protokollt futtató fő bitcoin hálózat kb. 7000 és 10'000 közötti csomópontból áll. A csomópontok a bitcoin referencia kliens (Bitcoin Core) különféle változatait futtatják. Néhány száz további csomópont a bitcoin P2P protokoll különféle egyéb megvalósításait futtatja, ilyen pl. a ((("BitcoinJ könyvtár")))((("btcd")))((("libbitcoin könyvtár")))BitcoinJ, a Libbitcoin és a btcd. A bitcoin P2P hálózat csomópontjainak kis százaláka bányászatot is végez, vagyis egymással versenyezve részt vesz a bányászatban, ellenőrzi a tranzakciókat és új blokkokat hoz létre. Számos nagy cég úgy teremt kapcsolatot a bitcoin hálózattal, hogy a Bitcoin Core kliensen alapuló teljes csomópontokat futtat, amelyekben szerepel a blokklánc és a hálózat kezelés, de hiányzik belőlük a bányászati és pénztárca funkció. Ezek a csomópontok a hálózat határán lévő routerekként használhatók, és különféle egyéb szolgáltatások ráépítését teszik lehetővé (pénzváltók, pénztárcák, blokk explorer-ek, fizetés feldolgozás). 
+
+A kiterjesztett bitcoin hálózat tartalmazza a fent leírt, bitcoin P2P protokollt futtató hálózati csomópontokat, valamint a specializált protokollokat futtató csomópontokat egyaránt. A bitcoin P2P hálózathoz számos ((("bányatársaságok","bitcoin hálózaton")))bányatársaság szervere kapcsolódik, valamint olyan protokoll gateway-ek, melyek a csomópontokat az egyéb protokollokat futtató csomópontokkal kötik össze, többnyire bányász csomópontokkal (lásd a <<ch8>> részt), vagy pehelysúlyú kliensekkel, melyek nem tartalmazzák a blokklánc teljes másolatát. 
+
+A <<bitcoin_network> a különféle csomópont típusokat, gateway-eket, routereket, pénztárcákat, valamint a közöttük kapcsolatot teremtő protokollokat mutatja. 
+
+[[node_type_ledgend]]
+.Különféle csomópont típusok a <<bitcoin_network>> kiterjesztett bitcoin hálózaton. (Balról jobbra, felülről lefelé: teljes csomópont, szingli bányászok, Bitcoin Core kliens, Stratum hálózat, Stratum bányászat, pehelysúlyú pénztárcák, bányatársaság bányászai, bányatársaság, teljes csomópont, Edge routerek, SPV pénztárca)
+image::images/msbt_0602.png["BitcoinNodeTypes"]
+
+[[bitcoin_network]]
+.A különféle csomópont típusokat, gateway-eket és protokollokat tartalmazó kiterjesztett bitcoin hálózat. (Balról jobbra, felülről lefelé: teljes csomópont, szingli bányászok, Bitcoin Core kliens, Stratum hálózat, Stratum bányászat, pehelysúlyú pénztárcák, bányatársaság bányászai, bányatársaság, teljes csomópont, Edge routerek, SPV pénztárca)
+image::images/msbt_0603.png["BitcoinNetwork"]
+
+=== Hálózat felderítés
+
+((("bitcoin hálózat","felderítése", id="ix_ch06-asciidoc1", range="startofrange")))((("hálózat felderítés", id="ix_ch06-asciidoc2", range="startofrange")))((("csomópontok","hálózat felderítés és", id="ix_ch06-asciidoc3", range="startofrange")))((("peer-to-peer hálózatok","felderítése új csomópontok által", id="ix_ch06-asciidoc4", range="startofrange")))Ahhoz, hogy egy új csomópont részt tudjon venni a hálózatban, a csomópontnak az indulásakor fel kell derítenie, hogy milyen más csomópontok vannak a hálózatban. A folyamat beindításához az új csomópontnak fel kell derítenie a hálózat legalább egy létező csomópontját, és kapcsolódnia kell hozzá. A csomópontok földrajzi elhelyezkedése lényegtelen, a bitcoin hálózat topológiáját nem a földrajzi hely határozza meg. Ezért a csomópont véletlenszerűen, bármelyik létező bitcoin csomópontot választhatja. 
+
+((("peer-to-peer hálózatok","összeköttetései")))A csomópontok egy ismert peer-hez TCP összeköttetéssel kapcsolódnak, általában a 8333-as porton (amely a bitcoin „jól ismert” portja), vagy egy alternatív porton, ha megadtak ilyet. Az összeköttetés létrejötte után a csomópont a version (verzió) üzenet elküldésével egy „kézfogást” indít, lásd a <<network_handshake>> ábrát. A +version+ üzenet azonosító adatokat tartalmaz. Ezek a következők:
+
+* +PROTOCOL_VERSION+:: a kliens által „beszélt” protokoll verzióját definiáló konstans (pl. 70002)
+* +nLocalServices+::, a csomópont által támogatott helyi szolgáltatások listája, jelenleg csupán a +NODE_NETWORK+ (hálózati csomópont) az egyetlen eleme
+* +nTime+::, az aktuális idő
+* +addrYou+::, a távoli csomópont IP címe, ahogyan azt a csomópont látja
+* +addrMe+::, a helyi csomópont IP címe, ahogyan azt a helyi csomópont látja
+* +subver+::, az al-verzió, amely a csomóponton futó szoftver típusát mutatja (pl. "/Satoshi:0.9.2.1/“)
+* +BestHeight+::, a csomópont blokkláncának a magassága
+
+(A +version+ hálózati üzenetre a http://bit.ly/1qlsC7w[GitHub] web helyen látható példa.)
+
+A peer csomópont egy +verack+ üzenettel válaszol, és opcionálisan elküldi a saját +version+ üzenetét, ha szeretné viszonozni a kapcsolatot, és szeretne ő is peerként kapcsolódni. 
+
+Hogyan találja meg egy új csomópont a peer-eket? Az első módszert a DNS-ek lekérdezése jelenti bizonyos ((("csomópontok","magok")))((("DNS magok")))"DNS magok" használatával, melyek olyan DNS szerverek, melyek bitcoin csomópontok IP címeinek a listáját adják vissza. A DNS magok némelyike stabil bitcoin csomópontok statikus listáját adja vissza. Vannak olyan DNS magok is, melyek a BIND (Berkeley Internet Name Daemon) egyedi megvalósításai, és bitcoin csomópontok véletlen részhalmazának a címeit adják vissza. Ezek a címek egy crawler-ből vagy egy hosszú ideje futó bitcoin csomópontról származnak. A Bitcoin Core kliens öt különböző DNS mag nevét tartalmazza. A DNS magok tulajdonosainak és megvalósításainak a változatos volta biztosítja a kezdeti bootstap folyamat magas szintű megbízhatóságát.  A Bitcoin Core kliensben a +-dnsseed+ kapcsoló szabályozza, hogy a kliens használja-e a DNS magokat, és alapértelemben 1 az értéke.
+
+Ha viszont az induló csomópont semmit sem tud a hálózatról, akkor legalább egy bitcoin csomópont IP címét meg kell adni neki, és ezután már további bemutatkozások révén a többi csomóponttal is kapcsolatba tud lépni. A +-seednode+ parancssori argumentum azt jelzi, hogy a megadott csomóponthoz csak a bemutatkozás kedvéért szeretnénk hozzzákapcsolódni, és szeretnénk magként használni. Muután a kezdeti mag csomópont segítségével megtörténtek a bemutatkozások, a kliens lekapcsolódik róla, és az újonnan felfedezett peer-eket fogja használni. 
+
+[[network_handshake]]
+.A peer-ek közötti kezdeti kézfogás
+image::images/msbt_0604.png["NetworkHandshake"]
+
+Miután már létrejött egy vagy több kapcsolat, az új csomópont egy ((("addr üzenet")))+addr+ üzenetet fog küldeni a szomszédainak, amely tartalmazza a saját IP címét. A szomszédok az +addr+ üzenetet tovább küldik a saját szomszédaiknak, biztosítván ezáltal, hogy a kapcsolódó csomópontok jól ismertek és jobban kapcsolódók legyenek. Az újonnan kapcsolódó csomópont ezen kívül egy +getaddr+ üzenetet is küldhet a szomszédainak, amivel azt kéri tőlük, hogy küldjék el neki a többi peer IP címeit. Ily módon a csomópont meg tudja keresni, mely csomópontokhoz kapcsolódhat, valamint hírt tud adni a saját létéről a hálózaton a célból, hogy a többi csomópont is képes legyen őt megtalálni. Az <<address_propagation>> ábrán a cím felderítési protokoll látható. 
+
+
+[[address_propagation]]
+.Címterjedés és hálózat felderítés
+image::images/msbt_0605.png["AddressPropagation"]
+
+Egy csomópontnak kapcsolódnia kell pár darab különböző csomóponthoz, hogy különféle útvonalakon kapcsolódhasson a bitcoin hálózathoz. Az útvonalak nem megbízhatóak, csomópontok jönnek és mennek, emiatt a csomópontnak folytatnia kell az új csomópontok felderítését, mivel a régi kapcsolatai bármikor megszűnhetnek, és emellett segítenie kell a többi csomópont elindulását. Az induláshoz csak egyetlen összeköttetés szükséges, mivel az első csomópont képes bemutatkozásokat felajánlani a peer csomópontoknak, ezek a peer-ek pedig képesek további bemutatkozásokat felajánlani. A hálózati erőforrások szempontjából szükségtelen és egyúttal pazarló, ha a csomópont pár darab csomópontnál több csomóponthoz kapcsolódik . Az indulás után a csomópont emlékszik a legutolsó sikeres peer kapcsolataira, emiatt újraindítás után az előző peer hálózattal ismét gyorsan létre tudja hozni a kapcsolatait. Ha az előző peer-ek egyike sem válaszol a kapcsolódási kérésére, akkor a csomópont a mag csomópontokat használja az újrainduláskor. 
+
+A Bitcoin Core klienst futtató csomóponton a peer kapcsolatok a ((("getpeerinfo parancs"))) +getpeerinfo+ paranccsal listázhatók ki:
+
+[source,bash]
+----
+$ bitcoin-cli getpeerinfo
+----
+[source,json]
+----
+[
+    {
+        "addr" : "85.213.199.39:8333",
+        "services" : "00000001",
+        "lastsend" : 1405634126,
+        "lastrecv" : 1405634127,
+        "bytessent" : 23487651,
+        "bytesrecv" : 138679099,
+        "conntime" : 1405021768,
+        "pingtime" : 0.00000000,
+        "version" : 70002,
+        "subver" : "/Satoshi:0.9.2.1/",
+        "inbound" : false,
+        "startingheight" : 310131,
+        "banscore" : 0,
+        "syncnode" : true
+    },
+    {
+        "addr" : "58.23.244.20:8333",
+        "services" : "00000001",
+        "lastsend" : 1405634127,
+        "lastrecv" : 1405634124,
+        "bytessent" : 4460918,
+        "bytesrecv" : 8903575,
+        "conntime" : 1405559628,
+        "pingtime" : 0.00000000,
+        "version" : 70001,
+        "subver" : "/Satoshi:0.8.6/",
+        "inbound" : false,
+        "startingheight" : 311074,
+        "banscore" : 0,
+        "syncnode" : false
+    }
+]
+----
+
+((("peer-to-peer hálózatok","automatikus kezelésének felülbírálása")))A felhasználók egy IP címekből álló lista megadásával, a +-connect=<IP cím>+ opcióval tudják felülbírálni a peer-ek automatikus kezelését. Ennek az opciónak a használatakor a csomópont csak a megadott IP címekhez fog kapcsolódni, és nem fogja automatikusan felderíteni és karbantartani a peer kapcsolatokat. 
+
+Ha egy kapcsolaton nincs forgalom, akkor a kapcsolat fenntartása érdekében a csomópont periodikus üzenetküldést végez rajta. Ha a csomópont egy kapcsolata már több mint 90 perce nem volt használva, akkor a csomópont a kapcsolatot szétkapcsolt állapotúnak tekinti, és egy új peer keresésébe kezd. Ily módon a hálózat dinamikusan alkalmazkodni képes a tranziens csomópontokhoz, a hálózati problémákhoz, és központi irányítás nélkül, organikusan képes nőni vagy csökkenni.(((range="endofrange", startref="ix_ch06-asciidoc4")))(((range="endofrange", startref="ix_ch06-asciidoc3")))(((range="endofrange", startref="ix_ch06-asciidoc2")))(((range="endofrange", startref="ix_ch06-asciidoc1")))
+
+=== Teljes csomópontok
+
+((("blokkláncok","teljes csomópontok és")))((("teljes csomópontok")))((("csomópontok","teljes")))A teljes csomópontok olyan csomópontok, melyek az összes tranzakciót tartalmazó, teljes blokkláncot kezelik. Ezeket a csomópontokat pontosabban „a teljes blokkláncot kezeló csomópontok”-nak kellene hívni. A bitcoin korai éveiben az összes csomópoont teljes csomópont volt, jelenleg a Bitcoin Core kliens kezeli a teljes blokkláncot. Az utóbbi két évben azonban a bitcoin kliensek új fajtái jöttek létre, melyek nem kezelik a teljes blokkláncot, hanem pihesúlyú kliensként futnak. Ezeket a következő részben fogjuk részletesebben megvizsgálni. 
+
+((("blokkláncok","teljes csomópontokon")))A teljes blokkláncot kezelő csomópontok a bitcoin blokklánc egy teljes és naprakész másolatát kezelik, melyben az összes tranzakció megtalálható. A blokkláncot egymástól függetlenül építik föl és ellenőrzik, az első blokktól (a genezis blokktól) kezdve, egészen a hálózatban ismert legutolsó blokkig bezárólag. Egy teljes blokkláncot kezelő csomópont önmaga képes hiteles módon bármelyik tranzakció ellenőrzésére, anélkül, hogy ehhez valamilyen másik csomópontot vagy információs forrást kellene igénybe vennie.A teljes csomópont a hálózatra támaszkodva kapja az új tranzakciós blokkokról az értesítéseket. Ezeket ellenőrzi, makj beépíti a saját, lokális blokkláncába. 
+
+Teljes csomópont futtatásával érezhetjük igazán, milyen a bitcoin: az összes tranzakció függetlenül ellenőrizhető, és ehhez semmilyen más rendszerre sem kell támaszkodnunk, és  semmilyen más rendszerben nem kell megbíznunk. Könnyű megmondani, hogy teljes csomópontot futtatunk-e, mert több, mint 20 Gbájt háttértárra (diszk területre) van szükség a teljes blokklánc tárolásához. Ha a kliens sok diszk területet fogyaszt és 2-3 napra van szüksége, hogy „szinkronizálja” magát a hálózattal, akkor teljes csomópontot kezelő kliensről van szó. A központi szervezetektől való teljes függetlenségnek és szabadságnak ez az ára. 
+
+A teljes blokkláncot kezelő klienseknek van néhány alternatív megvalósítása, melyek a Bitcoin Core klienstől eltérő programozási nyelvet vagy szoftver architektúrát használnak. De a ((("Bitcoin Core kliens","és teljes csomópontok"))) Bitcoin Core kliens, másképpen a Satoshi kliens referencia implementáció fordul elő a leggyakrabban. A bitcoin hálózat csomópontjainak több, mint 90 %-a a Bitcoin Core különféle változatait futtatja. A +version+ üzenetben a „Satoshi” al-verzió string azonosítja őket, a +getpeerinfo+ parancsban pedig pl. a +/Satoshi:0.8.6/+, amint azt korábban láttuk.
+
+=== „Leltár” egyeztetés
+
+((("blokkláncok","létrejöttük a csomópontokon")))((("blokkláncok","új csomópontokon")))((("blokkok","új  csomópontokon")))((("teljes csomópontok","teljes blokkláncok előállítása ~on")))Miután a csomópont hozzákapcsolódott a peer-jeihez, elsőként egy teljes blokkláncot próbál létrehozni. Ha egy vadonatúj csomópontról van szó, amelynek egyáltalán nincs még blokklánca, akkor csak egyetlen blokkot ismer (a genezis blokkot) , amely statikusan be van ágyazva a kliens szoftverbe. A 0-ik blokktól, a genezis blokktól kezdve az új csomópontnak blokkot százezreit kell letöltenie ahhoz, hogy szinkronizálhassa magát a hálózattal és újraépíthesse a teljes blokkláncot. 
+
+((("blokklánc szinkronizálása")))A „szinkronizálás” folyamata a +version+ üzenettel kezdődik, amely tartalmazza a +BestHeight+-et, a csomópont aktuális blokkláncának a magasságát (a blokkok számát). A csomópont a peer-jeitől kapott +version+ üzenetből látja, hogy a peer-eknek hány blokkjuk van, és össze tudja hasonlítani azzal, hogy neki hány blokkja van a saját blokkláncán. A peer csomópontok egy +getblocks+ üzenetet váltanak egymással, amely tartalmazza a lokális blokkláncuk legfelső blokkjának hash-ét (ujjlenyomatát). A kapott hash az egyik peerben egy olyan blokkhoz fog tartozni, amely nem a legfelső blokk, hanem egy régebbi blokk, ebből a peer arra következtet, hogy a saját lokális blokklánca hosszabb, mint a többi peer-é. 
+
+Az a peer, amelynek hosszabb a blokklánca, több blokkot tartalmaz, mint a többi csomópont, és meg tudja állapítani, hogy a többi csomópontnak mely blokkokra van szüksége ahhoz, hogy „felzárkózzanak”. Megállapítja, hogy melyik az első 500 megosztandó blokk, és egy ((("inv üzenet")))+inv+ (inventory, leltár) üzenettel elküldi a blokkok hash értékeit. Az a csomópont, amelyben hiányoznak ezek a blokkok, úgy tudja beszerezni őket, hogy +getdata+ üzenetek sorozatát adja ki. Egy +getdata+ üzenet elkéri a teljes adatblokkot, és a kért blokkot az +inv+ üzenetből származó hash-sel azonosítja.
+
+Tegyük fel például, hogy a csomópont csak a genezis blokkot tartalmazza. A peer-jeitől egy +inv+ üzenetet fog kapni, amely lánc következő 500 blokkjának a hash-eit tartalmazza. Megkezdi a vele kapcsolatban lévő peer-ektől a blokkkok lekérését oly módon, hogy elosztja a terhelést, nehogy bármelyik peer-t túlterhelje a kéréseivel. Számon tartja, hogy minden egyes peer kapcsolatnál hány darab blokk van „úton”, vagyis hány darab blokk van, melyet lekért, de még nem kapott meg, és ellenőrzi, hogy a számuk nehogy egy határnál ((("MAX_BLOCKS_IN_TRANSIT_PER_PEER konstans"))) (+MAX_BLOCKS_IN_TRANSIT_PER_PEER+) nagyobb legyen. Ily módon ha a csomópontnak sok blokkra van szüksége, csak akkor kér újabbakat, ha az előző kérései már teljesültek, ami lehetővé teszi, hogy a peer-ek szabályozhassák a küldés ütemét és a hálózat ne terhelődjön túl. A blokkok megérkezésekor a csomópont hozzáadja a blokkokat a blokklánchoz, amint azt a  <<blockchain>> című fejezetben látni fogjuk. Amint a lokális blokklánc fokozatosan felépül, a csomópont további blokkokat kér és kap. A folyamat addig folytatódik, amíg a csomópont be nem éri a hálózat többi részét. 
+
+A lokális blokklánc és a peer-ek blokkláncainak összehasonlítása, valamint a hiányzó blokkok lekérése akkor megy végbe, ha egy csomópont egy időre offline állapotba került. Függetlenül attól, hogy a csomópont csak néhány percig volt offline, és csak pár blokkja hiányzik, vagy hónapokig, és néhány ezer blokkja hiányzik, a folyamat a +getbloks+ küldésével kezdődik, válaszként egy +inv+ érkezik, majd megtörténik a hiányzó blokkok letöltése. Az  <<inventory_synchronization>> a leltár és blokk terjedési protokollt mutatja. 
+
+
+[[spv_nodes]]
+=== Egyszerűsített fizetés ellenőrzést használó csomópontok (SPV csomópontok)
+
+((("csomópontok","SPV", id="ix_ch06-asciidoc5", range="startofrange")))((("csomópontok","pehelysúlyú", id="ix_ch06-asciidoc5a", range="startofrange")))((("simplified payment verification (SPV) csomópontok", id="ix_ch06-asciidoc6", range="startofrange")))Nem minden csomópont tudja a teljes blokkláncot tárolni. Sok bitcoin kliens olyan eszközökön fut, pl. okostelefonokon, tablet-eken vagy beágyazott rendszereken, amelyeknek a hely- és teljesítmény korlátai vannak. Az ilyen eszközök egyszerűsített fizetés ellenőrzési módszert (SPV) használnak, amely lehetővé teszi a teljes blokklánc tárolása nélküli működést. Ezeket a klienseket SPV klienseknek vagy pehelysúlyú klienseknek nevezzük. Ahogy a bitcoin egyre elterjedtebbé vált, az SPV csomópontok lettek a leggyakrabban előforduló bitcoin csomópontok, különösen a bitcoin pénztárcák esetén.
+
+((("blokkláncok","SPV csomópontokon")))Az SPV csomópontok csak a blokkok blokkfejeit töltik le, az egyes blokkokba befoglalt tranzakciókat nem. Az így kapott, tranzakciók nélküli blokklánc 1000-szer kisebb a teljes blokkláncnál. Az SPV csomópontok nem tudnak teljes képet alkotni az összes elkölthető UTXO-ról, mivel nem tudnak a hálózatban lévő tranzakciókról. Az SPV csomópontok a tranzakciókat egy kicsit eltérő módon ellenőrzik, és ehhez olyan peer-eket használnak, melyek kívánság esetén a blokklánc releváns részeiről részleges képet szolgáltatnak.
+
+[[inventory_synchronization]]
+.Blokklánc szinkronizálás a a peer blokkjainak a letöltésével 
+image::images/msbt_0606.png["InventorySynchronization"]
+
+Hasonlatképpen: a teljes csomópont olyan, mint egy idegen városban lévő turista, akinek részletes térképe van mindegyik utcáról és címről. Ezzel szemben az SPV csomópont olyan, mint egy idegen városban lévő turista, aki véletlenszerűen idegeneket kérdez meg, hogy merre kell mennie, és csak a főutcát ismeri. Mindkét turista ellenőrizni tudja egy utca meglétét, ha odamegy, de a térkép nélküli turista nem tudja, hogy mi van a mellékutcákban és nem tudja, hogy milyen egyéb utcák léteznek. Ha a térkép nélküli turista a Kossuth út 23-as szám előtt áll, nem tudhatja, hogy vannak-e a városban egyéb „Kossuth út 23” címek, és hogy ez a cím a helyes cím-e. A térkép nélküli turista akkor jár a legjobban, ha megkérdez sok embert, és reménykedik abban, hogy a többségük nem vágja át.
+
+Az egyszerűsített fizetés ellenőrzés a tranzakciókat a blokkláncokon belüli _mélységük_ alapján ellenőrzi, nem pedig a _magasságuk_ alapján. Míg egy teljes blokkláncot tartalmazó csomópont képes a blokkok és tranzakciók ezreiből álló,  időben egészen a genezis blokkig visszanyúló, teljesen ellenőrzött láncok létrehozására, egy SPV csomópont csupán a blokkfejek láncát fogja ellenőrizni, de a tranzakciókét nem, és a blokkfejeket fogja kapcsolatba hozni a kérdéses tranzakcióval. 
+
+Például, ha a 300'000-ik blokkban lévő egyik tranzakcióról van szó, egy teljes csomópont a 300'000-ik blokktól egészen a genezis blokkig visszamenően elvégzi az elemzést, és az UTXO-król egy teljes adatbázist épít, vagyis az UTXO elköltetlenségének ellenőrzése révén állapítja meg, hogy a tranzakció érvényes-e vagy sem. Egy SPV csomópont ezzel szemben a tranzakció és az őt tartalmazó blokk közötti kapcsolatot egy ((("Merkle fák","SPV és  ~")))_Merkle út_ használatával teremti meg (lásd a <<merkle_trees>> részt). Ezután az SPV csomópont vár mindaddig, amíg a tranzakciót tartalmazó 300'000-ik blokk tetejére további hat blokk nem kerül, és a tranzakciót úgy ellenőrzi, hogy a 300'006 és 300'001 blokkok között megállapítja a tranzakció mélységét. Abból, hogy a hálózat többi csomópontja elfogadta a 300'000-ik blokkot, és azután a megfelelő munkavégzéssel további 6 blokkot hozott létre a 300'000-ik blokk tetején, implicit módon következik, hogy a tranzakció nem kettős költésből származik.
+
+Egy SPV csomóponttal nem lehet elhitetni, hogy egy blokkban létezik egy tranzakció, ha az valójában nem létezik. Az SPV csomópont úgy ellenőrzi egy tranzakció meglétét, hogy lekéri a tranzakció Merkle útját, és ellenőrzi a blokkláncban lévő munkabizonyítékokat. De egy tranzakció „rejtve” is maradhat egy SPV csomópont számára. Egy SPV csomópont pontosan meg tudja állíptani, hogy létezik-e egy tranzakció, de azt nem tudja ellenőrizni, hogy nem létezik olyan tranzakció, amely ugyanezt az UTXO-t próbálja duplán elkölteni, mert nem rendelkezik az összes tranzakcióval. Az SPV csomópontok ellen ily módon DoS (denial of service, szolgáltatás megtagadási) támadás vagy kettős költési támadás indítható. Ahhoz, hogy ezt ki lehessen védeni, az SPV csomópontnak számos csomóponttal kell véletlenszerűen kapcsolatba lépnie, így növelni tudja annak a valószínűségét, hogy legalább egy becsületes csomópont van közöttük. Az SPV csomópontok emiattt sérülékenyek a hálózat szétszakadási támadásokkal vagy Sybil támadásokkal szemben, amelyeknél hamis csomópontokra vagy hamis hálózatokra kapcsolódnak, és nem tudják elérni a becsületes csomópontokat vagy a valódi bitcoin hálózatot.
+
+Gyakorlati szempontból a hálózattal szoros kapcsolatban lévő SPV csomópontok elég biztonságosak, és jó kompromisszumot jelentenek az erőforrás felhasználás, a kényelem és a biztonság között. Azoknak, akiknek valóban fontos a biztonság, semmi sem pótólhatja egy teljes blokkláncból álló csomópont üzemeltetését. 
+
+[TIP]
+====
+((("simplified payment verification (SPV) csomópontok","ellenőrzés")))A teljes blokkláncból álló csomópont úgy ellenőriz egy tranzakciót, hogy a tranzakció alatti blokkok ezreiből álló lánc vizsgálata révén megbizonyosodik róla, hogy az UTXO valóban elköltetlen, míg az SPV csomópont a blokk fölött lévő néhány blokk segítségével azt ellenőrzi, hogy milyen mélyen van eltemetve a blokk. 
+====
+
+((("blokk fejek","beolvasása SPV csomópontokon")))A blokkfejeket az SPV csomópontok a nem a +getblocks+, hanem a +getheaders+ üzenetekkel kérdezik le. Az a peer, amelyik válaszol, max. 2000 blokkfejet küld el egyetlen headers üzenetben. A folyamat egyébként ugyanolyan, mint amit a teljes csomópontok használnak a teljes blokkok lekérésére. Az SPV csomópontok egy szűrőt is beállítanak a peer-ekkel létesített kapcsolataiknál, melyek kiszűrik a jövőbeli blokkokat és a peer-ek által küldött tranzakciókat. Az SPV csomópontok a számukra érdekes tranzakciókat a +getdata+ kéréssel kérdezik le. A peer válaszként egy ((("tx üzenet")))+tx+ üzenetet hoz létre, amely a tranzakciót tartalmazza. Az <<spv_synchronization>> ábrán a blokkfejlécek szinkronizálása látható.
+
+[[spv_synchronization]]
+.A blokkfejlécek szinkronizálása SPV csomópontok esetén
+image::images/msbt_0607.png["SPVSynchronization"]
+
+Mivel az SPV csomópontoknak külön le kell kérdezniük az egyes tranzakciókat ahhoz, hogy ellenőrizni tudják őket, ez veszélyeztetheti a titkosságot. A teljes blokkláncot tartalmazó csomópontokkal szemben (melyek a blokkokban lévő összes tranzakciót tartalmazzák), az SPV csomópontok egyedi adatlekérdezései akaratlanul is felfedhetik, hogy milyen bitcoin címek vannak a pénztárcáikban. Például egy harmadik fél által üzemeltetett megfigyelő hálózat nyilván tudja tartani az SPV pénztárca által kiadott összes kérést, és így kapcsolatba tudja hozni a kérésekben szereplő bitcoin címeket a felhasználó pénztárcájával, ami a privát szféra sérülésével jár. 
+
+Az SPV/pehelysúlyú csomópontok bevezetése után nem sokkal a bitcoin fejlesztők az ún. _Bloom szűrőkkel_ kívánták megoldani az SPV csomópontok által jelentett adatvédelmi kockázatot. A Bloom szűrők egy valószínűségi szűrőmechanizmus révén lehetővé teszik, hogy az SPV csomópontok csupán a tranzakciók egy részhalmazát fogadják, anélkül, hogy pontosan felfednék, mely címekre kíváncsiak.(((range="endofrange", startref="ix_ch06-asciidoc6")))(((range="endofrange", startref="ix_ch06-asciidoc5a")))(((range="endofrange", startref="ix_ch06-asciidoc5"))) 
+
+=== Bloom szűrők
+
+((("bitcoin hálózat","Bloom szűrők és", id="ix_ch06-asciidoc7", range="startofrange")))((("Bloom szűrők", id="ix_ch06-asciidoc8", range="startofrange")))((("Simplified Payment Verification (SPV) csomópontok","Bloom szűrők és", id="ix_ch06-asciidoc9", range="startofrange")))A Bloom szűrő egy olyan, valószínűségi kereső szűrő, amellyel egy kívánt minta anélkül írható le, hogy pontosan megadnánk. A Bloom szűrőkkel hatékony módon lehet kifejezni a keresési mintákat, ugyanakkor meg lehet védeni a privát szférát. A Bloom szűrőket az SPV csomópontok arra használják, hogy a peer-jeiktől egy adott mintának megfelelő tranzakciókat kérdezzenek le, de anélkül, hogy pontosan meg kellene adniuk, mely címek érdeklik őket. 
+
+Az előző hasonlatunkban a térkép nélküli turista egy adott cím, pl a „Kossuth út 23” felől érdeklődik. Ha a járókelőktől azt kérdezi, hogy lehet eljutni erre a címre, akaratlanul is elárulja, hogy hová szeretne eljutni. A Bloom szűrő olyan, mint ha azt kérdezné, hogy „Vannak a közelben olyan utcák, melyek neve h-ra végződik?” Egy ilyen kérdés kevesebbet árul el arról, hogy hová szeretne menni, mint a „Kossuth út 23” utáni tudakozódás. Ezzel a módszerrel a turista részletesebben is meg tudja adni a címet, pl. „u-t-h-ra végződik”, vagy kevésbé részletesen, pl. „h-re végződik”. A keresés pontosságának a szabályozása révén a turista több vagy kevesebb információt fed fel, de ennek az az ára, hogy több vagy kevesebb eredményhez jut. Ha egy kevésbé részletes minta után tudakozódik, akkor több lehetséges címet fog kapni és javul az adatvédelem, de az eredmények legtöbbje lényegtelen lesz a számára. Ha egy jobban rögzített minta után tudakozódik, akkor kevesebb eredményt fog kapni, de sérül az adtvédelem. 
+
+A Bloom szűrők úgy töltik be ezt a funkciójukat, hogy lehetővé teszik az SPV csomópontok számára, hogy az egyes tranzakcióknál megadott keresési minták a pontosság vagy az adatvédelem irányába mozduljanak el. Egy jobban specifikált Bloom szűrő pontos eredményeket ad, de azon az áron, hogy felfedi a felhasználó pénztárcájában lévő címeket. Egy kevésbé pontos Bloom szűrő eredményként több tranzakciót fog visszaadni, melyek közül sok lényegtelen a csomópont számára, de a csomópont jobb adatvédelmet tud megvalósítani. 
+
+Az SPV csomópont a Bloom szűrőt egy „üres” mintával inicializálja. Ebben az állapotában a Bloom szűrő egyetlen egy mintát sem ismer föl. Az SPV csomópont ezután egy listát készít a pénztárcájában lévő címekől, és egy olyan keresési mintát készít, amely megfelel a tranzakciós kimenetekben lévő címeknek. A keresési minta általában egy ((("pay-to-public-key-hash (P2PKH)","Bloom szűrők és"))) P2PKH (Pay-to-Public-Key-Hash) zároló script, amely minden olyan tranzakcióban jelen lesz, amely a publikus-kulcs-hashnek (címnek) fizet. Ha az SPV csomópont nyomon követi egy ((("pay-to-script-hash (P2SH)","Bloom szűrők és")))P2SH cím egyenlegét, akkor a keresési minta egy P2SH (Pay-to-Script-Hash) cím lesz. Az SPV csomópont ezután mindegyik keresési mintát megadja a Bloom szűrőnek azzal a céllal, hogy a Bloom szűrő felismerhesse az adott keresési mintázatot, ha az jelen van a tranzakióban. Végül, a Bloom szűrőt elküldi a peer-nek, és a peer a szűrő segítségével megállapítja, hogy mely tranzakciókat kell elküldenie az SPV csomópontnak. 
+
+A Bloom szűrők megvalósítása egy N bites álló változó méretű tömbbel, és M db hash függvénnyel történik. A hash fügvényeket olyanok, hogy a kimenetük mindig 1 és N között van, vagyis a kimenet a bitek tömbjének megfelelő . A hash függvényeket determinisztikus módon hozzák létre, ezért egy Bloom szűrőt megvalósító csomópont mindig ugyanazokat a hash függvényeket használja, és egy adott bemenet esetén mindig ugyanazt az eredményt adja. Különböző hosszúságú (N) Bloom szűrő és különböző számú (M) hash függvény választásával a Bloom szűrő különféle pontosságra állítható be, vagyis szabályozható az adatvédelem. 
+
+A lenti <<bloom1>> példában a Bloom szűrők működésének bemutatására egy 16 bites, nagyon kicsi tömböt és 3 hash függvényt használunk. 
+
+[[bloom1]]
+.Egy egyszerű Bloom szűrő, egy 16 bites mezővel és 3 hash függvénnyel (3 hash függvény, hash függvény kimenetek 1-től 16-ig, üres Bloom szűrő, 16 bites tömb)
+image::images/msbt_0608.png["Bloom1"]
+
+A Bloom szűrő úgy van inicializálva, hogy a tömb összes bitje nulla. Ha szeretnénk hozzáadni egy mintát a Bloom szűrőhöz, a mintát minden egyes hash függvénnyel össze hash-eljük. Az első hash függvény a bemenetből egy 1 és N közötti számot állít elő. Az eredménynek megfelelő bitet a tömbben (melynek indexei 1 és N közöttiek) 1-be állítjuk, így rögzítve a hash függvény kimenetét. Ezután a következő hash függvénnyel beállítunk egy másik bitet, és így tovább. Az összes M db hash függvény alkalmazása után egy keresési minta áll elő a Bloom szűrőben, mivel M bitet +0+-ről +1+-be állítottunk. 
+
+Például, a <<bloom2>> páldában a fenti egyszerű <<bloom1>> Bloom szűrőhöz az „A” keresési mintát adjuk hozzá:
+
+
+Egy második minta hozzáadása egyszerűen a folyamat megismétlésével lehetséges. A mintát minden egyes hash függvénnyel egymás után össze-hasheljük, és az eredményeket a bitek +1+-be állításával rögzítjük. Ahogy a Bloom szűrőt egyre több mintával töltjük föl, valamelyik hash függvény eredménye egybeeshet egy már +1+-be állított bittel, ebben az esetben a bitet nem változtatjuk meg. Lényegében, ahogy egyre több mintát rögzítünk ugyanazokban a bitekben, a Bloom szűrő telítetté válik, mert egyre több bitje lesz +1+-be állítva, és a szűrő pontossága csökken. A szűrő emiatt tekinthető valószínűségi adatszerkezetnek – egyre több minta hozzáadásakor egyre kevésbé lesz pontos. A pontosság függ a hozzáadott minták számától, a bit tömb méretétől (N), illetve a hash függvények számától (M). Egy nagyobb bit tömbbel és több hash függvénnyel nagyobb pontossággal több minta rögzíthető. Egy kisebb bit tömbbel vagy kevesebb hash függvénnyel kevesebb minta rögzíthető, és kisebb pontosságot kapunk. 
+
+[[bloom2]]
+.Az „A” keresési minta hozzáadása az egyszerű Bloom szűrőnkhöz
+image::images/msbt_0609.png["Bloom2"]
+
+A <<bloom3>> példában az egyszerű Bloom szűrőnkhöz egy második keresési mintát adunk, a „B”-t.
+
+[[bloom3]]
+.Egy második keresési minta, a „B” hozzáadása az egyszerű Bloom szűrőnkhöz
+image::images/msbt_0610.png["Bloom3"]
+
+Ha szeretnénk leellenőrizni, hogy egy minta benne van-e a Bloom szűrőben, akkor hash-eljük össze minden egyes hash függvénnyel a mintát, és hasonlítsuk össze az így kapott bit mintát a bit tömbbel. Ha a hash függvények által indexelt összes bit +1+-ben van, akkor a mintát _valószínűleg_ tartalmazza a Bloom szűrő. Mivel a bitek a különféle minták átfedése miatt is beállításra kerülhetnek, a válasz nem biztos, inkább valószínű. Egyszerűen a Bloom szűrőnél a pozitív egyezés azt jelenti, hogy „talán igen”. 
+
+Alább a <<bloom4>> példában azt ellenőrizzük, hogy az egyszerű Bloom szűrő tartalmazza-e az „X” mintát. A megfelelő bitek +1+-ben vannak, emiatt a minta valószínűleg egyezik:
+
+[[bloom4]]
+. Az „X” minta meglétének ellenőrzése a Bloom szűrőben. Az eredmény pozitív egyezés, ami azt jelenti, hogy „talán”
+image::images/msbt_0611.png["Bloom4"]
+
+Ezzel szemben, ha ellenőrizünk egy mintát a Bloom szűrőben, és bármelyik ellenőrzött bit +0+, akkor ez azt mutatja, hogy a minta nem volt rögzítve a Bloom szűrőben. A negatív eredmény nem valószínűség, hanem bizonyosság. Egyszerűen szólva, a Bloom szűrőnél a negatív egyezés azt jelenti, hogy „biztosan nem”. 
+
+A <<bloom5>> példában azt ellenőrizzük, hogy az „Y” minta létezik-e az egyszerű Bloom szűrőben. Az egyik szóban forgó bit +0+, emiatt a minta biztosan nem illeszkedik:
+
+[[bloom5]]
+.Az „Y” minta létezésének ellenőrzése a Bloom szűrőben. Az eredmény határozott negatív egyezés, ami azt jelenti, hogy „biztosan nem”
+image::images/msbt_0612.png[]
+
+A bitcoinban megvalósított Bloom szűrőket a 37. Bitcoin Módosítási Javaslat (Bitcoin Improvement Proposal 37, BIP0037) írja le. Lásd a <<appdxbitcoinimpproposals>> részt, vagy a http://bit.ly/1x6qCiO[GitHub] webhelyet.
+
+=== A Bloom szűrők és a leltár frissítések
+
+((("leltár frissítések, Bloom szűrők és")))A peer-ektől kapott tranzakciók (és az őket tartalmazó blokkok) szűrésére az SPV csomópontok Bloom szűrőket használnak. Az SPV csomópontok egy olyan szűrőt hoznak létre, amely az SPV csomópont pénztárcájában lévő címeknek felel meg. Az SPV csomópont ezután egy ((("filterload üzenet")))+filterload+ üzenettel elküldi a kapcsolattartás során használandó Bloom szűrőt a peer-nek. A szűrő létrejötte után a peer minden egyes tranzakció kimenetét teszteli a Bloom szűrővel. Csak azokat a tranzakciókat küldi el a csomópontnak, amelyeknél a szűrő szerint valamelyik kimenet megfelel a szűrőnek. 
+
+A node-tól kapott +getdata+ üzenetre a peer-ek egy +merkleblock+ üzenettel válaszolnak, melyek minden egyes tranzakcióra vonatkozóan csak a filterhez illeszkedő blokkok blokkfejeit tartalmazzák (lásd <<merkle_trees>>). A peer-ek ezt követően +tx+ üzeneteket is küldenek, melyek a filterhez illeszkedő tranzakciókat tartalmazzák.
+
+A Bloom szűrőt beállító csomópont menet közben további mintákkal bővítheti a szűrőt, ehhez a ((("filteradd üzenet")))+filteradd+ üzenetet kell elküldenie. Mivel a Bloom szűrőből nem lehet mintát eltávolítani, ezért ha valamelyik mintára már nincs szükség, akkor a csomópontnak először egy ((("filterclear üzenet")))+filterclear+ üzenettel törölnie kell a Bloom szűrőt, majd egy újabb Bloom szűrőt kell küldenie.(((range="endofrange", startref="ix_ch06-asciidoc9")))(((range="endofrange", startref="ix_ch06-asciidoc8")))(((range="endofrange", startref="ix_ch06-asciidoc7"))) 
+
+[[transaction_pools]]
+=== Tranzakció pool-ok
+
+((("bitcoin hálózat","tranzakció pool-ok")))((("tranzakció pool-ok")))((("memory pool-ok")))((("mempool")))((("tranzakciók","megerősítetlen tranzakciók pool-ja")))((("megerősítetlen tranzakciók"))A megerősítetlen tranzakciókból a bitcoin hálózat majdnem minden csomópontja egy listát képez, az ún. _memory pool_-t vagy _tranzakció pool_-t. A csomópontok ennek az alapján követik nyomon azokat a tranzakciókat, melyeket a hálózat már ismer, de még nincsenek a blokkláncba foglalva. Például egy olyan csomópont, amelyik pénztárcát is tartalmaz, a tranzakció pool-t arra használja, hogy nyomon kövesse a hálózaton át a a pénztárcába érkező, de még megerősítetlen befizetéseket. 
+
+Az tranzakciókat a csomópont a beérkezésük és ellenőrzésük után a tranzakció pool-ba helyezi, majd a hálózati szétterjedés érdekében a szomszédos csomópontoknak továbbítja.
+
+((("elárvult tranzakciók pool-ja")))Némelyik implementációjában egy külön lista szolgál az elárvult tranzakciók nyilvántartására. Ha a tranzakció bemenetei olyan tranzakcióra hivatkoznak, amely még nem ismert, pl. hiányzik a szülő, akkor az elárvult tranzakció átmenetileg az elárvult tranzakciók pool-jában tárolódik, amíg meg nem érkezik a szülő tranzakció. 
+
+Ha a tranzakció pool-ba bekerül egy tranzakció, akkor a csomópont ellenőrzi az elárvult tranzakciók között, hogy nem hivatkozik-e valamelyik árva tranzakció a most bekerült tranzació valamelyik kimenetére (nem gyereke-e ennek a tranzakciónak), majd ellenőrzi az illeszkedő árva tranzakciókat. Ha a tranzakció érvényes, akkor eltávolítja az elárvult tranzakciók közül, és hozzáadja a tranzakciók pool-jához, vagyis kiegészíti a szülő tranzakcióval elkezdett láncot. Az újonnan hozzáadott, már nem árva tranzakcióra vonatkozóan, a folyamatot rekurzív módon megismétli, és további leszármazottakat keres, amíg vannak további leszármazottak. Ennek a folyamatnak a révén egy szülő tranzakció beérkezése a tőle függő tranzakciók egész láncának rekonstruálását váltja ki, és az árva tranzakciókat ismét egyesíti a szüleikkel. 
+
+((("árva tranzakciók pool-ja","tárolás")))((("tranzakció pool-ok","tárolása")))Sem a tranzakciók, sem az árva tranzakciók pool-ját (ha van ilyen) nem tárolják diszken, hanem csak a helyi memóriában léteznek, és dinamikusan, a bejövő hálózati üzenetek alapján kerülnek feltöltésre. Egy csomópont elindulásakor mindkét pool üres, és fokozatosan, az új tranzakciók beérkezésekor kerül feltöltésre.
+
+A bitcoin kliens némelyik implementációja egy UTXO adatbázist vagy UTXO pool-t is tartalmaz, amely a blokkláncban lévő elköltetlen kimenetek halmazának felel meg. Noha az „UTXO pool” hasonlónak tűnik a tranzakció pool-hoz, de más adathalmazt jelent. A tranzakciók és az elárvult tranzakciók pool-jával szemben az UTXO pool nem üresen indul, hanem elköltetlen tranzakció kimenetek millióit tartalmazza, melyek 2009-ig nyúlnak vissza. Az UTXO pool vagy a helyi tárban van, vagy a háttértár egy indexelt adatbázis táblája alkotja. 
+
+Míg a tranzakciók és árva tranzakciók pool-ja a helyi csomóponttól függ, és csomópontról csomópontra jelentősen változhat, attól függően, hogy a csomópont mikor indult vagy mikor indult újra, az UTXO pool a hálózatban kialakult konszenzusnak felel meg, és emiatt csak nagyon kicsiny eltérések lehetségesek az egyes csomópontok között. Ezen túlmenően a tranzakciók és árva tranzakciók pooljában csak megerősítetlen tranzakciók lehetnek, míg az UTXO pool csak megerősített kimeneteket tartalmazhat.
+
+=== Figyelmeztető üzenetek
+
+((("figyelmeztető üzenetek")))((("bitcoin hálózat","figyelmeztető üzenetek")))A figyelmeztető üzenetek ritkán használatosak, de a funkció a legtöbb csomópontban mégis meg van valósítva. A figyelmeztető üzenetek jelentik a bitcoin „vészjelző rendszerét”, mellyel a bitcoin fejlesztők vészhelyzetben szöveges üzenetet tudnak az összes bitcoin csomópontnak küldeni. Ezt a jellemző azért lett megvalósítva, hogy a bitcoin core klienst fejlesztő csapat az összes bitcoin felhasználót értesíteni tudja a bitcoin hálózatban felmerült súlyos problémákról, például egy kritikus hibáról, amely felhasználói beavatkozást igényel. A jelzőrendszert csak néhányszor használták, ezek közül a legnevezetesebb eset 2013-ban volt, mikor egy kritikus adatbázis hiba miatt elágazás történt a bitcoin blokkláncban. 
+
+A figyelmeztető üzeneteket az +alert+ üzenettel lehet továbbítani. A figyelmeztető üzenetnek számos mezője van. Ezek a következők:
+
+ID::
+A figyelmeztető üzenet azonosítója, amivel elkerülhető a figyelmeztetés megkettőződése
+
+Expiration::
+a figyelmeztetés lejárati ideje
+
+RelayUntil::
+A figyelmeztetés relézési ideje, ami után már nem szabad továbbadni
+
+MinVer, MaxVer::
+Azoknak a bitcoin protokoll változatoknak a tartománya, amelyekre ez a figyelmeztetés vonatkozik
+
+subVer::
+Az a kliens szoftver alverzió, amelyre ez a figyelmeztetés vonatkozik
+
+Priority::
+A figyelmeztetés prioritási szintje, jelenleg nem használt
+
+A figyelmeztetések egy publikus kulccsal vannak aláírva. A publikus kulcshoz tartozó privát kulcsot a fejlesztő csapat néhány kiválasztott tagja birtokolja. A digitális aláírás biztosítja, hogy a hálózat ne továbbíthasson hamis figyelmeztetéseket.
+
+Ha egy csomópontra figyelmeztető üzenet érkezik, akkor a csomópont ellenőrzi az üzenetet, többek között a lejárati időt, és továbbítja az összes peer-jének, így biztosítván az egész hálózatban az üzenet gyors szétterjedését. A csomópontok a figyelmeztetés továbbításán túlmenően rendelkezhetnek egy felhasználói interfész funkcióval, amely az üzenetet megjeleníti a felhasználó számára. 
+
+((("Bitcoin Core kliens","figyelmeztetések, beállítása")))A Bitcoin Core kliensben a figyelmeztetéshez az +-alertnotify+ parancssori opció tartozik. Ezzel lehet megadni, hogy milyen parancs fusson le, ha figyelmeztető üzenetet kapunk. A figyelmeztető üzenet paraméterként van megadva az +alertnotify+ parancsban. Az +alertnotify+ parancsot a leggyakrabban úgy állítják be, hogy a figyelmeztető üzenetet tartalmát egy email üzenetetben küldje el a csomópont adminisztrátorának. A figyelmeztetés a grafikus felhasználói felületen (bitcoin-Qt) egy felugró ablak formájában is megjelenik, ha fut a kliens. 
+
+A bitcoin protokoll egyéb implementációiban a figyelmeztetés kezelése eltérő módon történhet. ((("bányászat","hardver, figyelmeztetések és")))Sok hardverbe integrált bányász rendszer a figyelmeztető üzenet funkciót nem valósítja meg, mivel ezeknek a rendszereknek nincs felhasználói felületük. Erősen javallott, hogy az ilyen bányász rendszereket futtató bányászok a bányatársaság üzemeltetőjénél „fizessenek elő” a figyelmeztetésekre, vagy csak a figyelmeztetések miatt futtassanak egy pehelysúlyú csomópontot.(((range="endofrange", startref="ix_ch06-asciidoc0")))
+

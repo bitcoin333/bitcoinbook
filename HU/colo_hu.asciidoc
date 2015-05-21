@@ -1,0 +1,12 @@
+[colophon]
+= Kolofon
+
+A _Bitcoin fejlesztőknek_ fedőlapján látható állat a levélvágó hangya (__Atta colombica__). A levélvágó hangyák trópusi, gombatermesztő hangyák, melyek tömegesen Dél- és Közép-Amerikában, Mexikóban és az Egyesült Államok déli részén fordulnak elő. Bolygónkon az emberek mellett a levélvágó hangyák alkotják a legnagyobb és legbonyolultabb társadalmakat. Nevüket annak köszönhetik, hogy leveleket rágnak, melyekek tápanyagként szolgának a gombaültetvényeik számára. 
+
+A hím- és nőnemű szárnyas példányok a _revoada_, azaz a párzási repülés során tömegesen hagyják el a bolyt. A nőstények több hímmel is párosodnak, hogy birtokába jussanak az új boly létesítéséhez szükséges 300 millió ivarsejtnek. A nőstények a szájnyílásukban lévő tasakban az új gombatelep létesítésére szolgáló micéliumot tárolják. A földreszállás után a nőstények elveszítik a szárnyukat, és egy föld alatti üregben saját bolyt hoznak létre. Az új királynők közül csupán 2.5 %-nak sikerül hosszabb ideig fennálló bolyt létrehoznia.
+
+A hosszabb ideje fennálló bolyokban a hangyák a méretük alapján kasztokat alkotnak. Az egyes kasztok által vágzett feladatok különbözők. Általában négy kasztot különböztethetünk meg. A legkisebb dolgozók feladata a lárvák és a gombaültetvények gondozása. Egy kicsit nagyobb méretű a következő kaszt. Az ő feladatuk a boly védelme és az ellenség megtámadása. A közepes méretű hangyák a gyűjtögetők, akik levágják a leveleket és a levéldarabkákat visszaszállítják a bolyba. Végül a legnagyobb méretű munkások alkotják a katonaságot, amely megvédi a bolyt a behatolóktól. Az újabb kutatások szerint az ő feladatuk a gyüjtögetéskor használt útvonalak tisztán tartása és a nagyobb méretű darabok bolyba szállítása is.
+
+Az O'Reilly kiadványok fedőlapjain szereplő állatok közül sok a veszélyeztetettek közé tartozik. Fontos, hogy ezek fennmaradjanak. Megtudhatja, hogy hogyan segíthet, ha felkeresi az http://animals.oreilly.com[animals.oreilly.com] web helyet.
+
+A fedőlapon lévő kép az __Insects Abroad__ kiadványból származik. A fedőlapon az URW Typewriter és a Guardian Sans betűtípust használtuk. A főszöveg betűtípusa Adobe Minion Pro; a címek betűtípusa Adobe Myriad Condensed; a forráskód betűtípusa a Dalton Maag tervezte Ubuntu Mono.

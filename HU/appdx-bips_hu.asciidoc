@@ -1,0 +1,102 @@
+[[appdxbitcoinimpproposals]]
+[appendix]
+== Bitcoin továbbfejlesztési javaslatok (Bitcoin Improvement Proposals)
+
+((("Bitcoin továbbfejlesztési javaslatok", id="ix_appdx-bips-asciidoc0", range="startofrange")))((("Bitcoin improvement proposals", id="ix_appdx-bips-asciidoc0", range="startofrange")))A bitcoin továbbfejlesztési javaslatok olyan tervezési dokumentumok, melyek a bitcoin közösség számára adnak információkat, vagy egy új bitcoin jellemzőt, folyamatot vagy környezetet írnak le. 
+
+A _BIP Purpose and Guidelines_ (_A BIP-ek célja) című BIP0001 szerint a BIP-eknek három fajtája van:
+
+_Szabvány_ BIP:: Azokat a változtatásokat írja le, melyek a bitcoin implementációk nagy részét vagy egészét érintik. Ilyen pl. a hálózati protokoll megváltoztatása, a blokk vagy tranzakció ellenőrzési szabályok megváltoztatása, vagy bármilyen egyéb változás vagy bővítés, amely érinti a bitcoint használó alkalmazások együttműködését.
+_Tájékoztatásra szolgáló_ BIP:: Valamilyen tervezési kérdés leírása, vagy általános útmutató, ill. tájékoztatás a bitcoin közösség számára. Nem tartalmaz új jellemzőt. A tájékoztatásra szolgáló BIP-ek nem feltétlenül képviselik a közösségi közmegegyezést vagy nem feltételenül jelentenek ajánlást, amiatt a felhasználók és fejlesztők szabadon eldönthetik, hogy figyelmen kívül hagyják a BIP-et, vagy követik a tanácsát.
+_Folyamatot leíró_ BIP:: Egy bitcoin folyamatot ír le, vagy valamilyen változtatást javasol egy folyamatban vagy egy esemény beillesztését javasolja egy folyamatba. A folyamatot leíró BIP-ek olyanok, mint a szabvány BIP-ek, de a bitcoin protokollon túlmenően más területekre is vonatkozhatnak. Javasolhatnak megvalósításokat, de ez a bitcoin kódbázisát nem érintheti. Gyakran közösségi konszenzust igényelnek. A tájékoztatásra szolgáló BIP-ektől eltérően a folyamat leíró BIP-ek nem csupán ajánlások, a felhasználók pedig általában nem hagyhatják őket figyelmen kívül.  Például ilyenek az eljárásokra, útmutatokra és a döntési folyamat megváltoztatására vonatkozó BIP-ek, valamint a bitcoin fejlesztési folyamatban használt eszközök vagy fejlesztési környezet megváltoztatása. A meta-BIP-eket szintén folyamat leíró BIP-eknek etkintik.
+
+A bitcoin továbbfejlesztési javaslatokat egy verziózott https://github.com/bitcoin/bips[GitHub] gyűjteményben tárolják. A <<table_d-1>> a BIP-ek 2014 őszi pillanatfelvételét mutatja. A létező BIP-ekről és azok aktuális tartalmáról a mérvadó gyűjteményből tájokozódhat.
+
+[[table_d-1]]
+.Pillanatfelvétel a BIP-ekről
+[options="header"]
+|=======================================================================
+|BIP# | Hivatkozás | Cím | Tulajdonos |Típus | Státusz
+|[[bip0001]]1|https://github.com/bitcoin/bips/blob/master/bip-0001.mediawiki|A BIP-ek célja. Útmutató |Amir Taaki |Szabvány | Aktív
+ 
+|[[bip0010]]10|https://github.com/bitcoin/bips/blob/master/bip-0010.mediawiki|Multi-Sig tranzakciók megoszlása |Alan Reiner | Tájékoztató | Tervezet
+ 
+|[[bip0011]]11|https://github.com/bitcoin/bips/blob/master/bip-0011.mediawiki|M-of-N szabványos tranzakciók |Gavin Andresen |Szabvány |Elfogadva
+ 
+|[[bip0012]]12|https://github.com/bitcoin/bips/blob/master/bip-0012.mediawiki|OP_EVAL |Gavin Andresen |Szabvány|Visszavonva
+ 
+|[[bip0013]]13|https://github.com/bitcoin/bips/blob/master/bip-0013.mediawiki|A pay-to-script-hash címformátuma |Gavin Andresen |Szabvány |Végső
+ 
+|[[bip0014]]14|https://github.com/bitcoin/bips/blob/master/bip-0014.mediawiki|Protocol Version and User Agent |Amir Taaki, Patrick Strateman |Szabvány |Elfogadva
+
+|[[bip0015]]15|https://github.com/bitcoin/bips/blob/master/bip-0015.mediawiki|Aliases |Amir Taaki |Szabvány |Visszavonva
+
+|[[bip0016]]16|https://github.com/bitcoin/bips/blob/master/bip-0016.mediawiki|Pay To Script Hash |Gavin Andresen | Szabvány | Elfogadva
+ 
+|[[bip0017]]17|https://github.com/bitcoin/bips/blob/master/bip-0017.mediawiki|OP_CHECKHASHVERIFY (CHV) |Luke Dashjr | Visszavonva | Tervezet
+ 
+|[[bip0018]]18|https://github.com/bitcoin/bips/blob/master/bip-0018.mediawikilink:|hashScriptCheck |Luke Dashjr |Szabvány |Tervezet
+  
+|[[bip0019]]19|https://github.com/bitcoin/bips/blob/master/bip-0019.mediawiki|M-of-N szabványos tranzakciók (Low SigOp) | Luke Dashjr |Szabvány |Tervezet
+ 
+|[[bip0020]]20|https://github.com/bitcoin/bips/blob/master/bip-0020.mediawiki|URI Scheme |Luke Dashjr |Szabvány| Mással lett felváltva
+ 
+|[[bip0021]]21|https://github.com/bitcoin/bips/blob/master/bip-0021.mediawiki|URI Scheme |Nils Schneider, Matt Corallo
+ 
+|[[bip0022]]22|https://github.com/bitcoin/bips/blob/master/bip-0022.mediawiki|getblocktemplate - alapok |Luke Dashjr |Szabvány |Elfogadva
+
+|[[bip0023]]23|https://github.com/bitcoin/bips/blob/master/bip-0023.mediawiki|getblocktemplate - társult bányászat |Luke
+ 
+|[[bip0030]]30|https://github.com/bitcoin/bips/blob/master/bip-0030.mediawiki|Dupla tranzakciók |Pieter Wuille
+ 
+|[[bip0031]]31|https://github.com/bitcoin/bips/blob/master/bip-0031.mediawiki|Pong üzenet |Mike Hearn |Szabvány|Elfogadva
+ 
+|[[bip0032]]32|https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki|Hierarchikus determinisztikus pénztárcák|Pieter Wuille | Tájékoztató |Elfogadva
+ 
+|[[bip0033]]33|https://github.com/bitcoin/bips/blob/master/bip-0033.mediawiki|Stratum csomópontok |Amir Taaki |Szabvány
+  
+|[[bip0034]]34|https://github.com/bitcoin/bips/blob/master/bip-0034.mediawiki|Block v2, magasság a coinbase-ben |Gavin
+ 
+|[[bip0035]]35|https://github.com/bitcoin/bips/blob/master/bip-0035.mediawiki|mempool üzenet |Jeff Garzik |Szabvány
+ 
+|[[bip0036]]36|https://github.com/bitcoin/bips/blob/master/bip-0036.mediawiki|Egyedi szolgáltatások |Stefan Thomas |Szabvány
+  
+|[[bip0037]]37|https://github.com/bitcoin/bips/blob/master/bip-0037.mediawiki|Bloom szűrők |Mike Hearn and Matt Corallo |Szabvány |Elfogadva
+
+|[[bip0038]]38|https://github.com/bitcoin/bips/blob/master/bip-0038.mediawiki|Jelmondattal védett titkos kulcs |Mike Caldwell |Szabvány |Tervezet
+
+|[[bip0039]]39|https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki|Mnemonikok a determinisztikus kulcsok előállításához | Slush |Szabvány |Tervezet
+
+|[[bip0040]]40||Stratum wire protocol |Slush |Szabvány |BIP szám hozzárendelve
+
+|[[bip0041]]41||Stratum mining protocol |Slush |Szabvány |BIP szám hozzárendelve
+
+|[[bip0042]]42|https://github.com/bitcoin/bips/blob/master/bip-0042.mediawiki|A bitcoin véges pénzkészlete |Pieter Wuille |Szabvány |Tervezet
+
+|[[bip0043]]43|https://github.com/bitcoin/bips/blob/master/bip-0043.mediawiki|Cél mező determinisztikus pénztárcákhoz |  Slush | Szabvány | Tervezet
+
+|[[bip0044]]44|https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki|Számlák hierarchiája determinisztikus pénztárcákban | Slush| Szabvány| Tervezet
+
+|[[bip0050]]50|https://github.com/bitcoin/bips/blob/master/bip-0050.mediawiki|A 2013. márciusi fork utólagos vizsgálata |Gavin Andresen |Tájékoztató |Tervezet
+
+|[[bip0060]]60|https://github.com/bitcoin/bips/blob/master/bip-0060.mediawiki|Fix hosszúságú "version" üzenet (Relay-Transactions mező) |Amir Taaki |Szabvány |Tervezet
+
+|[[bip0061]]61|https://github.com/bitcoin/bips/blob/master/bip-0061.mediawiki|"reject" P2P üzenet |Gavin Andresen | Szabvány | Tervezet
+
+|[[bip0062]]62|https://github.com/bitcoin/bips/blob/master/bip-0062.mediawiki|A tranzakciók változékonyságának kezelése |Pieter Wuille
+
+|[[bip0063]]63||Lopakodó címek |Peter Todd |Szabvány |BIP szám hozzárendelve
+
+|[[bip0064]]64|https://github.com/bitcoin/bips/blob/master/bip-0064.mediawiki|getutxos üzenet |Mike Hearn |Szabvány
+
+|[[bip0070]]70|https://github.com/bitcoin/bips/blob/master/bip-0070.mediawiki|Payment protokoll |Gavin Andresen |Szabvány
+
+|[[bip0071]]71|https://github.com/bitcoin/bips/blob/master/bip-0071.mediawiki|Payment protokoll MIME típusok |Gavin Andresen |Szabvány |Tervezet
+
+|[[bip0072]]72|https://github.com/bitcoin/bips/blob/master/bip-0072.mediawiki|Payment protokoll URI-k |Gavin Andresen
+
+|[[bip0073]]73|https://github.com/bitcoin/bips/blob/master/bip-0073.mediawiki|Használjunk "Accept" fejet a Payment kérések URL-jeiben  |Stephen Pair |Standard |Draft
+(((range="endofrange", startref="ix_appdx-bips-asciidoc0"))) 
+|=======================================================================
+
+

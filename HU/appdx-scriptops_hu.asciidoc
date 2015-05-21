@@ -1,0 +1,185 @@
+[[tx_script_ops]]
+[appendix]
+== A Script tranzakciós nyelv műveletei, konstansai és szimbólumai
+
+((("Script nyelv", id="ix_appdx-scriptops-asciidoc0", range="startofrange")))((("Script nyelv","fenntartott műveletek kódjai", id="ix_appdx-scriptops-asciidoc1", range="startofrange")))A <<tx_script_ops_table_pushdata>> azokat a műveletek mutatja, amelyekkel érték helyezhető a veremtárra.((("Script nyelv","push műveletek")))
+
+[[tx_script_ops_table_pushdata]]
+.Érték elhelyezése a veremre
+[options="header"]
+|=======
+| Szimbólum | Érték (hex) | Leírás
+| OP_0 vagy OP_FALSE | 0x00 | Egy üres tömb kerül a veremre
+| 1-75 | 0x01-0x4b | A következő N bájt tárolása a veremben, ahol N 1 és 75 bájt között van
+| OP_PUSHDATA1 | 0x4c | A következő script bájt tartalmazza N-et, N bájt tárolása a veremben
+| OP_PUSHDATA2 | 0x4d | A következő két script bájt tartalmazza N-et, N byte tárolása a veremben
+| OP_PUSHDATA4 | 0x4e | A következő négy script bájt tartalmazza N-et, N byte tárolása a veremben
+| OP_1NEGATE | 0x4f | A „-1” érték tárolása a veremben
+| OP_RESERVED | 0x50 | Leállás – Érvénytelen tranzakció, kivéve, ha egy nem végrehajtott OP_IF ágban van
+| OP_1 or OP_TRUE| 0x51 | Az „1” érték tárolása a veremben
+| OP_2 to OP_16 | 0x52 to 0x60 |  Az OP_N esetén az „N” tárolása a veremben, Pl. az OP_2 a „2”-t tárolja
+|=======
+
+A <<tx_script_ops_table_control>> a feltételes vezérlésátadó műveleteket mutatja.((("Script nyelv","feltételes vezérlésátadó műveletek")))
+
+[[tx_script_ops_table_control]]
+.Feltételes vezérlésátadás
+[options="header"]
+|=======
+| Szimbólum | Érték (hex) | Leírás
+| OP_NOP | 0x61 | Semmit sem csinál
+| OP_VER | 0x62 | Leállás – Érvénytelen tranzakció, kivéve, ha egy nem végrehajtott OP_IF agban van
+| OP_IF | 0x63 | A következő utasítások végrehajtása, ha a verem teteje nem 0
+| OP_NOTIF | 0x64 | A következő utasítások végrehajtása, ha a verem teteje 0
+| OP_VERIF | 0x65 | Leállás – Érvénytelen tranzakció
+| OP_VERNOTIF | 0x66 | Leállás – Érvénytelen tranzakció
+| OP_ELSE | 0x67 | Csak akkor hajtandó végre, ha az előző utasítások nem voltak végrehajtva
+| OP_ENDIF | 0x68 | Az OP_IF, OP_NOTIF, OP_ELSE blokk vége
+| OP_VERIFY | 0x69 | A verem tetejének ellenőrzése. Leállás és a tranzakció érvénytelenítése, ha nem TRUE
+| OP_RETURN | 0x6a | Leállás és a tranzakció érvénytelenítése
+|=======
+
+A <<tx_script_ops_table_stack>> a verem kezelő műveleteket mutatja.((("Script nyelv","verem kezelő műveletek")))
+
+[[tx_script_ops_table_stack]]
+.Verem műveletek
+[options="header"]
+|=======
+| Szimbólum | Érték (hex) | Leírás
+| OP_TOALTSTACK | 0x6b | A legfölső tétel kivétele a veremből és elhelyezése egy alternatív veremben
+| OP_FROMALTSTACK | 0x6c | A legfölső tétel kivétele az alternatív veremből és elhelyezése a veremben
+| OP_2DROP | 0x6d | Két tétel eltávolítása a veremből
+| OP_2DUP | 0x6e | A verem legfölső két tételének megduplázása
+| OP_3DUP | 0x6f | A verem legfölső három tételének megduplázása
+| OP_2OVER | 0x70 | A verem harmadik és negyedik tételének átmásolása a verem tetejére
+| OP_2ROT | 0x71 | A verem ötödik és hatodik tételének átmozgatása a verem tetejére
+| OP_2SWAP | 0x72 | A verem tetején lévő két tétel cseréje
+| OP_IFDUP | 0x73 | A verem legfölső elemének megduplázása, ha az elem nem 0
+| OP_DEPTH | 0x74 | A veremben lévő tételek számának elhelyezése a verem tetején
+| OP_DROP | 0x75 | A legfölső tétel eltávolítása a veremből
+| OP_DUP | 0x76 | A legfölső tétel megduplázása
+| OP_NIP | 0x77 | A veremben lévő második tétel eltávolítása a veremből
+| OP_OVER | 0x78 | A veremben lévő második tétel lemásolása és elhelyezése a verem tetején
+| OP_PICK | 0x79 | A verem tetején lévő szám (N) eltávolítása, majd a számnak megfelelően az N-ik tétel átmásolása a verem tetejére
+| OP_ROLL | 0x7a | A verem tetején lévő szám (N) eltávolítása, majd a számnak megfelelően az N-ik tétel átmozgatása a verem tetejére
+| OP_ROT | 0x7b | A verem legfölső három elemének a forgatása
+| OP_SWAP | 0x7c | A verem legfölső három elemének a cseréje
+| OP_TUCK | 0x7d | A verem legfölső elemének másolása, majd beillesztése a legfölső és a második elem közé
+|=======
+
+A <<tx_script_ops_table_splice>> a string műveleteket mutatja.((("Script nyelv","string műveletek")))
+
+[[tx_script_ops_table_splice]]
+.String műveletek
+[options="header"]
+|=======
+| Szimbólum | Érték (hex) | Leírás
+| _OP_CAT_ | 0x7e | Letiltva (A két felső tétel összefűzése)
+| _OP_SUBSTR_ | 0x7f | Letiltva (Egy rész-stringet ad vissza)
+| _OP_LEFT_ | 0x80 | Letiltva (A string bal oldali rész stringjét adja vissza)
+| _OP_RIGHT_ | 0x81 | Letiltva (A string jobb oldali rész stringjét adja vissza)
+| OP_SIZE | 0x82 | Kiszámítja a verem tetején lévő string hosszát, és az eredményt a verem tetejére helyezi 
+|=======
+
+A <<tx_script_ops_table_binmath>> a bináris aritmetikai és logikai műveleteket mutatja.((("Script nyelv","bináris aritmetikai műveletek")))((("Script nyelv","logikai műveletek")))
+
+[[tx_script_ops_table_binmath]]
+.Bináris aritmetikai és logikai műveletek 
+[options="header"]
+|=======
+| Szimbólum | Érték (hex) | Leírás
+| _OP_INVERT_ | 0x83 | Letitva (Negálja a verem tetején lévő tétel bitjeit)
+| _OP_AND_ | 0x84 | Letiltva (A két legfölső tétel logikai ÉS kapcsolata)
+| _OP_OR_ | 0x85 | Letiltva (A két legfölső tétel logikai VAGY kapcsolata)
+| _OP_XOR_ | 0x86 | Letiltva (A két legfölső tétel logikai XOR kapcsolata)
+| OP_EQUAL | 0x87 | TRUE (1) értéket helyez a verebe, ha a két legfölső tétel pontosan azonos, egyébként FALSE (0) értéket
+| OP_EQUALVERIFY | 0x88 | Ua.,  mint az OP_EQUAL, de ez után egy OP_VERIFY futtatása, amely leállítja a további futást, ha nem TRUE volt az eredmény
+| OP_RESERVED1 | 0x89 | Leállás – Érvénytelen tranzakció, kivéve, ha egy nem végrehajtott OP_IF ágban fordul elő
+| OP_RESERVED2 | 0x8a | Leállás – Érvénytelen tranzakció, kivéve, ha egy nem végrehajtott OP_IF ágban fordul elő
+|=======
+
+A <<tx_script_ops_table_numbers>> a numerikus (aritmetikai) műveleteket mutatja.((("Script nyelv","numerikus műveletek")))
+
+[[tx_script_ops_table_numbers]]
+.Numerikus műveletek
+[options="header"]
+|=======
+| Szimbólum | Érték (hex) | Leírás
+| OP_1ADD | 0x8b | A legfölső tételhez hozzáad 1-et   
+| OP_1SUB | 0x8c | A legfölső tételből levon 1-et
+| _OP_2MUL_ | 0x8d | Letiltva (A legfölső tételt megszorozza 2-vel)
+| _OP_2DIV_ | 0x8e | Letiltva (A legfölső tételt elosztja 2-vel)
+| OP_NEGATE | 0x8f | Megváltoztatja a legfölső tétel előjelét
+| OP_ABS | 0x90 | A legfölső tételt előjelét pozitívra változtatja
+| OP_NOT | 0x91 | Ha a legfölső tétel 0 vagy 1, akkor átváltoztatja 1-re vagy 0-ra, egyébként 0-t ad vissza
+| OP_0NOTEQUAL | 0x92 | Ha a legfolső tétel 0, akkor 0-t ad vissza, egyébként 1-et
+| OP_ADD | 0x93 | Eltávolítja a két legfelső tételt, összeadja őket, és az eredményt a verem tetejére helyezi
+| OP_SUB | 0x94 | Eltávolítja a két legfelső tételt, az elsőt kivonja a másodikból, és az eredményt a verem tetejére helyezi
+| OP_MUL | 0x95 | Letiltva (A két legfölső tétel összeszorzása)
+| OP_DIV | 0x96 | Letiltva (A második tétel osztása az elsővel)
+| OP_MOD | 0x97 | Letiltva (Maradék, ha a második tételt elsoztjuk az elsővel)
+| OP_LSHIFT | 0x98 | Letiltva (A második tétel balra tolása annyi bittel, amennyi az első tétel)
+| OP_RSHIFT | 0x99 | Letitlva (A második tétel jobbra tolása annyi bittel, amennyi az első tétel)
+| OP_BOOLAND | 0x9a | A két legfölső tétel logikai AND-je
+| OP_BOOLOR | 0x9b | A két legfölső tétel logikai OR-ja
+| OP_NUMEQUAL | 0x9c | TRUE-t ad vissza, ha a két legfölső tétel mint szám egyenlő
+| OP_NUMEQUALVERIFY | 0x9d | U.a mint a NUMEQUAL, de egy OP_VERIFY leállítja a futást, ha az eredmény nem TRUE
+| OP_NUMNOTEQUAL | 0x9e | TRUE-t ad vissza, ha a két legfölső tétel számként értelmezve nem egyenlő
+| OP_LESSTHAN | 0x9f | TRUE-t ad vissza, ha a második tétel kisebb, mint a legfölső tétel
+| OP_GREATERTHAN | 0xa0 | TRUE-t ad vissza, ha a második tétel nagyobb, mint a legfölső tétel
+| OP_LESSTHANOREQUAL | 0xa1 | TRUE-t ad vissza, ha a második tétel a legfölső tételnél kisebb vagy egyenlő
+| OP_GREATERTHANOREQUAL | 0xa2 | TRUE-t ad vissza, ha a második tétel a legfölső tételnél nagyobb vagy egyenlő
+| OP_MIN | 0xa3 | A két legfölső tétel közül a kisebbet adja vissza 
+| OP_MAX | 0xa4 | A két legfölső tétel közül a nagyobbat adja vissza
+| OP_WITHIN | 0xa5 | TRUE-t ad vissza, ha a harmadik tétel a második tétel és az első tétel között van (vagy egyenlő a második tétellel)
+|=======
+
+A <<tx_script_ops_table_crypto>> a kriptográfiai műveleteket mutatja.((("Script nyelv","kriptográfiai műveletek")))
+
+[[tx_script_ops_table_crypto]]
+.Kriptográfiai és hash műveletek
+[options="header"]
+|=======
+| Szimbólum | Érték (hex) | Leírás
+| OP_RIPEMD160 | 0xa6 | legfölső tétel RIPEMD160 hashét adja vissza
+| OP_SHA1 | 0xa7 | A legfölső tétel SHA1 hashét asdja vissza
+| OP_SHA256 | 0xa8 | A legfölső tétel SHA256 hashét adja vissza
+| OP_HASH160 | 0xa9 | A legfölső tétel RIPEMD160(SHA256(x)) hashét adja vissza
+| OP_HASH256 | 0xaa | A legfölső tétel SHA256(SHA256(x)) hashét adja vissza
+| OP_CODESEPARATOR | 0xab | Az aláírással ellenőrzött adat kezdetét jelöli
+| OP_CHECKSIG | 0xac | Eltávolítja a veremről a nyilvános kulcsot és az aláírást, és ellenőrzi, hogy az aláírás megfelel-e a tranzakció hashelt adatának, TRUE-t ad vissza, ha igen
+| OP_CHECKSIGVERIFY | 0xad | U.a. mint a CHECKSIG, de egy OP_VERIFY megállítja a végrehajtást, ha az eredmény nem TRUE
+| OP_CHECKMULTISIG | 0xae | A CHECKSIG futtatása minden egyes megadott nyilvános kulcs és aláírás párra. Az összesnek egyeznie kell. Egy implementációs hiba miatt eggyel több értéket távolít el a veremről. Az OP_NOP előtaggal megkerülhető a hiba.
+| OP_CHECKMULTISIGVERIFY | 0xaf | U.a. mint a CHECKMULTISIG, de egy OP_VERIFY megállítja a végrehajtást, ha az eredmény nem TRUE
+|=======
+
+A <<tx_script_ops_table_nop>> az üres műveletet mutatja.((("Script language","üres művelet")))
+
+[[tx_script_ops_table_nop]]
+.Üres műveletek
+[options="header"]
+|=======
+| Szimbólum | Érték (hex) | Leírás
+| OP_NOP1-OP_NOP10 | 0xb0-0xb9 | Nem csinál semmit sem, figyelmen kívül marad
+|=======
+
+
+++++
+<?hard-pagebreak?>
+++++
+
+A <<tx_script_ops_table_internal>> az elemző belső működésére fenntartott műveleti kódokat mutatja.(((range="endofrange", startref="ix_appdx-scriptops-asciidoc1")))(((range="endofrange", startref="ix_appdx-scriptops-asciidoc0")))
+
+[[tx_script_ops_table_internal]]
+.Az elemző belső működésére fenntartott műveleti kódok
+[options="header"]
+|=======
+| Szimbólum | Érték (hex) | Leírás
+| OP_SMALLDATA | 0xf9 | Kis adatmezőt képvisel 
+| OP_SMALLINTEGER | 0xfa | Kis egész adatmezőt képvisel
+| OP_PUBKEYS | 0xfb | Nyilvános kulcs mezőket képvisel
+| OP_PUBKEYHASH | 0xfd | Nyilvános kulcs hash mezőt képvisel
+| OP_PUBKEY | 0xfe | Nyilvános kulcs mezőt képvisel
+| OP_INVALIDOPCODE | 0xff | Bármilyen, jelenleg nem kiosztott műveleti kódot képvisel
+|=======
+

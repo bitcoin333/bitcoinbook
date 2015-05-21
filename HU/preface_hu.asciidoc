@@ -1,0 +1,158 @@
+[preface]
+== Előszó
+
+=== A bitcoin könyv megírása
+
+Először 2011 közepén botlottam a bitcoinba. A reakcióm többé-kevésbé az volt, hogy "Brr! Egy újabb pénz a számítógép megszállottjainak!" - és további 6 hónapig nem törődtem vele, nem értettem meg a fontosságát. Az általam ismert legokosabb embereknél is sokszor láttam ugyanezt a reakciót, ami egy kicsit vígasztaló. Másodszor, amikor egy levelező listán került szóba a bitcoin, elhatároztam, hogy elolvasom Satoshi Nakamoto dolgozatát, azaz áttanulmányozom a hiteles forrást és megnézem, hogy miről van szó. Még mindig emlékszem arra a pillanatra, amikor befejeztem a 9 oldalas dolgozatot és megértettem, hogy a bitcoin nem egyszerűen csak egy digitális pénz, hanem egy decentralizált bizalmi hálózat, és a pénznél sokkal több mindennek az alapjául szolgálhat. Ez a felismerés indított arra, hogy 4 hónapon keresztül a bitcoinra vonatkozó minden információmorzsát összeszedjek és elolvassak. Lelkesedtem és megszállottá váltam, napi 12 órát vagy még többet töltöttem a képernyőre tapadva, olvastam, írtam, kódoltam, és tanultam, amennyit csak tudtam. 10 kilót fogytam ezalatt, mert nem ettem rendesen, hanem csak a bitcoinnal foglalkoztam. 
+
+Két évvel később, miután számos kis céget alapítottam a bitcoinnal kapcsolatos szolgáltatások és termékek vizsgálatára, elhatároztam, hogy megírom az első könyvemet. A bitcoin volt az a téma, ami kreatívvá tett, lefoglalta a gondolataimat: ez volt a legizgalmasabb technológia, amióta csak találkoztam az Internettel. Itt az idő, hogy a tágabb olvasóközönséggel is megosszam azt az elragadtatásomat, amit ezzel az izgalmas techológiával kapcsolatban érzek. 
+
+=== Olvasóközönség
+
+A könyvet leginkább programozóknak szántam. Ha az Olvasó ismer egy programozási nyelvet, akkor ez a könyv megtanítja neki, hogyan működnek a digitális pénzek, hogyan lehet használni őket és hogyan írható olyan szoftver, amelyik ezekre épül. Az első néhány fejezet a nem programozók számára is jó bevezetést jelent a bitcoin világába - vagyis azoknak, akik szeretnék megérteni a bitcoin és a digitális pénzek belső működését.
+
+=== Miért vannak a borítón bogarak?
+
+A levélvágó hangya egy olyan faj, amely egy szuper-kolóniában nagyon bonyolult viselkedésre képes. Ugyanakkor az egyes hangyák nagyon egyszerű szabályok szerint járnak el, amelyeket a szociális érintkezés és kémiai szaganyagok (feromonok) cseréje határoz meg. A Wikipédia szerint: "A Földön az emberek mellett a levélvágó hangyák alkotják a legnagyobb és legbonyolultabb társadalmakat." A levélvágó hangyák ténylegesen nem eszik meg a leveleket, hanem gombatermelésre használják, ami a hangyaboly fő élelemforrása. Értik? Ezek a hangyák termelnek! 
+
+Noha a hangyáknál kaszt-alapú a társadalom, és egy királynő hozza létre az udódokat, de a hangyabolyban nincs központi szervezet vagy vezető. A sok millió tagot számláló hangyaboly rendkívül intelligens és okos viselkedése az egyes egyedek kölcsönhatásai révén előálló sajátosság ("emergens tulajdonság"). 
+
+A természet azt szemlélteti, hogy a decentralizált rendszerek ellenállóak tudnak lenni és  központi szervezet, hierarchia vagy bonyolult részek nélkül is emergens bonyolultságot és okosságot tudnak létrehozni.
+
+A bitcoin egy nagyon összetett decentralizált bizalmi hálózat, amely pénzügyi folyamatok milliárdjainak a támogatására képes. Ugyanakkor minden egyes csomópont néhány egyszerű matematikai szabályt követ. A bonyulult viselkedés megjelenése a csomópontok közötti kölcsönhatások eredménye, nem pedig valamilyen belső bonyolultságnak vagy az egyes csomópontokba vetett bizalomnak köszönhető. Egy hangyabolyhoz hasonlóan a bitcoin hálózat is egyszerű szabályokat követő csomópontok hálózata, amely képes ellenállni a támadásoknak, és együttesen központi koordináció nélkül is csodálatos dolgokra képes.
+
+=== A könyvben használt szabályok
+
+A könyv a következő tipográfiai szabályokat használja:
+
+_Dőlt betűs szedés_:: egy új szó, URL, email cím, állománynév vagy kiterjesztés jelölésére szolgál.
+
++Fix szélességű szedés+:: Programlisták, valamint egy bekezdésen belül valamilyen programrészlet, pl. változók vagy függvények, adatbázisok, adattípusok, környezeti változók, utasítások és kulcsszavak esetén használatos.
+
+**`Fix szélességű, vastag szedés`**:: Parancsok vagy más szövegek, melyeket a felhasználónak pontosan ilyen formában kell beadnia.
+
+_++Fix szélességű, dőlt betűs szedés_++:: Olyan szöveg, melyet a felhasználó által megadott értékekkel vagy a környezettől függő értékekkel kell helyettesíteni.
+
+
+[TIP]
+====
+Ez az ikon egy tippet, javaslatot vagy általános megjegyzést jelöl.
+====
+
+[WARNING]
+====
+Ez az ikon egy figyelmeztetést jelöl.
+====
+
+=== Példa programok
+
+A példák szemléltetésére Python, C++ és egy Unix-szerű operációs rendszer (Linux, Mac OSX) parancssorai szolgáltak. Az összes kódrészlet megtalálható a weben, és online módon is elérhető a https://github.com/aantonop/bitcoinbook[GitHub kódtár] URL címen, a főkönyvtár _code_ alkönyvtárában. A GitHub-ról töltse le a kódot, próbálja ki a példákat, vagy jelezze a hibákat. 
+
+ A kódrészletek a legtöbb operációs rendszer alatt a megfelelő nyelvek installálásával, minimális munkával működőképessé tehetők. Ha szükségesnek láttuk, akkor megadtuk az instaláláshoz szükséges utasításokat és az utasítások lépésről lépésre történő végrehajtása során keletkező kimeneteket. 
+
+Némelyik kódrészletet és kódrészlet kimenetet a nyomtatás érdekében újraformáztuk. Az összes ilyen esetben a sorokat egy "\" karakterrel választottuk el, melyet egy új sor karakter követ. A példák újbóli futtatásakor távolítsák el ezt a két karaktert és egyesítsék újra a sorokat, ekkor a példában szereplő eredménnyel egyező kimenetet fognak kapni. 
+
+Az összes kódrészlet lehetőleg valós értékeket és számításokat használt, emiatt példáról példára haladva ugyanazokat az eredményeket fogja kapni, mint amelyek a példa számításokban szerepelnek. Például a titkos kulcsok és a hozzájuk tartozó nyilvános kulcsok valamint címek mind valódiak. A minta tranzakciók, blokk és blokklánc hivatkozások a tényleges bitcoin blokkláncba lettek elvégezve és a nyilvános főkönyv részei, ezért bármelyik bitcoin rendszerben lekérdezhetők.
+
+=== A programozási példák használata
+
+A könyv szeretné segíteni az önök munkáját. Ha a könyv egy mintapéldát ad valamire, akkor ön ezt felhasználhatja a saját programjaiban vagy dokumentációiban. Nem kell tőlünk engedélyt kérnie, ha csak kisebb részleteket használ a példákból. Például ha ír egy programot, amely a könyv néhány kódrészletét használja, akkor ehhez nem kell engedélyt kérnie. Az O’Reilly könyvek CD-ROM-jain közölt példák árusítása vagy sokszorosítása azonban engedélyköteles. Ha a könyvből vett idézettel válaszol egy kérdésre, vagy idéz egy példa programot, az nem engedélyköteles. De ha jelentős mennyiségű példaprogramot vesz át a könyvből, az engedélyköteles.
+
+Köszönettel vesszük, de nem kötelező a hivatkozás. A hivatkozás általában a címet, a szerzőt, a kiadót és az ISBN számot tartalmazza. Például: “_Mastering Bitcoin_, írta Andreas M. Antonopoulos (O’Reilly). Copyright 2015 Andreas M. Antonopoulos, 978-1-449-37404-4.”
+
+A könyv egyes kiadásaihoz nyílt forráskódú engedély tartozik, mint pl. CC-BY-NC (creativecommons.org). Ebben az esetben a vonatkozó engedély a hatályos.
+
+Ha úgy érzi, hogy a példa programok felhasználása során túllépte a fent engedélyezett mértékét, akkor lépjen kacsolatba velünk: [<email>permissions@oreilly.com</email>].
+
+=== Safari® Books Online
+
+[role = "safarienabled"]
+[NOTE]
+====
+A pass:[<ulink role="orm:hideurl:ital" url="http://my.safaribooksonline.com/?portal=oreilly">Safari Books Online</ulink>] egy on-demand digitális könyvtár, amely  könyvek és videók formájában  pass:[<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/content">tartalmazza</ulink>] a világ legjobb szakíróinak műveit.
+====
+
+A műszaki szakemberek, szoftver fejlesztők, web tervezők és egyéb szakemberek a Safari Books Online-t kutatásra, problémamegoldásra, tanulásra és vizsga felkészítő forrásként használják.
+
+A Safari Books Online számos pass:[<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/subscriptions">terméket</ulink>] és árajánlatot ad a pass:[<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/organizations-teams">szervezetek</ulink>], pass:[<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/government">kormáynszervek</ulink>] és pass:[<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/individuals">magánemberek</ulink>] számára. Az előfizetők több ezer könyvhöz, oktató videóhoz és könyv vázlathoz férnek hozzá egy kereshető adatbázisban. A kiadók között megtalálható az O’Reilly Media, a Prentice Hall Professional, az Addison-Wesley Professional, a Microsoft Press, a Sams, a Que, a Peachpit Press, a Focal Press, a Cisco Press, a John Wiley & Sons, a Syngress, a Morgan Kaufmann, az IBM Redbooks, a Packt, az Adobe Press, az FT Press, az Apress, Manning, a New Riders, a McGraw-Hill, a Jones & Bartlett, a Course Technology, és több tucat pass:[<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/publishers">további kiadó</ulink>]. Ha további információkat szeretne kapni a Safari Books Online-ról, kérjük, látogasson el  pass:[<ulink role="orm:hideurl" url="http://www.safaribooksonline.com/">online webhelyünkre</ulink>].
+
+=== Hogyan tud kapcsolatba lépni velünk
+
+A könyvvel kapcsolatos megjegyzéseit és kérdéseit kérjük, küldje el a kiadónak:
+
+++++
+<simplelist>
+<member>O’Reilly Media, Inc.</member>
+<member>1005 Gravenstein Highway North</member>
+<member>Sebastopol, CA 95472</member>
+<member>800-998-9938 (az Amerikai Egyesült Államokban vagy Kanadában)</member>
+<member>707-829-0515 (nemzetközi vagy helyi)</member>
+<member>707-829-0104 (fax)</member>
+</simplelist>
+++++
+
+A könyvnek van egy weblapja, ahol hibajegyzék, példák és további információk szerepelnek. A weblap a $$http://bit.ly/mastering_bitcoin$$[] címen érhető el.
+
+
+A könyvvel kapcsolatos megjegyzéseit vagy műszaki kérdéseit az alábbi címre küldheti: [<email>bookquestions@oreilly.com</email>].
+
+Könyveinkről, tanfolyamainkról, konferenciáinkról, híreinkről további információkat találhat a webhelyünkön: $$http://www.oreilly.com[].
+
+Fent vagyunk a Facebook-on: $$http://facebook.com/oreilly$$[]
+
+Kövessen minket a Twitter-en: $$http://twitter.com/oreillymedia$$[]
+
+Nézzen minket a YouTube-on: $$http://www.youtube.com/oreillymedia$$[]
+
+
+=== Köszönetnyilvánítások
+
+Ez a könyv sok ember munkájának és közreműködésnek köszönhető. Hálás vagyok azért a segítségért, amelyet a barátaimtól, kollegáimtól és teljesen ismeretlen emberektől kaptam, akik velem együtt részt vettek a bitcoinról és a digitális pénzekről szóló definitív szakkönyv megírásában. 
+
+Lehetetlen különbséget tenni a bitcoin technológia és a bitcoin közösség között, és ez a könyv épp annyira a közösség által létrehozott eredmény, mint amennyire a technológiáról szóló könyv. A könyvvel kapcsolatos munkámat a kezdetektől a legvégéig az egész bitcoin közösség bátorította, örömmel fogadta és támogatta. Ez a könyv mindenek előtt lehetővé tette, hogy két éven keresztül része lehettem ennek a csodálatos közösségnek, és nem tudom eléggé megköszönni, hogy befogadtak maguk közé. Túl sok embert kellene megemlítenem név szerint - olyanokat, akikkel konferenciákon, különféle eseményeken, szemináriumokon, pizzázás során és személyes megbeszéléseken találkoztam, továbbá azokat, akik twitter-en, reddit-en, a bitcointalk.org-on és a github-on kommunikáltak velem, és akik hatással voltak erre a könyvre. Minden egyes ötletet, analógiát, kérdést, választ és magyarázatot, amely a könyvben megtalálható, bizonyos szempontból a közösségi kommunikáció inspirálta, tesztelte vagy tette jobbá. Mindenkinek köszönöm a támogatását. Enélkül ez a könyv nem születhetett volna meg. Örökre hálás vagyok ezért.
+
+A szerzővé válás folyamata természetesen már sokkal korábban elkezdődik, mielőtt az ember megírná az első könyvét. Az anyanyelvem görög, a tanulmányaimat is ezen a nyelven végeztem, ezért mikor első éves egyetemista voltam, egy angol tanfolyamon kellett részt vennem, hogy jobban tudjak írni angolul. Köszönettel tartozom Diana Kordas-nak, az angoltanáromnak, aki segített abban, hogy magabiztosabban és jobban írjak. Később, szakemberként és a _Network World_ magazin egyik szerzőjeként az adatközpontok témakörében fejlesztettem írói képességeimet. Köszönettel tartozom John Dix-nek és John Gallant-nak, akik először bíztak meg azzal, hogy a _Network World_-be írjak, valamint szerkesztőmnek, Michael Cooney-nek és kollégámnak, Johna Till Johnson-nak, akik szerkesztői munkájukkal  alkalmassá tették cikkeimet a megjelentetésre. Négy éven keresztül minden héten 500 szót írtam, ennek során elég gyakorlatot szereztem ahhoz, hogy végül is szerzőnek tekinthessem magam. Köszönöm Jean korai bátorítását, hitét, és meggyőződését, hogy egyszer még könyvet fogok írni.
+
+Köszönet azoknak, akik hivatkozásaikkal és kritikáikkal támogattak, amikor benyújtottam az O’Reilly-nek a könyvre vonatkozó javaslatomat. Nevezetesen, köszönettel tartozom John Gallant-nak, Gregory Ness-nek, Richard Stiennon-nak, Joel Snyder-nek, Adam B. Levine-nak, Sandra Gittlen-nek, John Dix-nek, Johna Till Johnson-nak, Roger Ver-nek és Jon Matonis-nak. Külön köszönet Richard Kagan-nak és Tymon Mattoszko-nak akik a javaslatom korai változatait elbírálták, valamint Matthew Owain Taylor-nak, aki a javaslatot megszerkesztette.
+
+Köszönet Cricket Liu-nak, aki a _DNS és BIND_ című O’Reilly könyv szerzője. Ő mutatott be engem a kiadónak. Köszönet Michael Loukides-nek és Allyson MacDonald-nek, akik az O’Reilly dolgozói, és hónapokon át együtt dolgoztak velem, hogy ez a könyv létrejöhessen. Allyson különösen türelmes volt, ha túlléptem a határidőket, és késve nyújtottam be valamit, mert az élet felülírta a terveinket. 
+
+Az első néhány vázlat és az első pár fejezet megírása volt a legnehezebb, mert a bitcoin témájának a kifejtése nehéz. Minden egyes alkalommal, amikor megváltoztattam valamit a bitcoin technológia magyarázata során, az egész anyagot át kellett dolgoznom. Sokszor megakadtam, és kicsit kétségbe estem, mikor azzal küzdöttem, hogy az egész témát könnyen érthetővé tegyem, és leírjam ezt a bonyolult műszaki tárgyat. Végül úgy döntöttem, hogy a bitcoin történetét a bitcoin felhasználóinak a szemszögéből mondom el. Ez nagyban megkönnyítette a könyv megírását. Köszönettel tartozom barátomnak és mentoromnak, Richard Kagan-nak, aki segített kibontani a történetet, és segített legyőzni az írói leblokkolásokat, valamint Pamela Morgan-nek, aki a fejezetek korai vázlatait átnézte, és nehéz kérdéseket tett föl nekem - ezektől lettek jobbak a fejezetek. Köszönettel tartozom a San Francisco-i bitcoin fejlesztők társaságának, valamint Taariq Lewis-nak, a csoport egyik alapítójának, mert segítették az anyag elbírálását a korai fázisban.
+
+A könyv megírása során a korai vázlatokat elérhetővé tettem a Github-on, és vártam a megjegyzéseket. Több, mint száz megjegyzést, javaslatot, javítást és hozzájárulást kaptam. Ezeket a hozzájárulásokat külön is kiemeltem és megköszöntem a <<github_contrib>> részben.Külön köszönetet szeretnék mondani Minh T. Nguyen-nek, aki önként vállalta, hogy karban tartja a Github hozzászólásokat, és saját maga is jelentős módon hozzájárult a könyvhöz. Köszönet továbbá Andrew Naugler-nek az infografika megtervezéséért. 
+
+A könyv első változata számos műszaki szemlén ment keresztül. Köszönet Cricket Liu-nak és Lorne Lantz-nak az alapos műszaki kritikájukért, megjegyzéseikért és támogatásukért.
+
+Számos bitcoin fejlesztőtől kaptam programokat, kritikákat, megjegyzéseket és bátorítást. Köszönetet mondok Amir Taaki-nak a kódrészletekért és a sok nagyszerű megjegyzéséért, Vitalik Buterin-nek és Richard Kiss-nek az elliptikus görbékkel kapcsolatos matematikai megjegyzéseikért, Gavin Andresen-nek a javításaiért, megjegyzéseiért és bátorításáért, Michalis Karagis-nek a megjegyzéseiért, közreműködéséért és a btcd összefogalójáért.
+
+A szavak és könyvek szeretetét anyámnak, Theresának köszönhetem, aki egy olyan házban nevelt fel, amelyben minden falon könyvek voltak. Anyám vette nekem az első számítógépemet is 1982-ben, bár ő maga technofóbiás, a saját állítása szerint. Apám, Menelaos, építőmérnök, és 80 éves korában jelentette meg az első könyvét. Ő volt az, aki megtanított a logikus és analítikus gondolkodásra, valamint a műszaki tudományomk szeretetére. 
+
+Köszönet mindenkinek, aki segített nekem megtenni ezt az utat. 
+
+[[github_contrib]]
+==== Korai változat (Github segítők)
+
+Sok segítőtől kaptam megjegyzéseket, javításokat és bővítéseket a Github-on lévő korai kiadáshoz. Köszönet az összes segítségéert! A legjelesebb GitHub segítők a következők voltak (a GitHub azonosítójuk zárójelben látható):
+
+* Minh T. Nguyen, GitHub szerkesztő (enderminh)
+* Ed Eykholt (edeykholt)
+* Michalis Kargakis (kargakis)
+* Erik Wahlström (erikwam)
+* Richard Kiss (richardkiss)
+* Eric Winchell (winchell)
+* Sergej Kotliar (ziggamon)
+* Nagaraj Hubli (nagarajhubli)
+* ethers
+* Alex Waters (alexwaters)
+* Mihail Russu (MihailRussu)
+* Ish Ot Jr. (ishotjr)
+* James Addison (jayaddison)
+* Nekomata (nekomata-3)
+* Simon de la Rouviere (simondlr)
+* Chapman Shoop (belovachap)
+* Holger Schinzel (schinzelh)
+* effectsToCause (vericoin)
+* Stephan Oeste (Emzy)
+* Joe Bauers (joebauers)
+* Jason Bisterfeldt (jbisterfeldt)
+* Ed Leafe (EdLeafe)
