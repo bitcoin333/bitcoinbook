@@ -2,7 +2,7 @@
 [appendix]
 == A Script tranzakciós nyelv műveletei, konstansai és szimbólumai
 
-((("Script nyelv", id="ix_appdx-scriptops-asciidoc0", range="startofrange")))((("Script nyelv","fenntartott műveletek kódjai", id="ix_appdx-scriptops-asciidoc1", range="startofrange")))A <<tx_script_ops_table_pushdata>> azokat a műveletek mutatja, amelyekkel érték helyezhető a veremtárra.((("Script nyelv","push műveletek")))
+((("Script nyelv", id="ix_appdx-scriptops-asciidoc0", range="startofrange")))((("Script nyelv","fenntartott műveletek kódjai", id="ix_appdx-scriptops-asciidoc1", range="startofrange")))Az <<tx_script_ops_table_pushdata>> azokat a műveletek mutatja, amelyekkel érték helyezhető a veremtárra.((("Script nyelv","push műveletek")))
 
 [[tx_script_ops_table_pushdata]]
 .Érték elhelyezése a veremre
@@ -17,7 +17,7 @@
 | OP_1NEGATE | 0x4f | A „-1” érték tárolása a veremben
 | OP_RESERVED | 0x50 | Leállás – Érvénytelen tranzakció, kivéve, ha egy nem végrehajtott OP_IF ágban van
 | OP_1 or OP_TRUE| 0x51 | Az „1” érték tárolása a veremben
-| OP_2 to OP_16 | 0x52 to 0x60 |  Az OP_N esetén az „N” tárolása a veremben, Pl. az OP_2 a „2”-t tárolja
+| OP_2 to OP_16 | 0x52-0x60 |  Az OP_N esetén az „N” tárolása a veremben, Pl. az OP_2 a „2”-t tárolja
 |=======
 
 A <<tx_script_ops_table_control>> a feltételes vezérlésátadó műveleteket mutatja.((("Script nyelv","feltételes vezérlésátadó műveletek")))
@@ -153,7 +153,7 @@ A <<tx_script_ops_table_crypto>> a kriptográfiai műveleteket mutatja.((("Scrip
 | OP_CHECKMULTISIGVERIFY | 0xaf | U.a. mint a CHECKMULTISIG, de egy OP_VERIFY megállítja a végrehajtást, ha az eredmény nem TRUE
 |=======
 
-A <<tx_script_ops_table_nop>> az üres műveletet mutatja.((("Script language","üres művelet")))
+Az <<tx_script_ops_table_nop>> az üres műveletet mutatja.((("Script language","üres művelet")))
 
 [[tx_script_ops_table_nop]]
 .Üres műveletek
@@ -168,7 +168,7 @@ A <<tx_script_ops_table_nop>> az üres műveletet mutatja.((("Script language","
 <?hard-pagebreak?>
 ++++
 
-A <<tx_script_ops_table_internal>> az elemző belső működésére fenntartott műveleti kódokat mutatja.(((range="endofrange", startref="ix_appdx-scriptops-asciidoc1")))(((range="endofrange", startref="ix_appdx-scriptops-asciidoc0")))
+<<tx_script_ops_table_internal>> az elemző belső működésére fenntartott műveleti kódokat mutatja.(((range="endofrange", startref="ix_appdx-scriptops-asciidoc1")))(((range="endofrange", startref="ix_appdx-scriptops-asciidoc0")))
 
 [[tx_script_ops_table_internal]]
 .Az elemző belső működésére fenntartott műveleti kódok

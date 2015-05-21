@@ -48,7 +48,7 @@ Ez az ikon egy figyelmeztetést jelöl.
 
 A példák szemléltetésére Python, C++ és egy Unix-szerű operációs rendszer (Linux, Mac OSX) parancssorai szolgáltak. Az összes kódrészlet megtalálható a weben, és online módon is elérhető a https://github.com/aantonop/bitcoinbook[GitHub kódtár] URL címen, a főkönyvtár _code_ alkönyvtárában. A GitHub-ról töltse le a kódot, próbálja ki a példákat, vagy jelezze a hibákat. 
 
- A kódrészletek a legtöbb operációs rendszer alatt a megfelelő nyelvek installálásával, minimális munkával működőképessé tehetők. Ha szükségesnek láttuk, akkor megadtuk az instaláláshoz szükséges utasításokat és az utasítások lépésről lépésre történő végrehajtása során keletkező kimeneteket. 
+A kódrészletek a legtöbb operációs rendszer alatt a megfelelő nyelvek installálásával, minimális munkával működőképessé tehetők. Ha szükségesnek láttuk, akkor megadtuk az instaláláshoz szükséges utasításokat és az utasítások lépésről lépésre történő végrehajtása során keletkező kimeneteket. 
 
 Némelyik kódrészletet és kódrészlet kimenetet a nyomtatás érdekében újraformáztuk. Az összes ilyen esetben a sorokat egy "\" karakterrel választottuk el, melyet egy új sor karakter követ. A példák újbóli futtatásakor távolítsák el ezt a két karaktert és egyesítsék újra a sorokat, ekkor a példában szereplő eredménnyel egyező kimenetet fognak kapni. 
 
@@ -91,18 +91,18 @@ A könyvvel kapcsolatos megjegyzéseit és kérdéseit kérjük, küldje el a ki
 </simplelist>
 ++++
 
-A könyvnek van egy weblapja, ahol hibajegyzék, példák és további információk szerepelnek. A weblap a $$http://bit.ly/mastering_bitcoin$$[] címen érhető el.
+A könyvnek van egy weblapja, ahol hibajegyzék, példák és további információk szerepelnek. A weblap a $$http://bit.ly/mastering_bitcoin$$ címen érhető el.
 
 
 A könyvvel kapcsolatos megjegyzéseit vagy műszaki kérdéseit az alábbi címre küldheti: [<email>bookquestions@oreilly.com</email>].
 
-Könyveinkről, tanfolyamainkról, konferenciáinkról, híreinkről további információkat találhat a webhelyünkön: $$http://www.oreilly.com[].
+Könyveinkről, tanfolyamainkról, konferenciáinkról, híreinkről további információkat találhat a webhelyünkön: $$http://www.oreilly.com$$.
 
-Fent vagyunk a Facebook-on: $$http://facebook.com/oreilly$$[]
+Fent vagyunk a Facebook-on: $$http://facebook.com/oreilly$$
 
-Kövessen minket a Twitter-en: $$http://twitter.com/oreillymedia$$[]
+Kövessen minket a Twitter-en: $$http://twitter.com/oreillymedia$$
 
-Nézzen minket a YouTube-on: $$http://www.youtube.com/oreillymedia$$[]
+Nézzen minket a YouTube-on: $$http://www.youtube.com/oreillymedia$$
 
 
 === Köszönetnyilvánítások

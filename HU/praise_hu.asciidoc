@@ -1,22 +1,22 @@
 ["dedication", role="praise"]
 == A  "Bitcoin fejlesztőknek" című köny méltatása
 
-[idézet Gavin Andresen-től, a Bitcoin Foundation vezető fejlesztőjétől]
+[quote, Gavin Andresen, a Bitcoin Foundation vezető fejlesztője]
 ____
 "Mikor a nagyközönség előtt beszélek a bitcoinról, meg szokták kérdezni tőlem: 'de hogyan működik ez az egész?' Most már van egy jó válaszom erre a kérdésre, mert bárki, aki elolvassa a _Bitcoin fejlesztőknek_ című könyvet, mély ismeretekkel fog rendelkezni arról, hogy hogyan működik a bitcoin, és jó eszközökkel fog rendelkezni ahhoz, hogy megírhassa a digitális pénzekkel kapcsolatos bámulatos alkalmazások következő generációját."
 ____
 
-[idézet Naval Ravikant-tól, az AngelList társ alapítójától]
+[quote, Naval Ravikant, az AngelList társ alapítója]
 ____
 "A bitcoin és blokklánc technológiája  lesz az Internet következő generációjának az alapvető építő eleme. A Szilicium-völgy legjobb és legokosabb elméi dolgoznak rajta. Andreas könyve megkönnyíti Önöknek, hogy csatlakozni tudjanak a pénzügyi világ szoftver forradalmához." 
 ____
 
-[idézet Balaji S. Srinivasan-tól (@balajis), General Partner&#x2c; Andreessen Horowitz]
+[quote, Balaji S. Srinivasan (@balajis), General Partner&#x2c; Andreessen Horowitz]
 ____
 "A _Bitcoin fejlesztőknek_ a ma elérhető legjobb műszaki összefoglaló a bitcoinról. Visszatekintve, valószínűleg a bitcoint fogjuk az évtized legjelenetősebb technológiájának tartani. Emiatt a könyv minden fejlesztőnek feltétlenül szükséges, különösen azoknak, akik a bitcoin protokollra építve szeretnének alkalmazásokat létrehozni. Nagyon ajánlom ezt a könyvet."
 ____
 
-[idézet Roger Ver bitcoin vállalkozótól és befektetőtől]
+[quote, Roger Ver, bitcoin vállalkozó és befektető]
 ____
 Az az újítás, amit a bitcoin blokklánc jelent, egy teljesen új programozási platformot teremt, amely olyan széleskörű és változatos ökoszisztémát tesz majd lehetővé, mint maga az Internet. Kiváló gondolkódóként Andreas Antonopoulos tökéletes választás volt a könyv megírására."
 ____

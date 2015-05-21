@@ -8,7 +8,7 @@
 ----
 Használata: bx COMMAND [--help]
 
-Info: A bx parancsok a követketzők:
+Info: A bx parancsok a következők:
 
 address-decode
 address-embed
