@@ -2,7 +2,11 @@
 
 = Bitcoin fejlesztőknek
 
+include::praise_hu.asciidoc[]
+
 include::preface_hu.asciidoc[]
+
+include::glossary_hu.asciidoc[]
 
 include::ch01_hu.asciidoc[]
 
@@ -21,3 +25,17 @@ include::ch07_hu.asciidoc[]
 include::ch08_hu.asciidoc[]
 
 include::ch09_hu.asciidoc[]
+
+include::ch10_hu.asciidoc[]
+
+include::appdx-scriptops_hu.asciidoc[]
+
+include::appdx-bips_hu.asciidoc[]
+
+include::appdx-pycoin_hu.asciidoc[]
+
+include::appdx-bx_hu.asciidoc[]
+
+include::index_hu.asciidoc[]
+
+include::colo_hu.asciidoc[]

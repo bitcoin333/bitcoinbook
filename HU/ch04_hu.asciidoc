@@ -131,7 +131,7 @@ vagy
 
 A _mod p_ (p prímszám szerinti modulus) azt jelzi, hogy egy _p_ rendszámú véges mező fölött definiált görbéről van szó, ami úgy is írható, hogy latexmath:[\(\mathbb{F}_p\)], ahol p = 2^256^ - 2^32^ - 2^9^ – 2^8^ -2^7^ - 2^6^ – 2^4^ -1, egy nagyon nagy prímszám. 
 
-Mivel ez a görbe a valós számok halmaza helyett egy prím rendszámú véges mező fölött lett definiálva, úgy néz ki, mint két dimenzióban szétszórt pontok halmaza, ami nagyon nehézzé teszi a megjelenítését. A matematikája azonban megegyezik a fenti, valós számok fölött definiált elliptikus görbéével. Például lent ugyanez az <<ecc-over-F17-math>> elliptikus görbe látható egy sokkal kisebb, 17 rendszámú véges mező fölött, ahol a pont-minták egy rácson lettek megjelenítve. A bitcoin +secp256k1+ elliptikus görbéje úgy képzelhető el, mint egy sokkal összetettebb pontminta, egy mérhetetetlenül nagy rácson. 
+Mivel ez a görbe a valós számok halmaza helyett egy prím rendszámú véges mező fölött lett definiálva, úgy néz ki, mint két dimenzióban szétszórt pontok halmaza, ami nagyon nehézzé teszi a megjelenítését. A matematikája azonban megegyezik a fenti, valós számok fölött definiált elliptikus görbéével. Például lent ugyanez a <<ecc-over-F17-math>> elliptikus görbe látható egy sokkal kisebb, 17 rendszámú véges mező fölött, ahol a pont-minták egy rácson lettek megjelenítve. A bitcoin +secp256k1+ elliptikus görbéje úgy képzelhető el, mint egy sokkal összetettebb pontminta, egy mérhetetetlenül nagy rácson. 
 
 [[ecc-over-F17-math]]
 .Titkosítás elliptikus görbével: egy F(p) elliptikus görbe megjelenítése, p=17 esetén
@@ -212,7 +212,7 @@ y = 07CF33DA18BD734C600B96A72BBC4749D5141C90EC8AC328AE52DDFE2E505BDB
 
 Egy pont és egy egész szorzatának megjelenítésére egy egyszerűbb, valós számokon definiált elliptikus görbét fogjuk használni – a matematika ugyanaz. A célunk az, hogy előállítsuk a G generátor pont kG többszörösét. Ez ugyanaz, mint ha a G-t k-szor összeadnánk. Az elliptikus görbék esetén egy pont önmagával történő összeadása egyenértékű azzal, hogy egy értintőt húzunk az adott pontban, és megkeressük, hogy hol metszi az érintő a görbét, majd ezt a pontot tükrözzük az x-tengelyen. 
 
-A <<ecc_illustrated>> ábra a G, 2G, 4G előállításának folyamatát mutatja, a görbén végzettt geometriai műveletek formájában.
+Az <<ecc_illustrated>> ábra a G, 2G, 4G előállításának folyamatát mutatja, a görbén végzettt geometriai műveletek formájában.
 
 [TIP]
 ====
@@ -321,7 +321,7 @@ include::code/addr.cpp[]
 ----
 ====
 
-A kód egy előre definiált titkos kulcsot használ, emiatt minden egyes futásakor ugyanazt a címet hozza létre, amint azt a <<addr_example_run>> mutatja.(((range="endofrange", startref="ix_ch04-asciidoc12")))(((range="endofrange", startref="ix_ch04-asciidoc11")))(((range="endofrange", startref="ix_ch04-asciidoc10")))(((range="endofrange", startref="ix_ch04-asciidoc9")))
+A kód egy előre definiált titkos kulcsot használ, emiatt minden egyes futásakor ugyanazt a címet hozza létre, amint azt <<addr_example_run>> mutatja.(((range="endofrange", startref="ix_ch04-asciidoc12")))(((range="endofrange", startref="ix_ch04-asciidoc11")))(((range="endofrange", startref="ix_ch04-asciidoc10")))(((range="endofrange", startref="ix_ch04-asciidoc9")))
 
 [[addr_example_run]]
 .A bitcoin címet előállító mintapélda lefordítása és futtatása
@@ -344,7 +344,7 @@ Cím: 1PRTTaJesdNovgne6Ehcdu1fpEdX7913CK
 [[priv_formats]]
 ===== Titkos kulcs formátumok
 
-((("privát kulcsok","formátum")))((("Bitcoin Explorer","titkos kulcsok formátumának módosítása")))Egy titkos kulcs számos különböző formátumban ábrázolható. Ezek mindegyike ugyanannak a 256-bites számnak felel meg. A <<table_4-2>> táblázatban a titkos kulcsok ábrázolására szolgáló három leggyakrabban használt formátum látható.
+((("privát kulcsok","formátum")))((("Bitcoin Explorer","titkos kulcsok formátumának módosítása")))Egy titkos kulcs számos különböző formátumban ábrázolható. Ezek mindegyike ugyanannak a 256-bites számnak felel meg. Az <<table_4-2>> táblázatban a titkos kulcsok ábrázolására szolgáló három leggyakrabban használt formátum látható.
 
 [[table_4-2]]
 .Egy titkos kulcs ábrázolási módjai (kódolási formátumok)
@@ -445,7 +445,7 @@ y = 07CF33DA18BD734C600B96A72BBC4749D5141C90EC8AC328AE52DDFE2E505BDB
 Ugyanez a nyilvános kulcs egy 520-bites számként (130 hexa számjegyként), a +04+ előtaggal, melyet az +x+ és az +y+ koordináta követ:
 
 ----
-K = 04F028892BAD7ED57D2FB57BF33081D5CFCF6F9ED3D3D7F159C2E2FFF579DC341A<?pdf-cr?>07CF33DA18BD734C600B96A72BBC4749D5141C90EC8AC328AE52DDFE2E505BDB
+K = 04F028892BAD7ED57D2FB57BF33081D5CFCF6F9ED3D3D7F159C2E2FFF579DC341A07CF33DA18BD734C600B96A72BBC4749D5141C90EC8AC328AE52DDFE2E505BDB
 ----
 
 [[comp_pub]]
@@ -455,7 +455,7 @@ pass:[<?dbhtml orphans="4"?>]A tömörített nyilvános kulcsokat azért vezett�
 
 Amint azt a <<pubkey>> részben láttuk, a nyilvános kulcs egy (x,y) pont az elliptikus görbén. Mivel a görbe egy matematikai függvénynek felel meg, a görbén lévő pont a görbe egyenletének egy megoldását jelenti. Ezért ha ismerjük az _x_-koordinátát, akkor az _y_-koordinátát az y^2^ mod p = (x^3^ + 7) mod p egyenlet megoldásával számíthatjuk ki. Ez lehetővé teszi, hogy a nyilvános kulcsban csak az _x_-koordinátáját tároljuk, és elhagyhassuk az _y_-koordinátát. Ily módon 256 bittel csökkenthető a tároláshoz szükséges hely. Ezzel  majdnem 50%-kal csökken minden tranzakció mérete, ami idővel nagyon nagy helymegtakarításhoz vezet.
 
-Míg a nem tömörített nyilvános kulcsoknak +04+ az előtagja, a  ((("Wallet Import Format (WIF)","tömörített kulcsoknál")))tömörített kulcsok +02+-vel vagy +03+-mal kezdődnek. Vizsgáljuk meg, miért van két lehetséges előtag! Mivel az egyenlet bal oldalán y^2^ áll, az y megoldás pozitív vagy negatív lehet. Képileg ez azt jelenti, hogy az _y_-koordináta az _x_-tengely felett vagy az _x_-tengely alatt lehet. Amint azt az elliptikus görbe <<ecc-curve>> ábrázolásán láthatjuk, a görbe szimmetrikus, ami azt jelenti, hogy az x-tengelyre tükrös. Emiatt, ha el is hagyhatjuk az _y_ koordinátát, az y _előjelét_ (pozitív vagy negatív) tárolnunk kell, más szóval, tudnunk kell, hogy az x-tengely felett vagy alatt volt-e, mivel mindkét lehetőséghez egy különböző pont és egy különböző nyilvános kulcs tartozik. Ha az elliptikus görbét a p-rendű véges mezőn számítjuk ki, az _y_ koodináta páros vagy páratlan lehet, ami megfelel a fenti pozitív vagy negatív előjelnek. Ezért aztán ha szeretnénk megkülönböztetni az y lehetséges értékeit, akkor a tömörített nyilvános kulcsot +02+ előtaggal tároljuk, ha az +y+ páros, és +03+-mal, ha páratlan, ami lehetővé teszi, hogy egy program az _x_-koordinátából helyesen meg tudja állapítani az _y_-koordináta értékét, és a tömörített nyilvános kulcsból a pont mindkét koordinátáját előállítsa . A nyilvános kulcs tömörítését a <<pubkey_compression>> szemlélteti. 
+Míg a nem tömörített nyilvános kulcsoknak +04+ az előtagja, a  ((("Wallet Import Format (WIF)","tömörített kulcsoknál")))tömörített kulcsok +02+-vel vagy +03+-mal kezdődnek. Vizsgáljuk meg, miért van két lehetséges előtag! Mivel az egyenlet bal oldalán y^2^ áll, az y megoldás pozitív vagy negatív lehet. Képileg ez azt jelenti, hogy az _y_-koordináta az _x_-tengely felett vagy az _x_-tengely alatt lehet. Amint azt az <<ecc-curve>> ábrázolásán láthatjuk, a görbe szimmetrikus, ami azt jelenti, hogy az x-tengelyre tükrös. Emiatt, ha el is hagyhatjuk az _y_ koordinátát, az y _előjelét_ (pozitív vagy negatív) tárolnunk kell, más szóval, tudnunk kell, hogy az x-tengely felett vagy alatt volt-e, mivel mindkét lehetőséghez egy különböző pont és egy különböző nyilvános kulcs tartozik. Ha az elliptikus görbét a p-rendű véges mezőn számítjuk ki, az _y_ koodináta páros vagy páratlan lehet, ami megfelel a fenti pozitív vagy negatív előjelnek. Ezért aztán ha szeretnénk megkülönböztetni az y lehetséges értékeit, akkor a tömörített nyilvános kulcsot +02+ előtaggal tároljuk, ha az +y+ páros, és +03+-mal, ha páratlan, ami lehetővé teszi, hogy egy program az _x_-koordinátából helyesen meg tudja állapítani az _y_-koordináta értékét, és a tömörített nyilvános kulcsból a pont mindkét koordinátáját előállítsa . A nyilvános kulcs tömörítését <<pubkey_compression>> szemlélteti. 
 
 [[pubkey_compression]]
 .A nyilvános kulcs tömörítése
@@ -536,7 +536,7 @@ Public Key (x,y) coordinates is:
  (41637322786646325214887832269588396900663353932545912953362782457239403430124L, 
  16388935128781238405526710466724741593761085120864331449066658622400339362166L)
 Public Key (hex) is: 
- 045c0de3b9c8ab18dd04e3511243ec2952002dbfadc864b9628910169d9b9b00ec<?pdf-cr?>243bcefdd4347074d44bd7356d6a53c495737dd96295e2a9374bf5f02ebfc176
+ 045c0de3b9c8ab18dd04e3511243ec2952002dbfadc864b9628910169d9b9b00ec243bcefdd4347074d44bd7356d6a53c495737dd96295e2a9374bf5f02ebfc176
 Compressed Public Key (hex) is: 
  025c0de3b9c8ab18dd04e3511243ec2952002dbfadc864b9628910169d9b9b00ec
 Bitcoin Address (b58check) is: 
@@ -702,7 +702,7 @@ A lánckódot arra a célra szolgál, hogy az eljárásba látszólag véletlen 
 
 A fenti három tétel összekapcsolása és hash-elése a következőképpen történik:
 
-A szülő nyilvános kulcsának, lánckódjának és indexszámának összefűzése után a HMAC-SHA512 algoritmussal egy 512 bites hash-t állítanak elő. Ezt a hash értéket két részre vágják. A hash jobb oldali 256 bitje lesz a leszármazott lánckódja. A hash bal oldali 256 bitjét és az indexszámot hozzáadják a szülő titkos kulcsához, és így létrejön a leszármazott titkos kulcsa. A  <<CKDpriv>> bemutatja, hogy az index 0-ra állításával hogyan lehet a szülő 0-ik (index szerint első) leszármaztatott kulcsát előállítani.
+A szülő nyilvános kulcsának, lánckódjának és indexszámának összefűzése után a HMAC-SHA512 algoritmussal egy 512 bites hash-t állítanak elő. Ezt a hash értéket két részre vágják. A hash jobb oldali 256 bitje lesz a leszármazott lánckódja. A hash bal oldali 256 bitjét és az indexszámot hozzáadják a szülő titkos kulcsához, és így létrejön a leszármazott titkos kulcsa. <<CKDpriv>> bemutatja, hogy az index 0-ra állításával hogyan lehet a szülő 0-ik (index szerint első) leszármaztatott kulcsát előállítani.
 
 [[CKDpriv]]
 .A szülő titkos kulcsának kiterjesztésével a gyermek titkos kulcsának előállítása
@@ -727,7 +727,7 @@ A gyermek kulcs, a hozzá tartozó nyilvános kulcs és a bitcoin cím megkülö
 
 ((("kiterjesztett kulcsok")))((("hierarchikus determinisztikus pénztárcák (HD pénztárcák)","kiterjeztett kulcsok")))((("kulcsok","kiterjesztett")))Mint azt már korábban láttuk, a kulcs származtatást végző függvényekkel a fa bármelyik szintjén új leszármazottak (gyermekek) állítható elő. Ehhez három bemenetre van szükség: a kulcsra, a lánckódra, és a kívánt leszármazott indexére. Ezek közül a két legfontosabb a kulcs és a lánckód, és ezeket egy _kiterjesztett kulcsba_ szokták összevonni. A "kiterjesztett kulcs" elnevezés "kibővíthető kulcsot" is jelent, mivel az ilyen kulcsokkal gyermekek állítható elő. 
 
-A kiterjesztett kulcsok a 256 bites kulcs és a 256 bites lánckód összefűzése révén, egy 512 bites értékkel ábrázolhatók. Kétféle kiterjesztett kulcs van. A kiterjesztett titkos kulcs a titkos kulcs és a lánckód összefűzéséből áll, és a leszármazottak titkos kulcsainak (ezekből pedig a nyilvános kulcsainak) az előállítására használható. A kiterjesztett nyilvános kulcs a nyilvános kulcsból és a lánckódból áll, és a leszármazottak nyilvános kulcsai állíthatók elő vele, amint azt a <<public_key_derivation>> részben leírtuk.
+A kiterjesztett kulcsok a 256 bites kulcs és a 256 bites lánckód összefűzése révén, egy 512 bites értékkel ábrázolhatók. Kétféle kiterjesztett kulcs van. A kiterjesztett titkos kulcs a titkos kulcs és a lánckód összefűzéséből áll, és a leszármazottak titkos kulcsainak (ezekből pedig a nyilvános kulcsainak) az előállítására használható. A kiterjesztett nyilvános kulcs a nyilvános kulcsból és a lánckódból áll, és a leszármazottak nyilvános kulcsai állíthatók elő vele, amint azt az <<public_key_derivation>> részben leírtuk.
 
 A kiterjesztett titkos kulcsot úgya képzelhetjük el,  mint a HD pénztárca fa szerkezetének a gyökerét. A gyökér ismeretében a többi ág levezethető. A kiterjesztett titkos kulcccsal egy teljes ág előállítható, míg a kiterjesztett nyilvános kulccsal egy teljes ág nyilvános kulcsai.
 
@@ -762,7 +762,7 @@ A kiterjesztett nyilvános kulcsből tehát a HD pénztárca egy ágának az ös
 
 ((("e-kereskedelem szerverei, kulcsok ~ számára")))((("bevásárló kosarak, nyilvános kulcsok ~ számára")))Ennek a megoldásnak az egyik gyakori alkalmazása az, hogy a kiterjesztett nyilvános kulcsot egy web szerveren installálják, amely egy e-kereskedelmi alkalmazást szolgál ki. A web szerver a leszármaztató függvénnyel képes minden tranzakció számára (pl. egy ügyfél bevásárló kosara számára) új bitcoin cím előállítására. A web szerveren nem lesz egyetlen egy titkos kulcs sem, mert azt ellophatják. A HD pénztárcák nélkül csak úgy lehetne bitcoin címek ezreit előállítani, hogy a címeket egy másik, biztonságos szerveren állítják elő, majd betöltik őket az e-kereskedelmi alkalmazásba. Ez sok bonyodalommal járna, és állandó karbantartást igényelne, mert biztosítani kellene, hogy az e-kereskedelmi alkalmazás soha "ne fusson ki" a kulcsokból.
 
-((("hideg pénztárcák","leszármazottak nyilvános kulcsai és")))((("hardver pénztárcák","a gyermek kulcsok leszármaztatására szolgáló függvények és")))A megoldás egy másik gyakori alkalmazását a hideg tárolók vagy a hardver pénztárcák jelentik. Ebben az esetben a kiterjesztett titkos kulcsot egy papír pénztárca vagy egy hardver pénztárca tárolja, ilyen pl. a ((("Trezor pénztárca","nyilvános kulcsok leszármaztatása és")))Terzor harver pénztárca, míg a kiterjesztett nyilvános kulcsot online tartják. A felhasználó tetszés szerint tud "fogadó" címeket létrehozni, míg a titkos kulcsok biztonságos módon, offline vannak tárolva. Az összegek elköltéséhez az szükséges, hogy a felhasználó a kiterjesztett titkos kulccsal egy offline bitcoin kliensben vagy egy hardver eszközzel (pl. a Trezorral) aláírja a tranzakciót. A <<CKDpub>> szemlélteti, hogyan lehetséges a szülő nyilvános kulcs kiterjesztésével a gyermek kulcsok levezetése. 
+((("hideg pénztárcák","leszármazottak nyilvános kulcsai és")))((("hardver pénztárcák","a gyermek kulcsok leszármaztatására szolgáló függvények és")))A megoldás egy másik gyakori alkalmazását a hideg tárolók vagy a hardver pénztárcák jelentik. Ebben az esetben a kiterjesztett titkos kulcsot egy papír pénztárca vagy egy hardver pénztárca tárolja, ilyen pl. a ((("Trezor pénztárca","nyilvános kulcsok leszármaztatása és")))Terzor harver pénztárca, míg a kiterjesztett nyilvános kulcsot online tartják. A felhasználó tetszés szerint tud "fogadó" címeket létrehozni, míg a titkos kulcsok biztonságos módon, offline vannak tárolva. Az összegek elköltéséhez az szükséges, hogy a felhasználó a kiterjesztett titkos kulccsal egy offline bitcoin kliensben vagy egy hardver eszközzel (pl. a Trezorral) aláírja a tranzakciót. <<CKDpub>> szemlélteti, hogyan lehetséges a szülő nyilvános kulcs kiterjesztésével a gyermek kulcsok levezetése. 
 
 [[CKDpub]]
 .A szülő nyilvános kulcs kiterjesztése gyermek kulcsok levezetése céljából
@@ -889,7 +889,7 @@ A <<table_4-10>> táblázatban látható kódolt kulcsok a ((("bitaddress.org"))
 
 A „3”-mal kezdődő bitcoin címek fizetés-script-hashnek (P2SH) bitcoin címek, melyeket néha hibásan több aláírást megkövetelő, vagy multi-sig címeknek hívnak. A bitcoin tranzakció kedvezményezettjét a script hash-ével, nem pedig a nyilvános kulcs tulajdonosával adják meg. Ezt az újítást 2012. januárjában, a BIP0016 keretében vezették be (lásd <<bip0016>>). Az újítás széles körben elterjedt, mert lehetővé teszi, hogy magához a címhez legyen hozzárendelve valamilyen funkcionalitás. A hagyományos, „1” kezdetű bitcoin címeket használó tranzakciók neve ((("BIP0016")))((("Pay-to-Public-Key-Hash (P2PKH)")))fizetés-nyilvános-kulcs-hashnek (P2PKH, pay-to-public-key-hash). Ezekkel a hagyományos tranzakciókkal szemben, a „3” kezdetű címekre küldött pénzek esetében nem csak egy nyilvános kulcs hashének bemutatására és a tulajdonjogot bizonyító, titkos kulccsal történő aláírására van szükség. A követelmények meghatározása a cím létrehozásakor történik. A cím a hozzá tartozó összes bemenetet ugyanolyan módon korlátozza.
     
-A fizetés-script-hashnek címet egy tranzakciós scriptből hozzák létre. Ez a tranzakció határozza meg, hogy ki költheti el a tranzakció kimenetét (részletesebben lásd a<<p2sh>> részt). A fizetés-scrip-hashnek cím kódolásához ugyanúgy a kettős hash függvényt kell használni, mint a hagyományos bitcoin címeknél, de a nyilvános kulcs helyett a scripten kell a műveletet elvégezni:
+A fizetés-script-hashnek címet egy tranzakciós scriptből hozzák létre. Ez a tranzakció határozza meg, hogy ki költheti el a tranzakció kimenetét (részletesebben lásd a <<p2sh>> részt). A fizetés-scrip-hashnek cím kódolásához ugyanúgy a kettős hash függvényt kell használni, mint a hagyományos bitcoin címeknél, de a nyilvános kulcs helyett a scripten kell a műveletet elvégezni:
     
 ----
 script hash = RIPEMD160(SHA256(script))
@@ -924,7 +924,7 @@ Az <<ch01_intro_what_is_bitcoin>> fejezetben találkoztunk Eugéniával, aki egy
 
 ===== Kérkedő címek előállítása
 
-((("kérkedő címek","előállítása", id="ix_ch04-asciidoc28", range="startofrange")))Fontos megértenünk, hogy a bitcoin cím egyszerűen csak egy szám, amely az Base-58 ábécé szimbólumaival van ábrázolva. Az „1Kids” minta keresése az +1Kids11111111111111111111111111111+ és az +1Kidszzzzzzzzzzzzzzzzzzzzzzzzzzzzz+ között történhet. Kb. 58^29^ (kb. 1.4 * 10^51^) ilyen cím van ebben a tartományban, és ezek mindegyike úgy kezdődik, hogy „1Kids”. A <<table_4-11>> táblázatban látható az „1Kids” kezdető címek címtartománya.
+((("kérkedő címek","előállítása", id="ix_ch04-asciidoc28", range="startofrange")))Fontos megértenünk, hogy a bitcoin cím egyszerűen csak egy szám, amely az Base-58 ábécé szimbólumaival van ábrázolva. Az „1Kids” minta keresése az +1Kids11111111111111111111111111111+ és az +1Kidszzzzzzzzzzzzzzzzzzzzzzzzzzzzz+ között történhet. Kb. 58^29^ (kb. 1.4 * 10^51^) ilyen cím van ebben a tartományban, és ezek mindegyike úgy kezdődik, hogy „1Kids”. <<table_4-11>> táblázatban látható az „1Kids” kezdető címek címtartománya.
 
 [[table_4-11]]
 .Az „1Kids” kezdetű kérkedő címek tartománya 

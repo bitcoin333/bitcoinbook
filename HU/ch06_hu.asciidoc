@@ -14,7 +14,7 @@ A Bitcoin P2P hálózati felépítése sokkal több, mint topológia kérdése. 
 ((("bitcoin hálózat","csomópontok")))((("csomópontok","szerepei")))((("csomópontok","típusai")))Noha a bitcoin P2P hálózatában lévő csomópontok egyenértékűek, de attól függően, hogy milyen működési módokat támogatnak, különböző „szerepeket” játszhatnak. Egy bitcoin csomópont a következő funkciókat valósíthatja meg: routing, blokklánc adatbázis, bányászat, pénztárca szolgáltatások. Lent a <<full_node_reference>> ábrán egy teljes csomópont látható, mely mind a négy funkciót támogatja:
 
 [[full_node_reference]]
-. Egy bitcoin hálózati csomópont, amely mind a négy funkcióval rendelkezik: hálózati router, blokklánc adatbázis, bányászat és pénztárca (pénztárca, bányász, teljes blokklánc, hálózati router csomópont)
+.Egy bitcoin hálózati csomópont, amely mind a négy funkcióval rendelkezik: hálózati router, blokklánc adatbázis, bányászat és pénztárca (pénztárca, bányász, teljes blokklánc, hálózati router csomópont)
 image::images/msbt_0601.png["FullNodeReferenceClient_Small"]
 
 A hálózat összes csomópontja tartalmazza a router funkciót, hogy a csomópont részt vehessen a hálózatban. A csomópontok egyéb funkciókat is tartalmazhatnak. Valamennyi csomópont ellenőrzi és továbbítja a tranzakciókat és blokkokat, valamint összeköttetéseket hoz létre és tart fönn a többi hálózati csomóponttal. A fenti <<full_node_reference>> teljes csomópont esetében a router funkciót egy „Hálózati router csomópont” feliratú sárga kör jelzi. 
@@ -49,7 +49,7 @@ image::images/msbt_0603.png["BitcoinNetwork"]
 
 ((("bitcoin hálózat","felderítése", id="ix_ch06-asciidoc1", range="startofrange")))((("hálózat felderítés", id="ix_ch06-asciidoc2", range="startofrange")))((("csomópontok","hálózat felderítés és", id="ix_ch06-asciidoc3", range="startofrange")))((("peer-to-peer hálózatok","felderítése új csomópontok által", id="ix_ch06-asciidoc4", range="startofrange")))Ahhoz, hogy egy új csomópont részt tudjon venni a hálózatban, a csomópontnak az indulásakor fel kell derítenie, hogy milyen más csomópontok vannak a hálózatban. A folyamat beindításához az új csomópontnak fel kell derítenie a hálózat legalább egy létező csomópontját, és kapcsolódnia kell hozzá. A csomópontok földrajzi elhelyezkedése lényegtelen, a bitcoin hálózat topológiáját nem a földrajzi hely határozza meg. Ezért a csomópont véletlenszerűen, bármelyik létező bitcoin csomópontot választhatja. 
 
-((("peer-to-peer hálózatok","összeköttetései")))A csomópontok egy ismert peer-hez TCP összeköttetéssel kapcsolódnak, általában a 8333-as porton (amely a bitcoin „jól ismert” portja), vagy egy alternatív porton, ha megadtak ilyet. Az összeköttetés létrejötte után a csomópont a version (verzió) üzenet elküldésével egy „kézfogást” indít, lásd a <<network_handshake>> ábrát. A +version+ üzenet azonosító adatokat tartalmaz. Ezek a következők:
+((("peer-to-peer hálózatok","összeköttetései")))A csomópontok egy ismert peer-hez TCP összeköttetéssel kapcsolódnak, általában a 8333-as porton (amely a bitcoin „jól ismert” portja), vagy egy alternatív porton, ha megadtak ilyet. Az összeköttetés létrejötte után a csomópont a version (verzió) üzenet elküldésével egy „kézfogást” indít, lásd <<network_handshake>> ábrát. A +version+ üzenet azonosító adatokat tartalmaz. Ezek a következők:
 
 * +PROTOCOL_VERSION+:: a kliens által „beszélt” protokoll verzióját definiáló konstans (pl. 70002)
 * +nLocalServices+::, a csomópont által támogatott helyi szolgáltatások listája, jelenleg csupán a +NODE_NETWORK+ (hálózati csomópont) az egyetlen eleme

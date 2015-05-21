@@ -103,7 +103,7 @@ Ebben a könyvben sokféle bitcoin kliens használatát fogjuk szemléltetni, a 
 
 ==== Gyors elindulás
 
-((("bitcoin","pénztárca installálása")))((("pénztárcák","installálás")))Alice, akit a <<user-stories>> részben ismerhettünk meg, nem műszaki felhasználó, és csak nemrég hallott a bitcoinról egy barátjától. Úgy kezdi meg az ismerkedést a bitcoinnal, hogy meglátogatja a ((("bitcoin.org"))) http://www.bitcoin.org[bitcoin.org] webhelyet. Itt a bitcoin kliensek széles választéka található meg. A bitcoin.org webhelyen lévő tanácsnak megfelelően a ((("Multibit kliens")) Multibit pehelysúlyú klienst választja. 
+((("bitcoin","pénztárca installálása")))((("pénztárcák","installálás")))Alice, akit <<user-stories>> részben ismerhettünk meg, nem műszaki felhasználó, és csak nemrég hallott a bitcoinról egy barátjától. Úgy kezdi meg az ismerkedést a bitcoinnal, hogy meglátogatja a ((("bitcoin.org"))) http://www.bitcoin.org[bitcoin.org] webhelyet. Itt a bitcoin kliensek széles választéka található meg. A bitcoin.org webhelyen lévő tanácsnak megfelelően a ((("Multibit kliens")) Multibit pehelysúlyú klienst választja. 
 
 Alice a bitcoin.org webhelyen lévő hivatkozáson keresztül letölti a Multibitet az asztali gépére. A Multibit Windows, Mac és Linux számítógépen használható.
 
@@ -112,13 +112,13 @@ Alice a bitcoin.org webhelyen lévő hivatkozáson keresztül letölti a Multibi
 ((("pénztárcák","biztonsága")))A bitcoin pénztárca létrehozásakor meg kell adni egy jelszót vagy jelmondatot, amely a pénztárca védelmére szolgál. Sok csibész próbálkozik a gyenge jelszavak feltörésével, ezért vigyázzon, hogy olyat válasszon, amelyet nem lehet könnyen feltörni. Használjon kis- és nagybetűkből, számokból és szimbólumokból álló kombinációt. Ne használjon személyes adatokat, pl. születési dátumokat, vagy focicsapatok nevét. Ne használjon szótárban előforduló szavakat. Ha teheti, használjon jelszó generátort, amely teljesen véletlenszerű jelszavakat állít elő. A jelszó hossza legalább 12 karakter legyen. Vésse az eszébe: a bitcoin pénz, és azonnal átutalható bárhová a világon. Kellő védelem hiányában a bitcoin könnyen ellopható.
 ====
 
-Miután Alice letöltötte és installálta a Multibit alkalmazást, elindítja azt. Egy "Üdvözlő" képernyő fogadja, amint az a <<multibit-welcome>> ábrán látható:
+Miután Alice letöltötte és installálta a Multibit alkalmazást, elindítja azt. Egy "Üdvözlő" képernyő fogadja, amint az <<multibit-welcome>> ábrán látható:
 
 [[multibit-welcome]]
 .A Multibit bitcoin kliens üdvözlő képernyője
 image::images/msbt_0101.png["MultibitWelcome"]
 
-((("címek, bitcoin","Multibit által létrehozott")))A Multibit automatikusan egy új pénztárcát és egy új bitcoin címet hoz létre Alice számára. Az új cím "Request" fülre történő kattintással tekinthető meg, amint azt a  <<multibit-request>> ábra mutatja,
+((("címek, bitcoin","Multibit által létrehozott")))A Multibit automatikusan egy új pénztárcát és egy új bitcoin címet hoz létre Alice számára. Az új cím "Request" fülre történő kattintással tekinthető meg, amint azt az <<multibit-request>> ábra mutatja.
 [[multibit-request]]
 .Alice új bitcoin címe, a Multibit kliens "Request" fülén
 image::images/msbt_0102.png["MultibitReceive"]
@@ -151,7 +151,7 @@ Egy új felhasználó négy másik módszerret tud még bitcoint szerezni:
 * ((("bitcoin, vétele pénzért")))Keres egy barátot, akinek van bitcoinja, és közvetlenül tőle vesz. Sok bitcoin felhasználó kezdte így. 
 * A localbitcoins.com-hoz hasonló szolgáltatással keres egy területileg közeli eladót, akitől személyes tranzakció során, pénzért veszi meg a bitcoint. 
 *  Valamilyen árut vagy szolgáltatást ad el bitcoinért. Egy programozó a programozói tudását tudja így értékesíteni. 
-* Keres egy ((("ATM-ek, bitcoin")))((("bitcoin ATM-ek"))) bitcoin ATM-et. A bitcoin ATM-ek térképe a http://www.coindesk.com/bitcoin-atm-map/[CoinDesk]. helyen található.
+* Keres egy ((("ATM-ek, bitcoin")))((("bitcoin ATM-ek"))) bitcoin ATM-et. A bitcoin ATM-ek térképe a http://www.coindesk.com/bitcoin-atm-map/[CoinDesk] helyen található.
 
 Alice-t a barátja ismertette meg a bitcoinnal, ezért Alice könnyen hozzájutott az első bitcoinjához, miközben arra várt, hogy a californiai pénzváltóban ellenőrizzék és aktíválják a számláját. 
 
@@ -177,7 +177,7 @@ image::images/msbt_0103.png["zeroblock screenshot"]
 	
 A fenti alkalmazások vagy webhelyek valamelyikével Joe meghatározza a bitcoin árát, amely történetesen kb. 100 US dollár / bitcoin. Ilyen árfolyamon 0.10 bitcoint (100 milliBitet) kell Alice-nak elküldenie azért a 10 dollárért, amit tőle kapott. 
 
-Miután Joe megállapította a helyes átváltási árat, megnyitja a mobil pénztárca programját, és a bitcoin „küldés”-t választja. Például, ha a Blockchain mobil pénztárcát használja egy Android telefonon, akkor egy olyan képernyő jelenik meg, melynek két bemenő mezője van, amint azt  <<blockchain-mobile-send>> mutatja:
+Miután Joe megállapította a helyes átváltási árat, megnyitja a mobil pénztárca programját, és a bitcoin „küldés”-t választja. Például, ha a Blockchain mobil pénztárcát használja egy Android telefonon, akkor egy olyan képernyő jelenik meg, melynek két bemenő mezője van, amint azt a <<blockchain-mobile-send>> mutatja:
 
 * a tranzakció címzettjének bitcoin címe
 * a küldendő bitcoin-ok mennyisége
