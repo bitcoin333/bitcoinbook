@@ -519,7 +519,7 @@ $ bitcoin-cli getnewaddress
 1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL
 ----
 
-Ennek a címnek a használatával küldjünk egy kis bitcoint egy külső pénztárcából a bitcoind pénztárcánkba (ha már van némi bitcoinunk egy pénzváltóban, egy web-es pénztárcában vagy egy másik bitcoind pénztárcában). Példánkban 50 millibitcoint (0.050 bitcoint) fogunk küldeni a fent visszaadott címre. 
+Ennek a címnek a használatával küldjünk egy kis bitcoint egy külső pénztárcából a bitcoind pénztárcánkba (ha már van némi bitcoinunk egy pénzváltóban, egy web-es pénztárcában vagy egy másik bitcoind pénztárcában). Példánkban 50 mBTC-t (0.050 bitcoint) fogunk küldeni a fent visszaadott címre. 
 
 Ezután lekérdezhetjük a bitcoind klienstől, hogy mennyi pénz jött erre a címre, és megadhatjuk, hogy hány darab megerősítésre van szükség ahhoz, hogy a pénzt beszámítsa az egyenlegbe. Példánkban nulla megerősítést fogunk megadni. Néhány másodperccel azt követően, hogy a másik pénztárcából elküldtük a bitcoint, már látjuk, hogy megjelent a pénztárcában. A +getreceivedbyaddress+ parancsot fogjuk használni a fenti címmel, és nulla (0) megerősítési számmal:
 
@@ -641,7 +641,7 @@ $ bitcoin-cli getrawtransaction 9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66
 0100000001d717279515f88e2f56ce4e8a31e2ae3e9f00ba1d0add648e80c480ea22e0c7d3000000008b483045022100a4ebbeec83225dedead659bbde7da3d026c8b8e12e61a2df0dd0758e227383b302203301768ef878007e9ef7c304f70ffaf1f2c975b192d34c5b9b2ac1bd193dfba2014104793ac8a58ea751f9710e39aad2e296cc14daa44fa59248be58ede65e4c4b884ac5b5b6dede05ba84727e34c8fd3ee1d6929d7a44b6e111d41cc79e05dbfe5ceaffffffff02404b4c00000000001976a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac1f312906000000001976a914107b7086b31518935c8d28703d66d09b3623134388ac00000000
 ----
 
-Ennek a hexa stringnek a dekódolására a +decoderawtransaction+ parancs használható. Másoljuk a hexa stringet a +decoderawtransaction+ első paraméterének a helyébe, ha a teljes tartalmat JSON adatstruktúraként szeretnénk megjeleníteni (formattálási okok miatt a hexa string a lenti példában rövidítve szerepel):
+Ennek a hexa stringnek a dekódolására a +decoderawtransaction+ parancs használható. A teljes tartalom JSON adatstruktúraként történő megjeleníteni másoljuk a hexa stringet a +decoderawtransaction+ első paraméterének a helyébe:
 
 ----
 $ bitcoin-cli decoderawtransaction 0100000001d717279515f88e2f56ce4e8a31e2ae3e9f00ba1d0add648e80c480ea22e0c7d3000000008b483045022100a4ebbeec83225dedead659bbde7da3d026c8b8e12e61a2df0dd0758e227383b302203301768ef878007e9ef7c304f70ffaf1f2c975b192d34c5b9b2ac1bd193dfba2014104793ac8a58ea751f9710e39aad2e296cc14daa44fa59248be58ede65e4c4b884ac5b5b6dede05ba84727e34c8fd3ee1d6929d7a44b6e111d41cc79e05dbfe5ceaffffffff02404b4c00000000001976a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac1f312906000000001976a914107b7086b31518935c8d28703d66d09b3623134388ac00000000
@@ -694,7 +694,7 @@ $ bitcoin-cli decoderawtransaction 0100000001d717279515f88e2f56ce4e8a31e2ae3e9f0
 }
 ----
 
-A tranzakció dekódolás a tranzakció összes részét, többek között a tranzakció bemeneteket és kimeneteket is megjeleníti. Ebben az esetben azt látjuk, hogy a tranzakció, amely 50 milliBitet írt jóvá az új címünkre, egy bemenetet és két kimenetet használt. A tranzakció bemenete egy előzőleg megerősített tranzakció kimenete volt (amely fent a +d3c7+ kezdetű vin txid-ként szerepel). A két kiemenet megfelel az 50 milliBit jóváírásnak és a visszajáró pénznek. 
+A tranzakció dekódolás a tranzakció összes részét, többek között a tranzakció bemeneteket és kimeneteket is megjeleníti. Ebben az esetben azt látjuk, hogy a tranzakció, amely 50 mBTC-t írt jóvá az új címünkre, egy bemenetet és két kimenetet használt. A tranzakció bemenete egy előzőleg megerősített tranzakció kimenete volt (amely fent a +d3c7+ kezdetű vin txid-ként szerepel). A két kiemenet megfelel az 50 mBTC jóváírásnak és a visszajáró pénznek. 
 
 A blokkláncot tovább tudjuk vizsgálni, ha ugyanezzel a paranccsal (vagyis a +gettransaction+ paranccsal) a tranzakcióban szereplő előző tranzakciókat listázzuk ki.Tranzakcióról tranzakcióra lépve nyomon követhetjük a tranzakcióláncban, hogy az egyes tulajdonosok között  hogyan mozogtak az érmék. 
 
@@ -730,7 +730,7 @@ Az egyik új információ a +blockhash+, ami annak a blocknak a hashe (zanzája)
 [[txindex]]
 .A Tranzakciós Adatbázis Index és a  txindex opció
 ****
-((("tranzakciós adatbázis index")))Alapértelmezésben a Bitcoin Core által felépített adatbázis _kizárólag_ a felhasználó pénztárcájához tartozó tranzakciókat tartalmazza. Ha a +gettransaction+ paranccsal szeretnénk _akármelyik_ tranzakciót kilistázni, akkor a Bitcoin Core-t úgy kell beállítanunk, hogy egy teljes adatbázis indexet építsen föl, amely a ((("txindex opció (Bitcoin Core)"))) +txindex+ opcióval lehetséges. Állítsa be a +txindex=1+ opciót a Bitcoin Core konfigurációs állományában. (A konfigurációs állomány (általában) a felhasználó home könyvtrárában van, a _.bitcoin/bitcoin.conf_ állományban). A paraméter beállítását követően újra kell indítani a bitcoind-t és meg kell várni, amíg az index újra nem épül.(((range="endofrange", startref="ix_ch03-asciidoc30")))(((range="endofrange", startref="ix_ch03-asciidoc29")))(((range="endofrange", startref="ix_ch03-asciidoc28")))(((range="endofrange", startref="ix_ch03-asciidoc27")))(((range="endofrange", startref="ix_ch03-asciidoc26")))(((range="endofrange", startref="ix_ch03-asciidoc25")))(((range="endofrange", startref="ix_ch03-asciidoc24")))(((range="endofrange", startref="ix_ch03-asciidoc23"))) 
+((("tranzakciós adatbázis index")))Alapértelmezésben a Bitcoin Core által felépített adatbázis _kizárólag_ a felhasználó pénztárcájához tartozó tranzakciókat tartalmazza. Ha a +gettransaction+ paranccsal szeretnénk _akármelyik_ tranzakciót kilistázni, akkor a Bitcoin Core-t úgy kell beállítanunk, hogy egy teljes adatbázis indexet építsen föl, amely a ((("txindex opció (Bitcoin Core)"))) +txindex+ opcióval lehetséges. Állítsa be a +txindex=1+ opciót a Bitcoin Core konfigurációs állományában. (A konfigurációs állomány (általában) a felhasználó home könyvtárában van, a _.bitcoin/bitcoin.conf_ állományban). A paraméter beállítását követően újra kell indítani a bitcoind-t és meg kell várni az index újraépülését.(((range="endofrange", startref="ix_ch03-asciidoc30")))(((range="endofrange", startref="ix_ch03-asciidoc29")))(((range="endofrange", startref="ix_ch03-asciidoc28")))(((range="endofrange", startref="ix_ch03-asciidoc27")))(((range="endofrange", startref="ix_ch03-asciidoc26")))(((range="endofrange", startref="ix_ch03-asciidoc25")))(((range="endofrange", startref="ix_ch03-asciidoc24")))(((range="endofrange", startref="ix_ch03-asciidoc23"))) 
 ****
 
 ==== Blokkok vizsgálata
@@ -786,7 +786,7 @@ $ bitcoin-cli getblock 000000000000000051d2e759c63a26e247f185ecb7926ed7a6624bc31
 
 ----
 
-A blokk 367 db tranzakciót tartalmaz, és a 18. kilistázott tranzakció (+9ca8f9…+) az a txid (tranzakció azonosító), amely 50 milliBitet írt jóvá a címünkre. A +height+ sor szerint az adott blokk a 286384. blokk volt a blokkláncban. 
+A blokk 367 db tranzakciót tartalmaz, és a 18. kilistázott tranzakció (+9ca8f9…+) az a txid (tranzakció azonosító), amely 50 mBTC-t írt jóvá a címünkre. A +height+ sor szerint az adott blokk a 286384. blokk volt a blokkláncban. 
 
 Egy blokkot a magassága alapján a a +getblockhash+ paranccsal tudjuk elérni, a parancs paramétere a blokk magasság, és a blokkhoz tartozó blokk hash-t (zanzát) adja vissza:
 
@@ -854,9 +854,9 @@ $ bitcoin-cli listunspent
 ]
 ----
 
-Láthajuk, hogy a +9ca8f9…+ tranzakció létrehozott egy kimenetet (0 vout index-szel), amely az +1hvzSo…+ címhez van rendelve, a nagysága 50 milliBit, és már 7 megerősítést kaptunk róla. A tranzakciók az előzőleg létrehozott kimeneteket használják bemenetként oly módon, hogy a tranzakciókra az azonosítójukkal és vout indexükkel hivatkoznak. Most létre fogunk hozni egy tranzakciót, amely a bemenetén egy új címhez rendeli, és ezáltal elkölti a +9ca8f9…+ tranzakció azonosító (txid) 0-ik kimenetét. 
+Láthajuk, hogy a +9ca8f9…+ tranzakció létrehozott egy kimenetet (0 vout index-szel), amely az +1hvzSo…+ címhez van rendelve, a nagysága 50 mBTC, és már 7 megerősítést kaptunk róla. A tranzakciók az előzőleg létrehozott kimeneteket használják bemenetként oly módon, hogy a tranzakciókra az azonosítójukkal és vout indexükkel hivatkoznak. Most létre fogunk hozni egy tranzakciót, amely a bemenetén egy új címhez rendeli, és ezáltal elkölti a +9ca8f9…+ tranzakció azonosító (txid) 0-ik kimenetét. 
 
-Először vizsgáljuk meg részletesebben az adott kimentet. A +gettxout+ paranccsal a fenti elköltetlen kimenet részleteit irathatjuk ki. A tranzakciós kimenetekre mindig txid és vout alapján lehet hivatkozni, és ezeket a paramétereket adjuk meg a "gettxout+ -nak:
+Először vizsgáljuk meg részletesebben az adott kimentet. A +gettxout+ paranccsal a fenti elköltetlen kimenet részleteit irathatjuk ki. A tranzakciós kimenetekre mindig txid és vout alapján lehet hivatkozni, és ezeket a paramétereket adjuk meg a +gettxout+ -nak:
 
 
 ----
@@ -883,7 +883,7 @@ $ bitcoin-cli gettxout 9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acbae
 }
 ----
 
-Azt látjuk, hogy a kimenet 50 milliBitet rendelt hozzá az +1hvz…+ címünkhöz. A kimenet elköltéséhez egy új tranzakciót hozunk létre. Először állítsunk elő egy címet, ahová elküldhetjuk a pénzt:
+Azt látjuk, hogy a kimenet 50 mBTC-t rendelt hozzá az +1hvz…+ címünkhöz. A kimenet elköltéséhez egy új tranzakciót hozunk létre. Először állítsunk elő egy címet, ahová elküldhetjuk a pénzt:
 
 
 ----
@@ -891,9 +891,9 @@ $ bitcoin-cli getnewaddress
 1LnfTndy3qzXGN19Jwscj1T8LR3MVe3JDb
 ----
 
-25 milliBitet fogunk az újonnan létrehozott +1LnfTn…+ címre elküldeni. Az új tranzakciónkban elköltjük az 50 milliBites kimenetet, és 25 milliBitet küldünk erre az új címre. Mivel az előző tranzakció _egész_ kimentetét el kell költenünk, a visszajáró pénzt is kezelnünk kell. A visszajáró pénzt az +1hzv…+ címre fogjuk visszaküldeni, vagyis ugyanarra a címre, amelyről a pénz származott. Végül tranzakciós díjat is kell fizetnünk a tranzakcióért. A díjat úgy fogjuk megfizetni, hogy a visszajáró összeget 0.5 milliBittel csökkentjük, és csak 24.5 milliBitet küldünk vissza. Az új kimenetek összegének (25 mBTC + 24.5 mBTC = 49.5 mBTC) és a bemenetnek (50 mBTC) a különbségét tranzakciós díjként a bányászok kapják. 
+25 mBTC-t fogunk az újonnan létrehozott +1LnfTn…+ címre elküldeni. Az új tranzakciónkban elköltjük az 50 mBTC-s kimenetet, és 25 mBTC-t küldünk erre az új címre. Mivel az előző tranzakció _egész_ kimentetét el kell költenünk, a visszajáró pénzt is kezelnünk kell. A visszajáró pénzt az +1hzv…+ címre fogjuk visszaküldeni, vagyis ugyanarra a címre, amelyről a pénz származott. Végül tranzakciós díjat is kell fizetnünk a tranzakcióért. A díjat úgy fogjuk megfizetni, hogy a visszajáró összeget 0.5 mBTC-vel csökkentjük, és csak 24.5 mBTC-t küldünk vissza. Az új kimenetek összegének (25 mBTC + 24.5 mBTC = 49.5 mBTC) és a bemenetnek (50 mBTC) a különbségét tranzakciós díjként a bányászok kapják. 
 
-A +createrawtransaction+ parancsot használjuk a fenti tranzakció létrehozására. A +createrawtransaction+ –nak paraméterként a tranzakció bemenetet adjuk meg (vagyis a megerősített tranzakciónkból az 50 milliBit elköltetlen kimenetet), valamint a két tranzakció kimenetet (az új címre küldött pénzt, és az előző címre visszaküldött visszajáró pénzt):
+A +createrawtransaction+ parancsot használjuk a fenti tranzakció létrehozására. A +createrawtransaction+ –nak paraméterként a tranzakció bemenetet adjuk meg (vagyis a megerősített tranzakciónkból az 50 mBTC elköltetlen kimenetet), valamint a két tranzakció kimenetet (az új címre küldött pénzt, és az előző címre visszaküldött visszajáró pénzt):
 
 ----
 $ bitcoin-cli createrawtransaction '[{"txid" : "9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acbae2c14ae3", "vout" : 0}]' '{"1LnfTndy3qzXGN19Jwscj1T8LR3MVe3JDb": 0.025, "1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL": 0.0245}'
@@ -954,7 +954,7 @@ $ bitcoin-cli decoderawtransaction 0100000001e34ac1e2baac09c366fce1c2245536bda8f
 }
 ----
 
-A tranzakció helyesnek látszik! Az új tranzakció „elfogyasztja” a megerősített tranzakció elköltetlen kimenetét, majd elkölti azt két kimenetben, ezek egyike 25 milliBit az új címre, míg a másik 24.5 milliBit visszajáró pénz az eredeti címre. A 0.5 milliBites különbség jelenti a tranzakciós díjat, mely annak a bányásznak lesz jóváírva, aki rábukkan a tranzakciónkat is magába foglaló blokkra. 
+A tranzakció helyesnek látszik! Az új tranzakció „elfogyasztja” a megerősített tranzakció elköltetlen kimenetét, majd elkölti azt két kimenetben, ezek egyike 25 mBTC az új címre, míg a másik 24.5 mBTC visszajáró pénz az eredeti címre. A 0.5 mBTC-s különbség jelenti a tranzakciós díjat, mely annak a bányásznak lesz jóváírva, aki rábukkan a tranzakciónkat is magába foglaló blokkra. 
 
 Mint azt észrevehették, a tranzakció egy üres +scriptSig+-et tartalmaz, mivel még nincs aláírva. Aláírás nélkül a tranzakció értelmetlen, még nem bizonyítottuk, hogy a _miénk_ az a cím, amelyből az elköltetlen kimenet származik. Az aláírás révén eltávolítjuk a kimeneten lévő akadályt, és bizonyítjuk, hogy a kimenet a mi birtokunkban van és el tudjuk költeni. A +signrawtransaction+ parancsot használjuk a tranzakció aláírására. Paraméterként a nyers tranzakció hexadecimális stringjét adjuk meg neki.
 
@@ -1134,7 +1134,7 @@ A Bitcoin Explorer a bx-et és a libbitcoin könyvtárat egyaránt installálja,
 
 ==== pycoin
 
-((("könyvtárak, alternatív","pycoin könyvtár")))((("pycoin könyvtár")))((("Python","pycoin könyvtár")))A http://github.com/richardkiss/pycoin[_pycoin_] Python könyvtárat eredetileg ((("Kiss, Richard"))) Richard Kiss írta és tartotta karban. A könyvtár a bitcoin kulcsok és tranzakciók kezelését támogatja, és még a script nyelvet is oly mértékben támogatja, hogy a nem szabványos tranzakciók kezelése is lehetséges benne. 
+((("könyvtárak, alternatív","pycoin könyvtár")))((("pycoin könyvtár")))((("Python","pycoin könyvtár")))A http://github.com/richardkiss/pycoin[_pycoin_] Python könyvtárat eredetileg ((("Kiss, Richard"))) Richard Kiss írta és tartotta karban. A könyvtár a bitcoin kulcsok és tranzakciók kezelését támogatja, és még a script nyelvet támogatja annyira, hogy a nem szabványos tranzakciók kezelése is lehetséges benne. 
 
 A pycoin könyvtár mind a Python 2 (2.7.x), mind a Python 3 (3.3 utáni verziók) támogatására képes, és hasznos parancssori segédprogramjai vannak, pl. a ku és a tx. Ha szeretnénk a  pycoin 0.42-t Python 3 alatt, virtuális környezetben (venv) installálni, használjuk a következőket:
 
