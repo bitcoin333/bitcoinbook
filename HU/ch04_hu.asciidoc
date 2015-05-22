@@ -612,7 +612,7 @@ A mnemonikokat a ((("BIP0039"))) Bitcoin Improvement Proposal 39 definiálja (l�
     
 A BIP0039 a mnemonikok és a mag létrehozását a következőképpen definiálja:
 
-1 Hozzunk létre egy 128 .. 256 bites véletlen sorozatot (entrópiát)
+1. Hozzunk létre egy 128 .. 256 bites véletlen sorozatot (entrópiát)
 2. Készítsük el a véletlen sorozat ellenőrző összegét oly módon, hogy vesszük az SHA256 hash-ének első néhány bitjét
 3. Adjuk hozzá ezt az ellenőrző összeget a véletlen sorozat végéhez
 4. Osszuk a sorozatot 11 bites részekre, melyek egy 2048 szavas, előre definiált szótár indexelésére szolgálnak.
