@@ -606,12 +606,9 @@ Parancsok: +gettransaction+, +getrawtransaction+, +decoderawtransaction+
 ((("bitcoin-cli parancssori segédprogram","decoderawtransaction parancs", id="ix_ch03-asciidoc23", range="startofrange")))((("bitcoin-cli parancssori segédprogram","getrawtransaction parancs", id="ix_ch03-asciidoc24", range="startofrange")))((("bitcoin-cli parancssori segédprogram","gettransaction parancs", id="ix_ch03-asciidoc25", range="startofrange")))((("decoderawtransaction parancs (bitcoin-cli)", id="ix_ch03-asciidoc26", range="startofrange")))((("getrawtransaction parancs (bitcoin-cli)", id="ix_ch03-asciidoc27", range="startofrange")))((("gettransaction parancsd (bitcoin-cli)", id="ix_ch03-asciidoc28", range="startofrange")))((("tranzakciók","dekódolása", id="ix_ch03-asciidoc29", range="startofrange")))((("tranzakciók","vizsgálata", id="ix_ch03-asciidoc30", range="startofrange")))Most a +gettransactions+ paranccsal megvizsgáljuk azt a bejövő tranzakciót, amelyet előzőleg kilistáztunk. A tranzakciót úgy tudjuk kilistázni, hogy a +gettransaction+ parancsban a txid helyén megadjuk a tranzakció hash értékét (zanzáját):
 
 
-++++
-<programlisting>
+----
 $ bitcoin-cli gettransaction 9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acbae2c14ae3
-
-</programlisting>
-++++
+----
 [source,json]
 ----
 {
@@ -638,22 +635,17 @@ A tranzakció azonosítók mindaddig nem hitelesek, amíg a tranzakció megerős
 
 A +gettransaction+ által fent kijelzett tranzakció egy egyszerűsített alak. A teljes tranzakció visszanyeréséhez és dekódolásához két parancsot fogunk használni, a +getrawtransaction+ és a +decoderawtransaction+ parancsot. Először, a +getrawtransaction+ parancsnak paraméterként megadjuk a _tranzakció hash-t (txid-t)_, a parancs pedig „nyers” hexa stringként a teljes tranzakciót visszaadja, pontosan úgy, ahogyan azt a bitcoin hálózat ismeri :
 
-++++
-<programlisting>
+----
 $ bitcoin-cli getrawtransaction 9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acbae2c14ae3
 
 0100000001d717279515f88e2f56ce4e8a31e2ae3e9f00ba1d0add648e80c480ea22e0c7d3000000008b483045022100a4ebbeec83225dedead659bbde7da3d026c8b8e12e61a2df0dd0758e227383b302203301768ef878007e9ef7c304f70ffaf1f2c975b192d34c5b9b2ac1bd193dfba2014104793ac8a58ea751f9710e39aad2e296cc14daa44fa59248be58ede65e4c4b884ac5b5b6dede05ba84727e34c8fd3ee1d6929d7a44b6e111d41cc79e05dbfe5ceaffffffff02404b4c00000000001976a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac1f312906000000001976a914107b7086b31518935c8d28703d66d09b3623134388ac00000000
-</programlisting>
-++++
+----
 
 Ennek a hexa stringnek a dekódolására a +decoderawtransaction+ parancs használható. Másoljuk a hexa stringet a +decoderawtransaction+ első paraméterének a helyébe, ha a teljes tartalmat JSON adatstruktúraként szeretnénk megjeleníteni (formattálási okok miatt a hexa string a lenti példában rövidítve szerepel):
 
-++++
-<programlisting>
+----
 $ bitcoin-cli decoderawtransaction 0100000001d717279515f88e2f56ce4e8a31e2ae3e9f00ba1d0add648e80c480ea22e0c7d3000000008b483045022100a4ebbeec83225dedead659bbde7da3d026c8b8e12e61a2df0dd0758e227383b302203301768ef878007e9ef7c304f70ffaf1f2c975b192d34c5b9b2ac1bd193dfba2014104793ac8a58ea751f9710e39aad2e296cc14daa44fa59248be58ede65e4c4b884ac5b5b6dede05ba84727e34c8fd3ee1d6929d7a44b6e111d41cc79e05dbfe5ceaffffffff02404b4c00000000001976a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac1f312906000000001976a914107b7086b31518935c8d28703d66d09b3623134388ac00000000
-</programlisting>
-
-++++
+----
 [source,json]
 ----
 {
@@ -708,15 +700,9 @@ A blokkláncot tovább tudjuk vizsgálni, ha ugyanezzel a paranccsal (vagyis a +
 
 Ha az általunk fogadott tranzakció már be lett foglalva egy blokkba és megerősítésre került, akkor a +gettransaction+ parancs további információkat is szolgáltat, többek között megmutatja azt a _block hash-t (azonosítót)_, amelybe bele lett foglalva a tranzakció:
 
-
-++++
-<programlisting>
+----
 $ bitcoin-cli gettransaction 9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acbae2c14ae3
-</programlisting>
-++++
-
-
-++++
+----
 [source,json]
 ----
 {
@@ -754,14 +740,9 @@ Parancsok: +getblock+, +getblockhash+
 ((("bitcoin-cli parancssori segédprogram","getblock parancs")))((("bitcoin-cli parancssori segédprogram","getblockhash parancs")))((("blokkok,"vizsgálata")))((("getblock parancs (bitcoin-cli)")))((("getblockhash parancs (bitcoin-cli)")))Most, hogy tudjuk, melyik blokkba lett befoglalva a tranzakciónk, le tudjuk kérdezni ezt a blokkot. A +getblock+ parancsot használjuk, és paraméterként a blokk hashét (zanzáját) adjuk meg:
 
 
-++++
-<programlisting>
+----
 $ bitcoin-cli getblock 000000000000000051d2e759c63a26e247f185ecb7926ed7a6624bc31c2a717b true
-</programlisting>
-++++
-
-
-++++
+----
 [source,json]
 ----
 {
@@ -810,25 +791,18 @@ A blokk 367 db tranzakciót tartalmaz, és a 18. kilistázott tranzakció (+9ca8
 Egy blokkot a magassága alapján a a +getblockhash+ paranccsal tudjuk elérni, a parancs paramétere a blokk magasság, és a blokkhoz tartozó blokk hash-t (zanzát) adja vissza:
 
 
-++++
-<programlisting>
+----
 $ bitcoin-cli getblockhash 0
 
 000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f
-</programlisting>
-++++
+----
 
 Fent a „genezis blokk” blokk hash-ét irattuk ki. A genezis blokk volt az első, Satoshi Nakamoto által kibányászott blokk, és nulla a magassága. A blokk a következőket tartalmazza:
 
 
-++++
-<programlisting>
+----
 $ bitcoin-cli getblock 000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f
-</programlisting>
-++++
-
-
-++++
+----
 [source,json]
 ----
 {
@@ -865,9 +839,6 @@ Először is a +listunspent+ paranccsal a pénztárcánkabn lévő összes elkö
 ----
 $ bitcoin-cli listunspent 
 ----
-
-
-++++
 [source,json]
 ----
 [
@@ -888,14 +859,9 @@ Láthajuk, hogy a +9ca8f9…+ tranzakció létrehozott egy kimenetet (0 vout ind
 Először vizsgáljuk meg részletesebben az adott kimentet. A +gettxout+ paranccsal a fenti elköltetlen kimenet részleteit irathatjuk ki. A tranzakciós kimenetekre mindig txid és vout alapján lehet hivatkozni, és ezeket a paramétereket adjuk meg a "gettxout+ -nak:
 
 
-++++
-<programlisting>
+----
 $ bitcoin-cli gettxout 9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acbae2c14ae3 0
-</programlisting>
-++++
-
-
-++++
+----
 [source,json]
 ----
 {
@@ -929,24 +895,17 @@ $ bitcoin-cli getnewaddress
 
 A +createrawtransaction+ parancsot használjuk a fenti tranzakció létrehozására. A +createrawtransaction+ –nak paraméterként a tranzakció bemenetet adjuk meg (vagyis a megerősített tranzakciónkból az 50 milliBit elköltetlen kimenetet), valamint a két tranzakció kimenetet (az új címre küldött pénzt, és az előző címre visszaküldött visszajáró pénzt):
 
-++++
-<programlisting>
+----
 $ bitcoin-cli createrawtransaction '[{"txid" : "9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acbae2c14ae3", "vout" : 0}]' '{"1LnfTndy3qzXGN19Jwscj1T8LR3MVe3JDb": 0.025, "1hvzSofGwT8cjb8JU7nBsCSfEVQX5u9CL": 0.0245}'
 
 0100000001e34ac1e2baac09c366fce1c2245536bda8f7db0f6685862aecf53ebd69f9a89c0000000000ffffffff02a0252600000000001976a914d90d36e98f62968d2bc9bbd68107564a156a9bcf88ac50622500000000001976a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac00000000
-</programlisting>
-++++
+----
 
 A +createrawtransaction+ parancs egy nyers hexadecimális stringet hoz létre, amely az általunk megadott tranzakció részleteit kódolja. Ellenőrizzük, hogy minden rendben van-e! Dekódoljuk ezt a nyers stringet a +decoderawtransaction+ paranccsal:
 
-++++
-<programlisting>
+----
 $ bitcoin-cli decoderawtransaction 0100000001e34ac1e2baac09c366fce1c2245536bda8f7db0f6685862aecf53ebd69f9a89c0000000000ffffffff02a0252600000000001976a914d90d36e98f62968d2bc9bbd68107564a156a9bcf88ac50622500000000001976a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac00000000
-</programlisting>
-++++
-
-
-++++
+----
 [source,json]
 ----
 {
@@ -1004,15 +963,10 @@ Mint azt észrevehették, a tranzakció egy üres +scriptSig+-et tartalmaz, mive
 ((("pénztárcák","tranzakciók aláírása")))A titkosított pénztárcákat az aláírás előtt ki kell nyitni, mivel az aláíráshoz szükség van a pénztárcában lévő titkos kulcsokra.
 ====
 
-++++
-<programlisting>
+----
 $ bitcoin-cli walletpassphrase foo 360
 $ bitcoin-cli signrawtransaction 0100000001e34ac1e2baac09c366fce1c2245536bda8f7db0f6685862aecf53ebd69f9a89c0000000000ffffffff02a0252600000000001976a914d90d36e98f62968d2bc9bbd68107564a156a9bcf88ac50622500000000001976a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac00000000
-</programlisting>
-++++
-
-
-++++
+----
 [source,json]
 ----
 {
@@ -1024,14 +978,9 @@ $ bitcoin-cli signrawtransaction 0100000001e34ac1e2baac09c366fce1c2245536bda8f7d
 A +signrawtransaction+ parancs egy másik hexadecimálisan kódolt nyers tranzakciót ad vissza. Ha látni szeretnénk, hogy mi változott, a +decoderawtransaction+-nal kódolható vissza:
 
 
-++++
-<programlisting>
+----
 $ bitcoin-cli decoderawtransaction 0100000001e34ac1e2baac09c366fce1c2245536bda8f7db0f6685862aecf53ebd69f9a89c000000006a47304402203e8a16522da80cef66bacfbc0c800c6d52c4a26d1d86a54e0a1b76d661f020c9022010397f00149f2a8fb2bc5bca52f2d7a7f87e3897a273ef54b277e4af52051a06012103c9700559f690c4a9182faa8bed88ad8a0c563777ac1d3f00fd44ea6c71dc5127ffffffff02a0252600000000001976a914d90d36e98f62968d2bc9bbd68107564a156a9bcf88ac50622500000000001976a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac00000000
-</programlisting>
-++++
-
-
-++++
+----
 [source,json]
 ----
 {
@@ -1084,20 +1033,15 @@ Most a tranzakcióban használt bemenetek egy +scriptsSig+-et is tartalmaznak. A
 
 Most küldjük el ezt az újonnan létrehozott tranzakciót a hálózatnak. Ezt a +sendrawtransaction+ paranccsal fogjuk megtenni, amelynek a paramétere a +signrawtransaction+ által létrehozott nyers hexadecimális string lesz. Ez ugyanaz a string, amit épp most dekódoltunk:
 
-++++
-<programlisting>
+----
 $ bitcoin-cli sendrawtransaction 0100000001e34ac1e2baac09c366fce1c2245536bda8f7db0f6685862aecf53ebd69f9a89c000000006a47304402203e8a16522da80cef66bacfbc0c800c6d52c4a26d1d86a54e0a1b76d661f020c9022010397f00149f2a8fb2bc5bca52f2d7a7f87e3897a273ef54b277e4af52051a06012103c9700559f690c4a9182faa8bed88ad8a0c563777ac1d3f00fd44ea6c71dc5127ffffffff02a0252600000000001976a914d90d36e98f62968d2bc9bbd68107564a156a9bcf88ac50622500000000001976a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac00000000ae74538baa914f3799081ba78429d5d84f36a0127438e9f721dff584ac17b346
-</programlisting>
-++++
+----
 
 A +sendrawtransaction+ parancs egy _tranzakció hash-t (txid-t)_ ad vissza, miután feladta a tranzakciót a hálózatnak. Ekkor a +gettransaction+ paranccsal le tudjuk kérdezni ezt a tranzakciót:
 
-++++
-<programlisting>
+----
 $ bitcoin-cli gettransaction ae74538baa914f3799081ba78429d5d84f36a0127438e9f721dff584ac17b346
-</programlisting>
-++++
-
+----
 [source,json]
 ----
 {
