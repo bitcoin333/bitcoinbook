@@ -39,5 +39,6 @@ Köszönet az O'Reilly-nek!
 # Bitcoin adományok
 1BTC33369dXmWYuc3qdBF5znKuNzo6gg6r
 <br />
+<img alt="bitcoin:1BTC33369dXmWYuc3qdBF5znKuNzo6gg6r?amount=0.01" style="border-width:0" src="files:///1BTC33369dXmWYuc3qdBF5znKuNzo6gg6r.png" />
 image::images/1BTC33369dXmWYuc3qdBF5znKuNzo6gg6r.png[bitcoin:1BTC33369dXmWYuc3qdBF5znKuNzo6gg6r?amount=0.01]
 
