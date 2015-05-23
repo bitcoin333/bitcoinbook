@@ -55,19 +55,26 @@ image::images/msbt_0603.png["BitcoinNetwork"]
 
 ((("peer-to-peer hálózatok","összeköttetései")))A csomópontok egy ismert peer-hez TCP összeköttetéssel kapcsolódnak, általában a 8333-as porton (amely a bitcoin „jól ismert” portja), vagy egy alternatív porton, ha megadtak ilyet. Az összeköttetés létrejötte után a csomópont a version (verzió) üzenet elküldésével egy „kézfogást” indít, lásd <<network_handshake>> ábrát. A +version+ üzenet azonosító adatokat tartalmaz. Ezek a következők:
 
-+PROTOCOL_VERSION+:: a kliens által „beszélt” protokoll verzióját definiáló konstans (pl. 70002)
++PROTOCOL_VERSION+:: 
+a kliens által „beszélt” protokoll verzióját definiáló konstans (pl. 70002)
 
-+nLocalServices+::, a csomópont által támogatott helyi szolgáltatások listája, jelenleg csupán a +NODE_NETWORK+ (hálózati csomópont) az egyetlen eleme
++nLocalServices+::
+a csomópont által támogatott helyi szolgáltatások listája, jelenleg csupán a +NODE_NETWORK+ (hálózati csomópont) az egyetlen eleme
 
-+nTime+::, az aktuális idő
++nTime+::
+az aktuális idő
 
-+addrYou+::, a távoli csomópont IP címe, ahogyan azt a csomópont látja
++addrYou+::
+a távoli csomópont IP címe, ahogyan azt a csomópont látja
 
-+addrMe+::, a helyi csomópont IP címe, ahogyan azt a helyi csomópont látja
++addrMe+::
+a helyi csomópont IP címe, ahogyan azt a helyi csomópont látja
 
-+subver+::, az al-verzió, amely a csomóponton futó szoftver típusát mutatja (pl. "/Satoshi:0.9.2.1/“)
++subver+::
+az al-verzió, amely a csomóponton futó szoftver típusát mutatja (pl. "/Satoshi:0.9.2.1/“)
 
-+BestHeight+::, a csomópont blokkláncának a magassága
++BestHeight+::
+a csomópont blokkláncának a magassága
 
 (A +version+ hálózati üzenetre a http://bit.ly/1qlsC7w[GitHub] web helyen látható példa.)
 
