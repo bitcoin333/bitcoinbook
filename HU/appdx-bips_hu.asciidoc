@@ -79,9 +79,9 @@ A bitcoin továbbfejlesztési javaslatokat egy verziózott https://github.com/bi
 
 |[[bip0050]]50|https://github.com/bitcoin/bips/blob/master/bip-0050.mediawiki|A 2013. márciusi fork utólagos vizsgálata |Gavin Andresen |Tájékoztató |Tervezet
 
-|[[bip0060]]60|https://github.com/bitcoin/bips/blob/master/bip-0060.mediawiki|Fix hosszúságú "version" üzenet (Relay-Transactions mező) |Amir Taaki |Szabvány |Tervezet
+|[[bip0060]]60|https://github.com/bitcoin/bips/blob/master/bip-0060.mediawiki|Fix hosszúságú „version” üzenet (Relay-Transactions mező) |Amir Taaki |Szabvány |Tervezet
 
-|[[bip0061]]61|https://github.com/bitcoin/bips/blob/master/bip-0061.mediawiki|"reject" P2P üzenet |Gavin Andresen | Szabvány | Tervezet
+|[[bip0061]]61|https://github.com/bitcoin/bips/blob/master/bip-0061.mediawiki|„reject” P2P üzenet |Gavin Andresen | Szabvány | Tervezet
 
 |[[bip0062]]62|https://github.com/bitcoin/bips/blob/master/bip-0062.mediawiki|A tranzakciók változékonyságának kezelése |Pieter Wuille| Szabvány | Tervezet
 
@@ -95,7 +95,7 @@ A bitcoin továbbfejlesztési javaslatokat egy verziózott https://github.com/bi
 
 |[[bip0072]]72|https://github.com/bitcoin/bips/blob/master/bip-0072.mediawiki|Payment protokoll URI-k |Gavin Andresen|Szabvány|Tervezet
 
-|[[bip0073]]73|https://github.com/bitcoin/bips/blob/master/bip-0073.mediawiki|Használjunk "Accept" fejet a Payment kérések URL-jeiben  |Stephen Pair |Szabvány |Tervezet
+|[[bip0073]]73|https://github.com/bitcoin/bips/blob/master/bip-0073.mediawiki|Használjunk „Accept” fejet a Payment kérések URL-jeiben  |Stephen Pair |Szabvány |Tervezet
 (((range="endofrange", startref="ix_appdx-bips-asciidoc0"))) 
 |=======================================================================
 

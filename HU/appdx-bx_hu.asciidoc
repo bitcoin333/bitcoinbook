@@ -91,7 +91,7 @@ További információért menjen a https://github.com/libbitcoin/libbitcoin-expl
 
 Nézzük néhány példát arra, hogyan lehet a Bitcoin Explorer parancsaival kulcsokat és címeket kezelni:
 
-Állítsunk elő egy véletlen "magot" a ((("Bitcoin Explorer","seed parancs")))((("seed parancs (bx)"))) +seed+ parancs segítségével, amely az operációs rendszer véletlenszám generátorára épül. A magot az ((("Bitcoin Explorer","ec-new parancs")))((("ec-new parancs (bx)"))) +ec-new+ parancsnak átadva hozzunk létre egy új titkos kulcsot. A szabványos kimenetet a _private_key_ file-ba irányítjuk át:
+Állítsunk elő egy véletlen „magot” a ((("Bitcoin Explorer","seed parancs")))((("seed parancs (bx)"))) +seed+ parancs segítségével, amely az operációs rendszer véletlenszám generátorára épül. A magot az ((("Bitcoin Explorer","ec-new parancs")))((("ec-new parancs (bx)"))) +ec-new+ parancsnak átadva hozzunk létre egy új titkos kulcsot. A szabványos kimenetet a _private_key_ file-ba irányítjuk át:
 
 ----
 $ bx seed | bx ec-new > private_key
@@ -114,7 +114,7 @@ $ bx ec-to-address < public_key
 17re1S4Q8ZHyCP8Kw7xQad1Lr6XUzWUnkG
 ----
 
-Az így előállított kulcsok 0-ik típusú, nem determinisztikus kulcsok. Ez azt jelenti, hogy a minden egyes kulcs egy saját, független magból származik. A Bitcoin Explorerrel a BIP0032-nek megfelelő, determinisztikus kulcsok is létrehozhatók. Ebben az esetben a magból egy "mesterkulcs" jön létre, majd ennek a kiterjesztése révén állnak elő a alkulcsok, és jön létre a 2-es típusú, determinisztikus pénztárca.
+Az így előállított kulcsok 0-ik típusú, nem determinisztikus kulcsok. Ez azt jelenti, hogy a minden egyes kulcs egy saját, független magból származik. A Bitcoin Explorerrel a BIP0032-nek megfelelő, determinisztikus kulcsok is létrehozhatók. Ebben az esetben a magból egy „mesterkulcs” jön létre, majd ennek a kiterjesztése révén állnak elő a alkulcsok, és jön létre a 2-es típusú, determinisztikus pénztárca.
 
 Először a ((("Bitcoin Explorer","seed parancs")))((("seed parancs (bx)"))) +seed+ és a ((("Bitcoin Explorer","hd-new parancs")))((("hd-new parancs (bx)"))) +hd-new+ parancsokkal egy mester kulcsot állítunk elő, melyet a további kulcshierarchia levezetésére fogunk használni.
 
@@ -128,7 +128,7 @@ $ cat master
 xprv9s21ZrQH143K2BEhMYpNQoUvAgiEjArAVaZaCTgsaGe6LsAnwubeiTcDzd23mAoyizm9cApe51gNfLMkBqkYoWWMCRwzfuJk8RwF1SVEpAQ
 ----
 
-Most pedig a ((("Bitcoin Explorer","hd-private parancs")))((("hd-private parancs (bx)"))) +hd-private+ paranccsal előállítjuk a megerősített "számla" kulcsot és két, a számlán belüli titkos kulcsot.
+Most pedig a ((("Bitcoin Explorer","hd-private parancs")))((("hd-private parancs (bx)"))) +hd-private+ paranccsal előállítjuk a megerősített „számla” kulcsot és két, a számlán belüli titkos kulcsot.
 
 ----
 $ bx hd-private --hard < master > account

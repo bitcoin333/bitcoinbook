@@ -51,7 +51,7 @@ Satoshi Nakamoto 2011 áprilisában visszavonult a nyilvánosságtól.  A progra
 
 .Megoldás egy osztott feldolgozási problémára
 ****
-Satoshi Nakamoto felfedezése egyúttal az osztott feldolgozás egy korábban megoldatlan problémájának, az ún. ((("Bizánci generálisok problémája"))) "bizánci generálisok problémájának" a gyakorlati megoldását jelenti. Röviden, a probléma abból áll, hogy hogyan lehet megegyezni a tennivalókról egy megbízhatatlan és potenciálisan kompromittált hálózatban végzett információcsere révén. Satoshi Nakamoto megoldása, amely a munkabizonyíték fogalmának használatával, központi szervezet nélkül éri el a konszenzust, áttörést jelent az elosztott feldolgozás terén, és a pénzügyeken kívül egyéb területeken is széles körben alkalmazható. Bizonyíthatóan igazságos választások, lottójáték, tulajdoni nyilvántartások, digitális közjegyzői szolgáltatások és sok minden más esetén is konszenzust lehet vele elérni a decentralizált hálózatokban. 
+Satoshi Nakamoto felfedezése egyúttal az osztott feldolgozás egy korábban megoldatlan problémájának, az ún. ((("Bizánci generálisok problémája"))) „bizánci generálisok problémájának” a gyakorlati megoldását jelenti. Röviden, a probléma abból áll, hogy hogyan lehet megegyezni a tennivalókról egy megbízhatatlan és potenciálisan kompromittált hálózatban végzett információcsere révén. Satoshi Nakamoto megoldása, amely a munkabizonyíték fogalmának használatával, központi szervezet nélkül éri el a konszenzust, áttörést jelent az elosztott feldolgozás terén, és a pénzügyeken kívül egyéb területeken is széles körben alkalmazható. Bizonyíthatóan igazságos választások, lottójáték, tulajdoni nyilvántartások, digitális közjegyzői szolgáltatások és sok minden más esetén is konszenzust lehet vele elérni a decentralizált hálózatokban. 
 ****
 
 
@@ -97,9 +97,9 @@ Web kliens:: ((("web kliens")))A web kliensek web böngészőkön keresztül has
 Az okostelefonokhoz írt ((("mobil kliensek")))((("okostelefonok, bitcoin kliensek erre")))mobil kliensek, például azok, melyek az Android rendszeren alapulnak, lehetnek teljes kliensek, pehelysúlyú kliensek, vagy akár web kliensek is. Némelyik mobil klienst egy web vagy asztali klienssel szinkronizálnak, ezáltal több platformos pénztárca valósul meg, amely több eszközön is használható, de közös pénzforrással rendelkezik.
 ****
 
-A bitcoin kliens kiválasztása attól függ, hogy milyen mértékben szeretnénk ellenőrzést gyakorolni a pénzünk fölött. A legnagyobb fokú kontroll és függetlenség egy teljes klienssel valósítható meg, viszont a mentések és a biztonsági kérdések terhét a felhasználónak kell viselnie. A másik végletet a web kliens jelenti, mert könnyen üzembe állítható és használható, de a web kliens esetében megjelenik az a kockázat, hogy biztonságot és a felügyeletet a felhasználó és web szolgáltatás tulajdonosa együtt gyakorolja. Ha egy web-es pénztárca szolgáltatója kompromittálódik, mint ahogy a múltban ez már sokszor megtörtént, akkor a felhasználó az összes pénzét elveszítheti. Ha viszont a felhasználónak teljes kliense van, de nem rendelkezik megfelelő mentésekkel, akkor egy számítógépes baleset miatt veszítheti el a pénzét. 
+A bitcoin kliens kiválasztása attól függ, hogy milyen mértékben szeretnénk ellenőrzést gyakorolni a pénzünk fölött. A legnagyobb fokú kontroll és függetlenség egy teljes klienssel valósítható meg, viszont a mentések és a biztonsági kérdések terhét a felhasználónak kell viselnie. A másik végletet a web kliens jelenti, mert könnyen üzembe állítható és használható, de a web kliens esetében megjelenik az a kockázat, hogy biztonságot és a felügyeletet a felhasználó és web szolgáltatás tulajdonosa együtt gyakorolja. Ha egy webes pénztárca szolgáltatója kompromittálódik, mint ahogy a múltban ez már sokszor megtörtént, akkor a felhasználó az összes pénzét elveszítheti. Ha viszont a felhasználónak teljes kliense van, de nem rendelkezik megfelelő mentésekkel, akkor egy számítógépes baleset miatt veszítheti el a pénzét. 
 
-Ebben a könyvben sokféle bitcoin kliens használatát fogjuk szemléltetni, a referencia implementációtól (a Satoshi klienstől) kezdve a web-es pénztárcákig. Némelyik példához a referencia klienst kell majd használni, mert ez nyújt API-kat a pénztárcához, a hálózathoz és a tranzakciós szolgáltatásokhoz. Ha önök a bitcoin rendszer programozható interfész felületeit szeretnék használni, akkor a referencia kliensre lesz szükségük.
+Ebben a könyvben sokféle bitcoin kliens használatát fogjuk szemléltetni, a referencia implementációtól (a Satoshi klienstől) kezdve a webes pénztárcákig. Némelyik példához a referencia klienst kell majd használni, mert ez nyújt API-kat a pénztárcához, a hálózathoz és a tranzakciós szolgáltatásokhoz. Ha önök a bitcoin rendszer programozható interfész felületeit szeretnék használni, akkor a referencia kliensre lesz szükségük.
 
 ==== Gyors elindulás
 
@@ -112,18 +112,18 @@ Alíz a bitcoin.org webhelyen lévő hivatkozáson keresztül letölti a Multibi
 ((("pénztárcák","biztonsága")))A bitcoin pénztárca létrehozásakor meg kell adni egy jelszót vagy jelmondatot, amely a pénztárca védelmére szolgál. Sok csibész próbálkozik a gyenge jelszavak feltörésével, ezért vigyázzon, hogy olyat válasszon, amelyet nem lehet könnyen feltörni. Használjon kis- és nagybetűkből, számokból és szimbólumokból álló kombinációt. Ne használjon személyes adatokat, pl. születési dátumokat, vagy focicsapatok nevét. Ne használjon szótárban előforduló szavakat. Ha teheti, használjon jelszó generátort, amely teljesen véletlenszerű jelszavakat állít elő. A jelszó hossza legalább 12 karakter legyen. Vésse az eszébe: a bitcoin pénz, és azonnal átutalható bárhová a világon. Kellő védelem hiányában a bitcoin könnyen ellopható.
 ====
 
-Miután Alíz letöltötte és installálta a Multibit alkalmazást, elindítja azt. Egy "Üdvözlő" képernyő fogadja, amint az <<multibit-welcome>> ábrán látható:
+Miután Alíz letöltötte és installálta a Multibit alkalmazást, elindítja azt. Egy „Üdvözlő” képernyő fogadja, amint az <<multibit-welcome>> ábrán látható:
 
 [[multibit-welcome]]
 .A Multibit bitcoin kliens üdvözlő képernyője
 image::images/msbt_0101.png["MultibitWelcome"]
 
-((("címek, bitcoin","Multibit által létrehozott")))A Multibit automatikusan egy új pénztárcát és egy új bitcoin címet hoz létre Alíz számára. Az új cím a "Request" fülre történő kattintással tekinthető meg, amint azt az <<multibit-request>> ábra mutatja.
+((("címek, bitcoin","Multibit által létrehozott")))A Multibit automatikusan egy új pénztárcát és egy új bitcoin címet hoz létre Alíz számára. Az új cím a „Request” fülre történő kattintással tekinthető meg, amint azt az <<multibit-request>> ábra mutatja.
 [[multibit-request]]
-.Alíz új bitcoin címe a Multibit kliens "Request" fülén
+.Alíz új bitcoin címe a Multibit kliens „Request” fülén
 image::images/msbt_0102.png["MultibitReceive"]
 
-Ennek a képernyőnek a legfontosabb része Alíz _bitcoin címe_. A bitcoin cím egy e-mail címhez hasonlóan bárkivel megosztható. Segítségével bárki pénzt küldhet Alíz új pénztárcájába. A képernyőn a bitcoin cím egy betűkből és számokból álló hosszú karakterláncként jelenik meg: +1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK+. A pénztárca bitcoin címe mellett van egy QR kód, amely egyfajta vonalkód, és ugyanezt az információt tartalmazza, de olyan formátumban, amely egy okostelefon fényképezőgépével könnyen bepásztázható. A QR kód az ablak jobb oldalán lévő, fekete és fehér kockákból álló kép. Alíz a bitcoin címet vagy QR kódot úgy tudja a "vágólapra" másolni, hogy rákattint a mellettük lévő gombra. Magára a QR kódra kattintva a kód kinagyítható, és egy okostelefonnal könnyen bepásztázható. 
+Ennek a képernyőnek a legfontosabb része Alíz _bitcoin címe_. A bitcoin cím egy e-mail címhez hasonlóan bárkivel megosztható. Segítségével bárki pénzt küldhet Alíz új pénztárcájába. A képernyőn a bitcoin cím egy betűkből és számokból álló hosszú karakterláncként jelenik meg: +1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK+. A pénztárca bitcoin címe mellett van egy QR kód, amely egyfajta vonalkód, és ugyanezt az információt tartalmazza, de olyan formátumban, amely egy okostelefon fényképezőgépével könnyen bepásztázható. A QR kód az ablak jobb oldalán lévő, fekete és fehér kockákból álló kép. Alíz a bitcoin címet vagy QR kódot úgy tudja a „vágólapra” másolni, hogy rákattint a mellettük lévő gombra. Magára a QR kódra kattintva a kód kinagyítható, és egy okostelefonnal könnyen bepásztázható. 
 
 Alíz a QR kód kinyomtatásával könnyen meg tudja adni másoknak a címét, vagyis nincs szükség a betűk és számok hosszú sorozatának a begépelésére. 
 
@@ -137,7 +137,7 @@ Alíz új bitcoin pénztárcája ezzel készen áll a használatra.
 [[getting_first_bitcoin]]
 ==== Az első bitcoinok beszerzése
 
-((("bitcoin","beszerzés")))((("pénzváltók")))Bankokban vagy pénzváltó helyeken jelenleg nem lehet bitcoint venni. 2014-ben a legtöbb országban még mindig nehéz bitcoinhoz jutni. Számos speciális pénzváltó van, ahol a helyi valutáért bitcoin adásvétel végezhető. Ezek a pénzváltók web-es pénzváltók. Ilyen többek között:
+((("bitcoin","beszerzés")))((("pénzváltók")))Bankokban vagy pénzváltó helyeken jelenleg nem lehet bitcoint venni. 2014-ben a legtöbb országban még mindig nehéz bitcoinhoz jutni. Számos speciális pénzváltó van, ahol a helyi valutáért bitcoin adásvétel végezhető. Ezek a pénzváltók webes pénzváltók. Ilyen többek között:
 
 http://bitstamp.net[Bitstamp]:: egy európai pénzváltó, amely banki átutalással különböző pénznemeket támogat, többek között az Eurót (EUR) és az US dollárt (USD)((("Bitstamp pénzváltó")))
 http://www.coinbase.com[Coinbase]:: egy amerikai székhelyű tárca szolgáltató, amely a kereskedők és a vevők közötti bitcoin tranzakciókat támogatja. A Coinbase megkönnyíti a bitcoin adás-vételt, mert a felhasználók az ACH (Automated Clearing House) rendszeren keresztül az amerikai folyószámlájukhoz tudnak kapcsolódni.((("Coinbase.com")))
@@ -172,7 +172,7 @@ http://www.zeroblock.com/[ZeroBlock]:: ((("ZeroBlock"))) egy ingyenes Android é
 http://www.bitcoinwisdom.com/[Bitcoin Wisdom]:: ((("bitcoinwisdom.com"))) egy másik, piaci adatokat megjelenítő alkalmazás.
 	
 [[zeroblock-android]]
-.A ZeroBlock - a bitcoin piaci árát mutató alkalmazás Androidra és iOS-re
+.A ZeroBlock – a bitcoin piaci árát mutató alkalmazás Androidra és iOS-re
 image::images/msbt_0103.png["zeroblock screenshot"]
 	
 A fenti alkalmazások vagy webhelyek valamelyikével Joe meghatározza a bitcoin árát, amely történetesen kb. 100 US dollár / bitcoin. Ilyen árfolyamon 0.10 bitcoint (100 milliBitcoint) kell Alíznak elküldenie azért a 10 dollárért, amit tőle kapott. 

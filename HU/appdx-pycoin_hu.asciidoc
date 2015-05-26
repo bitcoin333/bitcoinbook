@@ -10,7 +10,7 @@ A pycoin könyvtár a Python 2 (2.7.x) és a Python 3 (3.3 utáni verzió) alatt
 
 === Key Utility (KU)
 
-((("key utility (ku)", id="ix_appdx-pycoin-asciidoc0", range="startofrange")))A +ku+ ("key utility") parancssori segédprogram a kulcs kezelés "svájci bicskája". Támogatja a BIP32 kulcsokat, a WIF-et, és a bitcoin vagy alt-coin címeket. Az alábbiakban néhány példa szerepel.
+((("key utility (ku)", id="ix_appdx-pycoin-asciidoc0", range="startofrange")))A +ku+ („key utility”) parancssori segédprogram a kulcs kezelés „svájci bicskája”. Támogatja a BIP32 kulcsokat, a WIF-et, és a bitcoin vagy alt-coin címeket. Az alábbiakban néhány példa szerepel.
 
 Egy BIP32 kulcs létrehozása, a GPG és a _/dev/random_ alapértelmezett entrópiaforrásainak a használatával:
 
@@ -345,7 +345,7 @@ Dogecoin address : DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE
 Néhány példa következik:
 
 
-Nézzük meg a híres [PIZZA] "pizza" tranzakciót:
+Nézzük meg a híres [PIZZA] „pizza” tranzakciót:
 
 ====
 ----

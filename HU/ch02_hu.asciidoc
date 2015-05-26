@@ -50,10 +50,10 @@ message=Purchase%20at%20Bob%27s%20Cafe
 
 Az URL részei 
 
-Egy bitcoin cím: "1GdK9UzpHBzqzX2A9JFP3Di4weBwqgmoQA"
-A fizetendő összeg:  "0.015"
-A bitcoin címhez tartozó címke: "Bob's Cafe" (Bob kávézója)
-A fizetség leírása: "Purchase at Bob's Cafe" (Vásárlás Bob kávézójában)
+Egy bitcoin cím: „1GdK9UzpHBzqzX2A9JFP3Di4weBwqgmoQA”
+A fizetendő összeg:  „0.015”
+A bitcoin címhez tartozó címke: „Bob's Cafe” (Bob kávézója)
+A fizetség leírása: „Purchase at Bob's Cafe” (Vásárlás Bob kávézójában)
 ----
 
 
@@ -124,7 +124,7 @@ image::images/msbt_0207.png["Distributing Transaction"]
 
 ==== A megfelelő bemenetek kiválasztása
 
-((("tranzakciók","bemenetek kiválasztása", id="ix_ch02-asciidoc5", range="startofrange")))Alíz pénztárca programjának először olyan bemeneteket kell találnia, amelyekkel lehetséges a Bobnak küldendő összeg kifizetése. A legtöbb pénztárca program  egy kis adatbázist hoz létre az „el nem költött tranzakció kimenetek”-ből, melyek a pénztárca saját kulcsaival vannak zárolva („akadályoztatva”). Ennek megfelelően, Alíz pénztárcájában ott lesz Joe tranzakciójából annak a kimenetnek a másolata, amely akkor jött létre, amikor Alíz bitcoint vett Joe-tól (lásd <<getting_first_bitcoin>>). Azoknak a bitcoin pénztárca alkalmazásoknak, melyek teljes kliensként futnak, másolatuk van a blokklánc összes tranzakciójának elköltetlen kimeneteiről. Ez lehetővé teszi, hogy a pénztárca program tranzakció bemeneteket hozhasson létre, valamint hogy gyorsan ellenőrizze, hogy a bejövő tranzakcióknak helyesek-e a bemenetei. Mivel egy teljes kliens sok diszk helyet foglal, a legtöbb felhasználó "pehelysúlyú" klienseket futtat. Ezek a kliensek csak a felhasználó saját, el nem költött kimeneteit tartják nyilván. 
+((("tranzakciók","bemenetek kiválasztása", id="ix_ch02-asciidoc5", range="startofrange")))Alíz pénztárca programjának először olyan bemeneteket kell találnia, amelyekkel lehetséges a Bobnak küldendő összeg kifizetése. A legtöbb pénztárca program  egy kis adatbázist hoz létre az „el nem költött tranzakció kimenetek”-ből, melyek a pénztárca saját kulcsaival vannak zárolva („akadályoztatva”). Ennek megfelelően, Alíz pénztárcájában ott lesz Joe tranzakciójából annak a kimenetnek a másolata, amely akkor jött létre, amikor Alíz bitcoint vett Joe-tól (lásd <<getting_first_bitcoin>>). Azoknak a bitcoin pénztárca alkalmazásoknak, melyek teljes kliensként futnak, másolatuk van a blokklánc összes tranzakciójának elköltetlen kimeneteiről. Ez lehetővé teszi, hogy a pénztárca program tranzakció bemeneteket hozhasson létre, valamint hogy gyorsan ellenőrizze, hogy a bejövő tranzakcióknak helyesek-e a bemenetei. Mivel egy teljes kliens sok diszk helyet foglal, a legtöbb felhasználó „pehelysúlyú” klienseket futtat. Ezek a kliensek csak a felhasználó saját, el nem költött kimeneteit tartják nyilván. 
 	
 ((("pénztárcák","blokklánc tárolása bennük")))Ha a pénztárca programban nincs meg az összes elköltetlen tranzakciós kimenet másolata, akkor a program a bitcoin hálózatból le tudja kérdezni ezt az adatot, vagy úgy, hogy a különféle szolgáltatók API-jait használja, vagy egy teljes csomópont bitcoin kliensének JSON RPC API-n keresztüli lekérdezésével . <<example_2-1>> egy RESTful API kérési példát szemléltet, melyet egy adott URL-re kiadott HTTP GET kéréssel hoztunk létre. Az URL visszaadja, hogy egy adott címhez milyen az el nem költött tranzakciós kimenetek tartoznak, vagyis megadja azokat az adatokat, melyek ahhoz szükségesek, hogy egy alkalmazás létrehozza a kimenetek elköltéséhez szükséges tranzakció bemeneteket. Egy parancssorból futtatható, egyszerű ((("cURL HTTP kliens"))) _cURL_ HTTP klienssel kapjuk meg a választ:
 

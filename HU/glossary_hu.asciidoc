@@ -22,7 +22,7 @@ cél nehézségi szint::
     Az a nehézségi szint, amely mellett a hálózat kb. 10 percenként fog egy blokkot találni.((("cél nehézségi szint")))
 
 cím::
-    Egy bitcoin cím a következőképpen néz ki: +1DSrfJdB2AnWaFNgSbv3MZC2m74996JafV+. A bitcoin cím betűkből és számokból áll, és egy "1"-gyel kezdődik. Egy bitcoin címre bitcoinok küldhetők,  pont úgy, ahogy egy e-mail címmel elektronikus leveleket lehet fogadni.((("bitcoin cím")))((("cím", láad="bitcoin cím")))((("nyilvános kulcs", see="bitcoin cím")))
+    Egy bitcoin cím a következőképpen néz ki: +1DSrfJdB2AnWaFNgSbv3MZC2m74996JafV+. A bitcoin cím betűkből és számokból áll, és egy „1”-gyel kezdődik. Egy bitcoin címre bitcoinok küldhetők,  pont úgy, ahogy egy e-mail címmel elektronikus leveleket lehet fogadni.((("bitcoin cím")))((("cím", láad="bitcoin cím")))((("nyilvános kulcs", see="bitcoin cím")))
 
 díjak::
     A tranzakció küldője által megfizetett díj, amelyet a hálózat kap a tranzakció feldolgozásáért. A legtöbb tranzakcióhoz min. 0.1 mBTC díjra van szükség.((("díjak")))
@@ -40,7 +40,7 @@ jutalom::
     Az új blokkokban szereplő pénzösszeg, melyet a hálózat annak a bányásznak ad, aki megtalálta a blokkhoz a munkabizonyítékot. A jutalom jelenleg 25 BTC/blokk.((("jutalom")))
 
 megerősítések::
-    Ha egy tranzakció bekerült egy blokkba, akkor "egy megerősítéssel rendelkezik". Ha már egy _újabb_ blokk is előállt ugyanezen a blokkláncon, akkor a tranzakciónak két megerősítése van stb. Hat vagy még több megerősítés már elégséges bizonyítéknak tekinthető arra nézve, hogy a tranzakciót nem lehet visszafordítani.((("megerősítések")))
+    Ha egy tranzakció bekerült egy blokkba, akkor „egy megerősítéssel rendelkezik”. Ha már egy _újabb_ blokk is előállt ugyanezen a blokkláncon, akkor a tranzakciónak két megerősítése van stb. Hat vagy még több megerősítés már elégséges bizonyítéknak tekinthető arra nézve, hogy a tranzakciót nem lehet visszafordítani.((("megerősítések")))
 
 munkabizonyíték, proof-of-work::
     Egy olyan számérték, melynek előállítása jelentős számítási kapacitást igényel. A bitcoin esetében a bányászok az SHA256 algoritmust használják arra, hogy egy olyan hasht találjanak, amely megfelel a hálózat egészében fennálló cél nehézségi szintnek.((("munkabizonyíték, proof-of-work")))

@@ -13,7 +13,7 @@ image::images/msbt_0301.png["bitcoin choose client"]
 
 ==== A Bitcoin Core kliens első futtatása
 
-((("Bitcoin Core kliens","futtatás")))Ha egy végrehajtható csomagot, például egy .exe, .dmg, vagy PPA csomagot töltöttünk le, akkor ugyanúgy installálhatjuk az operációs rendszerünkön, mint bármely más alkalmazást. A Windows esetében futtassuk az .exe állományt, és lépésről lépésre kövessük az utasításokat. A Mac OS esetében indítsuk el a .dmg-t, és húzzuk a Bitcoin-QT ikont az _Alkalmazások_ mappába. Az Ubuntu esetében a File Explorer-ben kattintsunk duplán a PPA-ra, ennek hatására megnyílik a package manager, amellyel installálható a csomag. Az installálás befejeződése után egy új „Bitcoin-Qt” alkalmazás jelenik meg az alkalmazások között. Az ikonon történő dupla kattintással indítsuk el a bitcoin klienst. 
+((("Bitcoin Core kliens","futtatás")))Ha egy végrehajtható csomagot, például egy .exe, .dmg, vagy PPA csomagot töltöttünk le, akkor ugyanúgy installálhatjuk az operációs rendszerünkön, mint bármely más alkalmazást. A Windows esetében futtassuk az .exe állományt, és lépésről lépésre kövessük az utasításokat. A Mac OS esetében indítsuk el a .dmg-t, és húzzuk a Bitcoin-Qt ikont az _Alkalmazások_ mappába. Az Ubuntu esetében a File Explorer-ben kattintsunk duplán a PPA-ra, ennek hatására megnyílik a package manager, amellyel installálható a csomag. Az installálás befejeződése után egy új „Bitcoin-Qt” alkalmazás jelenik meg az alkalmazások között. Az ikonon történő dupla kattintással indítsuk el a bitcoin klienst. 
 
 A Bitcoin Core első futtatásakor megkezdődik a blokklánc letöltése. A letöltési folyamat több napig tarthat (lásd <<bitcoin-qt-firstload>>). Hagyjuk, hadd fusson a háttérben, amíg meg nem jelenik rajta az egyenleg mellett, hogy „Szinkronban” („Synchronized”), és már nem azt jelzi ki, hogy „Nincs szinkronban” („Out of sync”).
 
@@ -23,7 +23,7 @@ image::images/msbt_0302.png["bitcoin-qt first run"]
 
 [TIP]
 ====
-((("Bitcoin Core kliens","helyszükséglete a diszken")))((("blokklánc","a Bitcoin Core szinkronizálása")))((("a Bitcoin Core helyszükséglete a diszken")))A Bitcoin Core a tranzakciós nyilvántartás (blokklánc) egy teljes másolatát állítja elő, melyben a bitcoin hálózat elindulása, vagyis a 2009 óta lezajlott összes tranzakció megtalálható. Ez egy jó pár gigabájt méretű adathalmaz (2013 végén kb. 16 GB volt a mérete), és pár nap alatt, fokozatosan töltődik le. A kliens csak a blokklánc összes adatának letöltése után képes a tranzakciók feldolgozására vagy a számla egyenlegek módosítására. A letöltés során a kliens az egyenleg mellett az jelzi ki, hogy „Nincs szinkronban” („Out of sync”), az ablak alján pedig azt, hogy „Szinkronizálás a hálózattal” ("Synchronizing"). Ellenőrizze, hogy van-e elég szabad hely a diszken, valamint elegendő sávszélesség és idő áll-e rendelkezésre a kezdeti szinkronizáláshoz. 
+((("Bitcoin Core kliens","helyszükséglete a diszken")))((("blokklánc","a Bitcoin Core szinkronizálása")))((("a Bitcoin Core helyszükséglete a diszken")))A Bitcoin Core a tranzakciós nyilvántartás (blokklánc) egy teljes másolatát állítja elő, melyben a bitcoin hálózat elindulása, vagyis a 2009 óta lezajlott összes tranzakció megtalálható. Ez egy jó pár gigabájt méretű adathalmaz (2013 végén kb. 16 GB volt a mérete), és pár nap alatt, fokozatosan töltődik le. A kliens csak a blokklánc összes adatának letöltése után képes a tranzakciók feldolgozására vagy a számla egyenlegek módosítására. A letöltés során a kliens az egyenleg mellett az jelzi ki, hogy „Nincs szinkronban” („Out of sync”), az ablak alján pedig azt, hogy „Szinkronizálás a hálózattal” („Synchronizing”). Ellenőrizze, hogy van-e elég szabad hely a diszken, valamint elegendő sávszélesség és idő áll-e rendelkezésre a kezdeti szinkronizáláshoz. 
 ====
  
 
@@ -240,7 +240,7 @@ $ which bitcoin-cli
 /usr/local/bin/bitcoin-cli
 ----
 
-Az alapértelmezés szerinti installáláskor a bitcoind a _/usr/local/bin_ könyvtárba kerül. Amikor a bitcoind-t először futtatjuk, akkor üzen, hogy egy konfigurációs állományt kell létrehoznunk, melyben a JSON-RPC interface számára egy erős jelszó van megadva. Futtassunk a bitcoind-t a +bitcoind+ terminálon történő begépelésével:
+Az alapértelmezés szerinti installáláskor a bitcoind a _/usr/local/bin_ könyvtárba kerül. Amikor a bitcoindt először futtatjuk, akkor üzen, hogy egy konfigurációs állományt kell létrehoznunk, melyben a JSON-RPC interface számára egy erős jelszó van megadva. Futtassunk a bitcoindt a +bitcoind+ terminálon történő begépelésével:
 
 ----
 $ bitcoind
@@ -1116,7 +1116,7 @@ A bx parancsoknak nagyon sok olyan tulajdonságuk van, mint a fejezetben szemlé
 
 A +bx+ paraméterek nélkül begépelésével tudja kiíratni a rendelkezésre álló parancsokat (lásd <<appdx_bx>>).
 
-A Bitcoin Explorer installálóval https://github.com/libbitcoin/libbitcoin-explorer/wiki/Build[a Linux és OS X rendszereken forrásból tudunk fordítani, Windows-ban pedig Visual Studio projektekkel]. A források az Autotools használatával kézzel is lefordíthatók. Ezek a ((("libbitcoin könyvtár","installálása")))libbitcoin könyvtári függőséget is installálják.
+A Bitcoin Explorer installálóval https://github.com/libbitcoin/libbitcoin-explorer/wiki/Build[a Linux és OS X rendszereken forrásból tudunk fordítani, Windowsban pedig Visual Studio projektekkel]. A források az Autotools használatával kézzel is lefordíthatók. Ezek a ((("libbitcoin könyvtár","installálása")))libbitcoin könyvtári függőséget is installálják.
 
 [TIP]
 ====
@@ -1176,9 +1176,9 @@ include::code/pycoin_example.py[]
 A ku és tx parancssori eszközök használatát lásd a <<appdxbitcoinimpproposals>> részben.
 
 ==== btcd
-((("btcd")))((("kliensek, alternatív","btcd")))A btcd egy ((("Go programozási nyelv")))Go-ban megírt, teljes csomópontot megvalósító bitcoin implementáció. Jelenleg helyesen letölti, ellenőrzi és kiszolgálja a blokkláncot. A blokkok elfogadása a referencia implementáció, a bitcoind pontos szabályai szerint történik (beleértve a hibákat is). Helyesen továbbítja az újonnan kibányászott blokkokat is, karban tartja a tranzakciós készletet és továbbítja azokat a tranzakciókat, melyek még nem lettek blokkba foglalva. Biztosítja, hogy a tranzakciós készletbe (poolba) befogadott összes tranzakció teljesítse a blokklánc által megkövetelt szabályokat, és azoknak a szigorú ellenőrzéseknek a túlnyomó többségét is tartalmazza, amelyek a bányászat követelményei szerint szűrik a tranzakciókat ("szabványos" tranzakciók).
+((("btcd")))((("kliensek, alternatív","btcd")))A btcd egy ((("Go programozási nyelv")))Goban megírt, teljes csomópontot megvalósító bitcoin implementáció. Jelenleg helyesen letölti, ellenőrzi és kiszolgálja a blokkláncot. A blokkok elfogadása a referencia implementáció, a bitcoind pontos szabályai szerint történik (beleértve a hibákat is). Helyesen továbbítja az újonnan kibányászott blokkokat is, karban tartja a tranzakciós készletet és továbbítja azokat a tranzakciókat, melyek még nem lettek blokkba foglalva. Biztosítja, hogy a tranzakciós készletbe (poolba) befogadott összes tranzakció teljesítse a blokklánc által megkövetelt szabályokat, és azoknak a szigorú ellenőrzéseknek a túlnyomó többségét is tartalmazza, amelyek a bányászat követelményei szerint szűrik a tranzakciókat („szabványos” tranzakciók).
 
-A btcd és a bitcoind közötti egyik lényeges különbség az, hogy a btcd-ben tudatos tervezési döntés eredményeképpen nincs pénztárca funkció. Ez azt jelenti, hogy közvetlenül a btcd-vel nem lehet fizetni vagy pénzt fogadni. Ezt a funkciót a btcwallet és a btcgui projektek biztosítják, mindkettő aktív fejlesztés alatt áll. Egy másik figyelemre méltó különbség az, hogy a btcd nem csak a HTTP POST kéréseket támogatja (a bitcoind-hez hasonlóan), hanem a Websocket-eket is (ezt részesíti előnyben), és a btcd RPC összeköttetéseinél a TLS alapértelemben engedélyezve van.
+A btcd és a bitcoind közötti egyik lényeges különbség az, hogy a btcdben tudatos tervezési döntés eredményeképpen nincs pénztárca funkció. Ez azt jelenti, hogy közvetlenül a btcdvel nem lehet fizetni vagy pénzt fogadni. Ezt a funkciót a btcwallet és a btcgui projektek biztosítják, mindkettő aktív fejlesztés alatt áll. Egy másik figyelemre méltó különbség az, hogy a btcd nem csak a HTTP POST kéréseket támogatja (a bitcoind-hez hasonlóan), hanem a Websocketeket is (ezt részesíti előnyben), és a btcd RPC összeköttetéseinél a TLS alapértelemben engedélyezve van.
 
 ===== A btcd installálása
 
@@ -1198,7 +1198,7 @@ $ go get -u -v github.com/conformal/btcd/...
 
 ===== A btcd használata
 
-((("btcd","használata")))A btcd-nek számos beállítási lehetősége van. Ezeket a következőképpen lehet megnézni: 
+((("btcd","használata")))A btcdnek számos beállítási lehetősége van. Ezeket a következőképpen lehet megnézni: 
 
 [source,bash]
 ----
