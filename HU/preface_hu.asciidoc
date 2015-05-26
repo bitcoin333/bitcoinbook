@@ -3,9 +3,9 @@
 
 === A bitcoin könyv megírása
 
-Először 2011 közepén botlottam a bitcoinba. A reakcióm többé-kevésbé az volt, hogy "Brr! Egy újabb pénz a számítógép megszállottjainak!" - és további 6 hónapig nem törődtem vele, nem értettem meg a fontosságát. Az általam ismert legokosabb embereknél is sokszor láttam ugyanezt a reakciót, ami egy kicsit vígasztaló. Másodszor, amikor egy levelező listán került szóba a bitcoin, elhatároztam, hogy elolvasom Satoshi Nakamoto dolgozatát, azaz áttanulmányozom a hiteles forrást és megnézem, hogy miről van szó. Még mindig emlékszem arra a pillanatra, amikor befejeztem a 9 oldalas dolgozatot és megértettem, hogy a bitcoin nem egyszerűen csak egy digitális pénz, hanem egy decentralizált bizalmi hálózat, és a pénznél sokkal több mindennek az alapjául szolgálhat. Ez a felismerés indított arra, hogy 4 hónapon keresztül a bitcoinra vonatkozó minden információmorzsát összeszedjek és elolvassak. Lelkesedtem és megszállottá váltam, napi 12 órát vagy még többet töltöttem a képernyőre tapadva, olvastam, írtam, kódoltam, és tanultam, amennyit csak tudtam. 10 kilót fogytam ezalatt, mert nem ettem rendesen, hanem csak a bitcoinnal foglalkoztam. 
+Először 2011 közepén botlottam a bitcoinba. A reakcióm többé-kevésbé az volt, hogy "Brr! Egy újabb pénz a számítógép megszállottjainak!" - és további 6 hónapig nem törődtem vele, nem értettem meg a fontosságát. Az általam ismert legokosabb embereknél is sokszor láttam ugyanezt a reakciót, ami egy kicsit vigasztaló. Másodszor, amikor egy levelező listán került szóba a bitcoin, elhatároztam, hogy elolvasom Satoshi Nakamoto dolgozatát, azaz áttanulmányozom a hiteles forrást és megnézem, hogy miről van szó. Még mindig emlékszem arra a pillanatra, amikor befejeztem a 9 oldalas dolgozatot és megértettem, hogy a bitcoin nem egyszerűen csak egy digitális pénz, hanem egy decentralizált bizalmi hálózat, és a pénznél sokkal több mindennek az alapjául szolgálhat. Ez a felismerés indított arra, hogy 4 hónapon keresztül a bitcoinra vonatkozó minden információmorzsát összeszedjek és elolvassak. Lelkesedtem és megszállottá váltam, napi 12 órát vagy még többet töltöttem a képernyőre tapadva, olvastam, írtam, kódoltam, és tanultam, amennyit csak tudtam. 10 kilót fogytam ezalatt, mert nem ettem rendesen, hanem csak a bitcoinnal foglalkoztam. 
 
-Két évvel később, miután számos kis céget alapítottam a bitcoinnal kapcsolatos szolgáltatások és termékek vizsgálatára, elhatároztam, hogy megírom az első könyvemet. A bitcoin volt az a téma, ami kreatívvá tett, lefoglalta a gondolataimat: ez volt a legizgalmasabb technológia, amióta csak találkoztam az Internettel. Itt az idő, hogy a tágabb olvasóközönséggel is megosszam azt az elragadtatásomat, amit ezzel az izgalmas techológiával kapcsolatban érzek. 
+Két évvel később, miután számos kis céget alapítottam a bitcoinnal kapcsolatos szolgáltatások és termékek vizsgálatára, elhatároztam, hogy megírom az első könyvemet. A bitcoin volt az a téma, ami kreatívvá tett, lefoglalta a gondolataimat: ez volt a legizgalmasabb technológia, amióta csak találkoztam az Internettel. Itt az idő, hogy a tágabb olvasóközönséggel is megosszam azt az elragadtatásomat, amit ezzel az izgalmas technológiával kapcsolatban érzek. 
 
 === Olvasóközönség
 
@@ -15,17 +15,17 @@ A könyvet leginkább programozóknak szántam. Ha az Olvasó ismer egy programo
 
 A levélvágó hangya egy olyan faj, amely egy szuper-kolóniában nagyon bonyolult viselkedésre képes. Ugyanakkor az egyes hangyák nagyon egyszerű szabályok szerint járnak el, amelyeket a szociális érintkezés és kémiai szaganyagok (feromonok) cseréje határoz meg. A Wikipédia szerint: "A Földön az emberek mellett a levélvágó hangyák alkotják a legnagyobb és legbonyolultabb társadalmakat." A levélvágó hangyák ténylegesen nem eszik meg a leveleket, hanem gombatermelésre használják, ami a hangyaboly fő élelemforrása. Értik? Ezek a hangyák termelnek! 
 
-Noha a hangyáknál kaszt-alapú a társadalom, és egy királynő hozza létre az udódokat, de a hangyabolyban nincs központi szervezet vagy vezető. A sok millió tagot számláló hangyaboly rendkívül intelligens és okos viselkedése az egyes egyedek kölcsönhatásai révén előálló sajátosság ("emergens tulajdonság"). 
+Noha a hangyáknál kaszt-alapú a társadalom, és egy királynő hozza létre az utódokat, de a hangyabolyban nincs központi szervezet vagy vezető. A sok millió tagot számláló hangyaboly rendkívül intelligens és okos viselkedése az egyes egyedek kölcsönhatásai révén előálló sajátosság ("emergens tulajdonság"). 
 
 A természet azt szemlélteti, hogy a decentralizált rendszerek ellenállóak tudnak lenni és  központi szervezet, hierarchia vagy bonyolult részek nélkül is emergens bonyolultságot és okosságot tudnak létrehozni.
 
-A bitcoin egy nagyon összetett decentralizált bizalmi hálózat, amely pénzügyi folyamatok milliárdjainak a támogatására képes. Ugyanakkor minden egyes csomópont néhány egyszerű matematikai szabályt követ. A bonyulult viselkedés megjelenése a csomópontok közötti kölcsönhatások eredménye, nem pedig valamilyen belső bonyolultságnak vagy az egyes csomópontokba vetett bizalomnak köszönhető. Egy hangyabolyhoz hasonlóan a bitcoin hálózat is egyszerű szabályokat követő csomópontok hálózata, amely képes ellenállni a támadásoknak, és együttesen központi koordináció nélkül is csodálatos dolgokra képes.
+A bitcoin egy nagyon összetett decentralizált bizalmi hálózat, amely pénzügyi folyamatok milliárdjainak a támogatására képes. Ugyanakkor minden egyes csomópont néhány egyszerű matematikai szabályt követ. A bonyolult viselkedés megjelenése a csomópontok közötti kölcsönhatások eredménye, nem pedig valamilyen belső bonyolultságnak vagy az egyes csomópontokba vetett bizalomnak köszönhető. Egy hangyabolyhoz hasonlóan a bitcoin hálózat is egyszerű szabályokat követő csomópontok hálózata, amely képes ellenállni a támadásoknak, és együttesen központi koordináció nélkül is csodálatos dolgokra képes.
 
 === A könyvben használt szabályok
 
 A könyv a következő tipográfiai szabályokat használja:
 
-_Dőlt betűs szedés_:: egy új szó, URL, email cím, állománynév vagy kiterjesztés jelölésére szolgál.
+_Dőlt betűs szedés_:: egy új szó, URL, e-mail cím, állománynév vagy kiterjesztés jelölésére szolgál.
 
 +Fix szélességű szedés+:: Programlisták, valamint egy bekezdésen belül valamilyen programrészlet, pl. változók vagy függvények, adatbázisok, adattípusok, környezeti változók, utasítások és kulcsszavak esetén használatos.
 
@@ -48,7 +48,7 @@ Ez az ikon egy figyelmeztetést jelöl.
 
 A példák szemléltetésére Python, C++ és egy Unix-szerű operációs rendszer (Linux, Mac OS X) parancssorai szolgáltak. Az összes kódrészlet megtalálható a weben, és online módon is elérhető a https://github.com/aantonop/bitcoinbook[GitHub kódtár] URL címen, a főkönyvtár _code_ alkönyvtárában. A GitHub-ról töltse le a kódot, próbálja ki a példákat, vagy jelezze a hibákat. 
 
-A kódrészletek a legtöbb operációs rendszer alatt a megfelelő nyelvek installálásával, minimális munkával működőképessé tehetők. Ha szükségesnek láttuk, akkor megadtuk az instaláláshoz szükséges utasításokat és az utasítások lépésről lépésre történő végrehajtása során keletkező kimeneteket. 
+A kódrészletek a legtöbb operációs rendszer alatt a megfelelő nyelvek installálásával, minimális munkával működőképessé tehetők. Ha szükségesnek láttuk, akkor megadtuk az installáláshoz szükséges utasításokat és az utasítások lépésről lépésre történő végrehajtása során keletkező kimeneteket. 
 
 Némelyik kódrészletet és kódrészlet kimenetet a nyomtatás érdekében újraformáztuk. Az összes ilyen esetben a sorokat egy "\" karakterrel választottuk el, melyet egy új sor karakter követ. A példák újbóli futtatásakor távolítsák el ezt a két karaktert és egyesítsék újra a sorokat, ekkor a példában szereplő eredménnyel egyező kimenetet fognak kapni. 
 
@@ -62,7 +62,7 @@ Köszönettel vesszük, de nem kötelező a hivatkozás. A hivatkozás általáb
 
 A könyv egyes kiadásaihoz nyílt forráskódú engedély tartozik, mint pl. CC-BY-NC (creativecommons.org). Ebben az esetben a vonatkozó engedély a hatályos.
 
-Ha úgy érzi, hogy a példa programok felhasználása során túllépte a fent engedélyezett mértékét, akkor lépjen kacsolatba velünk: [<email>permissions@oreilly.com</email>].
+Ha úgy érzi, hogy a példa programok felhasználása során túllépte a fent engedélyezett mértékét, akkor lépjen kapcsolatba velünk: [<email>permissions@oreilly.com</email>].
 
 === Safari® Books Online
 
@@ -107,7 +107,7 @@ Nézzen minket a YouTube-on: $$http://www.youtube.com/oreillymedia$$
 
 === Köszönetnyilvánítások
 
-Ez a könyv sok ember munkájának és közreműködésnek köszönhető. Hálás vagyok azért a segítségért, amelyet a barátaimtól, kollegáimtól és teljesen ismeretlen emberektől kaptam, akik velem együtt részt vettek a bitcoinról és a digitális pénzekről szóló definitív szakkönyv megírásában. 
+Ez a könyv sok ember munkájának és közreműködésnek köszönhető. Hálás vagyok azért a segítségért, amelyet a barátaimtól, kollégáimtól és teljesen ismeretlen emberektől kaptam, akik velem együtt részt vettek a bitcoinról és a digitális pénzekről szóló definitív szakkönyv megírásában. 
 
 Lehetetlen különbséget tenni a bitcoin technológia és a bitcoin közösség között, és ez a könyv épp annyira a közösség által létrehozott eredmény, mint amennyire a technológiáról szóló könyv. A könyvvel kapcsolatos munkámat a kezdetektől a legvégéig az egész bitcoin közösség bátorította, örömmel fogadta és támogatta. Ez a könyv mindenek előtt lehetővé tette, hogy két éven keresztül része lehettem ennek a csodálatos közösségnek, és nem tudom eléggé megköszönni, hogy befogadtak maguk közé. Túl sok embert kellene megemlítenem név szerint - olyanokat, akikkel konferenciákon, különféle eseményeken, szemináriumokon, pizzázás során és személyes megbeszéléseken találkoztam, továbbá azokat, akik twitter-en, reddit-en, a bitcointalk.org-on és a github-on kommunikáltak velem, és akik hatással voltak erre a könyvre. Minden egyes ötletet, analógiát, kérdést, választ és magyarázatot, amely a könyvben megtalálható, bizonyos szempontból a közösségi kommunikáció inspirálta, tesztelte vagy tette jobbá. Mindenkinek köszönöm a támogatását. Enélkül ez a könyv nem születhetett volna meg. Örökre hálás vagyok ezért.
 
@@ -119,13 +119,13 @@ Köszönet Cricket Liunak, aki a _DNS és BIND_ című O’Reilly könyv szerző
 
 Az első néhány vázlat és az első pár fejezet megírása volt a legnehezebb, mert a bitcoin témájának a kifejtése nehéz. Minden egyes alkalommal, amikor megváltoztattam valamit a bitcoin technológia magyarázata során, az egész anyagot át kellett dolgoznom. Sokszor megakadtam, és kicsit kétségbe estem, mikor azzal küzdöttem, hogy az egész témát könnyen érthetővé tegyem, és leírjam ezt a bonyolult műszaki témát. Végül úgy döntöttem, hogy a bitcoin történetét a bitcoin felhasználóinak a szemszögéből mondom el. Ez nagyban megkönnyítette a könyv megírását. Köszönettel tartozom barátomnak és mentoromnak, Richard Kagannak, aki segített kibontani a történetet, és segített legyőzni az írói leblokkolásokat, valamint Pamela Morgannek, aki a fejezetek korai vázlatait átnézte, és nehéz kérdéseket tett föl nekem - ezektől lettek jobbak a fejezetek. Köszönettel tartozom a San Francisco-i bitcoin fejlesztők társaságának, valamint Taariq Lewisnak, a csoport egyik alapítójának, mert segítették az anyag elbírálását a korai fázisban.
 
-A könyv megírása során a korai vázlatokat elérhetővé tettem a Github-on, és vártam a megjegyzéseket. Több, mint száz megjegyzést, javaslatot, javítást és hozzájárulást kaptam. Ezeket a hozzájárulásokat külön is kiemeltem és megköszöntem a <<github_contrib>> részben.Külön köszönetet szeretnék mondani Minh T. Nguyennek, aki önként vállalta, hogy karbantartja a Github hozzászólásokat, és saját maga is jelentős módon hozzájárult a könyvhöz. Köszönet továbbá Andrew Nauglernek az infografika megtervezéséért. 
+A könyv megírása során a korai vázlatokat elérhetővé tettem a Github-on, és vártam a megjegyzéseket. Több, mint száz megjegyzést, javaslatot, javítást és hozzájárulást kaptam. Ezeket a hozzájárulásokat külön is kiemeltem és megköszöntem a <<github_contrib>> részben. Külön köszönetet szeretnék mondani Minh T. Nguyennek, aki önként vállalta, hogy karbantartja a Github hozzászólásokat, és saját maga is jelentős módon hozzájárult a könyvhöz. Köszönet továbbá Andrew Nauglernek az infografika megtervezéséért. 
 
 A könyv első változata számos műszaki szemlén ment keresztül. Köszönet Cricket Liunak és Lorne Lantznak az alapos műszaki kritikájukért, megjegyzéseikért és támogatásukért.
 
-Számos bitcoin fejlesztőtől kaptam programokat, kritikákat, megjegyzéseket és bátorítást. Köszönetet mondok Amir Taakinak a kódrészletekért és a sok nagyszerű megjegyzéséért, Vitalik Buterinnek és Richard Kissnek az elliptikus görbékkel kapcsolatos matematikai megjegyzéseikért, Gavin Andresennek a javításaiért, megjegyzéseiért és bátorításáért, Michalis Karagisnek a megjegyzéseiért, közreműködéséért és a btcd összefogalójáért.
+Számos bitcoin fejlesztőtől kaptam programokat, kritikákat, megjegyzéseket és bátorítást. Köszönetet mondok Amir Taakinak a kódrészletekért és a sok nagyszerű megjegyzéséért, Vitalik Buterinnek és Richard Kissnek az elliptikus görbékkel kapcsolatos matematikai megjegyzéseikért, Gavin Andresennek a javításaiért, megjegyzéseiért és bátorításáért, Michalis Karagisnek a megjegyzéseiért, közreműködéséért és a btcd összefoglalójáért.
 
-A szavak és könyvek szeretetét anyámnak, Theresának köszönhetem, aki egy olyan házban nevelt fel, amelyben minden falon könyvek voltak. Anyám vette nekem az első számítógépemet is 1982-ben, bár ő maga technofóbiás, a saját állítása szerint. Apám, Menelaos, építőmérnök, és 80 éves korában jelentette meg az első könyvét. Ő volt az, aki megtanított a logikus és analítikus gondolkodásra, valamint a műszaki tudományok szeretetére. 
+A szavak és könyvek szeretetét anyámnak, Theresának köszönhetem, aki egy olyan házban nevelt fel, amelyben minden falon könyvek voltak. Anyám vette nekem az első számítógépemet is 1982-ben, bár ő maga technofóbiás, a saját állítása szerint. Apám, Menelaos, építőmérnök, és 80 éves korában jelentette meg az első könyvét. Ő volt az, aki megtanított a logikus és analitikus gondolkodásra, valamint a műszaki tudományok szeretetére. 
 
 Köszönet mindenkinek, aki segített nekem megtenni ezt az utat. 
 

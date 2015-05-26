@@ -1,5 +1,5 @@
 ["dedication", role="praise"]
-== A  "Bitcoin fejlesztőknek" című köny méltatása
+== A  "Bitcoin fejlesztőknek" című könyv méltatása
 
 [quote, a Bitcoin Foundation vezető fejlesztője, Gavin Andresen]
 ____
@@ -8,15 +8,15 @@ ____
 
 [quote, az AngelList társalapítója, Naval Ravikant]
 ____
-"A bitcoin és a blokklánc technológiája  lesz az Internet következő generációjának az alapvető építőeleme. A Szilicium-völgy legjobb és legokosabb elméi dolgoznak rajta. Andreas könyve megkönnyíti Önöknek, hogy csatlakozni tudjanak a pénzügyi világ szoftver forradalmához." 
+"A bitcoin és a blokklánc technológiája  lesz az Internet következő generációjának az alapvető építőeleme. A Szilícium-völgy legjobb és legokosabb elméi dolgoznak rajta. Andreas könyve megkönnyíti Önöknek, hogy csatlakozni tudjanak a pénzügyi világ szoftver forradalmához." 
 ____
 
 [quote, General Partner&#x2c; Andreessen Horowitz, Balaji S. Srinivasan (@balajis)]
 ____
-"A _Bitcoin fejlesztőknek_ a ma elérhető legjobb műszaki kézikönyv a bitcoinról. Visszatekintve, valószínűleg a bitcoint fogjuk az évtized legjelenetősebb technológiájának tartani. Emiatt a könyv minden fejlesztőnek elengedhetetlen, különösen azoknak, akik a bitcoin protokollra építve szeretnének alkalmazásokat létrehozni. Nagyon ajánlom ezt a könyvet."
+"A _Bitcoin fejlesztőknek_ a ma elérhető legjobb műszaki kézikönyv a bitcoinról. Visszatekintve, valószínűleg a bitcoint fogjuk az évtized legjelentősebb technológiájának tartani. Emiatt a könyv minden fejlesztőnek elengedhetetlen, különösen azoknak, akik a bitcoin protokollra építve szeretnének alkalmazásokat létrehozni. Nagyon ajánlom ezt a könyvet."
 ____
 
 [quote, bitcoin vállalkozó és befektető, Roger Ver]
 ____
-Az az újítás, amit a bitcoin blokklánc jelent, egy teljesen új programozási platformot teremt, amely épp olyan széleskörű és változatos ökoszisztémát tesz majd lehetővé, mint maga az Internet. Kiváló gondolkódóként Andreas Antonopoulos tökéletes választás volt a könyv megírására."
+Az az újítás, amit a bitcoin blokklánc jelent, egy teljesen új programozási platformot teremt, amely épp olyan széleskörű és változatos ökoszisztémát tesz majd lehetővé, mint maga az Internet. Kiváló gondolkodóként Andreas Antonopoulos tökéletes választás volt a könyv megírására."
 ____

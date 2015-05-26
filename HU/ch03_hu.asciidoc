@@ -11,7 +11,7 @@
 .A bitcoin kliens kiválasztása a bitcoin.org webhelyen
 image::images/msbt_0301.png["bitcoin choose client"]
 
-==== A Bitcoin Core kliens első futattása
+==== A Bitcoin Core kliens első futtatása
 
 ((("Bitcoin Core kliens","futtatás")))Ha egy végrehajtható csomagot, például egy .exe, .dmg, vagy PPA csomagot töltöttünk le, akkor ugyanúgy installálhatjuk az operációs rendszerünkön, mint bármely más alkalmazást. A Windows esetében futtassuk az .exe állományt, és lépésről lépésre kövessük az utasításokat. A Mac OS esetében indítsuk el a .dmg-t, és húzzuk a Bitcoin-QT ikont az _Alkalmazások_ mappába. Az Ubuntu esetében a File Explorer-ben kattintsunk duplán a PPA-ra, ennek hatására megnyílik a package manager, amellyel installálható a csomag. Az installálás befejeződése után egy új „Bitcoin-Qt” alkalmazás jelenik meg az alkalmazások között. Az ikonon történő dupla kattintással indítsuk el a bitcoin klienst. 
 
@@ -31,7 +31,7 @@ image::images/msbt_0302.png["bitcoin-qt first run"]
 
 ==== A Bitcoin Core kliens lefordítása a forráskódból
 
-((("Bitcoin Core kliens","forráskódból történő fordítás", id="ix_ch03-asciidoc3", range="startofrange")))((("bitcoind kliens", see="Bitcoin Core kliens")))A fejlesztők azt is megtehetik, hogy ZIP archívumként letöltik a teljes forrást, vagy a Github-ról klónozzák a hiteles forráshalmazt. ((("Bitcoin Core kliens","forráskód, letöltés")))((("GitHub, a Bitcoin Core letöltése innen")))Menjen a https://github.com/bitcoin/bitcoin[GitHub bitcoin web lapra], és válassza a „Download ZIP” gombot a jobb oldalról. Egy másik lehetőség az, ha a git parancssal létrehozza a forráskód egy helyi másolatát a rendszerén. A lenti példában egy Linux vagy Mac OS alatt kiadott Unix-szerű paranccsal fogjuk klónozni a forrás kódot:
+((("Bitcoin Core kliens","forráskódból történő fordítás", id="ix_ch03-asciidoc3", range="startofrange")))((("bitcoind kliens", see="Bitcoin Core kliens")))A fejlesztők azt is megtehetik, hogy ZIP archívumként letöltik a teljes forrást, vagy a Github-ról klónozzák a hiteles forráshalmazt. ((("Bitcoin Core kliens","forráskód, letöltés")))((("GitHub, a Bitcoin Core letöltése innen")))Menjen a https://github.com/bitcoin/bitcoin[GitHub bitcoin web lapra], és válassza a „Download ZIP” gombot a jobb oldalról. Egy másik lehetőség az, ha a git paranccsal létrehozza a forráskód egy helyi másolatát a rendszerén. A lenti példában egy Linux vagy Mac OS alatt kiadott Unix-szerű paranccsal fogjuk klónozni a forrás kódot:
 
 ----
 $ git clone https://github.com/bitcoin/bitcoin.git
@@ -56,7 +56,7 @@ A klónozási művelet befejeződése után a forráskódról egy teljes másola
 $ cd bitcoin
 ----
  
-Ha a git clone parancsban semmi sem volt megadva,  akkor a helyi példány a legfrisebb kóddal lesz szinkronban, ami akár a bitcoin kliens egy nem stabil vagy „béta” verziója is lehet. A kód lefordítása előtt egy ((("release tags")))release _tag_ (_cimke_) megadásával egy adott verzió választható ki. A tag (cimke) kulcsszó a helyi másolatot a kódtár egy adott pillanatképével szinkronizálja. A fejlesztők a cimkék használatával tudják egy verziószámmal megjelelölni a kód egy adott verzióját . Azt, hogy milyen cimkék vannak, a +git tag+ paranccsal írathatjuk ki:
+Ha a git clone parancsban semmi sem volt megadva,  akkor a helyi példány a legfrissebb kóddal lesz szinkronban, ami akár a bitcoin kliens egy nem stabil vagy „béta” verziója is lehet. A kód lefordítása előtt egy ((("release tags")))release _tag_ (_címke_) megadásával egy adott verzió választható ki. A tag (címke) kulcsszó a helyi másolatot a kódtár egy adott pillanatképével szinkronizálja. A fejlesztők a címkék használatával tudják egy verziószámmal megjelelölni a kód egy adott verzióját . Azt, hogy milyen címkék vannak, a +git tag+ paranccsal írathatjuk ki:
 
 ----
 $ git tag
@@ -67,7 +67,7 @@ v0.2.10
 v0.2.11
 v0.2.12
 
-[... sok egyéb cimke ...]
+[... sok egyéb címke ...]
 
 v0.8.4rc2
 v0.8.5
@@ -76,7 +76,7 @@ v0.8.6rc1
 v0.9.0rc1
 ----
 
-A cimkék listája a bitcoin összes kibocsájtott változatát tartalmazza. Megállapodás szerint azoknak a jelölteknek, melyek tesztelésre szolgálnak, „rc” az utótagja (ami a ((("release candidates")))_release cadidate_ kezdőbetűinek felel meg). A stabil változatoknak, melyek éles rendszereken futtathatók, nincs utótagjuk. A fenti listából a legmagasabb verziójú változatot választjuk, ami az adott időpontban a v0.9.0rc1. Ahhoz, hogy a helyi kód ezzel a változattal legyen szinkronban, a +git checkout+ parancsot használjuk:
+A címkék listája a bitcoin összes kibocsájtott változatát tartalmazza. Megállapodás szerint azoknak a jelölteknek, melyek tesztelésre szolgálnak, „rc” az utótagja (ami a ((("release candidates")))_release cadidate_ kezdőbetűinek felel meg). A stabil változatoknak, melyek éles rendszereken futtathatók, nincs utótagjuk. A fenti listából a legmagasabb verziójú változatot választjuk, ami az adott időpontban a v0.9.0rc1. Ahhoz, hogy a helyi kód ezzel a változattal legyen szinkronban, a +git checkout+ parancsot használjuk:
 
 ----
 $ git checkout v0.9.0rc1
@@ -89,7 +89,7 @@ $
 
 ((("Bitcoin Core kliens","dokumentáció")))A forráskód tartalmaz némi dokumentációt is, melyek különféle állományokban találhatók. Nézze át a bitcoin könyvtár _README.md_ állományában található dokumentációt. Ehhez gépelje be a prompt-on: +more README.md+, és lapozásra használja a szóköz billentyűt. Ebben a fejezetben egy parancssori bitcoin klienst fogunk újraépíteni, melyet a Linux-on +bitcoind+-nek hívnak. Nézze át, hogy hogyan kell az ön platformján a bitcoind parancssori klienst lefordítani, ehhez gépelje be: +more doc/build-unix.md+ . A Mac OS X és a Windows esetében az utasítások a _doc_ könyvtárban, a _build-osx.md_ vagy a _build-msw.md_ állományokban vannak. 
 
-Gondosan nézze át az újraépítés előfeltételeit, melyek a dokumentáció első részében találhatók. Az itt felsorolt könyvtáraknak a rendszerben léteznie kell, mielőtt megkezdené a fordítást. Ha az előfeltételek nem teljesülnek, akkor az újraépítési folyamat hibával ér véget. Ha azért képződött hiba, mert valamelyik előfeltétel nem teljesült, akkor a megfelelő könyvtár installálása után a build folyamat onnan folyatatható, ahol abbamaradt. Ha az előfeltételek teljesülnek, akkor az újraépítési folyamat úgy kezdhető el, hogy az _autogen.sh_ scripttel létrehozza az újraépítésre szolgáló scripteket.
+Gondosan nézze át az újraépítés előfeltételeit, melyek a dokumentáció első részében találhatók. Az itt felsorolt könyvtáraknak a rendszerben léteznie kell, mielőtt megkezdené a fordítást. Ha az előfeltételek nem teljesülnek, akkor az újraépítési folyamat hibával ér véget. Ha azért képződött hiba, mert valamelyik előfeltétel nem teljesült, akkor a megfelelő könyvtár installálása után a build folyamat onnan folytatatható, ahol abbamaradt. Ha az előfeltételek teljesülnek, akkor az újraépítési folyamat úgy kezdhető el, hogy az _autogen.sh_ scripttel létrehozza az újraépítésre szolgáló scripteket.
 
 [TIP]
 ====
@@ -173,7 +173,7 @@ config.status: executing depfiles commands
 $
 ----
 
-Ha minden jól megy, akkor a +configure+ parancs úgy ér véget, hogy egy testre szabott build scriptet hoz létre, amellyel lefordítható a bitcoind. Ha hiányzó könyvtárak vagy hibák vannak, akkor a +configure+ parancs hibával fog véget érni, és nem hozza létre a fenti példában láátható build scripteket. Ha hiba történik, annak a legvalószínübb oka egy hiányzó vagy nem kompatibilis könyvtár. Nézze át ismét az újraépítésre vonatkozó dokumentációt, és installálja a hiányzó előfeltételeket. Azután futtassa le ismét a +configure+ –t, és nézze meg, hogy elmúlt-e a hiba. Ezután fordítsa le a forráskódot – ez a folyamat akár egy óráig is tarthat. A fordítás során néhány másodpercenként vagy néhány percenként megjelenik valami – vagy hibaüzenetet kap, ha valami baj van. A fordítási folyamat bármikor folytatható, ha félbeszakadt. A fordítás megkezdéséhez gépelje be, hogy +make+ :
+Ha minden jól megy, akkor a +configure+ parancs úgy ér véget, hogy egy testre szabott build scriptet hoz létre, amellyel lefordítható a bitcoind. Ha hiányzó könyvtárak vagy hibák vannak, akkor a +configure+ parancs hibával fog véget érni, és nem hozza létre a fenti példában látható build scripteket. Ha hiba történik, annak a legvalószínűbb oka egy hiányzó vagy nem kompatibilis könyvtár. Nézze át ismét az újraépítésre vonatkozó dokumentációt, és installálja a hiányzó előfeltételeket. Azután futtassa le ismét a +configure+ –t, és nézze meg, hogy elmúlt-e a hiba. Ezután fordítsa le a forráskódot – ez a folyamat akár egy óráig is tarthat. A fordítás során néhány másodpercenként vagy néhány percenként megjelenik valami – vagy hibaüzenetet kap, ha valami baj van. A fordítási folyamat bármikor folytatható, ha félbeszakadt. A fordítás megkezdéséhez gépelje be, hogy +make+ :
 
 ----
 $ make
@@ -240,7 +240,7 @@ $ which bitcoin-cli
 /usr/local/bin/bitcoin-cli
 ----
 
-Az alapértelemzés szerinti installáláskor a bitcoind a _/usr/local/bin_ könyvtárba kerül. Amikor a bitcoind-t először futtatjuk, akkor üzen, hogy egy konfigurációs állományt kell létrehoznunk, melyben a JSON-RPC interface számára egy erős jelszó van megadva. Futtassunk a bitcoind-t a +bitcoind+ terminálon történő begépelésével:
+Az alapértelmezés szerinti installáláskor a bitcoind a _/usr/local/bin_ könyvtárba kerül. Amikor a bitcoind-t először futtatjuk, akkor üzen, hogy egy konfigurációs állományt kell létrehoznunk, melyben a JSON-RPC interface számára egy erős jelszó van megadva. Futtassunk a bitcoind-t a +bitcoind+ terminálon történő begépelésével:
 
 ----
 $ bitcoind
@@ -294,7 +294,7 @@ Opened LevelDB successfully
 
 === A Bitcoin Core JSON-RPC API-jának a használata a parancssorból
 
-((("Bitcoin Core kliens","JSON-RPC API", id="ix_ch03-asciidoc5", range="startofrange")))((("Bitcoin Core kliens","használata a parancssorból", id="ix_ch03-asciidoc6", range="startofrange")))((("bitcoin-cli parancssori segédprogram", id="ix_ch03-asciidoc7", range="startofrange")))The Bitcoin Core kliensben van egy parancssorból elérhető JSON-RPC interfész, amely a +bitcoin-cli+ segédprogrammal érhető el. A parancssor lehetővé teszi, hogy interaktívan kísérletezzünk azokkal a lehetőségekkel, melyek az API-n keresztül programokból is elérhetők. Indulásként, a +help+ parancs kiadásával jelenítsük meg a használható bitcoin RPC parancsok listáját:
+((("Bitcoin Core kliens","JSON-RPC API", id="ix_ch03-asciidoc5", range="startofrange")))((("Bitcoin Core kliens","használata a parancssorból", id="ix_ch03-asciidoc6", range="startofrange")))((("bitcoin-cli parancssori segédprogram", id="ix_ch03-asciidoc7", range="startofrange")))A Bitcoin Core kliensben van egy parancssorból elérhető JSON-RPC interfész, amely a +bitcoin-cli+ segédprogrammal érhető el. A parancssor lehetővé teszi, hogy interaktívan kísérletezzünk azokkal a lehetőségekkel, melyek az API-n keresztül programokból is elérhetők. Indulásként, a +help+ parancs kiadásával jelenítsük meg a használható bitcoin RPC parancsok listáját:
 
 [[bitcoind_commands]]
 
@@ -381,7 +381,7 @@ walletpassphrasechange "oldpassphrase" "newpassphrase"
 
 Parancs: +getinfo+
 
-((("Bitcoin Core kliens","kliens státusz, lekérdezés)))((("bitcoin-cli parancssori segédprogram","getinfo parancs")))((("kliens státusz, lekérdezés")))((("getinfo parancs (bitcoin-cli)")))A bitcoin +getinfo+ RPC parancsával a bitcoin hálózati csomópontról, a pénztárcáról és a blokklánc adatbázisról irathatók ki a legfontosabb adatok. A parancs a +bitcoin-cli+ használatával futtatható:
+((("Bitcoin Core kliens","kliens státusz, lekérdezés)))((("bitcoin-cli parancssori segédprogram","getinfo parancs")))((("kliens státusz, lekérdezés")))((("getinfo parancs (bitcoin-cli)")))A bitcoin +getinfo+ RPC parancsával a bitcoin hálózati csomópontról, a pénztárcáról és a blokklánc adatbázisról írathatók ki a legfontosabb adatok. A parancs a +bitcoin-cli+ használatával futtatható:
 
 [source,bash]
 ----
@@ -407,11 +407,11 @@ $ bitcoin-cli getinfo
 }
 ----
 
-Az adatokat ((("JavaScript Object Notation (JSON)")))JavaScript Object Notation (JSON) formátumban kapjuk vissza. Ezt a formátumot az összes programozási nyelv könnyen „megérti”, ugyanakkor emberek számra is egész olvasható. Az adatok között látható a bitcoin kliens szoftver verziója (90000), a protokol verziója (70002), és a pénztárca verziója (60000). Látható a pénztárcában lévő aktuális egyenleg, amely nulla. Látható a blokk magasság (286216), amely azt mutatja, hogy a hány blokkot ismer a kliens. Láthatunk még a bitcoin hálózatra és a kliens belállítására vonatkozó különféle statisztikákat. A beállításokat a fejezet hátrelévő részében részletesebben megvizsgáljuk. 
+Az adatokat ((("JavaScript Object Notation (JSON)")))JavaScript Object Notation (JSON) formátumban kapjuk vissza. Ezt a formátumot az összes programozási nyelv könnyen „megérti”, ugyanakkor emberek számra is egész olvasható. Az adatok között látható a bitcoin kliens szoftver verziója (90000), a protokoll verziója (70002), és a pénztárca verziója (60000). Látható a pénztárcában lévő aktuális egyenleg, amely nulla. Látható a blokk magasság (286216), amely azt mutatja, hogy a hány blokkot ismer a kliens. Láthatunk még a bitcoin hálózatra és a kliens beállítására vonatkozó különféle statisztikákat. A beállításokat a fejezet hátrelévő részében részletesebben megvizsgáljuk. 
 
 [TIP]
 ====
-Eltarthat némi ideig, akár több napig is, amíg a bitcoind kliens „beéri” az aktuális blokklánc magasságot, eközben blokkokat tölt le a többi bitcoin klienstől. A folyamat menete úgy ellenőrizhető, hogy a +getinfo+-val kiiratjuk az ismert blokkok számát.
+Eltarthat némi ideig, akár több napig is, amíg a bitcoind kliens „beéri” az aktuális blokklánc magasságot, eközben blokkokat tölt le a többi bitcoin klienstől. A folyamat menete úgy ellenőrizhető, hogy a +getinfo+-val kiíratjuk az ismert blokkok számát.
 ====
 
 ==== A  pénztárca beállítása és titkosítása
@@ -426,7 +426,7 @@ wallet encrypted; Bitcoin server stopping, restart to run with encrypted wallet.
 $
 ----
 
-Úgy tudjuk ellőrizni, hogy titkosított lett-e a pénztárca, hogy ismét lefuttatjuk a +getinfo+ parancsot. Ezúttal egy új sort is láthatunk, az +unlocked_until+ sort, amely azt mutatja, hogy mennyi ideig lesz a pénztárca kikódoló jelszó a memóriában, és mennyi ideig fogja a pénztárcát nyitva tartani. Először nulla lesz az értéke, ami azt jelenti, hogy a pénztárca zárolva van:
+Úgy tudjuk ellenőrizni, hogy titkosított lett-e a pénztárca, hogy ismét lefuttatjuk a +getinfo+ parancsot. Ezúttal egy új sort is láthatunk, az +unlocked_until+ sort, amely azt mutatja, hogy mennyi ideig lesz a pénztárca kikódoló jelszó a memóriában, és mennyi ideig fogja a pénztárcát nyitva tartani. Először nulla lesz az értéke, ami azt jelenti, hogy a pénztárca zárolva van:
 
 [source,bash]
 ----
@@ -470,7 +470,7 @@ $ bitcoin-cli getinfo
 }
 ----
 
-==== A pénztárca biztonsági mentése, egyszerű szövegént történő kivitele és visszaállítása
+==== A pénztárca biztonsági mentése, egyszerű szövegként történő kivitele és visszaállítása
 
 Parancsok: +backupwallet+, +importwallet+, +dumpwallet+
 
@@ -511,7 +511,7 @@ $
 
 Parancsok: +getnewaddress+, +getreceivedbyaddress+, +listtransactions+, +getaddressesbyaccount+, +getbalance+
 
-((("címek", id="ix_ch03-asciidoc9", range="startofrange")))((("bitcoin-cli parancssori segédprogram","getaddressesbyaccount parancs", id="ix_ch03-asciidoc10", range="startofrange")))((("bitcoin-cli parancssori segédprogram","getbalance parancs", id="ix_ch03-asciidoc11", range="startofrange")))((("bitcoin-cliparancssori segédprogram","getnewaddress parancs", id="ix_ch03-asciidoc12", range="startofrange")))((("bitcoin-cli parancssori segédprogram","getreceivedbyaddress parancs", id="ix_ch03-asciidoc13", range="startofrange")))((("bitcoin-cli parancssori segédprogram","listtransactions parancs", id="ix_ch03-asciidoc14", range="startofrange")))((("getaddressesbyaccount parancs (bitcoin-cli)", id="ix_ch03-asciidoc15", range="startofrange")))((("getbalance parancs (bitcoin-cli)", id="ix_ch03-asciidoc16", range="startofrange")))((("getnewaddress parancs (bitcoin-cli)", id="ix_ch03-asciidoc17", range="startofrange")))((("getreceivedbyaddress parancs (bitcoin-cli)", id="ix_ch03-asciidoc18", range="startofrange")))((("listtransactions parancs (bitcoin-cli)", id="ix_ch03-asciidoc19", range="startofrange")))((("tranzakciók","pénztárcák, fogadás", id="ix_ch03-asciidoc20", range="startofrange")))((("pénztárcák","címek", id="ix_ch03-asciidoc21", range="startofrange")))((("pénztárcák","tranzakciók fogadása", id="ix_ch03-asciidoc22", range="startofrange")))A bitcoin referencia kliens nyilvántart egy címhalmazt, melynek mérete a +getinfo+ parancs használatakor a +keypoolsize+ -nál jelenik meg. Ezek a címek automatikusan jönnek létre, és nyilvános pénz fogadó címként vagy a visszajáró pénz címeként használhatók. Egy ilyen cím a +getnewaddress+ paranccsal iratható ki:
+((("címek", id="ix_ch03-asciidoc9", range="startofrange")))((("bitcoin-cli parancssori segédprogram","getaddressesbyaccount parancs", id="ix_ch03-asciidoc10", range="startofrange")))((("bitcoin-cli parancssori segédprogram","getbalance parancs", id="ix_ch03-asciidoc11", range="startofrange")))((("bitcoin-cliparancssori segédprogram","getnewaddress parancs", id="ix_ch03-asciidoc12", range="startofrange")))((("bitcoin-cli parancssori segédprogram","getreceivedbyaddress parancs", id="ix_ch03-asciidoc13", range="startofrange")))((("bitcoin-cli parancssori segédprogram","listtransactions parancs", id="ix_ch03-asciidoc14", range="startofrange")))((("getaddressesbyaccount parancs (bitcoin-cli)", id="ix_ch03-asciidoc15", range="startofrange")))((("getbalance parancs (bitcoin-cli)", id="ix_ch03-asciidoc16", range="startofrange")))((("getnewaddress parancs (bitcoin-cli)", id="ix_ch03-asciidoc17", range="startofrange")))((("getreceivedbyaddress parancs (bitcoin-cli)", id="ix_ch03-asciidoc18", range="startofrange")))((("listtransactions parancs (bitcoin-cli)", id="ix_ch03-asciidoc19", range="startofrange")))((("tranzakciók","pénztárcák, fogadás", id="ix_ch03-asciidoc20", range="startofrange")))((("pénztárcák","címek", id="ix_ch03-asciidoc21", range="startofrange")))((("pénztárcák","tranzakciók fogadása", id="ix_ch03-asciidoc22", range="startofrange")))A bitcoin referencia kliens nyilvántart egy címhalmazt, melynek mérete a +getinfo+ parancs használatakor a +keypoolsize+ -nál jelenik meg. Ezek a címek automatikusan jönnek létre, és nyilvános pénz fogadó címként vagy a visszajáró pénz címeként használhatók. Egy ilyen cím a +getnewaddress+ paranccsal íratható ki:
 
 
 ----
@@ -585,7 +585,7 @@ $ bitcoin-cli getaddressesbyaccount ""
 ]
 ----
 
-Végül a +getbalance+ paranccsal a pénztárca egészének egyenlegét irathatjuk ki, vagyis az összes olyan tranzakció összegét, amely legalább +minconf+ megerősítéssel rendelkezik:
+Végül a +getbalance+ paranccsal a pénztárca egészének egyenlegét írathatjuk ki, vagyis az összes olyan tranzakció összegét, amely legalább +minconf+ megerősítéssel rendelkezik:
 
 
 ----
@@ -595,7 +595,7 @@ $ bitcoin-cli getbalance
 
 [TIP]
 ====
-((("getbalance parancs (bitcoin-cli)","megerősítetlen tranzakciók és")))((("megerősítetlen tranzakciók","getbalance parancs és")))Ha a tranzakció még nincs megerősítve, akkor a +getbalance+ által visszadott egyenleg nulla lesz. A "minconf" konfigurációs beállítás határozza meg, hogy legalább hány darab megerősítésre van szükség ahhoz, hogy a tranzakció megjelenjen az egyenlegben.(((range="endofrange", startref="ix_ch03-asciidoc22")))(((range="endofrange", startref="ix_ch03-asciidoc21")))(((range="endofrange", startref="ix_ch03-asciidoc20")))(((range="endofrange", startref="ix_ch03-asciidoc19")))(((range="endofrange", startref="ix_ch03-asciidoc18")))(((range="endofrange", startref="ix_ch03-asciidoc17")))(((range="endofrange", startref="ix_ch03-asciidoc16")))(((range="endofrange", startref="ix_ch03-asciidoc15")))(((range="endofrange", startref="ix_ch03-asciidoc14")))(((range="endofrange", startref="ix_ch03-asciidoc13")))(((range="endofrange", startref="ix_ch03-asciidoc12")))(((range="endofrange", startref="ix_ch03-asciidoc11")))(((range="endofrange", startref="ix_ch03-asciidoc10")))(((range="endofrange", startref="ix_ch03-asciidoc9")))
+((("getbalance parancs (bitcoin-cli)","megerősítetlen tranzakciók és")))((("megerősítetlen tranzakciók","getbalance parancs és")))Ha a tranzakció még nincs megerősítve, akkor a +getbalance+ által visszaadott egyenleg nulla lesz. A "minconf" konfigurációs beállítás határozza meg, hogy legalább hány darab megerősítésre van szükség ahhoz, hogy a tranzakció megjelenjen az egyenlegben.(((range="endofrange", startref="ix_ch03-asciidoc22")))(((range="endofrange", startref="ix_ch03-asciidoc21")))(((range="endofrange", startref="ix_ch03-asciidoc20")))(((range="endofrange", startref="ix_ch03-asciidoc19")))(((range="endofrange", startref="ix_ch03-asciidoc18")))(((range="endofrange", startref="ix_ch03-asciidoc17")))(((range="endofrange", startref="ix_ch03-asciidoc16")))(((range="endofrange", startref="ix_ch03-asciidoc15")))(((range="endofrange", startref="ix_ch03-asciidoc14")))(((range="endofrange", startref="ix_ch03-asciidoc13")))(((range="endofrange", startref="ix_ch03-asciidoc12")))(((range="endofrange", startref="ix_ch03-asciidoc11")))(((range="endofrange", startref="ix_ch03-asciidoc10")))(((range="endofrange", startref="ix_ch03-asciidoc9")))
 ====
 
 
@@ -630,10 +630,10 @@ $ bitcoin-cli gettransaction 9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c30
 
 [TIP]
 ====
-A tranzakció azonosítók mindaddig nem hitelesek, amíg a tranzakció megerősítésre nem került. Ha a blokkláncban hiányzik a tranzakció azonosító, az nem jelenti azt, hogy a tranzakció nem lett feldolgozva. Ez az ú.n. „tranzakció képlékenység” („transaction malleability”), amelynek az az oka, hogy egy tranzakció hash-e az előtt, mielőtt megerősítésre kerül a blokkban, még módosítható. A megerősítés után a txid megváltoztathatatlan és hiteles.
+A tranzakció azonosítók mindaddig nem hitelesek, amíg a tranzakció megerősítésre nem került. Ha a blokkláncban hiányzik a tranzakció azonosító, az nem jelenti azt, hogy a tranzakció nem lett feldolgozva. Ez az ún. „tranzakció képlékenység” („transaction malleability”), amelynek az az oka, hogy egy tranzakció hashe az előtt, mielőtt megerősítésre kerül a blokkban, még módosítható. A megerősítés után a txid megváltoztathatatlan és hiteles.
 ====
 
-A +gettransaction+ által fent kijelzett tranzakció egy egyszerűsített alak. A teljes tranzakció visszanyeréséhez és dekódolásához két parancsot fogunk használni, a +getrawtransaction+ és a +decoderawtransaction+ parancsot. Először, a +getrawtransaction+ parancsnak paraméterként megadjuk a _tranzakció hash-t (txid-t)_, a parancs pedig „nyers” hexa stringként a teljes tranzakciót visszaadja, pontosan úgy, ahogyan azt a bitcoin hálózat ismeri :
+A +gettransaction+ által fent kijelzett tranzakció egy egyszerűsített alak. A teljes tranzakció visszanyeréséhez és dekódolásához két parancsot fogunk használni, a +getrawtransaction+ és a +decoderawtransaction+ parancsot. Először, a +getrawtransaction+ parancsnak paraméterként megadjuk a _tranzakció hasht (txid-t)_, a parancs pedig „nyers” hexa stringként a teljes tranzakciót visszaadja, pontosan úgy, ahogyan azt a bitcoin hálózat ismeri :
 
 ----
 $ bitcoin-cli getrawtransaction 9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acbae2c14ae3
@@ -694,11 +694,11 @@ $ bitcoin-cli decoderawtransaction 0100000001d717279515f88e2f56ce4e8a31e2ae3e9f0
 }
 ----
 
-A tranzakció dekódolás a tranzakció összes részét, többek között a tranzakció bemeneteket és kimeneteket is megjeleníti. Ebben az esetben azt látjuk, hogy a tranzakció, amely 50 mBTC-t írt jóvá az új címünkre, egy bemenetet és két kimenetet használt. A tranzakció bemenete egy előzőleg megerősített tranzakció kimenete volt (amely fent a +d3c7+ kezdetű vin txid-ként szerepel). A két kiemenet megfelel az 50 mBTC jóváírásnak és a visszajáró pénznek. 
+A tranzakció dekódolás a tranzakció összes részét, többek között a tranzakció bemeneteket és kimeneteket is megjeleníti. Ebben az esetben azt látjuk, hogy a tranzakció, amely 50 mBTC-t írt jóvá az új címünkre, egy bemenetet és két kimenetet használt. A tranzakció bemenete egy előzőleg megerősített tranzakció kimenete volt (amely fent a +d3c7+ kezdetű vin txid-ként szerepel). A két kimenet megfelel az 50 mBTC jóváírásnak és a visszajáró pénznek. 
 
-A blokkláncot tovább tudjuk vizsgálni, ha ugyanezzel a paranccsal (vagyis a +gettransaction+ paranccsal) a tranzakcióban szereplő előző tranzakciókat listázzuk ki.Tranzakcióról tranzakcióra lépve nyomon követhetjük a tranzakcióláncban, hogy az egyes tulajdonosok között  hogyan mozogtak az érmék. 
+A blokkláncot tovább tudjuk vizsgálni, ha ugyanezzel a paranccsal (vagyis a +gettransaction+ paranccsal) a tranzakcióban szereplő előző tranzakciókat listázzuk ki. Tranzakcióról tranzakcióra lépve nyomon követhetjük a tranzakcióláncban, hogy az egyes tulajdonosok között  hogyan mozogtak az érmék. 
 
-Ha az általunk fogadott tranzakció már be lett foglalva egy blokkba és megerősítésre került, akkor a +gettransaction+ parancs további információkat is szolgáltat, többek között megmutatja azt a _block hash-t (azonosítót)_, amelybe bele lett foglalva a tranzakció:
+Ha az általunk fogadott tranzakció már be lett foglalva egy blokkba és megerősítésre került, akkor a +gettransaction+ parancs további információkat is szolgáltat, többek között megmutatja azt a _blockhasht (azonosítót)_, amelybe bele lett foglalva a tranzakció:
 
 ----
 $ bitcoin-cli gettransaction 9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acbae2c14ae3
@@ -788,7 +788,7 @@ $ bitcoin-cli getblock 000000000000000051d2e759c63a26e247f185ecb7926ed7a6624bc31
 
 A blokk 367 db tranzakciót tartalmaz, és a 18. kilistázott tranzakció (+9ca8f9…+) az a txid (tranzakció azonosító), amely 50 mBTC-t írt jóvá a címünkre. A +height+ sor szerint az adott blokk a 286384. blokk volt a blokkláncban. 
 
-Egy blokkot a magassága alapján a a +getblockhash+ paranccsal tudjuk elérni, a parancs paramétere a blokk magasság, és a blokkhoz tartozó blokk hash-t (zanzát) adja vissza:
+Egy blokkot a magassága alapján a a +getblockhash+ paranccsal tudjuk elérni, a parancs paramétere a blokk magasság, és a blokkhoz tartozó blokk hasht (zanzát) adja vissza:
 
 
 ----
@@ -797,7 +797,7 @@ $ bitcoin-cli getblockhash 0
 000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f
 ----
 
-Fent a „genezis blokk” blokk hash-ét irattuk ki. A genezis blokk volt az első, Satoshi Nakamoto által kibányászott blokk, és nulla a magassága. A blokk a következőket tartalmazza:
+Fent a „genezis blokk” blokk hashét írattuk ki. A genezis blokk volt az első, Satoshi Nakamoto által kibányászott blokk, és nulla a magassága. A blokk a következőket tartalmazza:
 
 
 ----
@@ -833,7 +833,7 @@ Parancsok: +listunspent+, +gettxout+, +createrawtransaction+, +decoderawtransact
 
 ((("bitcoin-cli parancssori segédprogram","createrawtransaction parancs", id="ix_ch03-asciidoc31", range="startofrange")))((("bitcoin-cli parancssori segédprogram","decoderawtransaction parancs", id="ix_ch03-asciidoc32", range="startofrange")))((("bitcoin-cli parancssori segédprogram","gettxout parancs", id="ix_ch03-asciidoc33", range="startofrange")))((("bitcoin-cli parancssori segédprogram","listunspent parancs", id="ix_ch03-asciidoc34", range="startofrange")))((("bitcoin-cli parancssori segédprogram","sendrawtransaction parancs", id="ix_ch03-asciidoc35", range="startofrange")))((("bitcoin-cli parancssori segédprogram","signrawtransaction parancs", id="ix_ch03-asciidoc36", range="startofrange")))((("createrawtransaction parancs (bitcoin-cli)", id="ix_ch03-asciidoc37", range="startofrange")))((("decoderawtransaction parancs (bitcoin-cli)", id="ix_ch03-asciidoc38", range="startofrange")))((("gettxout parancs (bitcoin-cli)", id="ix_ch03-asciidoc39", range="startofrange")))((("listunspent parancs (bitcoin-cli)", id="ix_ch03-asciidoc40", range="startofrange")))((("sendrawtransaction parancs (bitcoin-cli)", id="ix_ch03-asciidoc41", range="startofrange")))((("signrawtransaction parancs (bitcoin-cli)", id="ix_ch03-asciidoc42", range="startofrange")))((("tranzakciók","létrehozása parancssorból", id="ix_ch03-asciidoc43", range="startofrange")))((("tranzakciók","aláírása a parancssorból", id="ix_ch03-asciidoc44", range="startofrange")))((("tranzakciók","feladása a parancssorból", id="ix_ch03-asciidoc45", range="startofrange")))((("el nem költött kimenetek, unspent transaction output (UTXO)", id="ix_ch03-asciidoc46", range="startofrange")))A bitcoin tranzakciókban az előző tranzakciók „kimeneteinek” az elköltése történik. Ezáltal egy olyan tranzakciós lánc jön létre, amely a tulajdonjogot az egyik címről a másikra ruházza át. A pénztárcánk épp most fogadott egy olyan tranzakciót, amely egy ilyen kimenetet a mi címünkhöz rendelt hozzá. A tranzakció megerősítése után el tudjuk költeni ezt a kimenetet. 
 
-Először is a +listunspent+ paranccsal a pénztárcánkabn lévő összes elköltetelen, _megerősített_ kimenetet kiiratjuk:
+Először is a +listunspent+ paranccsal a pénztárcánkban lévő összes elköltetlen, _megerősített_ kimenetet íratjuk ki:
 
 
 ----
@@ -854,9 +854,9 @@ $ bitcoin-cli listunspent
 ]
 ----
 
-Láthajuk, hogy a +9ca8f9…+ tranzakció létrehozott egy kimenetet (0 vout index-szel), amely az +1hvzSo…+ címhez van rendelve, a nagysága 50 mBTC, és már 7 megerősítést kaptunk róla. A tranzakciók az előzőleg létrehozott kimeneteket használják bemenetként oly módon, hogy a tranzakciókra az azonosítójukkal és vout indexükkel hivatkoznak. Most létre fogunk hozni egy tranzakciót, amely a bemenetén egy új címhez rendeli, és ezáltal elkölti a +9ca8f9…+ tranzakció azonosító (txid) 0-ik kimenetét. 
+Láthatjuk, hogy a +9ca8f9…+ tranzakció létrehozott egy kimenetet (0 vout index-szel), amely az +1hvzSo…+ címhez van rendelve, a nagysága 50 mBTC, és már 7 megerősítést kaptunk róla. A tranzakciók az előzőleg létrehozott kimeneteket használják bemenetként oly módon, hogy a tranzakciókra az azonosítójukkal és vout indexükkel hivatkoznak. Most létre fogunk hozni egy tranzakciót, amely a bemenetén egy új címhez rendeli, és ezáltal elkölti a +9ca8f9…+ tranzakció azonosító (txid) 0-ik kimenetét. 
 
-Először vizsgáljuk meg részletesebben az adott kimentet. A +gettxout+ paranccsal a fenti elköltetlen kimenet részleteit irathatjuk ki. A tranzakciós kimenetekre mindig txid és vout alapján lehet hivatkozni, és ezeket a paramétereket adjuk meg a +gettxout+ -nak:
+Először vizsgáljuk meg részletesebben az adott kimentet. A +gettxout+ paranccsal a fenti elköltetlen kimenet részleteit írathatjuk ki. A tranzakciós kimenetekre mindig txid és vout alapján lehet hivatkozni, és ezeket a paramétereket adjuk meg a +gettxout+ -nak:
 
 
 ----
@@ -883,7 +883,7 @@ $ bitcoin-cli gettxout 9ca8f969bd3ef5ec2a8685660fdbf7a8bd365524c2e1fc66c309acbae
 }
 ----
 
-Azt látjuk, hogy a kimenet 50 mBTC-t rendelt hozzá az +1hvz…+ címünkhöz. A kimenet elköltéséhez egy új tranzakciót hozunk létre. Először állítsunk elő egy címet, ahová elküldhetjuk a pénzt:
+Azt látjuk, hogy a kimenet 50 mBTC-t rendelt hozzá az +1hvz…+ címünkhöz. A kimenet elköltéséhez egy új tranzakciót hozunk létre. Először állítsunk elő egy címet, ahová elküldhetjük a pénzt:
 
 
 ----
@@ -891,7 +891,7 @@ $ bitcoin-cli getnewaddress
 1LnfTndy3qzXGN19Jwscj1T8LR3MVe3JDb
 ----
 
-25 mBTC-t fogunk az újonnan létrehozott +1LnfTn…+ címre elküldeni. Az új tranzakciónkban elköltjük az 50 mBTC-s kimenetet, és 25 mBTC-t küldünk erre az új címre. Mivel az előző tranzakció _egész_ kimentetét el kell költenünk, a visszajáró pénzt is kezelnünk kell. A visszajáró pénzt az +1hzv…+ címre fogjuk visszaküldeni, vagyis ugyanarra a címre, amelyről a pénz származott. Végül tranzakciós díjat is kell fizetnünk a tranzakcióért. A díjat úgy fogjuk megfizetni, hogy a visszajáró összeget 0.5 mBTC-vel csökkentjük, és csak 24.5 mBTC-t küldünk vissza. Az új kimenetek összegének (25 mBTC + 24.5 mBTC = 49.5 mBTC) és a bemenetnek (50 mBTC) a különbségét tranzakciós díjként a bányászok kapják. 
+25 mBTC-t fogunk az újonnan létrehozott +1LnfTn…+ címre elküldeni. Az új tranzakciónkban elköltjük az 50 mBTC-s kimenetet, és 25 mBTC-t küldünk erre az új címre. Mivel az előző tranzakció _egész_ kimenetét el kell költenünk, a visszajáró pénzt is kezelnünk kell. A visszajáró pénzt az +1hzv…+ címre fogjuk visszaküldeni, vagyis ugyanarra a címre, amelyről a pénz származott. Végül tranzakciós díjat is kell fizetnünk a tranzakcióért. A díjat úgy fogjuk megfizetni, hogy a visszajáró összeget 0.5 mBTC-vel csökkentjük, és csak 24.5 mBTC-t küldünk vissza. Az új kimenetek összegének (25 mBTC + 24.5 mBTC = 49.5 mBTC) és a bemenetnek (50 mBTC) a különbségét tranzakciós díjként a bányászok kapják. 
 
 A +createrawtransaction+ parancsot használjuk a fenti tranzakció létrehozására. A +createrawtransaction+ –nak paraméterként a tranzakció bemenetet adjuk meg (vagyis a megerősített tranzakciónkból az 50 mBTC elköltetlen kimenetet), valamint a két tranzakció kimenetet (az új címre küldött pénzt, és az előző címre visszaküldött visszajáró pénzt):
 
@@ -1037,7 +1037,7 @@ Most küldjük el ezt az újonnan létrehozott tranzakciót a hálózatnak. Ezt 
 $ bitcoin-cli sendrawtransaction 0100000001e34ac1e2baac09c366fce1c2245536bda8f7db0f6685862aecf53ebd69f9a89c000000006a47304402203e8a16522da80cef66bacfbc0c800c6d52c4a26d1d86a54e0a1b76d661f020c9022010397f00149f2a8fb2bc5bca52f2d7a7f87e3897a273ef54b277e4af52051a06012103c9700559f690c4a9182faa8bed88ad8a0c563777ac1d3f00fd44ea6c71dc5127ffffffff02a0252600000000001976a914d90d36e98f62968d2bc9bbd68107564a156a9bcf88ac50622500000000001976a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac00000000ae74538baa914f3799081ba78429d5d84f36a0127438e9f721dff584ac17b346
 ----
 
-A +sendrawtransaction+ parancs egy _tranzakció hash-t (txid-t)_ ad vissza, miután feladta a tranzakciót a hálózatnak. Ekkor a +gettransaction+ paranccsal le tudjuk kérdezni ezt a tranzakciót:
+A +sendrawtransaction+ parancs egy _tranzakció hasht (txid-t)_ ad vissza, miután feladta a tranzakciót a hálózatnak. Ekkor a +gettransaction+ paranccsal le tudjuk kérdezni ezt a tranzakciót:
 
 ----
 $ bitcoin-cli gettransaction ae74538baa914f3799081ba78429d5d84f36a0127438e9f721dff584ac17b346
@@ -1082,14 +1082,14 @@ $ bitcoin-cli gettransaction ae74538baa914f3799081ba78429d5d84f36a0127438e9f721d
 }
 ----
 
-Mint korábban, most is részletesebben megvizsgálhatjuk ezt a tranzakciót a +getrawtransaction+ és a +decoderawtransaction+ parancsokkal. Ezek a parancsok pontosan ugyanazt a hexadecimális stringet adják vissza, mint amit az előtt állítottunk elő és dekódoltunk, mielőtt elküldtük volna a tranazakciót a hálózatnak.(((range="endofrange", startref="ix_ch03-asciidoc46")))(((range="endofrange", startref="ix_ch03-asciidoc45")))(((range="endofrange", startref="ix_ch03-asciidoc44")))(((range="endofrange", startref="ix_ch03-asciidoc43")))(((range="endofrange", startref="ix_ch03-asciidoc42")))(((range="endofrange", startref="ix_ch03-asciidoc41")))(((range="endofrange", startref="ix_ch03-asciidoc40")))(((range="endofrange", startref="ix_ch03-asciidoc39")))(((range="endofrange", startref="ix_ch03-asciidoc38")))(((range="endofrange", startref="ix_ch03-asciidoc37")))(((range="endofrange", startref="ix_ch03-asciidoc36")))(((range="endofrange", startref="ix_ch03-asciidoc35")))(((range="endofrange", startref="ix_ch03-asciidoc34")))(((range="endofrange", startref="ix_ch03-asciidoc33")))(((range="endofrange", startref="ix_ch03-asciidoc32")))(((range="endofrange", startref="ix_ch03-asciidoc31")))(((range="endofrange", startref="ix_ch03-asciidoc7")))(((range="endofrange", startref="ix_ch03-asciidoc6")))(((range="endofrange", startref="ix_ch03-asciidoc5")))(((range="endofrange", startref="ix_ch03-asciidoc2")))(((range="endofrange", startref="ix_ch03-asciidoc1"))) 
+Mint korábban, most is részletesebben megvizsgálhatjuk ezt a tranzakciót a +getrawtransaction+ és a +decoderawtransaction+ parancsokkal. Ezek a parancsok pontosan ugyanazt a hexadecimális stringet adják vissza, mint amit az előtt állítottunk elő és dekódoltunk, mielőtt elküldtük volna a tranzakciót a hálózatnak.(((range="endofrange", startref="ix_ch03-asciidoc46")))(((range="endofrange", startref="ix_ch03-asciidoc45")))(((range="endofrange", startref="ix_ch03-asciidoc44")))(((range="endofrange", startref="ix_ch03-asciidoc43")))(((range="endofrange", startref="ix_ch03-asciidoc42")))(((range="endofrange", startref="ix_ch03-asciidoc41")))(((range="endofrange", startref="ix_ch03-asciidoc40")))(((range="endofrange", startref="ix_ch03-asciidoc39")))(((range="endofrange", startref="ix_ch03-asciidoc38")))(((range="endofrange", startref="ix_ch03-asciidoc37")))(((range="endofrange", startref="ix_ch03-asciidoc36")))(((range="endofrange", startref="ix_ch03-asciidoc35")))(((range="endofrange", startref="ix_ch03-asciidoc34")))(((range="endofrange", startref="ix_ch03-asciidoc33")))(((range="endofrange", startref="ix_ch03-asciidoc32")))(((range="endofrange", startref="ix_ch03-asciidoc31")))(((range="endofrange", startref="ix_ch03-asciidoc7")))(((range="endofrange", startref="ix_ch03-asciidoc6")))(((range="endofrange", startref="ix_ch03-asciidoc5")))(((range="endofrange", startref="ix_ch03-asciidoc2")))(((range="endofrange", startref="ix_ch03-asciidoc1"))) 
 
 [[alt_libraries]]
 === Alternatív kliensek, könyvtárak és eszközkészletek
 
 ((("kliensek, alternatív", id="ix_ch03-asciidoc47", range="startofrange")))((("könyvtárak, alternatív", id="ix_ch03-asciidoc48", range="startofrange")))((("eszközkészletek, alternatív", id="ix_ch03-asciidoc49", range="startofrange")))A bitcoind referencia kliensen kívül vannak más kliensek és könyvtárak is, melyekkel kapcsolatba léphetünk a bitcoin hálózattal és az adatstruktúrákkal. Ezek különféle programozási nyelveken lettek megvalósítva, így a programozóknak az általuk használt programozási nyelven kínálnak natív interfészeket. 
 
-Alternativ megvalósítás többek között:
+Alternatív megvalósítás többek között:
 
 https://github.com/libbitcoin/libbitcoin[libbitcoin]:: ((("libbitcoin könyvtár")))Bitcoin Cross-Platform C++ Development Toolkit
 https://github.com/libbitcoin/libbitcoin-explorer[bitcoin explorer]:: ((("Bitcoin Explorer")))Bitcoin parancssori eszköz
@@ -1176,20 +1176,20 @@ include::code/pycoin_example.py[]
 A ku és tx parancssori eszközök használatát lásd a <<appdxbitcoinimpproposals>> részben.
 
 ==== btcd
-((("btcd")))((("kliensek, alternatív","btcd")))A btcd egy ((("Go programozási nyelv")))Go-ban megírt, teljes comópontot megvalósító bitcoin implementáció. Jelenleg helyesen letölti, ellenőrzi és kiszolgálja a blokkláncot. A blokkok elfogadása a referencia implementáció, a bitcoind pontos szabályai szerint történik (beleértve a hibákat is). Helyesen továbbítja az újonnan kibányászott blokkokat is, karban tartja a tranzakciós készletet és továbbítja azokat a tranzakciókat, melyek még nem lettek blokkba foglalva. Biztosítja, hogy a tranzakciós készletbe (pool-ba) befogadott összes tranzakció teljesítse a blokklánc által megkövetelt szabályokat, és azoknak a szigorú ellenőrzéseknek a túlnyomó többségét is tartalmazza, amelyek a bányászat követelményei szerint szűrik a tranzakciókat ("szabványos" tranzakciók).
+((("btcd")))((("kliensek, alternatív","btcd")))A btcd egy ((("Go programozási nyelv")))Go-ban megírt, teljes csomópontot megvalósító bitcoin implementáció. Jelenleg helyesen letölti, ellenőrzi és kiszolgálja a blokkláncot. A blokkok elfogadása a referencia implementáció, a bitcoind pontos szabályai szerint történik (beleértve a hibákat is). Helyesen továbbítja az újonnan kibányászott blokkokat is, karban tartja a tranzakciós készletet és továbbítja azokat a tranzakciókat, melyek még nem lettek blokkba foglalva. Biztosítja, hogy a tranzakciós készletbe (poolba) befogadott összes tranzakció teljesítse a blokklánc által megkövetelt szabályokat, és azoknak a szigorú ellenőrzéseknek a túlnyomó többségét is tartalmazza, amelyek a bányászat követelményei szerint szűrik a tranzakciókat ("szabványos" tranzakciók).
 
 A btcd és a bitcoind közötti egyik lényeges különbség az, hogy a btcd-ben tudatos tervezési döntés eredményeképpen nincs pénztárca funkció. Ez azt jelenti, hogy közvetlenül a btcd-vel nem lehet fizetni vagy pénzt fogadni. Ezt a funkciót a btcwallet és a btcgui projektek biztosítják, mindkettő aktív fejlesztés alatt áll. Egy másik figyelemre méltó különbség az, hogy a btcd nem csak a HTTP POST kéréseket támogatja (a bitcoind-hez hasonlóan), hanem a Websocket-eket is (ezt részesíti előnyben), és a btcd RPC összeköttetéseinél a TLS alapértelemben engedélyezve van.
 
 ===== A btcd installálása
 
-((("btcd","installálás")))A btcd Windows alatti installálása az alábbi msi letölésével és futtatásával lehetséges: https://github.com/conformal/btcd/releases[GitHub]. Linux alatt a következő parancs futattható, feltéve, hogy a Go nyelv már installálva van:
+((("btcd","installálás")))A btcd Windows alatti installálása az alábbi msi letöltésével és futtatásával lehetséges: https://github.com/conformal/btcd/releases[GitHub]. Linux alatt a következő parancs futtatható, feltéve, hogy a Go nyelv már installálva van:
 
 
 ----
 $ go get github.com/conformal/btcd/...
 ----
 
-Ha a btcd-t szeretné a legfrissebb verzóra frissíteni, futtassa a következőt:
+Ha a btcd-t szeretné a legfrissebb verzóira frissíteni, futtassa a következőt:
 
 
 ----
@@ -1205,7 +1205,7 @@ $ go get -u -v github.com/conformal/btcd/...
 $ btcd --help
 ----
 
-A btcd egy btcctl parancssori segédprogrammal is rendelkezik. Ennek segítségével a btcd RPC-n keresztüli beállítása vagy lekérdező parancsai használhatók. A btcd alapéretelemben nem engedélyezi az RPC szerverét, emiatt minimálisan egy RPC felhasználó név és jelszó beállítására van szükség:
+A btcd egy btcctl parancssori segédprogrammal is rendelkezik. Ennek segítségével a btcd RPC-n keresztüli beállítása vagy lekérdező parancsai használhatók. A btcd alapértelemben nem engedélyezi az RPC szerverét, emiatt minimálisan egy RPC felhasználó név és jelszó beállítására van szükség:
 
 * _btcd.conf_:
 [source,ini]

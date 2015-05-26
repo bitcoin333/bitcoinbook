@@ -10,7 +10,7 @@ A pycoin könyvtár a Python 2 (2.7.x) és a Python 3 (3.3 utáni verzió) alatt
 
 === Key Utility (KU)
 
-((("key utility (ku)", id="ix_appdx-pycoin-asciidoc0", range="startofrange")))A +ku+ ("key utility") parancssori segédprogram a kulcs kezelés "svájci bicskája". Támogatja a BIP32 kulcsokat, a WIF-et, és a bitcoin vagy altcoin címeket. Az alábbiakban néhány példa szerepel.
+((("key utility (ku)", id="ix_appdx-pycoin-asciidoc0", range="startofrange")))A +ku+ ("key utility") parancssori segédprogram a kulcs kezelés "svájci bicskája". Támogatja a BIP32 kulcsokat, a WIF-et, és a bitcoin vagy alt-coin címeket. Az alábbiakban néhány példa szerepel.
 
 Egy BIP32 kulcs létrehozása, a GPG és a _/dev/random_ alapértelmezett entrópiaforrásainak a használatával:
 
@@ -212,7 +212,7 @@ KzChTbc3kZFxUSJ3Kt54cxsogeFAD9CCM4zGB22si8nfKcThQn8C
 ====
 
 
-Annak az ellenőrzése, hogy mindez működik, ha egy BIP32 stringet választunk (ami a 0/3 alkulcsnak felel me):
+Annak az ellenőrzése, hogy mindez működik, ha egy BIP32 stringet választunk (ami a 0/3 alkulcsnak felel meg):
 
 
 ====
@@ -289,7 +289,7 @@ QNcdLVw8fHkixm6NNyN6nVwxKek4u7qrioRbQmjxac5TVoTtZuot
 ----
 ====
 
-Nyilvános kulcspárból (a Testnet-en):
+Nyilvános kulcspárból (a Testneten):
 
 ====
 ----
@@ -340,7 +340,7 @@ Dogecoin address : DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE
 
 ==== Transaction Utility (TX)
 
-((("transaction utility (tx)")))A +tx+ parancssori segédprogram olvasható formátumban jelentíti meg a tranzakciókat, letölti őket a pycoin cache-éből vagy web szervizekről (jelenleg a blockchain.info, a blockr.io, és a biteasy.com van támogatva), összefésüli őket, bemenetek és kimenetek hozzáadását vagy törlését teszi lehetővé, és tranzakciók aláírására képes.
+((("transaction utility (tx)")))A +tx+ parancssori segédprogram olvasható formátumban jeleníti meg a tranzakciókat, letölti őket a pycoin cache-éből vagy web szervizekről (jelenleg a blockchain.info, a blockr.io, és a biteasy.com van támogatva), összefésüli őket, bemenetek és kimenetek hozzáadását vagy törlését teszi lehetővé, és tranzakciók aláírására képes.
 
 Néhány példa következik:
 

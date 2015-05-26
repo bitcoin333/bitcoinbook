@@ -28,7 +28,7 @@ A <<tx_script_ops_table_control>> a feltételes vezérlésátadó műveleteket m
 |=======
 | Szimbólum | Érték (hex) | Leírás
 | OP_NOP | 0x61 | Semmit sem csinál
-| OP_VER | 0x62 | Leállás – Érvénytelen tranzakció, kivéve, ha egy nem végrehajtott OP_IF agban van
+| OP_VER | 0x62 | Leállás – Érvénytelen tranzakció, kivéve, ha egy nem végrehajtott OP_IF ágban van
 | OP_IF | 0x63 | A következő utasítások végrehajtása, ha a verem teteje nem 0
 | OP_NOTIF | 0x64 | A következő utasítások végrehajtása, ha a verem teteje 0
 | OP_VERIF | 0x65 | Leállás – Érvénytelen tranzakció
@@ -112,14 +112,14 @@ A <<tx_script_ops_table_numbers>> a numerikus (aritmetikai) műveleteket mutatja
 | OP_NEGATE | 0x8f | Megváltoztatja a legfölső tétel előjelét
 | OP_ABS | 0x90 | A legfölső tételt előjelét pozitívra változtatja
 | OP_NOT | 0x91 | Ha a legfölső tétel 0 vagy 1, akkor átváltoztatja 1-re vagy 0-ra, egyébként 0-t ad vissza
-| OP_0NOTEQUAL | 0x92 | Ha a legfolső tétel 0, akkor 0-t ad vissza, egyébként 1-et
+| OP_0NOTEQUAL | 0x92 | Ha a legfölső tétel 0, akkor 0-t ad vissza, egyébként 1-et
 | OP_ADD | 0x93 | Eltávolítja a két legfelső tételt, összeadja őket, és az eredményt a verem tetejére helyezi
 | OP_SUB | 0x94 | Eltávolítja a két legfelső tételt, az elsőt kivonja a másodikból, és az eredményt a verem tetejére helyezi
 | OP_MUL | 0x95 | Letiltva (A két legfölső tétel összeszorzása)
 | OP_DIV | 0x96 | Letiltva (A második tétel osztása az elsővel)
-| OP_MOD | 0x97 | Letiltva (Maradék, ha a második tételt elsoztjuk az elsővel)
+| OP_MOD | 0x97 | Letiltva (Maradék, ha a második tételt elosztjuk az elsővel)
 | OP_LSHIFT | 0x98 | Letiltva (A második tétel balra tolása annyi bittel, amennyi az első tétel)
-| OP_RSHIFT | 0x99 | Letitlva (A második tétel jobbra tolása annyi bittel, amennyi az első tétel)
+| OP_RSHIFT | 0x99 | Letiltva (A második tétel jobbra tolása annyi bittel, amennyi az első tétel)
 | OP_BOOLAND | 0x9a | A két legfölső tétel logikai AND-je
 | OP_BOOLOR | 0x9b | A két legfölső tétel logikai OR-ja
 | OP_NUMEQUAL | 0x9c | TRUE-t ad vissza, ha a két legfölső tétel mint szám egyenlő
@@ -142,7 +142,7 @@ A <<tx_script_ops_table_crypto>> a kriptográfiai műveleteket mutatja.((("Scrip
 |=======
 | Szimbólum | Érték (hex) | Leírás
 | OP_RIPEMD160 | 0xa6 | legfölső tétel RIPEMD160 hashét adja vissza
-| OP_SHA1 | 0xa7 | A legfölső tétel SHA1 hashét asdja vissza
+| OP_SHA1 | 0xa7 | A legfölső tétel SHA1 hashét adja vissza
 | OP_SHA256 | 0xa8 | A legfölső tétel SHA256 hashét adja vissza
 | OP_HASH160 | 0xa9 | A legfölső tétel RIPEMD160(SHA256(x)) hashét adja vissza
 | OP_HASH256 | 0xaa | A legfölső tétel SHA256(SHA256(x)) hashét adja vissza

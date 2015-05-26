@@ -162,7 +162,7 @@ $ bx hd-private --index 1 < account | bx hd-to-public
 xpub6BH1zcTuktiFx6CzhPbGjG3UYQ13WR16CmtbPiagEKpEVtpyjshWyMaMV1cn7nUPUkgQHPVXJVqsrA8xWbGQDhohEcDFTEYMvYzwRD7Juf8
 ----
 
-Gyakorlatilag korlátlan számú kulcsot tudunk létrehozni a determinisztikus láncban, és ezek mindegyike ugyanabból a magból származik. Számos pénztárca használja ezt a módszert, mert az így előállítottt címek mentéséhez és visszaállításához csak egyetlen egy mag értékre van szükség. Ezt könnyebb menteni, mint a véletlenszerű kulcsokat tartalmazó pénztárcát, melyet minden egyes alkalommal menteni kell, amikor új kulcsok jöttek létre benne.
+Gyakorlatilag korlátlan számú kulcsot tudunk létrehozni a determinisztikus láncban, és ezek mindegyike ugyanabból a magból származik. Számos pénztárca használja ezt a módszert, mert az így előállított címek mentéséhez és visszaállításához csak egyetlen egy mag értékre van szükség. Ezt könnyebb menteni, mint a véletlenszerű kulcsokat tartalmazó pénztárcát, melyet minden egyes alkalommal menteni kell, amikor új kulcsok jöttek létre benne.
 
 A mag a ((("Bitcoin Explorer","mnemonic-encode parancs")))((("mnemonic-encode parancs (bx)"))) +mnemonic-encode+ paranccsal állítható elő.
 
