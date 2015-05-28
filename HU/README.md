@@ -1,26 +1,20 @@
 # Bitcoin fejlesztőknek
-
 A "Bitcoin fejlesztőknek" ("Mastering Bitcoin") fejlesztőknek szól, de az első két fejezet olyan szinten tárgyalja a bitcoint, amely a nem programozók is számára is érthető. A technológia alapjainak minimális ismerete birtokában az első két fejezet elolvasásával nagyon jó áttekintés szerezhető a bitcoinról.
 
 # Kiadások
-
 A "Bitcoin fejlesztőknek" ("Mastering Bitcoin") eredeti, angol változatát nyomtatott könyv és e-könyv formájában számos könyvesbolt árulja, többek között az [Amazon](http://www.amazon.com/Mastering-Bitcoin-Unlocking-Digital-Crypto-Currencies/dp/1449374042), a [Barnes & Nobles](http://www.barnesandnoble.com/w/mastering-bitcoin-andreas-m-antonopoulos/1119253039?ean=9781449374044) és az [O'Reilly Media](http://shop.oreilly.com/product/0636920032281.do). A könyvet a [szerző web helyén](http://bitcoinbook.info) korlátozott ideig a bitcoinért is meg lehet venni.
 
 # Forráskód
-
 A könyv forráskódja, amely ebben a kódtárban található, szinkronban van tartva a nyomtatott és e-könyv kiadásokkal. Ide ne adjanak fel változtatásokat, hanem használják a kiadó web helyén lévő [errata](http://www.oreilly.com/catalog/errata.csp?isbn=0636920032281) lapot.
 
 # Fordította
-
 * Bitcoin333
 * Eureka (7. fejezet)
 * Dris (9. fejezet)
 
 # További tennivalók
-
-* BIP-ek lefordítása magyarra
 * képek szövegének lefordítása
-* python script-ek kommentájainak lefordítása
+* python scriptek kommentárjainak lefordítása
 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
 <br />

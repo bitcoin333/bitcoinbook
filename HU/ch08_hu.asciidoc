@@ -418,7 +418,7 @@ A mezők kitöltésével a blokkfej teljessé vált, és kezdődhet a bányásza
 
 === A blokk kibányászása
 
-((("blokkok","bányászat", id="ix_ch08-asciidoc13", range="startofrange")))((("bányászat","blokkok", id="ix_ch08-asciidoc14", range="startofrange")))Most, hogy Jing csomópontja megkonstruálta az előállítandó blokk jelöltet, Jing hardver "platformján" a sor, hogy "kibányássza" a blokkot, vagyis olyan megoldást találjon a munkabizonyíték algoritmusra, amely a blokkot érvényesé teszi. Könyvünkben sokat tanulmányoztuk, hogy a bitcoin rendszer hogyan használja a kriptográfiai hash függvényeket.. A bitcoin bányászat folyamata az SHA256 függvényt használja. 
+((("blokkok","bányászat", id="ix_ch08-asciidoc13", range="startofrange")))((("bányászat","blokkok", id="ix_ch08-asciidoc14", range="startofrange")))Most, hogy Jing csomópontja megkonstruálta az előállítandó blokk jelöltet, Jing hardver „platformján” a sor, hogy „kibányássza” a blokkot, vagyis olyan megoldást találjon a munkabizonyíték algoritmusra, amely a blokkot érvényesé teszi. Könyvünkben sokat tanulmányoztuk, hogy a bitcoin rendszer hogyan használja a kriptográfiai hash függvényeket.. A bitcoin bányászat folyamata az SHA256 függvényt használja. 
 
 A bányászat egyszerűen az a folyamat, melynek során a blokkfej hashe egy paraméter megváltoztatása után ismételten kiszámításra kerül, mindaddig, amíg a hash meg nem felel egy adott cél értéknek. A hash függvény eredményét előre nem ismert, és olyan bemenet sem adható meg, amely egy adott hash értéket hoz létre. A hash függvény ezen jellemzői miatt egy adott célt kielégítő hash érték csak úgy állítható elő, ha újra és újra próbálkozunk, és a bement értékét mindaddig változtatjuk, amíg a kívánt hash eredmény véletlenül elő nem áll. 
 

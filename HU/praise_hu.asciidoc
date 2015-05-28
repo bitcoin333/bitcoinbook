@@ -1,5 +1,5 @@
 ["dedication", role="praise"]
-== A  "Bitcoin fejlesztőknek" című könyv méltatása
+== A „Bitcoin fejlesztőknek” című könyv méltatása
 
 [quote, a Bitcoin Foundation vezető fejlesztője, Gavin Andresen]
 ____

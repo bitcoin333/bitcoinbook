@@ -240,7 +240,7 @@ $ which bitcoin-cli
 /usr/local/bin/bitcoin-cli
 ----
 
-Az alapértelmezés szerinti installáláskor a bitcoind a _/usr/local/bin_ könyvtárba kerül. Amikor a bitcoindt először futtatjuk, akkor üzen, hogy egy konfigurációs állományt kell létrehoznunk, melyben a JSON-RPC interface számára egy erős jelszó van megadva. Futtassunk a bitcoindt a +bitcoind+ terminálon történő begépelésével:
+Az alapértelmezés szerinti installáláskor a bitcoind a _/usr/local/bin_ könyvtárba kerül. Amikor a bitcoind-t először futtatjuk, akkor üzen, hogy egy konfigurációs állományt kell létrehoznunk, melyben a JSON-RPC interface számára egy erős jelszó van megadva. Futtassunk a bitcoind-t a +bitcoind+ terminálon történő begépelésével:
 
 ----
 $ bitcoind
@@ -595,7 +595,7 @@ $ bitcoin-cli getbalance
 
 [TIP]
 ====
-((("getbalance parancs (bitcoin-cli)","megerősítetlen tranzakciók és")))((("megerősítetlen tranzakciók","getbalance parancs és")))Ha a tranzakció még nincs megerősítve, akkor a +getbalance+ által visszaadott egyenleg nulla lesz. A "minconf" konfigurációs beállítás határozza meg, hogy legalább hány darab megerősítésre van szükség ahhoz, hogy a tranzakció megjelenjen az egyenlegben.(((range="endofrange", startref="ix_ch03-asciidoc22")))(((range="endofrange", startref="ix_ch03-asciidoc21")))(((range="endofrange", startref="ix_ch03-asciidoc20")))(((range="endofrange", startref="ix_ch03-asciidoc19")))(((range="endofrange", startref="ix_ch03-asciidoc18")))(((range="endofrange", startref="ix_ch03-asciidoc17")))(((range="endofrange", startref="ix_ch03-asciidoc16")))(((range="endofrange", startref="ix_ch03-asciidoc15")))(((range="endofrange", startref="ix_ch03-asciidoc14")))(((range="endofrange", startref="ix_ch03-asciidoc13")))(((range="endofrange", startref="ix_ch03-asciidoc12")))(((range="endofrange", startref="ix_ch03-asciidoc11")))(((range="endofrange", startref="ix_ch03-asciidoc10")))(((range="endofrange", startref="ix_ch03-asciidoc9")))
+((("getbalance parancs (bitcoin-cli)","megerősítetlen tranzakciók és")))((("megerősítetlen tranzakciók","getbalance parancs és")))Ha a tranzakció még nincs megerősítve, akkor a +getbalance+ által visszaadott egyenleg nulla lesz. A „minconf” konfigurációs beállítás határozza meg, hogy legalább hány darab megerősítésre van szükség ahhoz, hogy a tranzakció megjelenjen az egyenlegben.(((range="endofrange", startref="ix_ch03-asciidoc22")))(((range="endofrange", startref="ix_ch03-asciidoc21")))(((range="endofrange", startref="ix_ch03-asciidoc20")))(((range="endofrange", startref="ix_ch03-asciidoc19")))(((range="endofrange", startref="ix_ch03-asciidoc18")))(((range="endofrange", startref="ix_ch03-asciidoc17")))(((range="endofrange", startref="ix_ch03-asciidoc16")))(((range="endofrange", startref="ix_ch03-asciidoc15")))(((range="endofrange", startref="ix_ch03-asciidoc14")))(((range="endofrange", startref="ix_ch03-asciidoc13")))(((range="endofrange", startref="ix_ch03-asciidoc12")))(((range="endofrange", startref="ix_ch03-asciidoc11")))(((range="endofrange", startref="ix_ch03-asciidoc10")))(((range="endofrange", startref="ix_ch03-asciidoc9")))
 ====
 
 

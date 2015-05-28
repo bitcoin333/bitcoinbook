@@ -67,7 +67,7 @@ Egy blokk _blokk hashe_ minden esetben egyedi módon, egyetlen egy blokkot azono
 
 === A „Genezis” Blokk
 
-((("blokkláncok","genesis blokk")))((("genesis blokk")))A blokklánc első blokkját, amely 2009-ben jött létre, „Genezis blokk”-nak nevezzük. Ez minden blokklánc blokkjának a "közös őse", ami azt jelenti, hogy ha a blokklánc mentén, bármelyik blokktól, elkezdünk időben visszafelé haladni, akkor végül a „Genezis blokk”-hoz fogunk elérkezni. 
+((("blokkláncok","genesis blokk")))((("genesis blokk")))A blokklánc első blokkját, amely 2009-ben jött létre, „Genezis blokk”-nak nevezzük. Ez minden blokklánc blokkjának a „közös őse”, ami azt jelenti, hogy ha a blokklánc mentén, bármelyik blokktól, elkezdünk időben visszafelé haladni, akkor végül a „Genezis blokk”-hoz fogunk elérkezni. 
 
 Minden csomópont mindig egy minimum egy blokkból álló blokklánccal indul, mivel a Genezis blokk megváltoztathatatlan módon, statikusan be van kódolva a bitcoin kliens szoftverbe. Minden csomópont mindig „tudja”, hogy mi a Genezis blokk hashe és milyen a szerkezete, mikor jött létre, és milyen tranzakciókat tartalmaz. Így minden csomópont rendelkezik a blokklánc kiindulópontjával, azaz van olyan biztonságos „gyökere”, amelyből kiépíthető egy megbízható blokklánc. 
 
