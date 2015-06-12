@@ -52,7 +52,7 @@ image::images/msbt_0401.png["privk_to_pubK_to_addressA"]
 
 ((("titkos kulcsok","előállításuk véletlen számokból", id="ix_ch04-asciidoc3", range="startofrange")))A kulcsok előállításának első és legfontosabb lépése, hogy egy biztonságos entrópiaforrást, másképpen véletlenszerű forrást találjunk. Egy bitcoin kulcs előállítása lényegében egyenértékű azzal, hogy „Válasszunk egy számot 1 és 2^256^ között”. Hogy pontosan hogyan választjuk ezt a számot, az nem számít, feltéve, hogy a választás nem megjósolható vagy nem megismételhető. A bitcoin szoftver a mögöttes operációs rendszer véletlenszám generátorát használja 256 bit entrópia (véletlenszerűség) előállítására. Az OS véletlenszám generátorát általában egy emberi eredetű entrópiaforrással inicializálják, ezért van szükség pl. arra, hogy mozgassuk az egeret néhány másodpercig. Az igazán paranoiások számára a dobókockánál, a papírnál és a ceruzánál nincs jobb módszer.
 
-Pontosabban, a titkos kulcs egy +1+ és +n - 1+ közötti tetszőleges szám lehet, ahol n konstans (n=1.158 * 10^77^, vagyis egy kicsit kevesebb, mint 2^256^), és a bitcoinnál használt elliptikus görbe rendszámával egyenlő (lásd az <<elliptic_curve>> részt). Egy ilyen kulcs előállításához véletlenszerűen válasszunk egy 256 bites számot, és ellenőrizzük, hogy kisebb-e +n - 1+-nél. Programozási szempontból ezt általában úgy valósítható meg, hogy kriptográfiailag biztonságos véletlen forrásból származó bitek egy nagyobb halmazát egy SHA256 hash algoritmussal összetömörítjük, és ezzel egyszerűen létrehozunk egy 256 bites számot. Ha az eredmény kisebb, mint +n - 1+, akkor a titkos kulcs megfelelő. Ha nem, akkor egy másik véletlen számmal próbálkozunk. 
+Pontosabban, a titkos kulcs egy +1+ és +n-1+ közötti tetszőleges szám lehet, ahol n konstans (n=1.158 * 10^77^, vagyis egy kicsit kevesebb, mint 2^256^), és a bitcoinnál használt elliptikus görbe rendszámával egyenlő (lásd az <<elliptic_curve>> részt). Egy ilyen kulcs előállításához véletlenszerűen válasszunk egy 256 bites számot, és ellenőrizzük, hogy kisebb-e +n-1+-nél. Programozási szempontból ezt általában úgy valósítható meg, hogy kriptográfiailag biztonságos véletlen forrásból származó bitek egy nagyobb halmazát egy SHA256 hash algoritmussal összetömörítjük, és ezzel egyszerűen létrehozunk egy 256 bites számot. Ha az eredmény kisebb, mint +n-1+, akkor a titkos kulcs megfelelő. Ha nem, akkor egy másik véletlen számmal próbálkozunk. 
 	
 [TIP]
 ====
@@ -129,7 +129,7 @@ vagy
 \end{equation}
 ++++
 
-A _mod p_ (p prímszám szerinti modulus) azt jelzi, hogy egy _p_ rendszámú véges mező fölött definiált görbéről van szó, ami úgy is írható, hogy latexmath:[\(\mathbb{F}_p\)], ahol p = 2^256^ - 2^32^ - 2^9^ – 2^8^ -2^7^ - 2^6^ – 2^4^ -1, egy nagyon nagy prímszám. 
+A _mod p_ (p prímszám szerinti modulus) azt jelzi, hogy egy _p_ rendszámú véges mező fölött definiált görbéről van szó, ami úgy is írható, hogy latexmath:[\(\mathbb{F}_p\)], ahol p = 2^256^-2^32^-2^9^-2^8^-2^7^-2^6^-2^4^-1, egy nagyon nagy prímszám. 
 
 Mivel ez a görbe a valós számok halmaza helyett egy prím rendszámú véges mező fölött lett definiálva, úgy néz ki, mint két dimenzióban szétszórt pontok halmaza, ami nagyon nehézzé teszi a megjelenítését. A matematikája azonban megegyezik a fenti, valós számok fölött definiált elliptikus görbéével. Például lent ugyanez a <<ecc-over-F17-math>> elliptikus görbe látható egy sokkal kisebb, 17 rendszámú véges mező fölött, ahol a pont-minták egy rácson lettek megjelenítve. A bitcoin +secp256k1+ elliptikus görbéje úgy képzelhető el, mint egy sokkal összetettebb pontminta, egy mérhetetlenül nagy rácson. 
 
@@ -145,6 +145,7 @@ P = (550662630222773436695787188951685343262506034537775941755001873603891167292
 ====
 [source, pycon]
 ----
+$ python3
 Python 3.4.0 (default, Mar 30 2014, 19:23:13)
 [GCC 4.2.1 Compatible Apple LLVM 5.1 (clang-503.0.38)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
@@ -160,7 +161,7 @@ Az elliptikus görbék matematikája tartalmaz egy ((("végtelenben lévő pont 
 
 Van továbbá egy „összeadásnak” nevezett ((("+ művelet")))((("elliptikus görbékkel végzett titkosítás","összeadási művelet"))) pass:[+] művelet, amelynek néhány sajátossága hasonlít az iskolában tanult valós számok összeadásához. Ha az elliptikus görbén van két pont, P~1~ és P~2~, akkor létezik egy harmadik pont, P~3~, amely szintén az elliptikus görbén van, és amelyre P~3~ = P~1~ + P~2~ .
 
-Geometriailag ez a harmadik pont, a P~3~ úgy számítható ki, hogy húzunk egy egyeneset a P~1~ és P~2~ között. Ez az egyenes az elliptikus görbét pontosan egy további helyen fogja metszeni. Nevezzük ezt a pontot P~3~'-nak: P~3~' = (x, y). A P~3~ pont ennek a pontnak az x tengelyre történő tükrözésével kapható meg: P~3~ = (x, -y).
+Geometriailag ez a harmadik pont, a P~3~ úgy számítható ki, hogy húzunk egy egyenest a P~1~ és P~2~ között. Ez az egyenes az elliptikus görbét pontosan egy további helyen fogja metszeni. Nevezzük ezt a pontot P~3~'-nak: P~3~' = (x, y). A P~3~ pont ennek a pontnak az x tengelyre történő tükrözésével kapható meg: P~3~ = (x, -y).
 
 Van néhány különleges eset, amely megvilágítja, miért van szükség a „végtelenben lévő pontra”.
 

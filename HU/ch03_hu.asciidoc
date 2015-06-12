@@ -173,7 +173,7 @@ config.status: executing depfiles commands
 $
 ----
 
-Ha minden jól megy, akkor a +configure+ parancs úgy ér véget, hogy egy testre szabott build scriptet hoz létre, amellyel lefordítható a bitcoind. Ha hiányzó könyvtárak vagy hibák vannak, akkor a +configure+ parancs hibával fog véget érni, és nem hozza létre a fenti példában látható build scripteket. Ha hiba történik, annak a legvalószínűbb oka egy hiányzó vagy nem kompatibilis könyvtár. Nézze át ismét az újraépítésre vonatkozó dokumentációt, és installálja a hiányzó előfeltételeket. Azután futtassa le ismét a +configure+ –t, és nézze meg, hogy elmúlt-e a hiba. Ezután fordítsa le a forráskódot – ez a folyamat akár egy óráig is tarthat. A fordítás során néhány másodpercenként vagy néhány percenként megjelenik valami – vagy hibaüzenetet kap, ha valami baj van. A fordítási folyamat bármikor folytatható, ha félbeszakadt. A fordítás megkezdéséhez gépelje be, hogy +make+ :
+Ha minden jól megy, akkor a +configure+ parancs úgy ér véget, hogy egy testre szabott build scriptet hoz létre, amellyel lefordítható a bitcoind. Ha hiányzó könyvtárak vagy hibák vannak, akkor a +configure+ parancs hibával fog véget érni, és nem hozza létre a fenti példában látható build scripteket. Ha hiba történik, annak a legvalószínűbb oka egy hiányzó vagy nem kompatibilis könyvtár. Nézze át ismét az újraépítésre vonatkozó dokumentációt, és installálja a hiányzó előfeltételeket. Azután futtassa le ismét a +configure+–t, és nézze meg, hogy elmúlt-e a hiba. Ezután fordítsa le a forráskódot – ez a folyamat akár egy óráig is tarthat. A fordítás során néhány másodpercenként vagy néhány percenként megjelenik valami – vagy hibaüzenetet kap, ha valami baj van. A fordítási folyamat bármikor folytatható, ha félbeszakadt. A fordítás megkezdéséhez gépelje be, hogy +make+ :
 
 ----
 $ make
@@ -1034,7 +1034,9 @@ Most a tranzakcióban használt bemenetek egy +scriptsSig+-et is tartalmaznak. A
 Most küldjük el ezt az újonnan létrehozott tranzakciót a hálózatnak. Ezt a +sendrawtransaction+ paranccsal fogjuk megtenni, amelynek a paramétere a +signrawtransaction+ által létrehozott nyers hexadecimális string lesz. Ez ugyanaz a string, amit épp most dekódoltunk:
 
 ----
-$ bitcoin-cli sendrawtransaction 0100000001e34ac1e2baac09c366fce1c2245536bda8f7db0f6685862aecf53ebd69f9a89c000000006a47304402203e8a16522da80cef66bacfbc0c800c6d52c4a26d1d86a54e0a1b76d661f020c9022010397f00149f2a8fb2bc5bca52f2d7a7f87e3897a273ef54b277e4af52051a06012103c9700559f690c4a9182faa8bed88ad8a0c563777ac1d3f00fd44ea6c71dc5127ffffffff02a0252600000000001976a914d90d36e98f62968d2bc9bbd68107564a156a9bcf88ac50622500000000001976a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac00000000ae74538baa914f3799081ba78429d5d84f36a0127438e9f721dff584ac17b346
+$ bitcoin-cli sendrawtransaction 0100000001e34ac1e2baac09c366fce1c2245536bda8f7db0f6685862aecf53ebd69f9a89c000000006a47304402203e8a16522da80cef66bacfbc0c800c6d52c4a26d1d86a54e0a1b76d661f020c9022010397f00149f2a8fb2bc5bca52f2d7a7f87e3897a273ef54b277e4af52051a06012103c9700559f690c4a9182faa8bed88ad8a0c563777ac1d3f00fd44ea6c71dc5127ffffffff02a0252600000000001976a914d90d36e98f62968d2bc9bbd68107564a156a9bcf88ac50622500000000001976a91407bdb518fa2e6089fd810235cf1100c9c13d1fd288ac00000000
+
+ae74538baa914f3799081ba78429d5d84f36a0127438e9f721dff584ac17b346
 ----
 
 A +sendrawtransaction+ parancs egy _tranzakció hasht (txid-t)_ ad vissza, miután feladta a tranzakciót a hálózatnak. Ekkor a +gettransaction+ paranccsal le tudjuk kérdezni ezt a tranzakciót:

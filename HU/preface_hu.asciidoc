@@ -52,7 +52,7 @@ A kódrészletek a legtöbb operációs rendszer alatt a megfelelő nyelvek inst
 
 Némelyik kódrészletet és kódrészlet kimenetet a nyomtatás érdekében újraformáztuk. Az összes ilyen esetben a sorokat egy "\" karakterrel választottuk el, melyet egy új sor karakter követ. A példák újbóli futtatásakor távolítsák el ezt a két karaktert és egyesítsék újra a sorokat, ekkor a példában szereplő eredménnyel egyező kimenetet fognak kapni. 
 
-Az összes kódrészlet lehetőleg valós értékeket és számításokat használt, emiatt példáról példára haladva ugyanazokat az eredményeket fogja kapni, mint amelyek a példa számításokban szerepelnek. Például a titkos kulcsok és a hozzájuk tartozó nyilvános kulcsok valamint címek mind valódiak. A minta tranzakciók, blokk és blokklánc hivatkozások a tényleges bitcoin blokkláncban lettek elvégezve és a nyilvános főkönyv részei, ezért bármelyik bitcoin rendszerben lekérdezhetők.
+Az összes kódrészlet lehetőleg valós értékeket és számításokat használt, emiatt példáról példára haladva ugyanazokat az eredményeket fogja kapni, mint amelyek a példa számításokban szerepelnek. Például a titkos kulcsok és a hozzájuk tartozó nyilvános kulcsok valamint címek mind valódiak. A minta tranzakciók, blokk és blokklánc hivatkozások a tényleges bitcoin blokkláncban szerepelnek és a nyilvános főkönyv részei, ezért bármelyik bitcoin rendszerben lekérdezhetők.
 
 === A programozási példák használata
 

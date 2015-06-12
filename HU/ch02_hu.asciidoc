@@ -168,7 +168,7 @@ A választ <<example_2-2>> mutatja. Eszerint a bitcoin hálózat egyetlen egy el
 Lásd http://bit.ly/1tAeeGr[Joe tranzakciója Alíz számára].
 ====
 
-Mint látható, Alíz pénztárcájában elegendő bitcoin van az egyetlen egy el nem költött kimenetben ahhoz, hogy kifizesse a kávéját. Ha nem ez lenne a helyzet, akkor a pénztárca programnak „végig kellene bogarásznia” egy halom kisebb, el nem költött kimenetet, ahhoz hasonlóan, mint ha valaki egy fizikai pénztárcából újabb és újabb pénzérméket venne elő, hogy ki tudja fizetni a kávéját. Mindkét esetben kezelni kell a visszajáró pénzt is. Ezt a következő részben fogjuk látni, amikor a pénztárca alkalmazás létrehozza a tranzakció kimeneteket (a kifizetéseket). (payments).(((range="endofrange", startref="ix_ch02-asciidoc5")))
+Mint látható, Alíz pénztárcájában elegendő bitcoin van az egyetlen egy el nem költött kimenetben ahhoz, hogy kifizesse a kávéját. Ha nem ez lenne a helyzet, akkor a pénztárca programnak „végig kellene bogarásznia” egy halom kisebb, el nem költött kimenetet, ahhoz hasonlóan, mint ha valaki egy fizikai pénztárcából újabb és újabb pénzérméket venne elő, hogy ki tudja fizetni a kávéját. Mindkét esetben kezelni kell a visszajáró pénzt is. Ezt a következő részben fogjuk látni, amikor a pénztárca alkalmazás létrehozza a tranzakció kimeneteket (a kifizetéseket).(((range="endofrange", startref="ix_ch02-asciidoc5")))
 
 
 ==== A kimenetek létrehozása

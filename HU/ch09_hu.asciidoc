@@ -135,7 +135,7 @@ A Dogecoin 2013 decemberében indult útjára, mint a Litecoin egyik „elágaz�
 
 ===== Freicoin
 
-A Freicoin 2012 júliusában kezdte meg pályafutását. Ez egy ((("inflálódó fizetőeszköz")))_inflálódó fizetőeszköz_, ami azt jelenti, hogy az érték tárolásához negatív kamatláb tartozik. A Freicoinban tárolt érték után évente 4,5 % díj kerül felszámításra, ami serkenti a fogyasztást, és visszatartja a pénz felhalmozását. A Freicoin azért érdekes, mert egy olyan monetáris politikát implementál, amely pontosan a bitcoin deflációs politikájának az ellentéte. A Freicoin mint fizetőeszköz nem igazán lett sikeres, jelentősége inkább abban van, hogy jól szemlélteti az alt-coinok képviselte monetáris politikák változatosságát.
+A Freicoin 2012 júliusában kezdte meg pályafutását. Ez egy ((("inflálódó fizetőeszköz")))_inflálódó fizetőeszköz_, ami azt jelenti, hogy az érték tárolásához negatív kamatláb tartozik. A Freicoinban tárolt érték után évente 4,5% díj kerül felszámításra, ami serkenti a fogyasztást, és visszatartja a pénz felhalmozását. A Freicoin azért érdekes, mert egy olyan monetáris politikát implementál, amely pontosan a bitcoin deflációs politikájának az ellentéte. A Freicoin mint fizetőeszköz nem igazán lett sikeres, jelentősége inkább abban van, hogy jól szemlélteti az alt-coinok képviselte monetáris politikák változatosságát.
 
 * Blokk-generálási idő: 10 perc
 * Maximális érme mennyiség: 100 millió érme, 2140-ig.

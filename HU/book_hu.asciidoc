@@ -1,6 +1,6 @@
 :bookseries: animal
 
-= Bitcoin fejlesztőknek
+= A bitcoinról, nem csak fejlesztőknek
 
 include::praise_hu.asciidoc[]
 

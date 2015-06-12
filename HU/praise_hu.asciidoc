@@ -1,9 +1,9 @@
 ["dedication", role="praise"]
-== A „Bitcoin fejlesztőknek” című könyv méltatása
+==„A bitcoinról, nem csak fejlesztőknek” című könyv méltatása
 
 [quote, a Bitcoin Foundation vezető fejlesztője, Gavin Andresen]
 ____
-„Mikor a nagyközönség előtt beszélek a bitcoinról, meg szokták kérdezni tőlem: 'de hogyan működik ez az egész?' Most már van egy jó válaszom erre a kérdésre, mert bárki, aki elolvassa a _Bitcoin fejlesztőknek_ című könyvet, mély ismereteket fog szerezni arról, hogy hogyan működik a bitcoin, és jó eszközei lesznek ahhoz, hogy megírhassa a digitális pénzekkel kapcsolatos bámulatos alkalmazások következő generációját.”
+„Mikor a nagyközönség előtt beszélek a bitcoinról, meg szokták kérdezni tőlem: 'de hogyan működik ez az egész?' Most már van egy jó válaszom erre a kérdésre, mert bárki, aki elolvassa a _A bitcoinról, nem csak fejlesztőknek_ című könyvet, mély ismereteket fog szerezni arról, hogy hogyan működik a bitcoin, és jó eszközei lesznek ahhoz, hogy megírhassa a digitális pénzekkel kapcsolatos bámulatos alkalmazások következő generációját.”
 ____
 
 [quote, az AngelList társalapítója, Naval Ravikant]
@@ -13,7 +13,7 @@ ____
 
 [quote, General Partner&#x2c; Andreessen Horowitz, Balaji S. Srinivasan (@balajis)]
 ____
-„A _Bitcoin fejlesztőknek_ a ma elérhető legjobb műszaki kézikönyv a bitcoinról. Visszatekintve, valószínűleg a bitcoint fogjuk az évtized legjelentősebb technológiájának tartani. Emiatt a könyv minden fejlesztőnek elengedhetetlen, különösen azoknak, akik a bitcoin protokollra építve szeretnének alkalmazásokat létrehozni. Nagyon ajánlom ezt a könyvet.”
+„_A bitcoinról, nem csak fejlesztőknek_ a ma elérhető legjobb műszaki kézikönyv a bitcoinról. Visszatekintve, valószínűleg a bitcoint fogjuk az évtized legjelentősebb technológiájának tartani. Emiatt a könyv minden fejlesztőnek nélkülözhetetlen, különösen azoknak, akik a bitcoin protokollra építve szeretnének alkalmazásokat létrehozni. Nagyon ajánlom ezt a könyvet.”
 ____
 
 [quote, bitcoin vállalkozó és befektető, Roger Ver]

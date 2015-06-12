@@ -291,7 +291,7 @@ A script nyelv úgy hajtja végre a scriptet, hogy balról jobbra minden egyes e
 
 A feltételes műveletek egy feltétel kiértékelése után IGAZ vagy HAMIS eredményt állítanak elő. Például az +OP_EQUAL+ két tételt távolít el a veremről, és IGAZ értéket tesz a veremre (az IGAZ értéknek az 1 felel meg) ha a két szám egyenlő, és HAMIS értéket (amelyet a nulla ábrázol), ha a két szám nem egyenlő.
 
-<<simplemath_script>> futása során a +2 3 OP_ADD 5 OP_EQUAL+ script az +OP_ADD+ összeadási műveletet szemlélteti: összead két számot, az eredményt a veremre helyezi, majd ezt követően egy OP_EQUAL feltételes művelettel megvizsgálja, hogy az eredményül kapott összeg egyenlő-e +5+-tel. A rövidség kedvéért az +OP_+ előtagot a részletes, lépésről-lépésre történő kiértékelésben elhagytuk. 
+<<simplemath_script>> futása során a +2 3 OP_ADD 5 OP_EQUAL+ script az +OP_ADD+ összeadási műveletet szemlélteti: összead két számot, az eredményt a veremre helyezi, majd ezt követően egy +OP_EQUAL+ feltételes művelettel megvizsgálja, hogy az eredményül kapott összeg egyenlő-e +5+-tel. A rövidség kedvéért az +OP_+ előtagot a részletes, lépésről-lépésre történő kiértékelésben elhagytuk. 
 
 
 A következő egy kicsit bonyolultabb példa, amely a ++2 + 7 - 3 + 1++ kifejezés értékét számítja ki. Figyeljük meg, hogy ha a script számos egymás utáni műveletet tartalmaz, a verem lehetővé teszi, hogy az eredményt a következő művelet felhasználhassa:
@@ -365,13 +365,13 @@ A +Kávéház nyilvános kulcsának hashe+ egyenértékű a kávéház bitcoin c
 A fenti zároló script a következő formájú, zárolást megszüntető scripttel elégíthető ki:
 
 ----
-<a kávéházhoz tartozó aláírás> <a kávéház nyilvános kulcsa>
+<aláírás> <a kávéház nyilvános kulcsa>
 ----
 
 A két script együttesen a következő egyesített ellenőrző scriptet alkotja:
 
 ----
-<a kávéházhoz tartozó aláírás> <a kávéház nyilvános kulcsa> OP_DUP OP_HASH160 <a kávéház nyilvános kulcsának hash értéke> OP_EQUAL OP_CHECKSIG 
+<aláírás> <a kávéház nyilvános kulcsa> OP_DUP OP_HASH160 <a kávéház nyilvános kulcsának hash értéke> OP_EQUAL OP_CHECKSIG 
  
 ----
 
@@ -469,7 +469,7 @@ OP_RETURN <adat>
 
 Az adat rész 80 bájtra van korlátozva, és leggyakrabban egy hash értéknek felel meg, pl. az SHA256 algoritmus kimenetének (32 bájt). Sok alkalmazás egy előtagot helyez az adatok elé, hogy könnyebb legyen az alkalmazás azonosítása. Például a http://proofofexistence.com[Proof of Existence] digitális közjegyzői szolgáltatás a „DOCPROOF” 8 bájtos előtagot használja, amely hexadecimális alakban +444f4350524f4f46+.
 
-Emlékeztetünk rá, hogy az +OP_RTEURN+-höz nem tartozik „zárolás feloldó script”, amellyel „elkölthető” lenne az +OP_RETURN+. Az +OP_RETURN+-nek épp az az értelme, hogy nem költhető el az adott kimenetben zárolt pénz, és ezért nem kell a kimenetet az UTXO halmazban tartani, mint potenciálisan elkölthető kimenetet – az +OP_RETURN+ _bizonyíthatóan nem elkölthető_. Az +OP_RETURN+ általában egy nulla összegű bitcoin kimenet, mivel az ilyen kimenethez rendelt bitcoinok örökre elvesznének. Ha a script ellenőrző program egy +OP_RETURN+-nel találkozik, akkor azonnal félbeszakítja az ellenőrző script végrehajtását, és a tranzakciót érvénytelennek tekinti. Emiatt ha véletlenül egy +OP_RETURN+ kimenetre hivatkozunk egy tranzakció bemenetében, akkor a tranzakció érvénytelen lesz. 
+Emlékeztetünk rá, hogy az +OP_RETURN+-höz nem tartozik „zárolás feloldó script”, amellyel „elkölthető” lenne az +OP_RETURN+. Az +OP_RETURN+-nek épp az az értelme, hogy nem költhető el az adott kimenetben zárolt pénz, és ezért nem kell a kimenetet az UTXO halmazban tartani, mint potenciálisan elkölthető kimenetet – az +OP_RETURN+ _bizonyíthatóan nem elkölthető_. Az +OP_RETURN+ általában egy nulla összegű bitcoin kimenet, mivel az ilyen kimenethez rendelt bitcoinok örökre elvesznének. Ha a script ellenőrző program egy +OP_RETURN+-nel találkozik, akkor azonnal félbeszakítja az ellenőrző script végrehajtását, és a tranzakciót érvénytelennek tekinti. Emiatt ha véletlenül egy +OP_RETURN+ kimenetre hivatkozunk egy tranzakció bemenetében, akkor a tranzakció érvénytelen lesz. 
 
 Egy érvényes tranzakciónak (amely megefelel az +isStandard()+ ellenőrzéseknek) csak egy +OP_RETURN+ kimenete lehet. Az +OP_RETURN+ kimenet azonban tetszőleges egyéb kimeneti típusokkal kombinálható. 
 
@@ -517,7 +517,7 @@ A P2SH tranzakciókban a zároló scriptet egy hash helyettesíti, melynek ((("r
 
 Amint az a fenti táblázatokból látható, a P2SH használatakor a nem jelenik meg az a bonyolult script a kimenetben, amely a kimenet elköltésének feltételeit részletezi. Csak a script egy hashe van jelen a zárolást végző scriptben, a beváltási script pedig később, a kimenet elköltésekor, a zárolást feloldó script részeként kerül bemutatásra. Ennek révén a komplexitás és a tranzakciós díjak terhe a tranzakció küldőjéről a címzettre tevődik át. 
 
-Tekintsük Mohanmmed cégét, a bonyolult multi-sig scriptet és az eredményként kapott P2SH scriptet. 
+Tekintsük Mohammed cégét, a bonyolult multi-sig scriptet és az eredményként kapott P2SH scriptet. 
 
 Nézzük először azt a multi-sig scriptet, melyet Mohammed cége az összes bejövő fizetésnél használ:
 
