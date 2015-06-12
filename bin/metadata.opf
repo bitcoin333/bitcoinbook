@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<package xmlns="http://www.idpf.org/2007/opf" unique-identifier="uuid_id" version="2.0">
+    <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+        <dc:identifier opf:scheme="calibre" id="calibre_id">12</dc:identifier>
+        <dc:identifier opf:scheme="uuid" id="uuid_id">fa169d99-bf23-49d6-8d99-a0e9e5b51e73</dc:identifier>
+        <dc:title>Mastering Bitcoin</dc:title>
+        <dc:creator opf:file-as="Antonopoulos, Andreas" opf:role="aut">Andreas Antonopoulos</dc:creator>
+        <dc:contributor opf:file-as="calibre" opf:role="bkp">calibre (2.19.0) [http://calibre-ebook.com]</dc:contributor>
+        <dc:date>0101-01-01T00:00:00+00:00</dc:date>
+        <dc:publisher>Hewlett-Packard Company</dc:publisher>
+        <dc:language>hun</dc:language>
+        <meta content="{&quot;Andreas Antonopoulos&quot;: &quot;&quot;}" name="calibre:author_link_map"/>
+        <meta content="2015-06-12T08:10:55+00:00" name="calibre:timestamp"/>
+        <meta content="Mastering Bitcoin" name="calibre:title_sort"/>
+    </metadata>
+    <guide>
+        <reference href="cover.jpg" title="Cover" type="cover"/>
+    </guide>
+</package>
